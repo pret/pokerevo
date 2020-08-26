@@ -17,3 +17,4 @@
 *.map
 *.exe
 build
+.idea
