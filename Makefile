@@ -1,8 +1,20 @@
-ifneq ($(findstring MINGW,$(shell uname)),)
-  WINDOWS := 1
+WSLENV ?= no
+ifeq ($(WSLENV),)
+NOWINE = 1
+else
+NOWINE = 0
 endif
-ifneq ($(findstring MSYS,$(shell uname)),)
-  WINDOWS := 1
+
+ifeq ($(OS),Windows_NT)
+EXE := .exe
+WINE :=
+else
+EXE :=
+WINE := wine
+endif
+
+ifeq ($(NOWINE),1)
+WINE :=
 endif
 
 #-------------------------------------------------------------------------------
@@ -43,17 +55,12 @@ O_FILES := $(INIT_O_FILES) $(EXTAB_O_FILES) $(EXTABINDEX_O_FILES) $(TEXT_O_FILES
 MWCC_VERSION := 3.0
 
 # Programs
-ifeq ($(WINDOWS),1)
-  WINE :=
-else
-  WINE := wine
-endif
 AS      := $(DEVKITPPC)/bin/powerpc-eabi-as
 OBJCOPY := $(DEVKITPPC)/bin/powerpc-eabi-objcopy
 CPP     := cpp -P
 CC      := $(WINE) tools/mwcc_compiler/$(MWCC_VERSION)/mwcceppc.exe
 LD      := $(WINE) tools/mwcc_compiler/$(MWCC_VERSION)/mwldeppc.exe
-ELF2DOL := tools/elf2dol
+ELF2DOL := tools/elf2dol/elf2dol$(EXE)
 SHA1SUM := sha1sum
 PYTHON  := python3
 
@@ -73,11 +80,22 @@ PROCFLAGS := -fprologue-fixup=old_stack
 SDATA_PDHR := 9
 SBSS_PDHR := 10
 
+infoshell = $(foreach line, $(shell $1 | sed "s/ /__SPACE__/g"), $(info $(subst __SPACE__, ,$(line))))
+
+TOOLS_DIR = tools
+TOOLDIRS = $(filter-out $(TOOLS_DIR)/mwcc_compiler,$(wildcard $(TOOLS_DIR)/*))
+TOOLBASE = $(TOOLDIRS:$(TOOLS_DIR)/%=%)
+TOOLS = $(foreach tool,$(TOOLBASE),$(TOOLS_DIR)/$(tool)/$(tool)$(EXE))
+
 #-------------------------------------------------------------------------------
 # Recipes
 #-------------------------------------------------------------------------------
 
 ### Default target ###
+
+ifeq (,$(filter-out all,$(MAKECMDGOALS)))
+$(call infoshell, $(MAKE) tools)
+endif
 
 default: all
 
@@ -88,21 +106,25 @@ ALL_DIRS := build $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(ASM_DIRS)
 # Make sure build directory exists before compiling anything
 DUMMY != mkdir -p $(ALL_DIRS)
 
-.PHONY: tools
+.PHONY: tools clean clean-tools $(TOOLDIRS)
 
 $(LDSCRIPT): ldscript.lcf
 	$(CPP) -MMD -MP -MT $@ -MF $@.d -I include/ -I . -DBUILD_DIR=$(BUILD_DIR) -o $@ $<
 
-$(DOL): $(ELF) | tools
+$(DOL): $(ELF)
 	$(ELF2DOL) $< $@ $(SDATA_PDHR) $(SBSS_PDHR) $(TARGET_COL)
 	$(SHA1SUM) -c $(TARGET).sha1
 
-clean:
+clean: clean-tools
 	rm -f -d -r build
-	$(MAKE) -C tools clean
 
-tools:
-	$(MAKE) -C tools
+tools: $(TOOLDIRS)
+
+$(TOOLDIRS):
+	@$(MAKE) -C $@
+
+clean-tools:
+	$(foreach tool,$(TOOLDIRS),$(MAKE) clean -C $(tool);)
 
 $(ELF): $(O_FILES) $(LDSCRIPT)
 	$(LD) $(LDFLAGS) -o $@ -lcf $(LDSCRIPT) $(O_FILES)
