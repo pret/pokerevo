@@ -1,17 +1,79 @@
-.include "macros.inc"
+	.include "macros.inc"
 
-.section .data, "wa"  # 0x80405D60 - 0x80474F00
+	.section .data, "wa"  # 0x80405D60 - 0x80474F00
 
-.global lbl_80405D60
+	.global lbl_80405D60
 lbl_80405D60:
-	.incbin "baserom.dol", 0x401E60, 0x18
-.global lbl_80405D78
+	.asciz "sound/pbr_sound.brsar"
+
+	.balign 4, 0
+	.global lbl_80405D78
 lbl_80405D78:
-	.incbin "baserom.dol", 0x401E78, 0x28
-.global lbl_80405DA0
+	.asciz "main render"
+
+
+	.balign 8, 0
+	.global lbl_80405D88
+lbl_80405D88:
+	.asciz "2007-09-14 10:28:31 EU"
+
+	.balign 4, 0
+	.global lbl_80405DA0
 lbl_80405DA0:
-	.incbin "baserom.dol", 0x401EA0, 0xC4
-.global lbl_80405E64
+	.asciz "/homeBtn.arc"
+
+	.balign 4, 0
+	.global lbl_80405DB0
+lbl_80405DB0:
+	.asciz "/homeBtn_ENG.arc"
+
+	.balign 4, 0
+	.global lbl_80405DC4
+lbl_80405DC4:
+	.asciz "/homeBtn_GER.arc"
+
+	.balign 4, 0
+	.global lbl_80405DD8
+lbl_80405DD8:
+	.asciz "/homeBtn_FRA.arc"
+
+	.balign 4, 0
+	.global lbl_80405DEC
+lbl_80405DEC:
+	.asciz "/homeBtn_SPA.arc"
+
+	.balign 4, 0
+	.global lbl_80405E00
+lbl_80405E00:
+	.asciz "/homeBtn_ITA.arc"
+
+	.balign 4, 0
+	.global lbl_80405E14
+lbl_80405E14:
+	.asciz "/homeBtn_NED.arc"
+
+	.balign 4, 0
+	.global lbl_80405E28
+lbl_80405E28:
+	.asciz "/SpeakerSe.arc"
+
+	.balign 4, 0
+	.global lbl_80405E38
+lbl_80405E38:
+	.asciz "/home.csv"
+
+	.balign 4, 0
+	.global lbl_80405E44
+lbl_80405E44:
+	.asciz "/config.txt"
+
+	.balign 4, 0
+	.global lbl_80405E50
+lbl_80405E50:
+	.asciz "/homeBtnIcon.tpl"
+
+	.balign 4, 0
+	.global lbl_80405E64
 lbl_80405E64:
 	.incbin "baserom.dol", 0x401F64, 0x1C
 .global lbl_80405E80
