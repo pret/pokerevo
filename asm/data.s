@@ -74,12 +74,16 @@ lbl_80405E50:
 
 	.balign 4, 0
 	.global lbl_80405E64
-lbl_80405E64:
-	.incbin "baserom.dol", 0x401F64, 0x1C
-.global lbl_80405E80
+lbl_80405E64: # jump table
+	.4byte lbl_80009E6C, lbl_80009E7C, lbl_80009E8C, lbl_80009E9C
+	.4byte lbl_80009EAC, lbl_80009EBC, lbl_80009ECC
+
+	.global lbl_80405E80
 lbl_80405E80:
-	.incbin "baserom.dol", 0x401F80, 0x18
-.global lbl_80405E98
+	.asciz "/HomeButtonSe.brsar"
+
+	.balign 8, 0
+	.global lbl_80405E98
 lbl_80405E98:
 	.incbin "baserom.dol", 0x401F98, 0xC
 .global lbl_80405EA4
