@@ -8,6 +8,7 @@ EXTABINDEX_O_FILES :=                               \
     $(BUILD_DIR)/asm/extabindex.o
 
 TEXT_O_FILES := 						            \
+	$(BUILD_DIR)/asm/text_1.o                       \
 	$(BUILD_DIR)/asm/text.o
 
 CTORS_O_FILES :=                                    \
