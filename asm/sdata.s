@@ -2,13 +2,17 @@
 
 .section .sdata, "wa"  # 0x8063D2C0 - 0x8063E8E0
 
-.global lbl_8063D2C0
+	.global lbl_8063D2C0
 lbl_8063D2C0:
-	.incbin "baserom.dol", 0x471000, 0x8
-.global lbl_8063D2C8
+	.asciz "input"
+
+	.balign 4, 0
+	.global lbl_8063D2C8
 lbl_8063D2C8:
-	.incbin "baserom.dol", 0x471008, 0x8
-.global lbl_8063D2D0
+	.asciz "main"
+
+	.balign 4, 0
+	.global lbl_8063D2D0
 lbl_8063D2D0:
 	.incbin "baserom.dol", 0x471010, 0x8
 .global lbl_8063D2D8
