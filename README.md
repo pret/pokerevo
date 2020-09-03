@@ -1,16 +1,33 @@
-# Pokemon Battle Revolution
+# Pokémon Battle Revolution
 
-This repo contains a WIP decompilation of Pokemon Battle Revolution (PAL).
+This is a decompilation of Pokémon Battle Revolution
 
 It builds the following DOL:
 
-main.dol: `sha1: ffcd539d239722b8bb27e45c9ad4aacc818c8933`
+* main.dol: `sha1: ffcd539d239722b8bb27e45c9ad4aacc818c8933`
 
-## Build Instructions
+To set up the repository, see [INSTALL.md](INSTALL.md).
 
-1. Obtain a clean DOL of PBR PAL 1.0 and place it in the build folder and name it `baserom.dol`.
-2. Obtain a copy of the MWCC PowerPC (from GC CW 3.0) and place it in tools/mwcc_compiler/3.0/ folder in tools/. (NOTE: This compiler's executables [mwcceppc.exe mwasmeppc.exe and mwldeppc.exe] can be installed with Codewarrior 1.1 for Gamecube, but no license or crack is provided with this project. Please obtain access to the compiler on your own.) If you are in the Gamecube/Wii Decompilation discord (not public at this time, but if you are interested and have the skillset to contribute, please DM Revo#7090 on Discord for access), download GC_COMPILERS.zip and extract it to tools/mwcc_compiler/.
-3. Build tools and `make`.
+## See also
+
+Other disassembly and/or decompilation projects:
+* [**Pokémon Red and Blue**](https://github.com/pret/pokered)
+* [**Pokémon Gold and Silver (Space World '97 demo)**](https://github.com/pret/pokegold-spaceworld)
+* [**Pokémon Yellow**](https://github.com/pret/pokeyellow)
+* [**Pokémon Trading Card Game**](https://github.com/pret/poketcg)
+* [**Pokémon Pinball**](https://github.com/pret/pokepinball)
+* [**Pokémon Stadium**](https://github.com/pret/pokestadium)
+* [**Pokémon Gold and Silver**](https://github.com/pret/pokegold)
+* [**Pokémon Crystal**](https://github.com/pret/pokecrystal)
+* [**Pokémon Ruby and Sapphire**](https://github.com/pret/pokeruby)
+* [**Pokémon Pinball: Ruby & Sapphire**](https://github.com/pret/pokepinballrs)
+* [**Pokémon FireRed and LeafGreen**](https://github.com/pret/pokefirered)
+* [**Pokémon Mystery Dungeon: Red Rescue Team**](https://github.com/pret/pmd-red)
+
+
+## Contacts
+
+You can find us on [Discord](https://discord.gg/d5dubZ3) and [IRC](https://kiwiirc.com/client/irc.freenode.net/?#pret).
 
 ## Contributions
 
