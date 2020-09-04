@@ -6,7 +6,7 @@ env:
         - CC=gcc-8
         - CXX=g++-8
         - DEVKITPRO=$HOME
-        - DEVKITPPC=$DEVKITPPC/devkitPPC
+        - DEVKITPPC=$DEVKITPRO/devkitPPC
 
 addons:
     apt:
