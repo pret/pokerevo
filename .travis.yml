@@ -28,7 +28,7 @@ install:
     - tar xJf devkitPPC*.tar.xz -C $HOME
     - mkdir $TRAVIS_BUILD_DIR/tools/mwcc_compiler
     - mv GC_COMPILERS.zip $TRAVIS_BUILD_DIR/tools/mwcc_compiler
-    - unzip $TRAVIS_BUILD_DIR/tools/mwcc_compiler/GC_COMPILERS.zip
+    - unzip $TRAVIS_BUILD_DIR/tools/mwcc_compiler/GC_COMPILERS.zip $TRAVIS_BUILD_DIR/tools/mwcc_compiler
     - mv baserom.dol $TRAVIS_BUILD_DIR
     - popd
 
