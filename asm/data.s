@@ -85,14 +85,20 @@ lbl_80405E80:
 	.balign 8, 0
 	.global lbl_80405E98
 lbl_80405E98:
-	.incbin "baserom.dol", 0x401F98, 0xC
-.global lbl_80405EA4
+	.asciz "preprocess"
+
+	.balign 4, 0
+	.global lbl_80405EA4
 lbl_80405EA4:
-	.incbin "baserom.dol", 0x401FA4, 0xC
-.global lbl_80405EB0
+	.asciz "postprocess"
+
+	.balign 4, 0
+	.global lbl_80405EB0
 lbl_80405EB0:
-	.incbin "baserom.dol", 0x401FB0, 0x70
-.global lbl_80405F20
+	.4byte lbl_8063D2E8, 0x00000000, func_8000A7D0, func_8000A810
+	.incbin "baserom.dol", 0x401FC0, 0x60
+
+	.global lbl_80405F20
 lbl_80405F20:
 	.incbin "baserom.dol", 0x402020, 0x18
 .global lbl_80405F38
