@@ -29,7 +29,6 @@ install:
     - tar xJf devkitPPC*.tar.xz -C $HOME
     - sudo chmod 775 powerpc-eabi-objcopy
     - mv -f powerpc-eabi-objcopy $DEVKITPPC/bin/powerpc-eabi-objcopy
-    - $DEVKITPPC/bin/powerpc-eabi-objcopy --version
     - mkdir $TRAVIS_BUILD_DIR/tools/mwcc_compiler
     - unzip GC_COMPILERS.zip -d $TRAVIS_BUILD_DIR/tools/mwcc_compiler
     - mv baserom.dol $TRAVIS_BUILD_DIR
