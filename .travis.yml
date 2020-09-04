@@ -24,9 +24,8 @@ install:
     - pushd $HOME/download
     - travis_retry wget https://cdn.discordapp.com/attachments/751089877579202691/751090418636029972/GC_COMPILERS.zip
     - travis_retry wget https://www.red031000.com/pbr/baserom.dol
-    - travis_retry wget https://github.com/devkitPro/buildscripts/archive/devkitPPC_r38.tar.gz
-    - tar xzvf devkitPPC*.tar.gz
-    - mv devkitPPC $HOME
+    - travis_retry wget https://github.com/devkitPro/buildscripts/releases/download/devkitPPC_r35/devkitPPC_r35-linux.tar.xz
+    - tar xJf devkitPPC*.tar.gz -C $HOME
     - mkdir $TRAVIS_BUILD_DIR/tools/mwcc_compiler
     - mv GC_COMPILERS.zip $TRAVIS_BUILD_DIR/tools/mwcc_compiler
     - unzip $TRAVIS_BUILD_DIR/tools/mwcc_compiler/GC_COMPILERS.zip
