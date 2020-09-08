@@ -96,12 +96,31 @@ lbl_80405EA4:
 	.global lbl_80405EB0
 lbl_80405EB0:
 	.4byte lbl_8063D2E8, 0x00000000, func_8000A7D0, func_8000A810
-	.incbin "baserom.dol", 0x401FC0, 0x60
+	.4byte func_8000A814, func_8000A91C, func_8000A95C, func_8000A9B4
+	.4byte func_8000AA94, func_8000AA90, func_8000AA88, func_8000AA80
+	.4byte func_8000AA98
 
+	.balign 4, 0
+	.global lbl_80405EE4
+lbl_80405EE4:
+	.asciz "FloorGlobalFuntion"
+
+	.balign 4, 0
+	.global lbl_80405EF8
+lbl_80405EF8:
+	.4byte lbl_8063D2F0, 0x00000000, 0x00000000
+
+	.balign 4, 0
+	.global lbl_80405F04
+lbl_80405F04:
+	.asciz "gsapi::FloorModuleInterface"
+
+	.balign 4, 0
 	.global lbl_80405F20
 lbl_80405F20:
 	.incbin "baserom.dol", 0x402020, 0x18
-.global lbl_80405F38
+
+	.global lbl_80405F38
 lbl_80405F38:
 	.incbin "baserom.dol", 0x402038, 0x28
 .global lbl_80405F60

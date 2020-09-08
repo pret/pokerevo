@@ -27,7 +27,11 @@ lbl_8063D2E0:
 
 	.global lbl_8063D2E8
 lbl_8063D2E8:
-	.incbin "baserom.dol", 0x471028, 0x30
+	.incbin "baserom.dol", 0x471028, 0x8
+
+	.global lbl_8063D2F0
+lbl_8063D2F0:
+	.incbin "baserom.dol", 0x471030, 0x28
 
 .global lbl_8063D318
 lbl_8063D318:
