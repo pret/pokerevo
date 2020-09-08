@@ -13,6 +13,7 @@ TEXT_O_FILES := 						            \
 	$(BUILD_DIR)/asm/text_3.o                       \
 	$(BUILD_DIR)/asm/text_4.o                       \
 	$(BUILD_DIR)/asm/text_5.o                       \
+	$(BUILD_DIR)/asm/text_6.o                       \
 	$(BUILD_DIR)/asm/text.o
 
 CTORS_O_FILES :=                                    \
