@@ -95,10 +95,14 @@ lbl_80405EA4:
 	.balign 4, 0
 	.global lbl_80405EB0
 lbl_80405EB0:
-	.4byte lbl_8063D2E8, 0x00000000, func_8000A7D0, func_8000A810
-	.4byte func_8000A814, func_8000A91C, func_8000A95C, func_8000A9B4
-	.4byte func_8000AA94, func_8000AA90, func_8000AA88, func_8000AA80
-	.4byte func_8000AA98
+	.4byte lbl_8063D2E8
+
+	.balign 8, 0
+	.global lbl_80405EB8
+lbl_80405EB8:
+	.4byte func_8000A7D0, func_8000A810, func_8000A814, func_8000A91C
+	.4byte func_8000A95C, func_8000A9B4, func_8000AA94, func_8000AA90
+	.4byte func_8000AA88, func_8000AA80, func_8000AA98
 
 	.balign 4, 0
 	.global lbl_80405EE4
@@ -108,7 +112,12 @@ lbl_80405EE4:
 	.balign 4, 0
 	.global lbl_80405EF8
 lbl_80405EF8:
-	.4byte lbl_8063D2F0, 0x00000000, 0x00000000
+	.4byte lbl_8063D2F0
+
+	.balign 8, 0
+	.global lbl_80405F00
+lbl_80405F00:
+	.4byte 0x00000000
 
 	.balign 4, 0
 	.global lbl_80405F04
@@ -118,12 +127,14 @@ lbl_80405F04:
 	.balign 4, 0
 	.global lbl_80405F20
 lbl_80405F20:
-	.incbin "baserom.dol", 0x402020, 0x18
+	.asciz "FloorGlobalFuntion"
 
+	.balign 8, 0
 	.global lbl_80405F38
 lbl_80405F38:
 	.incbin "baserom.dol", 0x402038, 0x28
-.global lbl_80405F60
+
+	.global lbl_80405F60
 lbl_80405F60:
 	.incbin "baserom.dol", 0x402060, 0x60
 .global lbl_80405FC0
