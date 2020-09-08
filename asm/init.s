@@ -137,6 +137,7 @@ lbl_80004188:
 .asciz "Metrowerks Target Resident Kernel for PowerPC"
 .balign 4, 0
 
+#TODO replace with aligns
 .fill 0xD0 #padding
 
 /* 80004288 00000388  48 00 1E 34 */	b func_800060BC
@@ -177,58 +178,10 @@ lbl_80004188:
 /* 800044AC 000005AC  60 63 72 5C */	ori r3, r3, lbl_801D725C@l
 /* 800044B0 000005B0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800044B4 000005B4  38 60 03 00 */	li r3, 0x300
-/* 800044B8 000005B8  4C 00 00 64 */	rfi 
-/* 800044BC 000005BC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800044C0 000005C0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800044C4 000005C4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800044C8 000005C8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800044CC 000005CC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800044D0 000005D0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800044D4 000005D4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800044D8 000005D8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800044DC 000005DC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800044E0 000005E0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800044E4 000005E4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800044E8 000005E8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800044EC 000005EC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800044F0 000005F0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800044F4 000005F4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800044F8 000005F8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800044FC 000005FC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004500 00000600  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004504 00000604  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004508 00000608  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000450C 0000060C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004510 00000610  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004514 00000614  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004518 00000618  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000451C 0000061C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004520 00000620  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004524 00000624  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004528 00000628  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000452C 0000062C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004530 00000630  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004534 00000634  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004538 00000638  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000453C 0000063C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004540 00000640  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004544 00000644  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004548 00000648  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000454C 0000064C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004550 00000650  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004554 00000654  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004558 00000658  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000455C 0000065C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004560 00000660  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004564 00000664  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004568 00000668  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000456C 0000066C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004570 00000670  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004574 00000674  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004578 00000678  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000457C 0000067C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004580 00000680  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004584 00000684  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
+/* 800044B8 000005B8  4C 00 00 64 */	rfi
+
+.fill 0xCC #padding
+
 /* 80004588 00000688  7C 51 43 A6 */	mtspr 0x111, r2
 /* 8000458C 0000068C  7C 72 43 A6 */	mtspr 0x112, r3
 /* 80004590 00000690  7C 93 43 A6 */	mtspr 0x113, r4
@@ -241,58 +194,10 @@ lbl_80004188:
 /* 800045AC 000006AC  60 63 72 5C */	ori r3, r3, lbl_801D725C@l
 /* 800045B0 000006B0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800045B4 000006B4  38 60 04 00 */	li r3, 0x400
-/* 800045B8 000006B8  4C 00 00 64 */	rfi 
-/* 800045BC 000006BC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800045C0 000006C0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800045C4 000006C4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800045C8 000006C8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800045CC 000006CC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800045D0 000006D0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800045D4 000006D4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800045D8 000006D8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800045DC 000006DC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800045E0 000006E0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800045E4 000006E4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800045E8 000006E8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800045EC 000006EC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800045F0 000006F0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800045F4 000006F4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800045F8 000006F8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800045FC 000006FC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004600 00000700  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004604 00000704  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004608 00000708  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000460C 0000070C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004610 00000710  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004614 00000714  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004618 00000718  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000461C 0000071C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004620 00000720  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004624 00000724  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004628 00000728  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000462C 0000072C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004630 00000730  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004634 00000734  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004638 00000738  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000463C 0000073C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004640 00000740  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004644 00000744  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004648 00000748  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000464C 0000074C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004650 00000750  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004654 00000754  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004658 00000758  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000465C 0000075C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004660 00000760  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004664 00000764  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004668 00000768  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000466C 0000076C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004670 00000770  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004674 00000774  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004678 00000778  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000467C 0000077C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004680 00000780  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004684 00000784  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
+/* 800045B8 000006B8  4C 00 00 64 */	rfi
+
+.fill 0xCC #padding
+
 /* 80004688 00000788  7C 51 43 A6 */	mtspr 0x111, r2
 /* 8000468C 0000078C  7C 72 43 A6 */	mtspr 0x112, r3
 /* 80004690 00000790  7C 93 43 A6 */	mtspr 0x113, r4
@@ -305,58 +210,10 @@ lbl_80004188:
 /* 800046AC 000007AC  60 63 72 5C */	ori r3, r3, lbl_801D725C@l
 /* 800046B0 000007B0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800046B4 000007B4  38 60 05 00 */	li r3, 0x500
-/* 800046B8 000007B8  4C 00 00 64 */	rfi 
-/* 800046BC 000007BC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800046C0 000007C0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800046C4 000007C4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800046C8 000007C8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800046CC 000007CC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800046D0 000007D0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800046D4 000007D4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800046D8 000007D8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800046DC 000007DC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800046E0 000007E0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800046E4 000007E4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800046E8 000007E8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800046EC 000007EC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800046F0 000007F0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800046F4 000007F4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800046F8 000007F8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800046FC 000007FC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004700 00000800  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004704 00000804  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004708 00000808  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000470C 0000080C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004710 00000810  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004714 00000814  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004718 00000818  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000471C 0000081C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004720 00000820  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004724 00000824  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004728 00000828  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000472C 0000082C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004730 00000830  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004734 00000834  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004738 00000838  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000473C 0000083C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004740 00000840  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004744 00000844  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004748 00000848  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000474C 0000084C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004750 00000850  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004754 00000854  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004758 00000858  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000475C 0000085C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004760 00000860  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004764 00000864  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004768 00000868  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000476C 0000086C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004770 00000870  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004774 00000874  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004778 00000878  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000477C 0000087C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004780 00000880  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004784 00000884  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
+/* 800046B8 000007B8  4C 00 00 64 */	rfi
+
+.fill 0xCC #padding
+
 /* 80004788 00000888  7C 51 43 A6 */	mtspr 0x111, r2
 /* 8000478C 0000088C  7C 72 43 A6 */	mtspr 0x112, r3
 /* 80004790 00000890  7C 93 43 A6 */	mtspr 0x113, r4
@@ -370,57 +227,9 @@ lbl_80004188:
 /* 800047B0 000008B0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800047B4 000008B4  38 60 06 00 */	li r3, 0x600
 /* 800047B8 000008B8  4C 00 00 64 */	rfi 
-/* 800047BC 000008BC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800047C0 000008C0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800047C4 000008C4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800047C8 000008C8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800047CC 000008CC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800047D0 000008D0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800047D4 000008D4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800047D8 000008D8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800047DC 000008DC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800047E0 000008E0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800047E4 000008E4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800047E8 000008E8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800047EC 000008EC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800047F0 000008F0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800047F4 000008F4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800047F8 000008F8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800047FC 000008FC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004800 00000900  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004804 00000904  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004808 00000908  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000480C 0000090C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004810 00000910  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004814 00000914  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004818 00000918  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000481C 0000091C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004820 00000920  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004824 00000924  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004828 00000928  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000482C 0000092C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004830 00000930  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004834 00000934  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004838 00000938  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000483C 0000093C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004840 00000940  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004844 00000944  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004848 00000948  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000484C 0000094C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004850 00000950  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004854 00000954  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004858 00000958  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000485C 0000095C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004860 00000960  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004864 00000964  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004868 00000968  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000486C 0000096C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004870 00000970  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004874 00000974  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004878 00000978  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000487C 0000097C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004880 00000980  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004884 00000984  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
+
+.fill 0xCC #padding
+
 /* 80004888 00000988  7C 51 43 A6 */	mtspr 0x111, r2
 /* 8000488C 0000098C  7C 72 43 A6 */	mtspr 0x112, r3
 /* 80004890 00000990  7C 93 43 A6 */	mtspr 0x113, r4
@@ -434,57 +243,9 @@ lbl_80004188:
 /* 800048B0 000009B0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800048B4 000009B4  38 60 07 00 */	li r3, 0x700
 /* 800048B8 000009B8  4C 00 00 64 */	rfi 
-/* 800048BC 000009BC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800048C0 000009C0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800048C4 000009C4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800048C8 000009C8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800048CC 000009CC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800048D0 000009D0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800048D4 000009D4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800048D8 000009D8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800048DC 000009DC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800048E0 000009E0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800048E4 000009E4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800048E8 000009E8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800048EC 000009EC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800048F0 000009F0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800048F4 000009F4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800048F8 000009F8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800048FC 000009FC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004900 00000A00  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004904 00000A04  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004908 00000A08  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000490C 00000A0C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004910 00000A10  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004914 00000A14  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004918 00000A18  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000491C 00000A1C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004920 00000A20  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004924 00000A24  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004928 00000A28  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000492C 00000A2C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004930 00000A30  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004934 00000A34  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004938 00000A38  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000493C 00000A3C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004940 00000A40  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004944 00000A44  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004948 00000A48  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000494C 00000A4C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004950 00000A50  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004954 00000A54  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004958 00000A58  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000495C 00000A5C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004960 00000A60  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004964 00000A64  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004968 00000A68  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000496C 00000A6C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004970 00000A70  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004974 00000A74  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004978 00000A78  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 8000497C 00000A7C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004980 00000A80  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004984 00000A84  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
+
+.fill 0xCC #padding
+
 /* 80004988 00000A88  7C 51 43 A6 */	mtspr 0x111, r2
 /* 8000498C 00000A8C  7C 72 43 A6 */	mtspr 0x112, r3
 /* 80004990 00000A90  7C 93 43 A6 */	mtspr 0x113, r4
@@ -498,57 +259,9 @@ lbl_80004188:
 /* 800049B0 00000AB0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800049B4 00000AB4  38 60 08 00 */	li r3, 0x800
 /* 800049B8 00000AB8  4C 00 00 64 */	rfi 
-/* 800049BC 00000ABC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800049C0 00000AC0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800049C4 00000AC4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800049C8 00000AC8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800049CC 00000ACC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800049D0 00000AD0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800049D4 00000AD4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800049D8 00000AD8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800049DC 00000ADC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800049E0 00000AE0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800049E4 00000AE4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800049E8 00000AE8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800049EC 00000AEC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800049F0 00000AF0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800049F4 00000AF4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800049F8 00000AF8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 800049FC 00000AFC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A00 00000B00  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A04 00000B04  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A08 00000B08  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A0C 00000B0C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A10 00000B10  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A14 00000B14  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A18 00000B18  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A1C 00000B1C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A20 00000B20  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A24 00000B24  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A28 00000B28  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A2C 00000B2C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A30 00000B30  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A34 00000B34  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A38 00000B38  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A3C 00000B3C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A40 00000B40  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A44 00000B44  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A48 00000B48  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A4C 00000B4C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A50 00000B50  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A54 00000B54  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A58 00000B58  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A5C 00000B5C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A60 00000B60  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A64 00000B64  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A68 00000B68  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A6C 00000B6C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A70 00000B70  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A74 00000B74  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A78 00000B78  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A7C 00000B7C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A80 00000B80  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004A84 00000B84  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
+
+.fill 0xCC #padding
+
 /* 80004A88 00000B88  7C 51 43 A6 */	mtspr 0x111, r2
 /* 80004A8C 00000B8C  7C 72 43 A6 */	mtspr 0x112, r3
 /* 80004A90 00000B90  7C 93 43 A6 */	mtspr 0x113, r4
@@ -561,186 +274,10 @@ lbl_80004188:
 /* 80004AAC 00000BAC  60 63 72 5C */	ori r3, r3, lbl_801D725C@l
 /* 80004AB0 00000BB0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 80004AB4 00000BB4  38 60 09 00 */	li r3, 0x900
-/* 80004AB8 00000BB8  4C 00 00 64 */	rfi 
-/* 80004ABC 00000BBC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004AC0 00000BC0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004AC4 00000BC4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004AC8 00000BC8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004ACC 00000BCC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004AD0 00000BD0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004AD4 00000BD4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004AD8 00000BD8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004ADC 00000BDC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004AE0 00000BE0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004AE4 00000BE4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004AE8 00000BE8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004AEC 00000BEC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004AF0 00000BF0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004AF4 00000BF4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004AF8 00000BF8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004AFC 00000BFC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B00 00000C00  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B04 00000C04  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B08 00000C08  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B0C 00000C0C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B10 00000C10  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B14 00000C14  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B18 00000C18  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B1C 00000C1C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B20 00000C20  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B24 00000C24  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B28 00000C28  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B2C 00000C2C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B30 00000C30  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B34 00000C34  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B38 00000C38  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B3C 00000C3C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B40 00000C40  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B44 00000C44  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B48 00000C48  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B4C 00000C4C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B50 00000C50  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B54 00000C54  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B58 00000C58  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B5C 00000C5C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B60 00000C60  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B64 00000C64  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B68 00000C68  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B6C 00000C6C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B70 00000C70  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B74 00000C74  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B78 00000C78  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B7C 00000C7C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B80 00000C80  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B84 00000C84  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B88 00000C88  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B8C 00000C8C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B90 00000C90  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B94 00000C94  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B98 00000C98  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004B9C 00000C9C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BA0 00000CA0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BA4 00000CA4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BA8 00000CA8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BAC 00000CAC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BB0 00000CB0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BB4 00000CB4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BB8 00000CB8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BBC 00000CBC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BC0 00000CC0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BC4 00000CC4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BC8 00000CC8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BCC 00000CCC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BD0 00000CD0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BD4 00000CD4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BD8 00000CD8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BDC 00000CDC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BE0 00000CE0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BE4 00000CE4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BE8 00000CE8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BEC 00000CEC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BF0 00000CF0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BF4 00000CF4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BF8 00000CF8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004BFC 00000CFC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C00 00000D00  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C04 00000D04  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C08 00000D08  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C0C 00000D0C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C10 00000D10  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C14 00000D14  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C18 00000D18  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C1C 00000D1C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C20 00000D20  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C24 00000D24  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C28 00000D28  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C2C 00000D2C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C30 00000D30  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C34 00000D34  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C38 00000D38  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C3C 00000D3C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C40 00000D40  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C44 00000D44  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C48 00000D48  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C4C 00000D4C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C50 00000D50  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C54 00000D54  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C58 00000D58  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C5C 00000D5C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C60 00000D60  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C64 00000D64  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C68 00000D68  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C6C 00000D6C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C70 00000D70  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C74 00000D74  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C78 00000D78  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C7C 00000D7C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C80 00000D80  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C84 00000D84  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C88 00000D88  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C8C 00000D8C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C90 00000D90  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C94 00000D94  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C98 00000D98  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004C9C 00000D9C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CA0 00000DA0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CA4 00000DA4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CA8 00000DA8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CAC 00000DAC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CB0 00000DB0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CB4 00000DB4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CB8 00000DB8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CBC 00000DBC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CC0 00000DC0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CC4 00000DC4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CC8 00000DC8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CCC 00000DCC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CD0 00000DD0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CD4 00000DD4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CD8 00000DD8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CDC 00000DDC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CE0 00000DE0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CE4 00000DE4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CE8 00000DE8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CEC 00000DEC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CF0 00000DF0  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CF4 00000DF4  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CF8 00000DF8  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004CFC 00000DFC  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D00 00000E00  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D04 00000E04  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D08 00000E08  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D0C 00000E0C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D10 00000E10  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D14 00000E14  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D18 00000E18  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D1C 00000E1C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D20 00000E20  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D24 00000E24  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D28 00000E28  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D2C 00000E2C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D30 00000E30  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D34 00000E34  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D38 00000E38  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D3C 00000E3C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D40 00000E40  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D44 00000E44  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D48 00000E48  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D4C 00000E4C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D50 00000E50  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D54 00000E54  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D58 00000E58  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D5C 00000E5C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D60 00000E60  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D64 00000E64  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D68 00000E68  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D6C 00000E6C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D70 00000E70  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D74 00000E74  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D78 00000E78  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D7C 00000E7C  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D80 00000E80  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
-/* 80004D84 00000E84  00 00 00 00 */	.4byte 0x00000000  /* unknown instruction */
+/* 80004AB8 00000BB8  4C 00 00 64 */	rfi
+
+.fill 0x2CC #padding
+
 /* 80004D88 00000E88  7C 51 43 A6 */	mtspr 0x111, r2
 /* 80004D8C 00000E8C  7C 72 43 A6 */	mtspr 0x112, r3
 /* 80004D90 00000E90  7C 93 43 A6 */	mtspr 0x113, r4
