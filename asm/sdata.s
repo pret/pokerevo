@@ -14,24 +14,39 @@ lbl_8063D2C8:
 	.balign 4, 0
 	.global lbl_8063D2D0
 lbl_8063D2D0:
-	.incbin "baserom.dol", 0x471010, 0x8
-.global lbl_8063D2D8
-lbl_8063D2D8:
-	.incbin "baserom.dol", 0x471018, 0x4
-.global lbl_8063D2DC
-lbl_8063D2DC:
-	.incbin "baserom.dol", 0x47101C, 0x4
-.global lbl_8063D2E0
-lbl_8063D2E0:
-	.incbin "baserom.dol", 0x471020, 0x8
+	.4byte lbl_80405D88
 
+	.balign 8, 0
+	.global lbl_8063D2D8
+lbl_8063D2D8:
+	.2byte 0x4364
+
+	.balign 4, 0
+	.global lbl_8063D2DC
+lbl_8063D2DC:
+	.2byte 0x43CC
+
+	.balign 4, 0
+	.global lbl_8063D2E0
+lbl_8063D2E0:
+	.asciz "main"
+
+	.balign 4, 0
 	.global lbl_8063D2E8
 lbl_8063D2E8:
-	.incbin "baserom.dol", 0x471028, 0x8
+	.4byte lbl_80405EE4, lbl_80405EF8
 
 	.global lbl_8063D2F0
 lbl_8063D2F0:
-	.incbin "baserom.dol", 0x471030, 0x28
+	.incbin "baserom.dol", 0x471030, 0x8
+
+	.global lbl_8063D2F8
+lbl_8063D2F8:
+	.incbin "baserom.dol", 0x471038, 0x10
+
+	.global lbl_8063D308
+lbl_8063D308:
+	.incbin "baserom.dol", 0x471048, 0x10
 
 .global lbl_8063D318
 lbl_8063D318:
