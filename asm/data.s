@@ -132,12 +132,28 @@ lbl_80405F20:
 	.balign 8, 0
 	.global lbl_80405F38
 lbl_80405F38:
-	.incbin "baserom.dol", 0x402038, 0x28
+	.4byte lbl_8063D2F8
 
+	.balign 8, 0
+	.global lbl_80405F40
+lbl_80405F40:
+	.4byte func_8000AC44
+
+	.global lbl_80405F44
+lbl_80405F44:
+	.asciz "PBRFloorData"
+
+	.balign 4, 0
+	.global lbl_80405F54
+lbl_80405F54:
+	.4byte lbl_8063D308, 0x00000000
+
+	.balign 8, 0
 	.global lbl_80405F60
 lbl_80405F60:
 	.incbin "baserom.dol", 0x402060, 0x60
-.global lbl_80405FC0
+
+	.global lbl_80405FC0
 lbl_80405FC0:
 	.incbin "baserom.dol", 0x4020C0, 0x34
 .global lbl_80405FF4
