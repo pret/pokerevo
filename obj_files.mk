@@ -16,6 +16,7 @@ TEXT_O_FILES := 						            \
 	$(BUILD_DIR)/asm/text_6.o                       \
 	$(BUILD_DIR)/asm/text_7.o                       \
 	$(BUILD_DIR)/asm/OS.o                           \
+	$(BUILD_DIR)/asm/OSAlarm.o                      \
 	$(BUILD_DIR)/asm/text_7_2.o                     \
 	$(BUILD_DIR)/asm/text_8.o                       \
 	$(BUILD_DIR)/asm/text_9.o                       \
