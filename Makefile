@@ -29,7 +29,7 @@ TARGET := pbr_pal
 BUILD_DIR := build/$(TARGET)
 
 SRC_DIRS := src
-ASM_DIRS := asm
+ASM_DIRS := asm asm/SDK/OS
 
 # Inputs
 S_FILES := $(wildcard asm/*.s)
