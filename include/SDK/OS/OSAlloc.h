@@ -6,6 +6,11 @@ extern "C" {
 #endif
 
 typedef struct Cell Cell;
+typedef int  OSHeapHandle;
+
+#if 0
+extern volatile OSHeapHandle __OSCurrHeap; // used in OSInitAlloc
+#endif
 
 struct Cell {
     Cell* prev;
@@ -14,6 +19,8 @@ struct Cell {
 };
 
 Cell *DLInsert(Cell *original, Cell *inserted);
+void *OSAllocFromHeap(OSHeapHandle heap, u32 size);
+void OSFreeToHeap(OSHeapHandle heap, void *ptr);
 
 #ifdef __cplusplus
 }
