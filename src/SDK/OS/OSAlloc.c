@@ -1,12 +1,6 @@
 #include "types.h"
+#include "consts.h"
 #include "OS/OSAlloc.h"
-
-#define OSi_ROUND(n, a)            (((u32) (n) + (a) - 1) & ~((a) - 1))
-
-extern HeapDesc *HeapArray; 
-
-#define HEADERSIZE OSi_ROUND(sizeof(Cell), 32)
-#define MINOBJSIZE (HEADERSIZE+32)
 
 inline Cell* DLAddFront(Cell* list, Cell* cell)
 {
@@ -77,6 +71,11 @@ Cell *DLInsert(Cell *original, Cell *inserted)
 
     return inserted;
 }
+
+extern HeapDesc *HeapArray; 
+
+#define HEADERSIZE OSi_ROUND(sizeof(Cell), 32)
+#define MINOBJSIZE (HEADERSIZE+32)
 
 void* OSAllocFromHeap(OSHeapHandle heap, u32 size) {
     HeapDesc* hd;
