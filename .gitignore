@@ -18,3 +18,4 @@
 *.exe
 build
 .idea
+.dump

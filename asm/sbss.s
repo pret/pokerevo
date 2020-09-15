@@ -2529,8 +2529,8 @@ lbl_8063FA6C:
 .global lbl_8063FA70
 lbl_8063FA70:
 	.skip 0x8
-.global lbl_8063FA78
-lbl_8063FA78:
+.global HeapArray
+HeapArray:
 	.skip 0x8
 .global lbl_8063FA80
 lbl_8063FA80:
