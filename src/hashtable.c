@@ -2,9 +2,9 @@
 ==TableNew 8035aeb4 8033680c 1c
 ==TableNew2 8035aed0 80336828 a4
 ==TableFree 8035af74 803368cc 7c
-TableCount 8035aff0 80336948 88
-TableEnter 8035b078 803369d0 a8
-TableRemove 8035b120 80336a78 a4
+==TableCount 8035aff0 80336948 88
+==TableEnter 8035b078 803369d0 a8
+==TableRemove 8035b120 80336a78 a4
 TableLookup 8035b1c4 80336b1c a0
 TableMapSafe 8035b264 80336bbc 6c
 TableMapSafe2 8035b2d0 80336c28 7c
@@ -13,13 +13,19 @@ TableMapSafe2 8035b2d0 80336c28 7c
 #include "types.h"
 #include "hashtable.h"
 
+// TODO: move to darray.h
+typedef struct unkStruct2 {
+    
+} unkStruct2;
+
 // size 0x14
+// hashtable
 typedef struct unkStruct {
-    void **unk0; // TODO: pointer to array of size=0x4 structs
+    unkStruct2 **unk0;
                  // (probably void *s)
     s32 unk4; // TODO: number of elements in unk0
     s32 unk8;
-    s32 unkC;
+    s32 unkC; // TODO: callback to hashing function
     s32 unk10;
 } unkStruct;
 
@@ -52,5 +58,62 @@ void TableFree(unkStruct *p1)
         gsifree(p1);
     }
 }
+
+s32 TableCount(unkStruct *p1)
+{
+    if (!p1)
+        return NULL;
+    s32 totalSize = 0;
+    for (s32 i = 0; i < p1->unk4; i++) {
+        totalSize += ArrayLength(p1->unk0[i]);
+    }
+    return totalSize;
+}
+
+// TODO: p2 is element to be added
+void TableEnter(unkStruct *p1, p2)
+{
+    if (p1) {
+        s32 i = p1->unkC(p2, p1->unk4); // r31
+        s32 result = ArraySearch(p1->unk0[i], p2, p1->unk10, 0, 0);
+        if (result == -1) {
+            ArrayAppend(p1->unk0[i], p2);
+        } else {
+            ArrayReplaceAt(p1->unk0[i], p2, result);
+        }
+    }
+}
+
+BOOL TableRemove(unkStruct *p1, p2)
+{
+    if (!p1)
+        return FALSE;
+    s32 i = p1->unkC(p2, p1->unk4); // r31
+    s32 result = ArraySearch(p1->unk0[i], p2, p1->unk10, 0, 0);
+    if (result == -1) {
+        return FALSE;
+    } else {
+        ArrayDeleteAt(p1->unk0[i], result);
+        return TRUE;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
