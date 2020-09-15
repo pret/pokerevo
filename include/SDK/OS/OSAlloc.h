@@ -5,11 +5,6 @@
 extern "C" {
 #endif
 
-
-#if 0
-extern volatile OSHeapHandle __OSCurrHeap; // used in OSInitAlloc
-#endif
-
 typedef s32 OSHeapHandle;
 
 typedef struct Cell Cell;
