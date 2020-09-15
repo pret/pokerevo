@@ -1,15 +1,3 @@
-#if 0
-==TableNew 8035aeb4 8033680c 1c
-==TableNew2 8035aed0 80336828 a4
-==TableFree 8035af74 803368cc 7c
-==TableCount 8035aff0 80336948 88
-==TableEnter 8035b078 803369d0 a8
-==TableRemove 8035b120 80336a78 a4
-==TableLookup 8035b1c4 80336b1c a0
-==TableMapSafe 8035b264 80336bbc 6c
-==TableMapSafe2 8035b2d0 80336c28 7c
-#endif
-
 #include "types.h"
 #include "hashtable.h"
 
@@ -43,12 +31,14 @@ void TableFree(unkStruct *p1)
     }
 }
 
+// r29: totalSize
+// r30: i
 s32 TableCount(unkStruct *p1)
 {
+    s32 i, totalSize = 0;
     if (!p1)
         return 0;
-    s32 totalSize = 0;
-    for (s32 i = 0; i < p1->unk4; i++) {
+    for (i = 0; i < p1->unk4; i++) {
         totalSize += ArrayLength(p1->unk0[i]);
     }
     return totalSize;
@@ -104,11 +94,14 @@ void TableMapSafe(unkStruct *p1, s32 p2, s32 p3)
     }
 }
 
-void TableMapSafe2(unkStruct *p1, s32 p2, s32 p3)
+void *TableMapSafe2(unkStruct *p1, s32 p2, s32 p3)
 {
-    for (s32 i = 0; i < p1->unk4; i++) {
-        if (ArrayMapBackwards2(p1->unk0[i], p2, p3)) {
-            break;
+    s32 i;
+    void *result;
+    for (i = 0; i < p1->unk4; i++) {
+        if ((result = ArrayMapBackwards2(p1->unk0[i], p2, p3)) != NULL) {
+            return result;
         }
     }
+    return NULL;
 }

@@ -27,7 +27,7 @@ void TableEnter(unkStruct *p1, void *p2);
 BOOL TableRemove(unkStruct *p1, void *p2);
 void *TableLookup(unkStruct *p1, void *p2);
 void TableMapSafe(unkStruct *p1, s32 p2, s32 p3);
-void TableMapSafe2(unkStruct *p1, s32 p2, s32 p3);
+void *TableMapSafe2(unkStruct *p1, s32 p2, s32 p3);
 
 #ifdef __cplusplus
 }

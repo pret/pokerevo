@@ -17,6 +17,7 @@ typedef struct unkStruct2 {
 
 
 void *ArrayNth(unkStruct2 *p1, s32 p2);
+void *ArrayMapBackwards2(unkStruct2 *p1, s32 p2, s32 p3);
 
 #ifdef __cplusplus
 }
