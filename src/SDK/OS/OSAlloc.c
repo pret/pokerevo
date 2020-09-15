@@ -139,7 +139,7 @@ OSHeapHandle OSCreateHeap(void *start, void *end)
 
 // arenaStart param of OSInitAlloc, points to array of
 // maxHeap HeapDescs, 68c
-HeapDesc *HeapArray; 
+extern HeapDesc *HeapArray; 
 
 #define HEADERSIZE OSi_ROUND(sizeof(Cell), 32)
 #define MINOBJSIZE (HEADERSIZE+32)

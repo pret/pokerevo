@@ -34,7 +34,6 @@ typedef struct {
     HeapDesc* heapArray;
 } OSHeapInfo;
 
-
 Cell *DLInsert(Cell *original, Cell *inserted);
 void *OSAllocFromHeap(OSHeapHandle heap, u32 size);
 void OSFreeToHeap(OSHeapHandle heap, void *ptr);
