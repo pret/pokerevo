@@ -14707,8 +14707,8 @@ lbl_80335DA4:
 func_80335DB4:
 /* 80335DB4 00331A14  4B FF EC D4 */	b THPSimpleGetCurrentFrame
 
-.global func_80335DB8
-func_80335DB8:
+.global ArrayNew
+ArrayNew:
 /* 80335DB8 00331A18  94 21 FF E0 */	stwu r1, -0x20(r1)
 /* 80335DBC 00331A1C  7C 08 02 A6 */	mflr r0
 /* 80335DC0 00331A20  90 01 00 24 */	stw r0, 0x24(r1)
@@ -14752,8 +14752,8 @@ lbl_80335E30:
 /* 80335E4C 00331AAC  38 21 00 20 */	addi r1, r1, 0x20
 /* 80335E50 00331AB0  4E 80 00 20 */	blr
 
-.global func_80335E54
-func_80335E54:
+.global ArrayFree
+ArrayFree:
 /* 80335E54 00331AB4  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 80335E58 00331AB8  7C 08 02 A6 */	mflr r0
 /* 80335E5C 00331ABC  90 01 00 14 */	stw r0, 0x14(r1)
@@ -14798,13 +14798,13 @@ lbl_80335EB4:
 /* 80335EE0 00331B40  38 21 00 10 */	addi r1, r1, 0x10
 /* 80335EE4 00331B44  4E 80 00 20 */	blr
 
-.global func_80335EE8
-func_80335EE8:
+.global ArrayLength
+ArrayLength:
 /* 80335EE8 00331B48  80 63 00 00 */	lwz r3, 0(r3)
 /* 80335EEC 00331B4C  4E 80 00 20 */	blr
 
-.global func_80335EF0
-func_80335EF0:
+.global ArrayNth
+ArrayNth:
 /* 80335EF0 00331B50  2C 04 00 00 */	cmpwi r4, 0
 /* 80335EF4 00331B54  41 80 00 10 */	blt lbl_80335F04
 /* 80335EF8 00331B58  80 03 00 00 */	lwz r0, 0(r3)
@@ -14820,8 +14820,8 @@ lbl_80335F0C:
 /* 80335F18 00331B78  7C 63 02 14 */	add r3, r3, r0
 /* 80335F1C 00331B7C  4E 80 00 20 */	blr
 
-.global func_80335F20
-func_80335F20:
+.global ArrayAppend
+ArrayAppend:
 /* 80335F20 00331B80  94 21 FF E0 */	stwu r1, -0x20(r1)
 /* 80335F24 00331B84  7C 08 02 A6 */	mflr r0
 /* 80335F28 00331B88  2C 03 00 00 */	cmpwi r3, 0
@@ -14908,8 +14908,8 @@ lbl_80336028:
 /* 8033603C 00331C9C  38 21 00 20 */	addi r1, r1, 0x20
 /* 80336040 00331CA0  4E 80 00 20 */	blr
 
-.global func_80336044
-func_80336044:
+.global ArrayInsertSorted
+ArrayInsertSorted:
 /* 80336044 00331CA4  94 21 FF D0 */	stwu r1, -0x30(r1)
 /* 80336048 00331CA8  7C 08 02 A6 */	mflr r0
 /* 8033604C 00331CAC  90 01 00 34 */	stw r0, 0x34(r1)
@@ -15021,8 +15021,8 @@ lbl_803361A0:
 /* 803361BC 00331E1C  38 21 00 30 */	addi r1, r1, 0x30
 /* 803361C0 00331E20  4E 80 00 20 */	blr
 
-.global func_803361C4
-func_803361C4:
+.global ArrayRemoveAt
+ArrayRemoveAt:
 /* 803361C4 00331E24  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 803361C8 00331E28  7C 08 02 A6 */	mflr r0
 /* 803361CC 00331E2C  90 01 00 14 */	stw r0, 0x14(r1)
@@ -15074,8 +15074,8 @@ lbl_80336250:
 /* 80336268 00331EC8  38 21 00 10 */	addi r1, r1, 0x10
 /* 8033626C 00331ECC  4E 80 00 20 */	blr
 
-.global func_80336270
-func_80336270:
+.global ArrayDeleteAt
+ArrayDeleteAt:
 /* 80336270 00331ED0  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 80336274 00331ED4  7C 08 02 A6 */	mflr r0
 /* 80336278 00331ED8  90 01 00 14 */	stw r0, 0x14(r1)
@@ -15148,8 +15148,8 @@ lbl_8033633C:
 /* 80336358 00331FB8  38 21 00 10 */	addi r1, r1, 0x10
 /* 8033635C 00331FBC  4E 80 00 20 */	blr
 
-.global func_80336360
-func_80336360:
+.global ArrayReplaceAt
+ArrayReplaceAt:
 /* 80336360 00331FC0  94 21 FF E0 */	stwu r1, -0x20(r1)
 /* 80336364 00331FC4  7C 08 02 A6 */	mflr r0
 /* 80336368 00331FC8  90 01 00 24 */	stw r0, 0x24(r1)
@@ -15204,8 +15204,8 @@ lbl_803363F0:
 /* 80336410 00332070  38 21 00 20 */	addi r1, r1, 0x20
 /* 80336414 00332074  4E 80 00 20 */	blr
 
-.global func_80336418
-func_80336418:
+.global ArraySort
+ArraySort:
 /* 80336418 00332078  7C 65 1B 78 */	mr r5, r3
 /* 8033641C 0033207C  7C 86 23 78 */	mr r6, r4
 /* 80336420 00332080  80 85 00 00 */	lwz r4, 0(r5)
@@ -15213,8 +15213,8 @@ func_80336418:
 /* 80336428 00332088  80 A5 00 08 */	lwz r5, 8(r5)
 /* 8033642C 0033208C  4B E9 67 A0 */	b func_801CCBCC
 
-.global func_80336430
-func_80336430:
+.global ArraySearch
+ArraySearch:
 /* 80336430 00332090  94 21 FF D0 */	stwu r1, -0x30(r1)
 /* 80336434 00332094  7C 08 02 A6 */	mflr r0
 /* 80336438 00332098  90 01 00 34 */	stw r0, 0x34(r1)
@@ -15337,8 +15337,8 @@ lbl_803365B0:
 /* 803365C0 00332220  38 21 00 30 */	addi r1, r1, 0x30
 /* 803365C4 00332224  4E 80 00 20 */	blr
 
-.global func_803365C8
-func_803365C8:
+.global ArrayMapBackwards
+ArrayMapBackwards:
 /* 803365C8 00332228  94 21 FF E0 */	stwu r1, -0x20(r1)
 /* 803365CC 0033222C  7C 08 02 A6 */	mflr r0
 /* 803365D0 00332230  90 01 00 24 */	stw r0, 0x24(r1)
@@ -15384,8 +15384,8 @@ lbl_8033663C:
 /* 8033665C 003322BC  38 21 00 20 */	addi r1, r1, 0x20
 /* 80336660 003322C0  4E 80 00 20 */	blr
 
-.global func_80336664
-func_80336664:
+.global ArrayMapBackwards2
+ArrayMapBackwards2:
 /* 80336664 003322C4  94 21 FF E0 */	stwu r1, -0x20(r1)
 /* 80336668 003322C8  7C 08 02 A6 */	mflr r0
 /* 8033666C 003322CC  90 01 00 24 */	stw r0, 0x24(r1)
@@ -15435,8 +15435,8 @@ lbl_803366F0:
 /* 80336700 00332360  38 21 00 20 */	addi r1, r1, 0x20
 /* 80336704 00332364  4E 80 00 20 */	blr
 
-.global func_80336708
-func_80336708:
+.global ArrayClear
+ArrayClear:
 /* 80336708 00332368  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 8033670C 0033236C  7C 08 02 A6 */	mflr r0
 /* 80336710 00332370  90 01 00 14 */	stw r0, 0x14(r1)
