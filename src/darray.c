@@ -4,7 +4,7 @@
 ==ArrayLength 8035a590 80025100 8
 ==ArrayNth 8035a598 80335ef0 30
 ==ArrayAppend 8035a5c8 80335f20 124
-ArrayInsertSorted 8035a6ec 80336044 180
+==ArrayInsertSorted 8035a6ec 80336044 180
 ==ArrayRemoveAt 8035a86c 803361c4 ac
 ==ArrayDeleteAt 8035a918 80336270 f0
 ==ArrayReplaceAt 8035aa08 80336360 b8
@@ -18,6 +18,26 @@ ArraySearch 8035aad8 80336430 198
 #include "types.h"
 #include "qsort.h"
 #include "darray.h"
+
+// TODO: separate function, or embedded in ArrayInsert
+static inline void ArrayCheckGrow(DArray *p1)
+{
+    if (p1->size == p1->capacity) {
+        s32 newCap = p1->capacity + p1->growAmount;
+        p1->capacity = newCap;
+        p1->buf = gsirealloc(p1->buf, newCap * p1->elemSz);
+    }
+}
+
+static inline void ArrayInsert(DArray *p1, s32 n)
+{
+    ArrayCheckGrow(p1);
+    if (n < p1->size++) {
+        memmove(ArrayNth(p1, n+1), ArrayNth(p1, n),
+               (p1->size - 1 - n) * p1->elemSz);
+    }
+    memcpy(ArrayNth(p1, n), elem, p1->elemSz);
+}
 
 DArray *ArrayNew(u32 p1, s32 p2, s32 p3)
 {
@@ -60,31 +80,49 @@ void *ArrayNth(DArray *arr, s32 n)
     return &arr->buf[n * arr->elemSz];
 }
 
-// params in r29, r30
 void ArrayAppend(DArray *p1, void *elem)
 {
     if (p1) {
-        const s32 origSize = p1->size; // r31
-        if (origSize == p1->capacity) {
-            s32 newCap = p1->capacity + p1->growAmount;
-            p1->capacity = newCap;
-            p1->buf = gsirealloc(p1->buf, newCap * p1->elemSz);
-        }
-        s32 newSize = p1->size + 1; // r5
-        s32 decNewSize = newSize - 1; // r6
-        p1->size = newSize;
-        if (origSize < decNewSize) {
-            s32 incOrigSize = origSize + 1;
-            memmove(ArrayNth(p1, incOrigSize), ArrayNth(p1, origSize),
-                   (decNewSize - origSize) * p1->elemSz);
-        }
-        memcpy(ArrayNth(p1, origSize), elem, p1->elemSz);
+        ArrayInsert(p1, p1->size);
     }
 }
 
-ArrayInsertSorted()
+// params r29 p1, r30 p2, compar r24
+ArrayInsertSorted(DArray *p1, void *p2, CompareFunction compar)
 {
+    s32 high = p1->size - 1; // r26
+    u32 elemSz = p1->elemSz; // r28
+    char *buf = p1->buf; // r31
+    s32 low = 0; // r25
+    while (low <= high) {
+        s32 mid = (low + high) / 2; // r27
+        s32 result = compar(&buf[mid * elemSz], p2);
+        if (result < 0) {
+            low = mid + 1;
+        }
+        if (result >= 0) {
+            high = mid - 1;
+        }
+    }
+    // low points to the insert index
+    #if 0
+    search: 8
     
+    2 4 6 7 9
+          h 
+            l
+            m
+    so insert at index 4
+    
+    low * elemSz // r6
+    p1->buf // r3
+    elemSz = p1->elemSz; // r5
+    p1->size // r0
+    s32 cap = p1->capacity // r4
+    #endif
+    
+    s32 recomputeLow = (buf + (low * elemSz) - p1->buf) / p1->elemSz;
+    ArrayInsert(p1, recomputeLow);
 }
 
 // Faster deleter for DArrays of types that do not
@@ -118,7 +156,7 @@ void ArrayReplaceAt(DArray *p1, void *elem, s32 n)
     memcpy(ArrayNth(p1, n), elem, p1->elemSz);
 }
 
-void ArraySort(DArray *p1, SortFunction compar)
+void ArraySort(DArray *p1, CompareFunction compar)
 {
     qsort(p1->buf, p1->size, elemSz, compar);
 }

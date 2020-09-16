@@ -2,7 +2,7 @@
 #include "consts.h"
 #include "OS/OSAlloc.h"
 
-inline Cell* DLAddFront(Cell* list, Cell* cell)
+static inline Cell* DLAddFront(Cell* list, Cell* cell)
 {
     cell->next = list;
     cell->prev = NULL;
@@ -12,7 +12,7 @@ inline Cell* DLAddFront(Cell* list, Cell* cell)
     return cell;
 }
 
-inline Cell* DLExtract(Cell* list, Cell* cell)
+static inline Cell* DLExtract(Cell* list, Cell* cell)
 {
     if (cell->next) {
         cell->next->prev = cell->prev;
@@ -72,12 +72,13 @@ Cell *DLInsert(Cell *original, Cell *inserted)
     return inserted;
 }
 
-extern HeapDesc *HeapArray; 
+extern HeapDesc *HeapArray;
 
 #define HEADERSIZE OSi_ROUND(sizeof(Cell), 32)
 #define MINOBJSIZE (HEADERSIZE+32)
 
-void* OSAllocFromHeap(OSHeapHandle heap, u32 size) {
+void* OSAllocFromHeap(OSHeapHandle heap, u32 size)
+{
     HeapDesc* hd;
     Cell* cell;
     Cell* newCell;
@@ -126,7 +127,8 @@ void* OSAllocFromHeap(OSHeapHandle heap, u32 size) {
     return (void *)((char *)cell + HEADERSIZE);
 }
 
-void OSFreeToHeap(OSHeapHandle heap, void* ptr) {
+void OSFreeToHeap(OSHeapHandle heap, void* ptr)
+{
     OSHeapInfo *heapInfo;
     HeapDesc *hd;
     Cell   *cell;

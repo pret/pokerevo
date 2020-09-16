@@ -7,7 +7,7 @@ extern "C" {
 
 #include "types.h"
 
-typedef int (*SortFunction)(const void *, const void *);
+typedef int (*CompareFunction)(const void *, const void *);
 typedef BOOL (*MapFunction)(const void *, s32);
 typedef void (*DtorFunction)(void *);
 
