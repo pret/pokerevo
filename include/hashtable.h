@@ -18,8 +18,8 @@ typedef struct HashTable {
     s32 unk10; // comparison callback?
 } HashTable;
 
-HashTable *TableNew(s32 p1, s32 p2, HashFunction hf, s32 p4, s32 p5);
-HashTable *TableNew2(s32 p1, s32 size, s32 p3, HashFunction hf, s32 p5, s32 p6);
+HashTable *TableNew(u32 p1, s32 p2, HashFunction hf, s32 p4, s32 p5);
+HashTable *TableNew2(u32 p1, s32 size, s32 p3, HashFunction hf, s32 p5, s32 p6);
 void TableFree(HashTable *table);
 s32 TableCount(HashTable *table);
 void TableEnter(HashTable *table, void *elem);

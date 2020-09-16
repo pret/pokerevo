@@ -7,14 +7,14 @@ extern "C" {
 
 typedef struct DArray {
     s32 size;
-    s32 unk4;
+    s32 capacity;
     u32 elementSz;
-    s32 unkC;
-    s32 unk10;
+    s32 growAmount;
+    s32 unk10; // TODO destructor callback?
     char *buf;
 } DArray;
 
-void *ArrayNew(s32 p1, s32 p3, s32 p6);
+void *ArrayNew(u32 p1, s32 p2, s32 p3);
 void *ArrayNth(DArray *p1, s32 p2);
 void *ArrayMapBackwards2(DArray *p1, s32 p2, s32 p3);
 

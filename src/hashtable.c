@@ -1,15 +1,16 @@
 #include "types.h"
+#include "nonport.h"
 #include "hashtable.h"
 
-HashTable *TableNew(s32 p1, s32 p2, HashFunction hf, s32 p4, s32 p5)
+HashTable *TableNew(u32 p1, s32 p2, HashFunction hf, s32 p4, s32 p5)
 {
     return TableNew2(p1, p2, 4, hf, p4, p5);
 }
 
-HashTable *TableNew2(s32 p1, s32 size, s32 p3, HashFunction hf, s32 p5, s32 p6)
+HashTable *TableNew2(u32 p1, s32 size, s32 p3, HashFunction hf, s32 p5, s32 p6)
 {
-    HashTable *table = (HashTable *)gsimalloc(sizeof(HashTable));
-    table->chains = (DArray **)gsimalloc(size * sizeof(DArray *));
+    HashTable *table = gsimalloc(sizeof(HashTable));
+    table->chains = gsimalloc(size * sizeof(DArray *));
     for (s32 i = 0; i < size; i++) {
         table->chains[i] = (DArray *)ArrayNew(p1, p3, p6);
     }
