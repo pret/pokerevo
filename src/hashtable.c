@@ -8,16 +8,16 @@ HashTable *TableNew(s32 p1, s32 p2, HashFunction hf, s32 p4, s32 p5)
 
 HashTable *TableNew2(s32 p1, s32 size, s32 p3, HashFunction hf, s32 p5, s32 p6)
 {
-    HashTable *r30 = (HashTable *)gsimalloc(sizeof(HashTable));
-    r30->chains = (DArray **)gsimalloc(size * sizeof(DArray *));
+    HashTable *table = (HashTable *)gsimalloc(sizeof(HashTable));
+    table->chains = (DArray **)gsimalloc(size * sizeof(DArray *));
     for (s32 i = 0; i < size; i++) {
-        r30->chains[i] = (DArray *)ArrayNew(p1, p3, p6);
+        table->chains[i] = (DArray *)ArrayNew(p1, p3, p6);
     }
-    r30->size = size;
-    r30->unk8 = p6;
-    r30->unk10 = p5;
-    r30->hashFunc = hf;
-    return r30;
+    table->size = size;
+    table->unk8 = p6;
+    table->unk10 = p5;
+    table->hashFunc = hf;
+    return table;
 }
 
 void TableFree(HashTable *table)
