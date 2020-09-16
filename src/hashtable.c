@@ -1,105 +1,102 @@
 #include "types.h"
 #include "hashtable.h"
 
-unkStruct *TableNew(s32 p1, s32 p2, HashFunction p3, s32 p4, s32 p5)
+HashTable *TableNew(s32 p1, s32 p2, HashFunction hf, s32 p4, s32 p5)
 {
-    return TableNew2(p1, p2, 4, p3, p4, p5);
+    return TableNew2(p1, p2, 4, hf, p4, p5);
 }
 
-unkStruct *TableNew2(s32 p1, s32 p2, s32 p3, HashFunction p4, s32 p5, s32 p6)
+HashTable *TableNew2(s32 p1, s32 size, s32 p3, HashFunction hf, s32 p5, s32 p6)
 {
-    unkStruct *r30 = (unkStruct *)gsimalloc(sizeof(unkStruct));
-    r30->unk0 = (unkStruct2 **)gsimalloc(p2 * sizeof(unkStruct2 *));
-    for (s32 i = 0; i < p2; i++) {
-        r30->unk0[i] = (unkStruct2 *)ArrayNew(p1, p3, p6);
+    HashTable *r30 = (HashTable *)gsimalloc(sizeof(HashTable));
+    r30->chains = (DArray **)gsimalloc(size * sizeof(DArray *));
+    for (s32 i = 0; i < size; i++) {
+        r30->chains[i] = (DArray *)ArrayNew(p1, p3, p6);
     }
-    r30->unk4 = p2;
+    r30->size = size;
     r30->unk8 = p6;
     r30->unk10 = p5;
-    r30->unkC = p4;
+    r30->hashFunc = hf;
     return r30;
 }
 
-void TableFree(unkStruct *p1)
+void TableFree(HashTable *table)
 {
-    if (p1) {
-        for (s32 i = 0; i < p1->unk4; i++) {
-            ArrayFree(p1->unk0[i]);
+    if (table) {
+        for (s32 i = 0; i < table->size; i++) {
+            ArrayFree(table->chains[i]);
         }
-        gsifree(p1->unk0);
-        gsifree(p1);
+        gsifree(table->chains);
+        gsifree(table);
     }
 }
 
-// r29: totalSize
-// r30: i
-s32 TableCount(unkStruct *p1)
+s32 TableCount(HashTable *table)
 {
     s32 i, totalSize = 0;
-    if (!p1)
+    if (!table)
         return 0;
-    for (i = 0; i < p1->unk4; i++) {
-        totalSize += ArrayLength(p1->unk0[i]);
+    for (i = 0; i < table->size; i++) {
+        totalSize += ArrayLength(table->chains[i]);
     }
     return totalSize;
 }
 
-// TODO: p2 is element to be added
-void TableEnter(unkStruct *p1, void *p2)
+void TableEnter(HashTable *table, void *elem)
 {
-    if (p1) {
-        s32 i = p1->unkC(p2, p1->unk4); // r31
-        s32 result = ArraySearch(p1->unk0[i], p2, p1->unk10, 0, 0);
+    if (table) {
+        s32 i = table->hashFunc(elem, table->size);
+        s32 result = ArraySearch(table->chains[i], elem, table->unk10, 0, 0);
         if (result == -1) {
-            ArrayAppend(p1->unk0[i], p2);
+            ArrayAppend(table->chains[i], elem);
         } else {
-            ArrayReplaceAt(p1->unk0[i], p2, result);
+            ArrayReplaceAt(table->chains[i], elem, result);
         }
     }
 }
 
-BOOL TableRemove(unkStruct *p1, void *p2)
+BOOL TableRemove(HashTable *table, void *elem)
 {
-    if (!p1)
+    if (!table)
         return FALSE;
-    s32 i = p1->unkC(p2, p1->unk4); // r31
-    s32 result = ArraySearch(p1->unk0[i], p2, p1->unk10, 0, 0);
+    s32 i = table->hashFunc(elem, table->size);
+    s32 result = ArraySearch(table->chains[i], elem, table->unk10, 0, 0);
     if (result == -1) {
         return FALSE;
     } else {
-        ArrayDeleteAt(p1->unk0[i], result);
+        ArrayDeleteAt(table->chains[i], result);
         return TRUE;
     }
 }
 
 // TODO: array seems to be generic. Confirm that void* is the
 // correct return type
-void *TableLookup(unkStruct *p1, void *p2)
+void *TableLookup(HashTable *table, void *elem)
 {
-    if (!p1)
+    if (!table)
         return NULL;
-    s32 i = p1->unkC(p2, p1->unk4);
-    s32 result = ArraySearch(p1->unk0[i], p2, p1->unk10, 0, 0);
+    s32 i = table->hashFunc(elem, table->size);
+    s32 result = ArraySearch(table->chains[i], elem, table->unk10, 0, 0);
     if (result == -1) {
         return NULL;
     } else {
-        return ArrayNth(p1->unk0[i], result);
+        return ArrayNth(table->chains[i], result);
     }
 }
 
-void TableMapSafe(unkStruct *p1, s32 p2, s32 p3)
+void TableMapSafe(HashTable *table, s32 p2, s32 p3)
 {
-    for (s32 i = 0; i < p1->unk4; i++) {
-        ArrayMapBackwards(p1->unk0[i], p2, p3);
+    for (s32 i = 0; i < table->size; i++) {
+        ArrayMapBackwards(table->chains[i], p2, p3);
     }
 }
 
-void *TableMapSafe2(unkStruct *p1, s32 p2, s32 p3)
+void *TableMapSafe2(HashTable *table, s32 p2, s32 p3)
 {
     s32 i;
     void *result;
-    for (i = 0; i < p1->unk4; i++) {
-        if ((result = ArrayMapBackwards2(p1->unk0[i], p2, p3)) != NULL) {
+    for (i = 0; i < table->size; i++) {
+        if ((result = ArrayMapBackwards2(table->chains[i], p2, p3)) != NULL) {
             return result;
         }
     }

@@ -5,19 +5,18 @@
 extern "C" {
 #endif
 
-// size is at least 0x18 bytes
-typedef struct unkStruct2 {
-    s32 unk0; // TODO: number of elements in array
+typedef struct DArray {
+    s32 size;
     s32 unk4;
-    u32 unk8; // TODO: size of each element
+    u32 elementSz;
     s32 unkC;
     s32 unk10;
-    char *unk14; // TODO: pointer to start of array
-} unkStruct2;
+    char *buf;
+} DArray;
 
-
-void *ArrayNth(unkStruct2 *p1, s32 p2);
-void *ArrayMapBackwards2(unkStruct2 *p1, s32 p2, s32 p3);
+void *ArrayNew(s32 p1, s32 p3, s32 p6);
+void *ArrayNth(DArray *p1, s32 p2);
+void *ArrayMapBackwards2(DArray *p1, s32 p2, s32 p3);
 
 #ifdef __cplusplus
 }
