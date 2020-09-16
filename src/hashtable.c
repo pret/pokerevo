@@ -69,8 +69,6 @@ BOOL TableRemove(HashTable *table, void *elem)
     }
 }
 
-// TODO: array seems to be generic. Confirm that void* is the
-// correct return type
 void *TableLookup(HashTable *table, void *elem)
 {
     if (!table)
