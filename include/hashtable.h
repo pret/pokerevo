@@ -9,7 +9,6 @@ extern "C" {
 
 typedef s32 (*HashFunction)(void *, s32);
 
-
 typedef struct HashTable {
     DArray **chains;
     s32 size;

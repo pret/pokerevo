@@ -5,6 +5,11 @@
 extern "C" {
 #endif
 
+#include "types.h"
+
+typedef int (*SortFunction)(const void *, const void *);
+typedef BOOL (*MapFunction)(const void *, s32);
+
 typedef struct DArray {
     s32 size;
     s32 capacity;

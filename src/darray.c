@@ -5,15 +5,19 @@
 ==ArrayNth 8035a598 80335ef0 30
 ==ArrayAppend 8035a5c8 80335f20 124
 ArrayInsertSorted 8035a6ec 80336044 180
-ArrayRemoveAt 8035a86c 803361c4 ac
+==ArrayRemoveAt 8035a86c 803361c4 ac
 ArrayDeleteAt 8035a918 80336270 f0
 ArrayReplaceAt 8035aa08 80336360 b8
-# ArraySort 80336418 18
+==# ArraySort 80336418 18
 ArraySearch 8035aad8 80336430 198
-ArrayMapBackwards 8035ac70 803365c8 9c
-ArrayMapBackwards2 8035ad0c 80336664 a4
+==ArrayMapBackwards 8035ac70 803365c8 9c
+==ArrayMapBackwards2 8035ad0c 80336664 a4
 ArrayClear 8035adb0 80336708 104
 #endif
+
+#include "types.h"
+#include "qsort.h"
+#include "darray.h"
 
 DArray *ArrayNew(u32 p1, s32 p2, s32 p3)
 {
@@ -49,16 +53,16 @@ void ArrayFree(DArray *p1)
     gsifree(p1);
 }
 
-s32 ArrayLength(DArray *p1)
+s32 ArrayLength(DArray *arr)
 {
-    return p1->size;
+    return arr->size;
 }
 
-void *ArrayNth(DArray *p1, s32 p2)
+void *ArrayNth(DArray *arr, s32 n)
 {
-    if (p2 < 0 || p2 >= p1->size)
+    if (n < 0 || n >= arr->size)
         return NULL;
-    return &p1->buf[i * p1->elementSz];
+    return &arr->buf[n * arr->elementSz];
 }
 
 // params in r29, r30
@@ -107,9 +111,16 @@ ArrayInsertSorted()
     
 }
 
-ArrayRemoveAt()
+// p1 = r31, n = r4
+void ArrayRemoveAt(DArray *p1, s32 n)
 {
-    
+    s32 origSize = p1->size;
+    s32 decOrigSize = origSize - 1;
+    if (n < decOrigSize) { // if not the last element
+        memmove(ArrayNth(p1, n), ArrayNth(p1, n+1), 
+            p1->elementSz * (decOrigSize - n));
+    }
+    p1->size--;
 }
 
 ArrayDeleteAt()
@@ -122,9 +133,9 @@ ArrayReplaceAt()
     
 }
 
-ArraySort()
+void ArraySort(DArray *p1, SortFunction compar)
 {
-    
+    qsort(p1->buf, p1->size, elementSz, compar);
 }
 
 ArraySearch()
@@ -132,14 +143,25 @@ ArraySearch()
     
 }
 
-ArrayMapBackwards()
+// params r28, r29, r30
+void ArrayMapBackwards(DArray *p1, MapFunction p2, s32 p3)
 {
-    
+    for (s32 i = p1->size - 1; i >= 0; i--) {
+        void *elem = ArrayNth(p1, i);
+        p2(elem, p3);
+    }
 }
 
-ArrayMapBackwards2()
+// params r27 ...
+void *ArrayMapBackwards2(DArray *p1, MapFunction p2, s32 p3)
 {
-    
+    for (s32 i = p1->size - 1; i >= 0; i--) {
+        void *elem = ArrayNth(p1, i);
+        if (p2(elem, p3) == FALSE) {
+            return elem;
+        }
+    }
+    return NULL;
 }
 
 ArrayClear()

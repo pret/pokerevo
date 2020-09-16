@@ -506,7 +506,7 @@ ArraySort:
 /* 80336420 00332080  80 85 00 00 */	lwz r4, 0(r5)
 /* 80336424 00332084  80 63 00 14 */	lwz r3, 0x14(r3)
 /* 80336428 00332088  80 A5 00 08 */	lwz r5, 8(r5)
-/* 8033642C 0033208C  4B E9 67 A0 */	b func_801CCBCC
+/* 8033642C 0033208C  4B E9 67 A0 */	b qsort
 
 .global ArraySearch
 ArraySearch:
