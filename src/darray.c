@@ -6,13 +6,13 @@
 ==ArrayAppend 8035a5c8 80335f20 124
 ArrayInsertSorted 8035a6ec 80336044 180
 ==ArrayRemoveAt 8035a86c 803361c4 ac
-ArrayDeleteAt 8035a918 80336270 f0
-ArrayReplaceAt 8035aa08 80336360 b8
+==ArrayDeleteAt 8035a918 80336270 f0
+==ArrayReplaceAt 8035aa08 80336360 b8
 ==# ArraySort 80336418 18
 ArraySearch 8035aad8 80336430 198
 ==ArrayMapBackwards 8035ac70 803365c8 9c
 ==ArrayMapBackwards2 8035ad0c 80336664 a4
-ArrayClear 8035adb0 80336708 104
+==ArrayClear 8035adb0 80336708 104
 #endif
 
 #include "types.h"
@@ -26,11 +26,11 @@ DArray *ArrayNew(u32 p1, s32 p2, s32 p3)
         p2 = 8; // r29
     darray->size = 0;
     darray->capacity = p2;
-    darray->elementSz = p1;
+    darray->elemSz = p1;
     darray->growAmount = p2;
-    darray->unk10 = p3;
+    darray->elemDtor = p3;
     if (p2 != 0) {
-        darray->buf = gsimalloc(p2 * darray->elementSz);
+        darray->buf = gsimalloc(p2 * darray->elemSz);
     } else {
         darray->buf = NULL;
     }
@@ -40,13 +40,8 @@ DArray *ArrayNew(u32 p1, s32 p2, s32 p3)
 void ArrayFree(DArray *p1)
 {
     for (s32 i = 0; i < p1->size; i++) {
-        func f = p1->unk10;
-        if (p1->unk10) {
-            if (i < 0 || i >= p1->size) {
-                f(NULL);
-            } else {
-                f(&p1->buf[i * p1->elementSz]);
-            }
+        if (p1->elemDtor) {
+            p1->elemDtor(ArrayNth(p1, i));
         }
     }
     gsifree(p1->buf);
@@ -62,7 +57,7 @@ void *ArrayNth(DArray *arr, s32 n)
 {
     if (n < 0 || n >= arr->size)
         return NULL;
-    return &arr->buf[n * arr->elementSz];
+    return &arr->buf[n * arr->elemSz];
 }
 
 // params in r29, r30
@@ -73,36 +68,17 @@ void ArrayAppend(DArray *p1, void *elem)
         if (origSize == p1->capacity) {
             s32 newCap = p1->capacity + p1->growAmount;
             p1->capacity = newCap;
-            p1->buf = gsirealloc(p1->buf, newCap * p1->elementSz);
+            p1->buf = gsirealloc(p1->buf, newCap * p1->elemSz);
         }
         s32 newSize = p1->size + 1; // r5
-        s32 decNewSize = newSize - 1;
+        s32 decNewSize = newSize - 1; // r6
         p1->size = newSize;
-        void *r3, *r4;
-        // TODO: this whole condition could be an inlined func
         if (origSize < decNewSize) {
-            // TODO: inlined function calls to ArrayNth
             s32 incOrigSize = origSize + 1;
-            if (incOrigSize < 0 || incOrigSize >= newSize) {
-                r3 = 0;
-            } else {
-                r3 = &p1->buf[p1->elementSz * incOrigSize];
-            }
-            // fb8
-            if (origSize < 0 || origSize >= newSize) {
-                r4 = 0;
-            } else {
-                r4 = &p1->buf[p1->elementSz * origSize];
-            }
-            memmove(r3, r4, (decNewSize - origSize) * p1->elementSz);
+            memmove(ArrayNth(p1, incOrigSize), ArrayNth(p1, origSize),
+                   (decNewSize - origSize) * p1->elemSz);
         }
-        // 5ff0
-        if (origSize < 0 || origSize >= p1->size) {
-            r3 = 0;
-        } else {
-            r3 = &p1->buf[p1->elementSz * origSize];
-        }
-        memcpy(r3, elem, p1->elementSz);
+        memcpy(ArrayNth(p1, origSize), elem, p1->elemSz);
     }
 }
 
@@ -111,31 +87,40 @@ ArrayInsertSorted()
     
 }
 
-// p1 = r31, n = r4
+// Faster deleter for DArrays of types that do not
+// need a destructor
 void ArrayRemoveAt(DArray *p1, s32 n)
 {
     s32 origSize = p1->size;
     s32 decOrigSize = origSize - 1;
     if (n < decOrigSize) { // if not the last element
         memmove(ArrayNth(p1, n), ArrayNth(p1, n+1), 
-            p1->elementSz * (decOrigSize - n));
+            p1->elemSz * (decOrigSize - n));
     }
     p1->size--;
 }
 
-ArrayDeleteAt()
+// p1 r31, n r30
+void ArrayDeleteAt(DArray *p1, s32 n)
 {
-    
+    if (p1->elemDtor) {
+        p1->elemDtor(ArrayNth(p1, n));
+    }
+    ArrayRemoveAt(p1, n);
 }
 
-ArrayReplaceAt()
+// params r29...
+void ArrayReplaceAt(DArray *p1, void *elem, s32 n)
 {
-    
+    if (p1->elemDtor) {
+        p1->elemDtor(ArrayNth(p1, n));
+    }
+    memcpy(ArrayNth(p1, n), elem, p1->elemSz);
 }
 
 void ArraySort(DArray *p1, SortFunction compar)
 {
-    qsort(p1->buf, p1->size, elementSz, compar);
+    qsort(p1->buf, p1->size, elemSz, compar);
 }
 
 ArraySearch()
@@ -164,9 +149,11 @@ void *ArrayMapBackwards2(DArray *p1, MapFunction p2, s32 p3)
     return NULL;
 }
 
-ArrayClear()
+void ArrayClear(DArray *p1)
 {
-    
+    for (s32 i = p1->size - 1; i >= 0; i--) {
+        ArrayDeleteAt(p1, i);
+    }
 }
 
 

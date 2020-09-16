@@ -9,13 +9,14 @@ extern "C" {
 
 typedef int (*SortFunction)(const void *, const void *);
 typedef BOOL (*MapFunction)(const void *, s32);
+typedef void (*DtorFunction)(void *);
 
 typedef struct DArray {
     s32 size;
     s32 capacity;
-    u32 elementSz;
+    u32 elemSz;
     s32 growAmount;
-    s32 unk10; // TODO destructor callback?
+    DtorFunction elemDtor;
     char *buf;
 } DArray;
 
