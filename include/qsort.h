@@ -5,8 +5,8 @@
 extern "C" {
 #endif
 
-void qsort(void *base, size_t nmemb, size_t size, 
-            int (*compar)(const void *, const void *));
+void qsort(void *base, u32 nmemb, u32 size, 
+            s32 (*compar)(const void *, const void *));
 
 #ifdef __cplusplus
 }

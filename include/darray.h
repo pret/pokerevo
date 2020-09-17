@@ -7,7 +7,7 @@ extern "C" {
 
 #include "types.h"
 
-typedef int (*CompareFunction)(const void *, const void *);
+typedef s32 (*CompareFunction)(const void *, const void *);
 typedef BOOL (*MapFunction)(const void *, s32);
 typedef void (*DtorFunction)(void *);
 
@@ -20,9 +20,10 @@ typedef struct DArray {
     char *buf;
 } DArray;
 
-void *ArrayNew(u32 p1, s32 p2, s32 p3);
+DArray *ArrayNew(u32 p1, s32 p2, DtorFunction dtor);
 void *ArrayNth(DArray *p1, s32 p2);
-void *ArrayMapBackwards2(DArray *p1, s32 p2, s32 p3);
+void ArrayMapBackwards(DArray *p1, MapFunction p2, s32 p3);
+void *ArrayMapBackwards2(DArray *p1, MapFunction p2, s32 p3);
 
 #ifdef __cplusplus
 }

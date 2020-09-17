@@ -17,6 +17,7 @@ ArraySearch 8035aad8 80336430 198
 
 #include "types.h"
 #include "qsort.h"
+#include "nonport.h"
 #include "darray.h"
 
 // TODO: separate function, or embedded in ArrayInsert
@@ -29,7 +30,7 @@ static inline void ArrayCheckGrow(DArray *p1)
     }
 }
 
-static inline void ArrayInsert(DArray *p1, s32 n)
+static inline void ArrayInsert(DArray *p1, void *elem, s32 n)
 {
     ArrayCheckGrow(p1);
     if (n < p1->size++) {
@@ -39,7 +40,15 @@ static inline void ArrayInsert(DArray *p1, s32 n)
     memcpy(ArrayNth(p1, n), elem, p1->elemSz);
 }
 
-DArray *ArrayNew(u32 p1, s32 p2, s32 p3)
+#if 0
+static inline void ArrayBinarySearch(....)
+{
+    
+}
+#endif
+
+
+DArray *ArrayNew(u32 p1, s32 p2, DtorFunction dtor)
 {
     DArray *darray = gsimalloc(sizeof(DArray)); // r31
     if (p2 == 0)
@@ -48,7 +57,7 @@ DArray *ArrayNew(u32 p1, s32 p2, s32 p3)
     darray->capacity = p2;
     darray->elemSz = p1;
     darray->growAmount = p2;
-    darray->elemDtor = p3;
+    darray->elemDtor = dtor;
     if (p2 != 0) {
         darray->buf = gsimalloc(p2 * darray->elemSz);
     } else {
@@ -83,13 +92,15 @@ void *ArrayNth(DArray *arr, s32 n)
 void ArrayAppend(DArray *p1, void *elem)
 {
     if (p1) {
-        ArrayInsert(p1, p1->size);
+        ArrayInsert(p1, elem, p1->size);
     }
 }
 
 // params r29 p1, r30 p2, compar r24
 ArrayInsertSorted(DArray *p1, void *p2, CompareFunction compar)
 {
+    // TODO: inlined binary search?
+    
     s32 high = p1->size - 1; // r26
     u32 elemSz = p1->elemSz; // r28
     char *buf = p1->buf; // r31
@@ -121,8 +132,10 @@ ArrayInsertSorted(DArray *p1, void *p2, CompareFunction compar)
     s32 cap = p1->capacity // r4
     #endif
     
+    // TODO: maybe this is because inline binarySearch func
+    // returns a char * into the buf
     s32 recomputeLow = (buf + (low * elemSz) - p1->buf) / p1->elemSz;
-    ArrayInsert(p1, recomputeLow);
+    ArrayInsert(p1, p2, recomputeLow);
 }
 
 // Faster deleter for DArrays of types that do not
@@ -158,12 +171,61 @@ void ArrayReplaceAt(DArray *p1, void *elem, s32 n)
 
 void ArraySort(DArray *p1, CompareFunction compar)
 {
-    qsort(p1->buf, p1->size, elemSz, compar);
+    qsort(p1->buf, p1->size, p1->elemSz, compar);
 }
 
-ArraySearch()
+s32 ArraySearch(DArray *p1, void *elem, CompareFunction cmp, s32 p4, s32 p5)
 {
+    #if 0 
+    p1 = r28, elem = r29, cmp = r30, p4 = r6
+    #endif
+    char *ptr; // r4
     
+    BOOL found = TRUE; // r31
+    s32 arrSize = p1->size; // r5
+    if (!p1 || arrSize == 0) {
+        return -1;
+    }
+    if (p5) {
+        char *r27 = ArrayNth(p1, p4); // r27
+        s32 high = arrSize - p4 - 1; // r24
+        u32 elemSz = p1->elemSz; // r26
+        s32 low = 0; // r23
+        found = FALSE;
+        while (low <= high) {
+            s32 mid = (low + high) / 2; // r25
+            s32 result = cmp(&r27[mid * elemSz], elem);
+            if (result == 0) {
+                found = TRUE;
+            }
+            if (result < 0) {
+                low = mid + 1;
+            }
+            if (result >= 0) {
+                high = mid - 1;
+            }
+        }
+        ptr = &r27[low * elemSz];
+    } else {
+        // 510
+        char *r23 = ArrayNth(p1, p4); // r23
+        u32 elemSz = p1->elemSz; // r25
+        s32 r24 = arrSize - p4;
+        for (s32 i = 0, j = 0; i < r24; j += elemSz, i++) { // r26 and r27
+            if (cmp(elem, &r23[j]) == 0) {
+                ptr = &r23[i * elemSz];
+                goto exit;
+            }
+        }
+        ptr = NULL;
+    }
+    
+    // 588
+    exit:
+    if (ptr && found) {
+        return (ptr - p1->buf) / (s32)p1->elemSz;
+    }
+    return -1;
 }
 
 // params r28, r29, r30
