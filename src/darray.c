@@ -20,22 +20,18 @@ ArraySearch 8035aad8 80336430 198
 #include "nonport.h"
 #include "darray.h"
 
-// TODO: separate function, or embedded in ArrayInsert
-static inline void ArrayCheckGrow(DArray *p1)
+static inline void ArrayInsert(DArray *p1, void *elem, s32 n)
 {
     if (p1->size == p1->capacity) {
         s32 newCap = p1->capacity + p1->growAmount;
         p1->capacity = newCap;
         p1->buf = gsirealloc(p1->buf, newCap * p1->elemSz);
     }
-}
-
-static inline void ArrayInsert(DArray *p1, void *elem, s32 n)
-{
-    ArrayCheckGrow(p1);
-    if (n < p1->size++) {
+    p1->size++;
+    s32 origSize = p1->size - 1;
+    if (n < origSize) {
         memmove(ArrayNth(p1, n+1), ArrayNth(p1, n),
-               (p1->size - 1 - n) * p1->elemSz);
+               (origSize - n) * p1->elemSz);
     }
     memcpy(ArrayNth(p1, n), elem, p1->elemSz);
 }
@@ -66,8 +62,6 @@ DArray *ArrayNew(u32 elemSz, s32 initialCap, DtorFunction dtor)
     return darray;
 }
 
-#if 0
-
 void ArrayFree(DArray *p1)
 {
     for (s32 i = 0; i < p1->size; i++) {
@@ -89,7 +83,7 @@ void *ArrayNth(DArray *arr, s32 n)
 {
     if (n < 0 || n >= arr->size)
         return NULL;
-    return &arr->buf[n * arr->elemSz];
+    return &arr->buf[arr->elemSz * n];
 }
 
 void ArrayAppend(DArray *p1, void *elem)
@@ -102,14 +96,17 @@ void ArrayAppend(DArray *p1, void *elem)
 // params r29 p1, r30 p2, compar r24
 ArrayInsertSorted(DArray *p1, void *p2, CompareFunction compar)
 {
+    char *buf;
+    u32 elemSz;
+    s32 mid, high, low;
     // TODO: inlined binary search?
-    
-    s32 high = p1->size - 1; // r26
-    u32 elemSz = p1->elemSz; // r28
-    char *buf = p1->buf; // r31
-    s32 low = 0; // r25
+    elemSz = p1->elemSz; // r28
+    buf = p1->buf; // r31
+    high = p1->size - 1; // r26
+    low = 0; // r25   
+
     while (low <= high) {
-        s32 mid = (low + high) / 2; // r27
+        mid = (low + high) >> 1; // r27
         s32 result = compar(&buf[mid * elemSz], p2);
         if (result < 0) {
             low = mid + 1;
@@ -118,16 +115,7 @@ ArrayInsertSorted(DArray *p1, void *p2, CompareFunction compar)
             high = mid - 1;
         }
     }
-    // low points to the insert index
     #if 0
-    search: 8
-    
-    2 4 6 7 9
-          h 
-            l
-            m
-    so insert at index 4
-    
     low * elemSz // r6
     p1->buf // r3
     elemSz = p1->elemSz; // r5
@@ -137,8 +125,14 @@ ArrayInsertSorted(DArray *p1, void *p2, CompareFunction compar)
     
     // TODO: maybe this is because inline binarySearch func
     // returns a char * into the buf
-    s32 recomputeLow = (buf + (low * elemSz) - p1->buf) / p1->elemSz;
-    ArrayInsert(p1, p2, recomputeLow);
+    //char *r3 = p1->buf;
+    //u32 r5 = p1->elemSz;
+    //u32 r6 = low * r5;
+    //char *buf2 = &buf[low * r5];
+    //s32 offset = &buf[low * p1->elemSz] - r3;
+    
+    char *recomputeLow = (&buf[low * elemSz] );
+    ArrayInsert(p1, p2, (recomputeLow - p1->buf)/ (s32)p1->elemSz);
 }
 
 // Faster deleter for DArrays of types that do not
@@ -185,18 +179,18 @@ s32 ArraySearch(DArray *p1, void *elem, CompareFunction cmp, s32 p4, s32 p5)
     char *ptr; // r4
     
     BOOL found = TRUE; // r31
-    s32 arrSize = p1->size; // r5
-    if (!p1 || arrSize == 0) {
+    s32 arrSize; // r5
+    if (!p1 || (arrSize = p1->size) == 0) {
         return -1;
     }
-    if (p5) {
+    if (p5) { // binary search
         char *r27 = ArrayNth(p1, p4); // r27
-        s32 high = arrSize - p4 - 1; // r24
+        s32 high = arrSize - p4 - 1; // r24 // TODO: search the subarray [p4, size)
         u32 elemSz = p1->elemSz; // r26
         s32 low = 0; // r23
         found = FALSE;
         while (low <= high) {
-            s32 mid = (low + high) / 2; // r25
+            s32 mid = (low + high) >> 1; // r25
             s32 result = cmp(&r27[mid * elemSz], elem);
             if (result == 0) {
                 found = TRUE;
@@ -208,8 +202,8 @@ s32 ArraySearch(DArray *p1, void *elem, CompareFunction cmp, s32 p4, s32 p5)
                 high = mid - 1;
             }
         }
-        ptr = &r27[low * elemSz];
-    } else {
+        ptr = &r27[low * elemSz]; // get ptr to found element
+    } else { // linear search
         // 510
         char *r23 = ArrayNth(p1, p4); // r23
         u32 elemSz = p1->elemSz; // r25
@@ -252,12 +246,15 @@ void *ArrayMapBackwards2(DArray *p1, MapFunction p2, s32 p3)
     return NULL;
 }
 
+
 void ArrayClear(DArray *p1)
 {
     for (s32 i = p1->size - 1; i >= 0; i--) {
         ArrayDeleteAt(p1, i);
     }
 }
+
+#if 0
 
 #endif
 
