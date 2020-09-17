@@ -27,7 +27,6 @@ TEXT_O_FILES := 						            \
 	$(BUILD_DIR)/asm/text_9.o                       \
 	$(BUILD_DIR)/asm/text_10.o                      \
 	$(BUILD_DIR)/src/darray.o                       \
-	$(BUILD_DIR)/asm/darray_asm.o                   \
 	$(BUILD_DIR)/src/hashtable.o                    \
 	$(BUILD_DIR)/asm/md5c.o                         \
 	$(BUILD_DIR)/asm/text_10_2.o                    \

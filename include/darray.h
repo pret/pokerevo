@@ -5,8 +5,6 @@
 extern "C" {
 #endif
 
-#include "types.h"
-
 typedef s32 (*CompareFunction)(const void *, const void *);
 typedef BOOL (*MapFunction)(const void *, s32);
 typedef void (*DtorFunction)(void *);
@@ -21,19 +19,19 @@ typedef struct DArray {
 } DArray;
 
 DArray *ArrayNew(u32 elemSz, s32 initialCap, DtorFunction dtor);
-void ArrayFree(DArray *p1);
-s32 ArrayLength(DArray *arr);
-void *ArrayNth(DArray *arr, s32 n);
-void ArrayAppend(DArray *p1, void *elem);
-ArrayInsertSorted(DArray *p1, void *p2, CompareFunction compar);
-void ArrayRemoveAt(DArray *p1, s32 n);
-void ArrayDeleteAt(DArray *p1, s32 n);
-void ArrayReplaceAt(DArray *p1, void *elem, s32 n);
-void ArraySort(DArray *p1, CompareFunction compar);
-s32 ArraySearch(DArray *p1, void *elem, CompareFunction cmp, s32 p4, s32 p5);
-void ArrayMapBackwards(DArray *p1, MapFunction p2, s32 p3);
-void *ArrayMapBackwards2(DArray *p1, MapFunction p2, s32 p3);
-void ArrayClear(DArray *p1);
+void ArrayFree(DArray *d);
+s32 ArrayLength(DArray *d);
+void *ArrayNth(DArray *d, s32 n);
+void ArrayAppend(DArray *d, void *elem);
+void ArrayInsertSorted(DArray *d, void *elem, CompareFunction compar);
+void ArrayRemoveAt(DArray *d, s32 n);
+void ArrayDeleteAt(DArray *d, s32 n);
+void ArrayReplaceAt(DArray *d, void *elem, s32 n);
+void ArraySort(DArray *d, CompareFunction compar);
+s32 ArraySearch(DArray *d, void *elem, CompareFunction cmp, s32 start, s32 doBinarySearch);
+void ArrayMapBackwards(DArray *d, MapFunction map, s32 p3);
+void *ArrayMapBackwards2(DArray *d, MapFunction map, s32 p3);
+void ArrayClear(DArray *d);
 
 #ifdef __cplusplus
 }
