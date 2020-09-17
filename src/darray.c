@@ -48,29 +48,32 @@ static inline void ArrayBinarySearch(....)
 #endif
 
 
-DArray *ArrayNew(u32 p1, s32 p2, DtorFunction dtor)
+DArray *ArrayNew(u32 elemSz, s32 initialCap, DtorFunction dtor)
 {
-    DArray *darray = gsimalloc(sizeof(DArray)); // r31
-    if (p2 == 0)
-        p2 = 8; // r29
+    DArray *darray = gsimalloc(sizeof(DArray));
+    if (initialCap == 0)
+        initialCap = 8; // r29
     darray->size = 0;
-    darray->capacity = p2;
-    darray->elemSz = p1;
-    darray->growAmount = p2;
+    darray->capacity = initialCap;
+    darray->elemSz = elemSz;
+    darray->growAmount = initialCap;
     darray->elemDtor = dtor;
-    if (p2 != 0) {
-        darray->buf = gsimalloc(p2 * darray->elemSz);
+    if (initialCap != 0) {
+        darray->buf = gsimalloc(initialCap * darray->elemSz);
     } else {
         darray->buf = NULL;
     }
     return darray;
 }
 
+#if 0
+
 void ArrayFree(DArray *p1)
 {
     for (s32 i = 0; i < p1->size; i++) {
         if (p1->elemDtor) {
-            p1->elemDtor(ArrayNth(p1, i));
+            void *elem = ArrayNth(p1, i);
+            p1->elemDtor(elem);
         }
     }
     gsifree(p1->buf);
@@ -255,5 +258,8 @@ void ArrayClear(DArray *p1)
         ArrayDeleteAt(p1, i);
     }
 }
+
+#endif
+
 
 
