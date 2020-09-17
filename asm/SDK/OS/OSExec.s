@@ -573,8 +573,7 @@ lbl_8026C310:
 /* 8026C320 00267F80  38 21 00 20 */	addi r1, r1, 0x20
 /* 8026C324 00267F84  4E 80 00 20 */	blr
 
-#below funcs are either __OSRelaunchTitle __OSLaunchTitle LaunchCommon OSLaunchTitlev OSLaunchTitlel OSReturnToLastTitle
-#or __OSBootDolSimple
+#below func is either __OSRelaunchTitle __OSLaunchTitle LaunchCommon OSLaunchTitlev OSLaunchTitlel or OSReturnToLastTitle
 .global func_8026C328
 func_8026C328:
 /* 8026C328 00267F88  54 2B 06 FE */	clrlwi r11, r1, 0x1b
@@ -667,8 +666,8 @@ lbl_8026C45C:
 /* 8026C46C 002680CC  7D 41 53 78 */	mr r1, r10
 /* 8026C470 002680D0  4E 80 00 20 */	blr
 
-.global func_8026C474
-func_8026C474:
+.global __OSBootDolSimple
+__OSBootDolSimple:
 /* 8026C474 002680D4  94 21 FE 40 */	stwu r1, -0x1c0(r1)
 /* 8026C478 002680D8  7C 08 02 A6 */	mflr r0
 /* 8026C47C 002680DC  90 01 01 C4 */	stw r0, 0x1c4(r1)
@@ -1248,7 +1247,7 @@ lbl_8026CC84:
 /* 8026CC94 002688F4  39 1F 00 01 */	addi r8, r31, 1
 /* 8026CC98 002688F8  38 60 FF FF */	li r3, -1
 /* 8026CC9C 002688FC  38 E0 00 00 */	li r7, 0
-/* 8026CCA0 00268900  4B FF F7 D5 */	bl func_8026C474
+/* 8026CCA0 00268900  4B FF F7 D5 */	bl __OSBootDolSimple
 /* 8026CCA4 00268904  80 01 00 44 */	lwz r0, 0x44(r1)
 /* 8026CCA8 00268908  83 E1 00 3C */	lwz r31, 0x3c(r1)
 /* 8026CCAC 0026890C  83 C1 00 38 */	lwz r30, 0x38(r1)
