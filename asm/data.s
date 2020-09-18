@@ -151,7 +151,22 @@ lbl_80405F54:
 	.balign 8, 0
 	.global lbl_80405F60
 lbl_80405F60:
-	.incbin "baserom.dol", 0x402060, 0x60
+    .4byte lbl_8063D300
+
+	.balign 8, 0
+	.global lbl_80405F68
+lbl_80405F68:
+	.4byte func_8000AACC, func_8000AAD8, func_8000AAE4, DrawableCharacter_GetAnimController
+	.4byte func_8000AAF0, func_8000AAFC, func_8000AB18
+
+	.global lbl_80405F84
+lbl_80405F84:
+	.asciz "PBRFloor"
+
+	.balign 4, 0
+	.global lbl_80405F90
+lbl_80405F90:
+	.incbin "baserom.dol", 0x402090, 0x30
 
 	.global lbl_80405FC0
 lbl_80405FC0:

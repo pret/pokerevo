@@ -4,6 +4,6 @@
 
 	.global lbl_803E22A0
 lbl_803E22A0:
-	.4byte func_801C6C60, func_801C77FC
+	.4byte __destroy_global_chain_tmp, __fini_cpp_exceptions_tmp
 
     .balign 0x20, 0
