@@ -1,12 +1,11 @@
-INIT_O_FILES := 						            \
-	$(BUILD_DIR)/asm/init.o
-
 EXTAB_O_FILES :=                                    \
     $(BUILD_DIR)/asm/extab.o
 
 EXTABINDEX_O_FILES :=                               \
     $(BUILD_DIR)/asm/extabindex.o
 
+#init is included here so that linking is in the right order
+#todo fix with makefile implementation
 TEXT_O_FILES := 						            \
 	$(BUILD_DIR)/asm/text_1.o                       \
 	$(BUILD_DIR)/asm/text_2.o                       \
@@ -14,6 +13,9 @@ TEXT_O_FILES := 						            \
 	$(BUILD_DIR)/asm/text_4.o                       \
 	$(BUILD_DIR)/asm/text_5.o                       \
 	$(BUILD_DIR)/asm/text_6.o                       \
+	$(BUILD_DIR)/asm/libstdc++/__mem.o              \
+	$(BUILD_DIR)/asm/init.o                         \
+	$(BUILD_DIR)/asm/text_6_2.o                     \
 	$(BUILD_DIR)/asm/text_7.o                       \
 	$(BUILD_DIR)/asm/SDK/OS/OS.o                    \
 	$(BUILD_DIR)/asm/SDK/OS/OSAlarm.o               \
@@ -22,6 +24,8 @@ TEXT_O_FILES := 						            \
 	$(BUILD_DIR)/asm/SDK/OS/OSAudioSystem.o         \
 	$(BUILD_DIR)/asm/SDK/OS/OSCache.o               \
 	$(BUILD_DIR)/asm/SDK/OS/OSContext.o             \
+	$(BUILD_DIR)/asm/SDK/OS/OSError.o               \
+	$(BUILD_DIR)/asm/SDK/OS/OSExec.o                \
 	$(BUILD_DIR)/asm/text_7_2.o                     \
 	$(BUILD_DIR)/asm/text_8.o                       \
 	$(BUILD_DIR)/asm/text_9.o                       \
