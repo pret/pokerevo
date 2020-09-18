@@ -13,9 +13,11 @@ TEXT_O_FILES := 						            \
 	$(BUILD_DIR)/asm/text_4.o                       \
 	$(BUILD_DIR)/asm/text_5.o                       \
 	$(BUILD_DIR)/asm/libstdc++/__mem.o              \
-	$(BUILD_DIR)/asm/init.o                         \
 	$(BUILD_DIR)/asm/text_5_2.o                     \
 	$(BUILD_DIR)/asm/text_6.o                       \
+	$(BUILD_DIR)/asm/MetroTRK/mem_TRK.o             \
+	$(BUILD_DIR)/asm/init.o                         \
+	$(BUILD_DIR)/asm/text_6_2.o                     \
 	$(BUILD_DIR)/asm/text_7.o                       \
 	$(BUILD_DIR)/asm/SDK/OS/OS.o                    \
 	$(BUILD_DIR)/asm/SDK/OS/OSAlarm.o               \
