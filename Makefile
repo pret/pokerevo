@@ -28,7 +28,7 @@ TARGET := pbr_pal
 
 BUILD_DIR := build/$(TARGET)
 
-SRC_DIRS := src src/SDK/OS
+SRC_DIRS := src src/SDK/OS src/libstdc++
 ASM_DIRS := asm asm/SDK/OS asm/libstdc++ asm/MetroTRK
 
 # Inputs
@@ -67,11 +67,11 @@ PYTHON  := python3
 #POSTPROC := tools/postprocess.py
 
 # Options
-INCLUDES := -i . -I- -i include -i include/SDK
+INCLUDES := -i . -I- -i include -i include/SDK -i include/libstdc++
 
 ASFLAGS := -mgekko -I include
 LDFLAGS := -map $(MAP) -fp hard -nodefaults
-CFLAGS  := -Cpp_exceptions off -proc gekko -fp hard -O4,p -nodefaults -msgstyle gcc -ipa file $(INCLUDES)
+CFLAGS  := -Cpp_exceptions off -proc gekko -fp hard -O4,p -nodefaults -msgstyle gcc -ipa file $(INCLUDES) -W all
 
 # for postprocess.py
 PROCFLAGS := -fprologue-fixup=old_stack
