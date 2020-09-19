@@ -111,7 +111,7 @@ void analyze(string basedir, string version) {
         string fname_s(fname);
         string ext = fname_s.substr(fname_s.rfind('.'), 4);
         bool is_asm = ext == ".s";
-        fname_s = fname_s.replace(fname_s.find(basedir), 5, basebuilddir.str());
+        fname_s = fname_s.replace(fname_s.find(basedir), basedir.length(), basebuilddir.str());
         fname_s = fname_s.replace(fname_s.rfind('.'), 4, ".o");
         elf.open(fname_s, ios_base::in | ios_base::binary);
         if (!elf.good()) {
