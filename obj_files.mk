@@ -58,6 +58,15 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/gpiOperation.o                               \
 	$(BUILD_DIR)/asm/gpiPeer.o                                    \
 	$(BUILD_DIR)/asm/gpiProfile.o                                 \
+	$(BUILD_DIR)/asm/gpiSearch.o                                  \
+	$(BUILD_DIR)/asm/gpiTransfer.o                                \
+	$(BUILD_DIR)/asm/gpiUnique.o                                  \
+	$(BUILD_DIR)/asm/gpiUtility.o                                 \
+	$(BUILD_DIR)/asm/gt2Auth.o                                    \
+	$(BUILD_DIR)/asm/gt2Buffer.o                                  \
+	$(BUILD_DIR)/asm/gt2Callback.o                                \
+	$(BUILD_DIR)/asm/gt2Connection.o                              \
+	$(BUILD_DIR)/asm/gt2Main.o                                    \
 	$(BUILD_DIR)/asm/text_10_2.o                                  \
 	$(BUILD_DIR)/asm/text_11.o
 
