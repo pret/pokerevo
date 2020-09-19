@@ -395,7 +395,9 @@ gpiRemoveProfile:
 /* 80345AB0 00341710  80 63 00 00 */	lwz r3, 0(r3)
 /* 80345AB4 00341714  80 63 04 44 */	lwz r3, 0x444(r3)
 /* 80345AB8 00341718  4B FF 0F C0 */	b TableRemove
-lbl_80345ABC:
+
+.global gpiCheckProfileForUser
+gpiCheckProfileForUser:
 /* 80345ABC 0034171C  94 21 FF E0 */	stwu r1, -0x20(r1)
 /* 80345AC0 00341720  7C 08 02 A6 */	mflr r0
 /* 80345AC4 00341724  90 01 00 24 */	stw r0, 0x24(r1)
@@ -438,10 +440,10 @@ lbl_80345B2C:
 gpiFindProfileByUser:
 /* 80345B48 003417A8  94 21 FF D0 */	stwu r1, -0x30(r1)
 /* 80345B4C 003417AC  7C 08 02 A6 */	mflr r0
-/* 80345B50 003417B0  3C E0 80 34 */	lis r7, lbl_80345ABC@ha
+/* 80345B50 003417B0  3C E0 80 34 */	lis r7, gpiCheckProfileForUser@ha
 /* 80345B54 003417B4  90 01 00 34 */	stw r0, 0x34(r1)
 /* 80345B58 003417B8  38 01 00 18 */	addi r0, r1, 0x18
-/* 80345B5C 003417BC  38 E7 5A BC */	addi r7, r7, lbl_80345ABC@l
+/* 80345B5C 003417BC  38 E7 5A BC */	addi r7, r7, gpiCheckProfileForUser@l
 /* 80345B60 003417C0  93 E1 00 2C */	stw r31, 0x2c(r1)
 /* 80345B64 003417C4  3B E0 00 00 */	li r31, 0
 /* 80345B68 003417C8  93 C1 00 28 */	stw r30, 0x28(r1)
