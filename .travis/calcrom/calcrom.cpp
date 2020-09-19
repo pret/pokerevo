@@ -99,6 +99,7 @@ void analyze(string basedir, string version) {
     // data  _____|_____
     // text       |
     unsigned sizes[2][2] = {{0, 0}, {0, 0}};
+    unsigned split_code_sizes[2] = {0, 0};
     char * shstrtab = NULL;
     size_t shstrsz = 0;
     stringstream builddir;
@@ -111,6 +112,9 @@ void analyze(string basedir, string version) {
         string fname_s(fname);
         string ext = fname_s.substr(fname_s.rfind('.'), 4);
         bool is_asm = ext == ".s";
+        string fileroot = fname_s.substr(fname_s.rfind('/') + 1);
+        bool is_unsplit = (is_asm && fileroot.rfind("text_", 0) == 0);
+
         fname_s = fname_s.replace(fname_s.find(basedir), basedir.length(), basebuilddir.str());
         fname_s = fname_s.replace(fname_s.rfind('.'), 4, ".o");
         elf.open(fname_s, ios_base::in | ios_base::binary);
@@ -156,6 +160,10 @@ void analyze(string basedir, string version) {
             if (is_text || is_data)
             {
                 sizes[is_text][is_asm] += size;
+                if (is_text && is_asm)
+                {
+                    split_code_sizes[is_unsplit] += size;
+                }
             }
         }
     }
@@ -167,9 +175,16 @@ void analyze(string basedir, string version) {
     double total_text_d = total_text;
     double src_text_d = sizes[1][0];
     double asm_text_d = sizes[1][1];
+    double split_asm_text_d = split_code_sizes[0];
+    double unsplit_asm_text_d = split_code_sizes[1];
+    
     cout << "  " << total_text << " total bytes of code" << endl;
     cout << "    " << sizes[1][0] << " bytes of code in src (" << (src_text_d / total_text_d * 100.0) << "%)" << endl;
     cout << "    " << sizes[1][1] << " bytes of code in asm (" << (asm_text_d / total_text_d * 100.0) << "%)" << endl;
+    if (sizes[1][1] > 0) {
+        cout << "      " << split_code_sizes[0] << " bytes of asm code in split files (" << (split_asm_text_d / asm_text_d * 100.0) << "%)" << endl;
+        cout << "      " << split_code_sizes[1] << " bytes of asm code in unsplit files (" << (unsplit_asm_text_d / asm_text_d * 100.0) << "%)" << endl;
+    }
     cout << endl;
     // Report data
     unsigned total_data = sizes[0][0] + sizes[0][1];
