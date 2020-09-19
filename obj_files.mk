@@ -48,6 +48,10 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/gsXML.o                                      \
 	$(BUILD_DIR)/asm/gp.o                                         \
 	$(BUILD_DIR)/asm/gpi.o                                        \
+	$(BUILD_DIR)/asm/gpiBuddy.o                                   \
+	$(BUILD_DIR)/asm/gpiBuffer.o                                  \
+	$(BUILD_DIR)/asm/gpiCallback.o                                \
+	$(BUILD_DIR)/asm/gpiConnect.o                                 \
 	$(BUILD_DIR)/asm/text_10_2.o                                  \
 	$(BUILD_DIR)/asm/text_11.o
 
