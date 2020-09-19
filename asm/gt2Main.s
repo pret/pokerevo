@@ -5,7 +5,7 @@
 .global gt2CreateSocket
 gt2CreateSocket:
 /* 803499F0 00345650  39 00 00 00 */	li r8, 0
-/* 803499F4 00345654  48 00 36 6C */	b lbl_8034D060
+/* 803499F4 00345654  48 00 36 6C */	b func_8034D060
 
 .global gt2CloseSocket
 gt2CloseSocket:
@@ -52,7 +52,7 @@ lbl_80349A74:
 
 .global gt2Listen
 gt2Listen:
-/* 80349A88 003456E8  48 00 38 78 */	b lbl_8034D300
+/* 80349A88 003456E8  48 00 38 78 */	b func_8034D300
 
 .global gt2Accept
 gt2Accept:
@@ -255,16 +255,16 @@ lbl_80349D20:
 
 .global func_80349D38
 func_80349D38:
-/* 80349D38 00345998  48 00 2F 34 */	b lbl_8034CC6C
+/* 80349D38 00345998  48 00 2F 34 */	b func_8034CC6C
 
 .global gt2CloseConnectionHard
 gt2CloseConnectionHard:
 /* 80349D3C 0034599C  38 80 00 01 */	li r4, 1
-/* 80349D40 003459A0  4B FF FB 08 */	b lbl_80349848
+/* 80349D40 003459A0  4B FF FB 08 */	b func_80349848
 lbl_80349D44:
 /* 80349D44 003459A4  80 63 00 00 */	lwz r3, 0(r3)
 /* 80349D48 003459A8  38 80 00 00 */	li r4, 0
-/* 80349D4C 003459AC  4B FF FA FC */	b lbl_80349848
+/* 80349D4C 003459AC  4B FF FA FC */	b func_80349848
 
 .global func_80349D50
 func_80349D50:
@@ -278,7 +278,7 @@ func_80349D50:
 gti2CloseAllConnectionsHardMap:
 /* 80349D64 003459C4  80 63 00 00 */	lwz r3, 0(r3)
 /* 80349D68 003459C8  38 80 00 01 */	li r4, 1
-/* 80349D6C 003459CC  4B FF FA DC */	b lbl_80349848
+/* 80349D6C 003459CC  4B FF FA DC */	b func_80349848
 
 .global gt2CloseAllConnectionsHard
 gt2CloseAllConnectionsHard:
