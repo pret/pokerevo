@@ -39,3 +39,6 @@ script:
 
 notifications:
     email: false
+
+after_success:
+    - .travis/calcrom/webhook.sh pokerevo
