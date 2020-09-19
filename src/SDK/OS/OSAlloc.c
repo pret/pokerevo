@@ -129,7 +129,6 @@ void* OSAllocFromHeap(OSHeapHandle heap, u32 size)
 
 void OSFreeToHeap(OSHeapHandle heap, void* ptr)
 {
-    OSHeapInfo *heapInfo;
     HeapDesc *hd;
     Cell   *cell;
 
