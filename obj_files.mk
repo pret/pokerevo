@@ -67,6 +67,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/gt2Callback.o                                \
 	$(BUILD_DIR)/asm/gt2Connection.o                              \
 	$(BUILD_DIR)/asm/gt2Main.o                                    \
+	$(BUILD_DIR)/asm/gt2Message.o                                 \
 	$(BUILD_DIR)/asm/text_10_2.o                                  \
 	$(BUILD_DIR)/asm/text_11.o
 
