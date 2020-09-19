@@ -15,6 +15,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/libstdc++/__mem.o                            \
 	$(BUILD_DIR)/asm/libstdc++/__va_arg.o                         \
 	$(BUILD_DIR)/asm/libstdc++/global_destructor_chain.o          \
+	$(BUILD_DIR)/asm/libstdc++/NMWException.o                     \
 	$(BUILD_DIR)/asm/text_5_2.o                                   \
 	$(BUILD_DIR)/asm/libstdc++/__init_cpp_exceptions.o            \
 	$(BUILD_DIR)/asm/text_5_3.o                                   \
