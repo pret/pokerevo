@@ -5,6 +5,9 @@
 
 #pragma auto_inline on
 
+extern void *memcpy(void *, const void *, u32);
+extern void *memmove(void *, const void *, u32);
+
 static inline void ArrayInsert(DArray *d, void *elem, s32 n)
 {
     if (d->size == d->capacity) {
@@ -98,8 +101,6 @@ _savegpr_23();
 _restgpr_23();
 _savegpr_24();
 _restgpr_24();
-memcpy();
-memmove();
 asm void ArrayInsertSorted(DArray *d, void *elem, CompareFunction compar)
 {
     nofralloc
@@ -246,7 +247,7 @@ void ArrayReplaceAt(DArray *d, void *elem, s32 n)
 
 void ArraySort(DArray *d, CompareFunction compar)
 {
-    qsort(d->buf, d->size, d->elemSz, compar);
+    qsort(d->buf, (u32)d->size, d->elemSz, compar);
 }
 
 #ifdef NONMATCHING
