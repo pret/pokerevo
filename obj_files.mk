@@ -52,6 +52,10 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/gpiBuffer.o                                  \
 	$(BUILD_DIR)/asm/gpiCallback.o                                \
 	$(BUILD_DIR)/asm/gpiConnect.o                                 \
+	$(BUILD_DIR)/asm/gpiInfo.o                                    \
+	$(BUILD_DIR)/asm/gpiOperation.o                               \
+	$(BUILD_DIR)/asm/gpiPeer.o                                    \
+	$(BUILD_DIR)/asm/gpiProfile.o                                 \
 	$(BUILD_DIR)/asm/text_10_2.o                                  \
 	$(BUILD_DIR)/asm/text_11.o
 
