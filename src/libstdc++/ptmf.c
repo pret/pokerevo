@@ -1,5 +1,7 @@
 #include "CPlusLib.h"
 
+#pragma internal on
+
 asm void __ptmf_scall(...)
 {
     nofralloc
