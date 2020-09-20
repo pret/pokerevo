@@ -106,6 +106,7 @@ void analyze(string basedir, string version) {
     // data  _____|________
     // text       |
     unsigned split_sizes[2][2] = {{0, 0}, {0, 0}};
+    unsigned incbins = 0;
     char * shstrtab = NULL;
     size_t shstrsz = 0;
     stringstream builddir;
@@ -121,6 +122,22 @@ void analyze(string basedir, string version) {
         string fileroot = fname_s.substr(fname_s.rfind('/') + 1);
         string unsplit_regex("(init|extab|extabindex|text|ctors|dtors|rodata|data|sdata|sdata2)(_[^.]*)?[.]s");
         bool is_unsplit = is_asm && regex_match(fileroot, regex(unsplit_regex));
+        
+        // open the .s file and count incbins
+        if (is_asm) {
+            fstream sfile;
+            sfile.open(fname_s, ios_base::in);
+            if (!elf.good()) {
+                cerr << "Error: file not found: " << fname_s << endl;
+                return;
+            }
+            string line;
+            while (getline(sfile, line)) {
+                if (line.find(".incbin") != string::npos)
+                    incbins++;
+            }
+            sfile.close();
+        }
 
         fname_s = fname_s.replace(fname_s.find(basedir), basedir.length(), basebuilddir.str());
         fname_s = fname_s.replace(fname_s.rfind('.'), 4, ".o");
@@ -208,7 +225,10 @@ void analyze(string basedir, string version) {
         cout << "      " << split_sizes[0][0] << " bytes of asm data in split files (" << (split_asm_data_d / asm_data_d * 100.0) << "%)" << endl;
         cout << "      " << split_sizes[0][1] << " bytes of asm data in unsplit files (" << (unsplit_asm_data_d / asm_data_d * 100.0) << "%)" << endl;
     }
-    
+    cout << endl;
+    // Report incbins
+    cout << "  " << incbins << " incbins remain" << endl;
+
     // Let vectors fall to gc
 }
 
