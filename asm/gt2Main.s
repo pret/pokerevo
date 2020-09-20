@@ -5,7 +5,7 @@
 .global gt2CreateSocket
 gt2CreateSocket:
 /* 803499F0 00345650  39 00 00 00 */	li r8, 0
-/* 803499F4 00345654  48 00 36 6C */	b func_8034D060
+/* 803499F4 00345654  48 00 36 6C */	b gti2CreateSocket
 
 .global gt2CloseSocket
 gt2CloseSocket:
@@ -20,7 +20,7 @@ gt2CloseSocket:
 /* 80349A18 00345678  80 63 00 0C */	lwz r3, 0xc(r3)
 /* 80349A1C 0034567C  4B FE D1 A1 */	bl TableMapSafe
 /* 80349A20 00345680  7F E3 FB 78 */	mr r3, r31
-/* 80349A24 00345684  48 00 38 79 */	bl func_8034D29C
+/* 80349A24 00345684  48 00 38 79 */	bl gti2CloseSocket
 /* 80349A28 00345688  80 01 00 14 */	lwz r0, 0x14(r1)
 /* 80349A2C 0034568C  83 E1 00 0C */	lwz r31, 0xc(r1)
 /* 80349A30 00345690  7C 08 03 A6 */	mtlr r0
@@ -38,11 +38,11 @@ gt2Think:
 /* 80349A54 003456B4  2C 03 00 00 */	cmpwi r3, 0
 /* 80349A58 003456B8  41 82 00 1C */	beq lbl_80349A74
 /* 80349A5C 003456BC  7F E3 FB 78 */	mr r3, r31
-/* 80349A60 003456C0  48 00 3F 21 */	bl func_8034D980
+/* 80349A60 003456C0  48 00 3F 21 */	bl gti2SocketConnectionsThink
 /* 80349A64 003456C4  2C 03 00 00 */	cmpwi r3, 0
 /* 80349A68 003456C8  41 82 00 0C */	beq lbl_80349A74
 /* 80349A6C 003456CC  7F E3 FB 78 */	mr r3, r31
-/* 80349A70 003456D0  48 00 3F 5D */	bl func_8034D9CC
+/* 80349A70 003456D0  48 00 3F 5D */	bl gti2FreeClosedConnections
 lbl_80349A74:
 /* 80349A74 003456D4  80 01 00 14 */	lwz r0, 0x14(r1)
 /* 80349A78 003456D8  83 E1 00 0C */	lwz r31, 0xc(r1)
@@ -52,7 +52,7 @@ lbl_80349A74:
 
 .global gt2Listen
 gt2Listen:
-/* 80349A88 003456E8  48 00 38 78 */	b func_8034D300
+/* 80349A88 003456E8  48 00 38 78 */	b gti2Listen
 
 .global gt2Accept
 gt2Accept:
@@ -120,7 +120,7 @@ lbl_80349B38:
 /* 80349B58 003457B8  7C 7C 1B 78 */	mr r28, r3
 /* 80349B5C 003457BC  41 82 00 14 */	beq lbl_80349B70
 /* 80349B60 003457C0  80 61 00 10 */	lwz r3, 0x10(r1)
-/* 80349B64 003457C4  48 00 3A 19 */	bl func_8034D57C
+/* 80349B64 003457C4  48 00 3A 19 */	bl gti2FreeSocketConnection
 /* 80349B68 003457C8  7F 83 E3 78 */	mr r3, r28
 /* 80349B6C 003457CC  48 00 00 B8 */	b lbl_80349C24
 lbl_80349B70:
@@ -146,11 +146,11 @@ lbl_80349BA8:
 /* 80349BB0 00345810  2C 03 00 00 */	cmpwi r3, 0
 /* 80349BB4 00345814  41 82 00 1C */	beq lbl_80349BD0
 /* 80349BB8 00345818  7F C3 F3 78 */	mr r3, r30
-/* 80349BBC 0034581C  48 00 3D C5 */	bl func_8034D980
+/* 80349BBC 0034581C  48 00 3D C5 */	bl gti2SocketConnectionsThink
 /* 80349BC0 00345820  2C 03 00 00 */	cmpwi r3, 0
 /* 80349BC4 00345824  41 82 00 0C */	beq lbl_80349BD0
 /* 80349BC8 00345828  7F C3 F3 78 */	mr r3, r30
-/* 80349BCC 0034582C  48 00 3E 01 */	bl func_8034D9CC
+/* 80349BCC 0034582C  48 00 3E 01 */	bl gti2FreeClosedConnections
 lbl_80349BD0:
 /* 80349BD0 00345830  80 61 00 10 */	lwz r3, 0x10(r1)
 /* 80349BD4 00345834  80 03 00 0C */	lwz r0, 0xc(r3)
