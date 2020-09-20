@@ -69,6 +69,13 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/gt2Main.o                                    \
 	$(BUILD_DIR)/asm/gt2Message.o                                 \
 	$(BUILD_DIR)/asm/gt2Socket.o                                  \
+	$(BUILD_DIR)/asm/gt2Utility.o                                 \
+	$(BUILD_DIR)/asm/qr2.o                                        \
+	$(BUILD_DIR)/asm/qr2regkeys.o                                 \
+	$(BUILD_DIR)/asm/ghttpBuffer.o                                \
+	$(BUILD_DIR)/asm/ghttpCallbacks.o                             \
+	$(BUILD_DIR)/asm/ghttpCommon.o                                \
+	$(BUILD_DIR)/asm/ghttpConnection.o                            \
 	$(BUILD_DIR)/asm/text_10_2.o                                  \
 	$(BUILD_DIR)/asm/text_11.o
 
