@@ -76,6 +76,9 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/ghttpCallbacks.o                             \
 	$(BUILD_DIR)/asm/ghttpCommon.o                                \
 	$(BUILD_DIR)/asm/ghttpConnection.o                            \
+	$(BUILD_DIR)/asm/ghttpEncryption.o                            \
+	$(BUILD_DIR)/asm/ghttpMain.o                                  \
+	$(BUILD_DIR)/asm/ghttpPost.o                                  \
 	$(BUILD_DIR)/asm/text_10_2.o                                  \
 	$(BUILD_DIR)/asm/text_11.o
 
