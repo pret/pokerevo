@@ -80,6 +80,12 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/ghttpMain.o                                  \
 	$(BUILD_DIR)/asm/ghttpPost.o                                  \
 	$(BUILD_DIR)/asm/ghttpProcess.o                               \
+	$(BUILD_DIR)/asm/gbucket.o                                    \
+	$(BUILD_DIR)/asm/gstats.o                                     \
+	$(BUILD_DIR)/asm/NATify.o                                     \
+	$(BUILD_DIR)/asm/natneg.o                                     \
+	$(BUILD_DIR)/asm/sb_crypt.o                                   \
+	$(BUILD_DIR)/asm/sb_queryengine.o                             \
 	$(BUILD_DIR)/asm/text_10_2.o                                  \
 	$(BUILD_DIR)/asm/text_11.o
 
