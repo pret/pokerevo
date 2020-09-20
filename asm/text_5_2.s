@@ -108,24 +108,24 @@ _savegpr_16:
 _savegpr_17:
 /* 801C7100 001C2D60  92 2B FF C4 */	stw r17, -0x3c(r11)
 
-.global func_801C7104
-func_801C7104:
+.global _savegpr_18
+_savegpr_18:
 /* 801C7104 001C2D64  92 4B FF C8 */	stw r18, -0x38(r11)
 
-.global func_801C7108
-func_801C7108:
+.global _savegpr_19
+_savegpr_19:
 /* 801C7108 001C2D68  92 6B FF CC */	stw r19, -0x34(r11)
 
-.global func_801C710C
-func_801C710C:
+.global _savegpr_20
+_savegpr_20:
 /* 801C710C 001C2D6C  92 8B FF D0 */	stw r20, -0x30(r11)
 
-.global func_801C7110
-func_801C7110:
+.global _savegpr_21
+_savegpr_21:
 /* 801C7110 001C2D70  92 AB FF D4 */	stw r21, -0x2c(r11)
 
-.global func_801C7114
-func_801C7114:
+.global _savegpr_22
+_savegpr_22:
 /* 801C7114 001C2D74  92 CB FF D8 */	stw r22, -0x28(r11)
 
 .global _savegpr_23
@@ -136,24 +136,24 @@ _savegpr_23:
 _savegpr_24:
 /* 801C711C 001C2D7C  93 0B FF E0 */	stw r24, -0x20(r11)
 
-.global func_801C7120
-func_801C7120:
+.global _savegpr_25
+_savegpr_25:
 /* 801C7120 001C2D80  93 2B FF E4 */	stw r25, -0x1c(r11)
 
-.global func_801C7124
-func_801C7124:
+.global _savegpr_26
+_savegpr_26:
 /* 801C7124 001C2D84  93 4B FF E8 */	stw r26, -0x18(r11)
 
 .global _savegpr_27
 _savegpr_27:
 /* 801C7128 001C2D88  93 6B FF EC */	stw r27, -0x14(r11)
 
-.global func_801C712C
-func_801C712C:
+.global _savegpr_28
+_savegpr_28:
 /* 801C712C 001C2D8C  93 8B FF F0 */	stw r28, -0x10(r11)
 
-.global func_801C7130
-func_801C7130:
+.global _savegpr_29
+_savegpr_29:
 /* 801C7130 001C2D90  93 AB FF F4 */	stw r29, -0xc(r11)
 /* 801C7134 001C2D94  93 CB FF F8 */	stw r30, -8(r11)
 /* 801C7138 001C2D98  93 EB FF FC */	stw r31, -4(r11)
