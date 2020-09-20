@@ -163,8 +163,8 @@ _savegpr_29:
 __restore_gpr:
 /* 801C7140 001C2DA0  81 CB FF B8 */	lwz r14, -0x48(r11)
 
-.global func_801C7144
-func_801C7144:
+.global _restgpr_15
+_restgpr_15:
 /* 801C7144 001C2DA4  81 EB FF BC */	lwz r15, -0x44(r11)
 
 .global func_801C7148
