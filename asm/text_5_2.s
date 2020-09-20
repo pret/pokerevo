@@ -2,8 +2,8 @@
 
 .section .text, "ax"  # 0x80006980 - 0x803E1E60
 
-.global func_801C7000
-func_801C7000:
+.global __cvt_fp2unsigned
+__cvt_fp2unsigned:
 /* 801C7000 001C2C60  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 801C7004 001C2C64  3C 80 80 40 */	lis r4, lbl_803FC6C0@ha
 /* 801C7008 001C2C68  38 84 C6 C0 */	addi r4, r4, lbl_803FC6C0@l
@@ -42,18 +42,18 @@ __save_fpr:
 /* 801C7078 001C2CD8  DA AB FF A8 */	stfd f21, -0x58(r11)
 /* 801C707C 001C2CDC  DA CB FF B0 */	stfd f22, -0x50(r11)
 
-.global func_801C7080
-func_801C7080:
+.global _savefpr_23
+_savefpr_23:
 /* 801C7080 001C2CE0  DA EB FF B8 */	stfd f23, -0x48(r11)
 /* 801C7084 001C2CE4  DB 0B FF C0 */	stfd f24, -0x40(r11)
 /* 801C7088 001C2CE8  DB 2B FF C8 */	stfd f25, -0x38(r11)
 
-.global func_801C708C
-func_801C708C:
+.global _savefpr_26
+_savefpr_26:
 /* 801C708C 001C2CEC  DB 4B FF D0 */	stfd f26, -0x30(r11)
 
-.global func_801C7090
-func_801C7090:
+.global _savefpr_27
+_savefpr_27:
 /* 801C7090 001C2CF0  DB 6B FF D8 */	stfd f27, -0x28(r11)
 /* 801C7094 001C2CF4  DB 8B FF E0 */	stfd f28, -0x20(r11)
 /* 801C7098 001C2CF8  DB AB FF E8 */	stfd f29, -0x18(r11)
@@ -73,18 +73,18 @@ __restore_fpr:
 /* 801C70C4 001C2D24  CA AB FF A8 */	lfd f21, -0x58(r11)
 /* 801C70C8 001C2D28  CA CB FF B0 */	lfd f22, -0x50(r11)
 
-.global func_801C70CC
-func_801C70CC:
+.global _restfpr_23
+_restfpr_23:
 /* 801C70CC 001C2D2C  CA EB FF B8 */	lfd f23, -0x48(r11)
 /* 801C70D0 001C2D30  CB 0B FF C0 */	lfd f24, -0x40(r11)
 /* 801C70D4 001C2D34  CB 2B FF C8 */	lfd f25, -0x38(r11)
 
-.global func_801C70D8
-func_801C70D8:
+.global _restfpr_26
+_restfpr_26:
 /* 801C70D8 001C2D38  CB 4B FF D0 */	lfd f26, -0x30(r11)
 
-.global func_801C70DC
-func_801C70DC:
+.global _restfpr_27
+_restfpr_27:
 /* 801C70DC 001C2D3C  CB 6B FF D8 */	lfd f27, -0x28(r11)
 /* 801C70E0 001C2D40  CB 8B FF E0 */	lfd f28, -0x20(r11)
 /* 801C70E4 001C2D44  CB AB FF E8 */	lfd f29, -0x18(r11)
@@ -96,16 +96,16 @@ func_801C70DC:
 __save_gpr:
 /* 801C70F4 001C2D54  91 CB FF B8 */	stw r14, -0x48(r11)
 
-.global func_801C70F8
-func_801C70F8:
+.global _savegpr_15
+_savegpr_15:
 /* 801C70F8 001C2D58  91 EB FF BC */	stw r15, -0x44(r11)
 
-.global func_801C70FC
-func_801C70FC:
+.global _savegpr_16
+_savegpr_16:
 /* 801C70FC 001C2D5C  92 0B FF C0 */	stw r16, -0x40(r11)
 
-.global func_801C7100
-func_801C7100:
+.global _savegpr_17
+_savegpr_17:
 /* 801C7100 001C2D60  92 2B FF C4 */	stw r17, -0x3c(r11)
 
 .global func_801C7104
