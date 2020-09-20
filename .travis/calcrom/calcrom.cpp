@@ -107,9 +107,11 @@ void analyze(string basedir, string version) {
     // text       |
     unsigned split_sizes[2][2] = {{0, 0}, {0, 0}};
     unsigned incbins = 0;
+    unsigned incbin_size = 0;
     char * shstrtab = NULL;
     size_t shstrsz = 0;
     stringstream builddir;
+    
     builddir << "/build/" << version;
     stringstream basebuilddir;
     basebuilddir << basedir << builddir.str();
@@ -124,7 +126,7 @@ void analyze(string basedir, string version) {
         bool is_unsplit = is_asm && regex_match(fileroot, regex(unsplit_regex));
         
         // open the .s file and count incbins
-        if (is_asm) {
+        if (is_asm && fileroot != "extab.s" && fileroot != "extabindex.s") {
             fstream sfile;
             sfile.open(fname_s, ios_base::in);
             if (!elf.good()) {
@@ -133,8 +135,14 @@ void analyze(string basedir, string version) {
             }
             string line;
             while (getline(sfile, line)) {
-                if (line.find(".incbin") != string::npos)
+                if (line.find(".incbin") != string::npos) {
                     incbins++;
+                    istringstream line_ss(line);
+                    string discard;
+                    unsigned size = 0;
+                    line_ss >> discard >> discard >> discard >> hex >> size;
+                    incbin_size += size;
+                }
             }
             sfile.close();
         }
@@ -227,7 +235,8 @@ void analyze(string basedir, string version) {
     }
     cout << endl;
     // Report incbins
-    cout << "  " << incbins << " incbins remain" << endl;
+    cout << "  " << incbins << " incbins remain totaling " << incbin_size << " bytes ("
+         << (incbin_size / static_cast<double>(total_data)) * 100.0 << "%)" <<  endl;
 
     // Let vectors fall to gc
 }
