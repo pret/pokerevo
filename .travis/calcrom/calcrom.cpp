@@ -2,6 +2,7 @@
  * CALCROM.CPP
  * © PikalaxALT 2020
  * © red031000 2020
+ * © mparisi20 2020
  *
  * Simple C++ executable to measure the completion rate of Pokémon Battle Revolution
  * reverse engineering (decompilation).
@@ -27,6 +28,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <regex>
 #include <elf.h>
 #include <glob.h>
 #include <string.h>
@@ -99,6 +101,11 @@ void analyze(string basedir, string version) {
     // data  _____|_____
     // text       |
     unsigned sizes[2][2] = {{0, 0}, {0, 0}};
+    // Accumulate asm sizes
+    //       split  unsplit
+    // data  _____|________
+    // text       |
+    unsigned split_sizes[2][2] = {{0, 0}, {0, 0}};
     char * shstrtab = NULL;
     size_t shstrsz = 0;
     stringstream builddir;
@@ -111,6 +118,10 @@ void analyze(string basedir, string version) {
         string fname_s(fname);
         string ext = fname_s.substr(fname_s.rfind('.'), 4);
         bool is_asm = ext == ".s";
+        string fileroot = fname_s.substr(fname_s.rfind('/') + 1);
+        string unsplit_regex("(init|extab|extabindex|text|ctors|dtors|rodata|data|sdata|sdata2)(_[^.]*)?[.]s");
+        bool is_unsplit = is_asm && regex_match(fileroot, regex(unsplit_regex));
+
         fname_s = fname_s.replace(fname_s.find(basedir), basedir.length(), basebuilddir.str());
         fname_s = fname_s.replace(fname_s.rfind('.'), 4, ".o");
         elf.open(fname_s, ios_base::in | ios_base::binary);
@@ -151,11 +162,16 @@ void analyze(string basedir, string version) {
         for (Elf32_Shdr & hdr : shdr) {
             string shname = shstrtab + hdr.sh_name;
             bool is_text = (shname == ".text" || shname == ".init");
-            bool is_data = (shname == ".data" || shname == ".dtors" || shname == ".ctors" || shname == ".sdata" || shname == ".sdata2");
+            bool is_data = (shname == ".data" || shname == ".dtors" || shname == ".ctors" || 
+                            shname == ".sdata" || shname == ".sdata2" || shname == ".rodata");
             size_t size = hdr.sh_size + (hdr.sh_size & 3 ? 4 - (hdr.sh_size & 3) : 0);
             if (is_text || is_data)
             {
                 sizes[is_text][is_asm] += size;
+                if (is_asm)
+                {
+                    split_sizes[is_text][is_unsplit] += size;
+                }
             }
         }
     }
@@ -167,18 +183,32 @@ void analyze(string basedir, string version) {
     double total_text_d = total_text;
     double src_text_d = sizes[1][0];
     double asm_text_d = sizes[1][1];
+    double split_asm_text_d = split_sizes[1][0];
+    double unsplit_asm_text_d = split_sizes[1][1];
+    
     cout << "  " << total_text << " total bytes of code" << endl;
     cout << "    " << sizes[1][0] << " bytes of code in src (" << (src_text_d / total_text_d * 100.0) << "%)" << endl;
     cout << "    " << sizes[1][1] << " bytes of code in asm (" << (asm_text_d / total_text_d * 100.0) << "%)" << endl;
+    if (sizes[1][1] > 0) {
+        cout << "      " << split_sizes[1][0] << " bytes of asm code in split files (" << (split_asm_text_d / asm_text_d * 100.0) << "%)" << endl;
+        cout << "      " << split_sizes[1][1] << " bytes of asm code in unsplit files (" << (unsplit_asm_text_d / asm_text_d * 100.0) << "%)" << endl;
+    }
     cout << endl;
     // Report data
     unsigned total_data = sizes[0][0] + sizes[0][1];
     double total_data_d = total_data;
     double src_data_d = sizes[0][0];
     double asm_data_d = sizes[0][1];
+    double split_asm_data_d = split_sizes[0][0];
+    double unsplit_asm_data_d = split_sizes[0][1];
     cout << "  " << total_data << " total bytes of data" << endl;
     cout << "    " << sizes[0][0] << " bytes of data in src (" << (src_data_d / total_data_d * 100.0) << "%)" << endl;
     cout << "    " << sizes[0][1] << " bytes of data in asm (" << (asm_data_d / total_data_d * 100.0) << "%)" << endl;
+    if (sizes[0][1] > 0) {
+        cout << "      " << split_sizes[0][0] << " bytes of asm data in split files (" << (split_asm_data_d / asm_data_d * 100.0) << "%)" << endl;
+        cout << "      " << split_sizes[0][1] << " bytes of asm data in unsplit files (" << (unsplit_asm_data_d / asm_data_d * 100.0) << "%)" << endl;
+    }
+    
     // Let vectors fall to gc
 }
 
