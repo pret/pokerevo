@@ -205,8 +205,8 @@ void analyze(string basedir, string version) {
     cout << "    " << sizes[0][0] << " bytes of data in src (" << (src_data_d / total_data_d * 100.0) << "%)" << endl;
     cout << "    " << sizes[0][1] << " bytes of data in asm (" << (asm_data_d / total_data_d * 100.0) << "%)" << endl;
     if (sizes[0][1] > 0) {
-        cout << "      " << split_sizes[0][0] << " bytes of asm code in split files (" << (split_asm_data_d / asm_data_d * 100.0) << "%)" << endl;
-        cout << "      " << split_sizes[0][1] << " bytes of asm code in unsplit files (" << (unsplit_asm_data_d / asm_data_d * 100.0) << "%)" << endl;
+        cout << "      " << split_sizes[0][0] << " bytes of asm data in split files (" << (split_asm_data_d / asm_data_d * 100.0) << "%)" << endl;
+        cout << "      " << split_sizes[0][1] << " bytes of asm data in unsplit files (" << (unsplit_asm_data_d / asm_data_d * 100.0) << "%)" << endl;
     }
     
     // Let vectors fall to gc
