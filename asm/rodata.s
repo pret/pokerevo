@@ -2,18 +2,24 @@
 
 .section .rodata, "wa"  # 0x803E22C0 - 0x80405D60
 
-.global lbl_803E22C0
+	.global lbl_803E22C0
 lbl_803E22C0:
-	.incbin "baserom.dol", 0x3DE3C0, 0x18
-.global lbl_803E22D8
+	.2byte 0x21, 0x19, 0x11, 0x21, 0x19, 0x11, 0x19, 0x11
+	.2byte 0x19, 0x11
+
+	.balign 8, 0
+	.global lbl_803E22D8
 lbl_803E22D8:
 	.incbin "baserom.dol", 0x3DE3D8, 0x10
-.global lbl_803E22E8
+
+	.global lbl_803E22E8
 lbl_803E22E8:
 	.incbin "baserom.dol", 0x3DE3E8, 0x4550
-.global lbl_803E6838
+
+	.global lbl_803E6838
 lbl_803E6838:
 	.incbin "baserom.dol", 0x3E2938, 0x8748
+
 .global lbl_803EEF80
 lbl_803EEF80:
 	.incbin "baserom.dol", 0x3EB080, 0xA1F0
