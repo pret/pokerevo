@@ -166,21 +166,41 @@ lbl_80405F84:
 	.balign 4, 0
 	.global lbl_80405F90
 lbl_80405F90:
-	.incbin "baserom.dol", 0x402090, 0x30
+	.4byte lbl_8063D310, 0x00000000, 0x00000000
 
+	.balign 4, 0
+	.global lbl_80405F9C
+lbl_80405F9C:
+	.asciz "gsapi::GSfloorData"
+
+	.balign 4, 0
+	.global lbl_80405FB0
+lbl_80405FB0:
+	.asciz "gsapi::GSfloor"
+
+	.balign 4, 0
 	.global lbl_80405FC0
 lbl_80405FC0:
-	.incbin "baserom.dol", 0x4020C0, 0x34
-.global lbl_80405FF4
+	.asciz "## CHECK ## FLAGID_ColosseumXX_WL is not found.\n"
+
+	.balign 4, 0
+	.global lbl_80405FF4
 lbl_80405FF4:
-	.incbin "baserom.dol", 0x4020F4, 0x28
-.global lbl_8040601C
+	.4byte lbl_8000C3B4, lbl_8000C3D0, lbl_8000C3EC, lbl_8000C408
+	.4byte lbl_8000C424, lbl_8000C440, lbl_8000C470, lbl_8000C48C
+	.4byte lbl_8000C4BC, lbl_8000C4D8
+
+	.balign 4, 0
+	.global lbl_8040601C
 lbl_8040601C:
-	.incbin "baserom.dol", 0x40211C, 0x38
-.global lbl_80406054
+	.asciz "## CHECK ## FLAGID_ColosseumXX_second is not found.\n"
+
+	.balign 4, 0
+	.global lbl_80406054
 lbl_80406054:
 	.incbin "baserom.dol", 0x402154, 0x166
-.global lbl_804061BA
+
+	.global lbl_804061BA
 lbl_804061BA:
 	.incbin "baserom.dol", 0x4022BA, 0xFA
 .global lbl_804062B4
