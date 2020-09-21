@@ -86,6 +86,8 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/natneg.o                                     \
 	$(BUILD_DIR)/asm/sb_crypt.o                                   \
 	$(BUILD_DIR)/asm/sb_queryengine.o                             \
+	$(BUILD_DIR)/asm/sb_server.o                                  \
+	$(BUILD_DIR)/asm/sb_serverbrowsing.o                          \
 	$(BUILD_DIR)/asm/text_10_2.o                                  \
 	$(BUILD_DIR)/asm/text_11.o
 
