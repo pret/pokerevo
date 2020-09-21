@@ -31,6 +31,7 @@
 #include <regex>
 #include <elf.h>
 #include <glob.h>
+#include <ftw.h>
 #include <string.h>
 #include <vector>
 #include <string>
@@ -53,6 +54,21 @@ public:
         globfree(&glob_result);
     }
 };
+
+static vector<string> files;
+
+static int
+get_files(const char *fpath, const struct stat *sb,
+            int tflag, struct FTW *ftwbuf)
+{
+    if (tflag == FTW_F) {
+        string fpath_s(fpath);
+        string ext = fpath_s.substr(fpath_s.rfind('.'), 4);
+        if (ext == ".c" || ext == ".cpp" || ".s")
+            files.push_back(fpath_s);
+    }
+    return 0;
+}
 
 static inline Elf32_Half ElfHalfEndianAdjust(Elf32_Half val)
 {
@@ -115,10 +131,23 @@ void analyze(string basedir, string version) {
     builddir << "/build/" << version;
     stringstream basebuilddir;
     basebuilddir << basedir << builddir.str();
-    pattern << basedir << "/{src,asm}/*.{c,s,cpp}";
-    for (char const * & fname : Glob(pattern.str()))
+    pattern << basedir << "/{src,asm}/**/*.{c,s,cpp}";
+    
+    // Recursively search the src/ and asm/ directories for
+    // .c, .cpp, and .s files, accumulating them all into files
+    string srcdir = basedir + "/src";
+    string asmdir = basedir + "/asm";
+    if (nftw(srcdir.c_str(), get_files, 20, 0) == -1) {
+        perror("nftw");
+        exit(EXIT_FAILURE);
+    }
+    if (nftw(asmdir.c_str(), get_files, 20, 0) == -1) {
+        perror("nftw");
+        exit(EXIT_FAILURE);
+    }
+
+    for (auto fname_s : files)
     {
-        string fname_s(fname);
         string ext = fname_s.substr(fname_s.rfind('.'), 4);
         bool is_asm = ext == ".s";
         string fileroot = fname_s.substr(fname_s.rfind('/') + 1);
