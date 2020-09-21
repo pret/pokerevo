@@ -23,6 +23,8 @@
  *      Account for diamond/pearl split
  *  - 0.1.4 (19 Sep 2020):
  *      Modify for PowerPC development
+ *  - 0.1.5 (20 Sep 2020):
+ *      Use nftw instead of glob to recursively search directory trees
  */
 
 #include <iostream>
@@ -30,30 +32,12 @@
 #include <sstream>
 #include <regex>
 #include <elf.h>
-#include <glob.h>
 #include <ftw.h>
 #include <string.h>
 #include <vector>
 #include <string>
 
 using namespace std;
-
-struct Glob : public vector<char const *> {
-    glob_t glob_result;
-public:
-    Glob(string const & pattern) {
-        int result = glob(pattern.c_str(), GLOB_TILDE | GLOB_BRACE, NULL, &glob_result);
-        if (result) {
-            stringstream ss;
-            ss << "Glob(" << pattern << ") failed with error " << result << endl;
-            throw runtime_error(ss.str());
-        }
-        assign(glob_result.gl_pathv, glob_result.gl_pathv + glob_result.gl_pathc);
-    };
-    void operator~() {
-        globfree(&glob_result);
-    }
-};
 
 static vector<string> files;
 
@@ -131,10 +115,9 @@ void analyze(string basedir, string version) {
     builddir << "/build/" << version;
     stringstream basebuilddir;
     basebuilddir << basedir << builddir.str();
-    pattern << basedir << "/{src,asm}/**/*.{c,s,cpp}";
     
-    // Recursively search the src/ and asm/ directories for
-    // .c, .cpp, and .s files, accumulating them all into files
+    // Recursively search the /src and /asm directories for
+    // .c, .cpp, and .s files, accumulating them all into the files vector
     string srcdir = basedir + "/src";
     string asmdir = basedir + "/asm";
     if (nftw(srcdir.c_str(), get_files, 20, 0) == -1) {
