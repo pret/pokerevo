@@ -23,6 +23,8 @@
  *      Account for diamond/pearl split
  *  - 0.1.4 (19 Sep 2020):
  *      Modify for PowerPC development
+ *  - 0.1.5 (20 Sep 2020):
+ *      Use nftw instead of glob to recursively search directory trees
  */
 
 #include <iostream>
@@ -30,29 +32,27 @@
 #include <sstream>
 #include <regex>
 #include <elf.h>
-#include <glob.h>
+#include <ftw.h>
 #include <string.h>
 #include <vector>
 #include <string>
 
 using namespace std;
 
-struct Glob : public vector<char const *> {
-    glob_t glob_result;
-public:
-    Glob(string const & pattern) {
-        int result = glob(pattern.c_str(), GLOB_TILDE | GLOB_BRACE, NULL, &glob_result);
-        if (result) {
-            stringstream ss;
-            ss << "Glob(" << pattern << ") failed with error " << result << endl;
-            throw runtime_error(ss.str());
-        }
-        assign(glob_result.gl_pathv, glob_result.gl_pathv + glob_result.gl_pathc);
-    };
-    void operator~() {
-        globfree(&glob_result);
+static vector<string> files;
+
+static int
+get_files(const char *fpath, const struct stat *sb,
+            int tflag, struct FTW *ftwbuf)
+{
+    if (tflag == FTW_F) {
+        string fpath_s(fpath);
+        string ext = fpath_s.substr(fpath_s.rfind('.'), 4);
+        if (ext == ".c" || ext == ".cpp" || ".s")
+            files.push_back(fpath_s);
     }
-};
+    return 0;
+}
 
 static inline Elf32_Half ElfHalfEndianAdjust(Elf32_Half val)
 {
@@ -107,16 +107,30 @@ void analyze(string basedir, string version) {
     // text       |
     unsigned split_sizes[2][2] = {{0, 0}, {0, 0}};
     unsigned incbins = 0;
+    unsigned incbin_size = 0;
     char * shstrtab = NULL;
     size_t shstrsz = 0;
     stringstream builddir;
+    
     builddir << "/build/" << version;
     stringstream basebuilddir;
     basebuilddir << basedir << builddir.str();
-    pattern << basedir << "/{src,asm}/*.{c,s,cpp}";
-    for (char const * & fname : Glob(pattern.str()))
+    
+    // Recursively search the /src and /asm directories for
+    // .c, .cpp, and .s files, accumulating them all into the files vector
+    string srcdir = basedir + "/src";
+    string asmdir = basedir + "/asm";
+    if (nftw(srcdir.c_str(), get_files, 20, 0) == -1) {
+        perror("nftw");
+        exit(EXIT_FAILURE);
+    }
+    if (nftw(asmdir.c_str(), get_files, 20, 0) == -1) {
+        perror("nftw");
+        exit(EXIT_FAILURE);
+    }
+
+    for (auto fname_s : files)
     {
-        string fname_s(fname);
         string ext = fname_s.substr(fname_s.rfind('.'), 4);
         bool is_asm = ext == ".s";
         string fileroot = fname_s.substr(fname_s.rfind('/') + 1);
@@ -124,7 +138,7 @@ void analyze(string basedir, string version) {
         bool is_unsplit = is_asm && regex_match(fileroot, regex(unsplit_regex));
         
         // open the .s file and count incbins
-        if (is_asm) {
+        if (is_asm && fileroot != "extab.s" && fileroot != "extabindex.s") {
             fstream sfile;
             sfile.open(fname_s, ios_base::in);
             if (!elf.good()) {
@@ -133,8 +147,14 @@ void analyze(string basedir, string version) {
             }
             string line;
             while (getline(sfile, line)) {
-                if (line.find(".incbin") != string::npos)
+                if (line.find(".incbin") != string::npos) {
                     incbins++;
+                    istringstream line_ss(line);
+                    string discard;
+                    unsigned size = 0;
+                    line_ss >> discard >> discard >> discard >> hex >> size;
+                    incbin_size += size;
+                }
             }
             sfile.close();
         }
@@ -227,7 +247,8 @@ void analyze(string basedir, string version) {
     }
     cout << endl;
     // Report incbins
-    cout << "  " << incbins << " incbins remain" << endl;
+    cout << "  " << incbins << " incbins remain totaling " << incbin_size << " bytes ("
+         << (incbin_size / static_cast<double>(total_data)) * 100.0 << "%)" <<  endl;
 
     // Let vectors fall to gc
 }
