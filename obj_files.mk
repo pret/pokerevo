@@ -88,6 +88,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/GameSpy/sb_queryengine.o                     \
 	$(BUILD_DIR)/asm/GameSpy/sb_server.o                          \
 	$(BUILD_DIR)/asm/GameSpy/sb_serverbrowsing.o                  \
+	$(BUILD_DIR)/asm/GameSpy/sb_serverlist.o                      \
 	$(BUILD_DIR)/asm/text_10_2.o                                  \
 	$(BUILD_DIR)/asm/text_11.o
 
