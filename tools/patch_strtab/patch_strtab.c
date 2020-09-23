@@ -1,42 +1,7 @@
 /*
+patch_strtab
 
-README:
-
-The program patches the .strtab section of an ELF relocatable module
-by replacing certain escape sequences with the characters they represent.
-
-CodeWarrior's C++ name mangling scheme may produce linkage names that
-are not valid identifiers in the .s files provided to the 
-assembler, so we cannot use the mangled names directly as labels in the .s file.
-This interferes with our workflow because we would like
-to be able to link with compiled C++ modules and add accurate symbols to them 
-before they have been decompiled. To deal with this issue, for each .s file
-we replace any illegal characters in the mangled name with valid escape sequences, 
-assemble the .s file, then postprocess the .o object code with this program to restore
-the correct symbol name.
-
-*/
-
-/*
-
-Receive the .o filename in argv
-Open (rb+), load, and validate the ELF file, then fix the endianness
-  of the ELF header, section headers, and symbol tables
-  
-load the symbol table and the string table into separate buffers.
-Use sh_size to get the sizes, and record the size of the .strtab 
-
-For each symbol, follow the st_name offset into the .strtab section and read in the
-string. Get the length of the string as well
-
-replace each instance of the pre-defined escape sequences with their associated
-characters. 
-
-Write the string table back into the ELF .strtab at the same offset it was found.
-Use fseek(fp, offset, SEEK_SET), then fwrite(strTab, 1, strTabSz, fp)
-
-Since any transformation will always shorten the string, just fill in the 
-gap created at the end of the buffer with NUL bytes.
+by Max Parisi, 2020
 
 */
 
@@ -364,6 +329,10 @@ ElfStruct *LoadElfFile(char *path)
 			}
 		}
 	}
+    
+    // Fix endianness in symbol table
+    SwapSymbolTable(elf);
+    
 	return elf;
 }
 
@@ -428,7 +397,7 @@ int main(int argc, char *argv[])
         free(elf);
         return EXIT_FAILURE;
     }
-
+        
     const u32 numSyms = GetNumberOfSymbols(elf);
     for (u32 i = 0; i < numSyms; i++) {
         Elf32_Sym *sym = GetSymbol(elf, i);
