@@ -93,6 +93,8 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/NW4R/ut_list.o                               \
 	$(BUILD_DIR)/asm/NW4R/ut_LinkList.o                           \
 	$(BUILD_DIR)/asm/NW4R/ut_binaryFileFormat.o                   \
+	$(BUILD_DIR)/asm/NW4R/ut_CharStrmReader.o                     \
+	$(BUILD_DIR)/asm/NW4R/ut_TagProcessorBase.o                   \
 	$(BUILD_DIR)/asm/text_10_3.o                                  \
 	$(BUILD_DIR)/asm/text_11.o
 
