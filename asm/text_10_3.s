@@ -5104,10 +5104,10 @@ lbl_80367EFC:
 /* 80367F38 00363B98  7C 00 07 75 */	extsb. r0, r0
 /* 80367F3C 00363B9C  40 82 00 2C */	bne lbl_80367F68
 /* 80367F40 00363BA0  38 6D B1 C8 */	addi r3, r13, lbl_80640488-_SDA_BASE_
-/* 80367F44 00363BA4  4B FF AE E5 */	bl __ct__Q34nw4r2ut19TagProcessorBase____esc_lt_c____esc_gt_Fv
-/* 80367F48 00363BA8  3C 80 80 36 */	lis r4, __dt__Q34nw4r2ut19TagProcessorBase____esc_lt_c____esc_gt_Fv@ha
+/* 80367F44 00363BA4  4B FF AE E5 */	bl __ct__Q34nw4r2ut19TagProcessorBase____esc_ltc____esc_gtFv
+/* 80367F48 00363BA8  3C 80 80 36 */	lis r4, __dt__Q34nw4r2ut19TagProcessorBase____esc_ltc____esc_gtFv@ha
 /* 80367F4C 00363BAC  3C A0 80 62 */	lis r5, lbl_80621728@ha
-/* 80367F50 00363BB0  38 84 2E 38 */	addi r4, r4, __dt__Q34nw4r2ut19TagProcessorBase____esc_lt_c____esc_gt_Fv@l
+/* 80367F50 00363BB0  38 84 2E 38 */	addi r4, r4, __dt__Q34nw4r2ut19TagProcessorBase____esc_ltc____esc_gtFv@l
 /* 80367F54 00363BB4  38 6D B1 C8 */	addi r3, r13, lbl_80640488-_SDA_BASE_
 /* 80367F58 00363BB8  38 A5 17 28 */	addi r5, r5, lbl_80621728@l
 /* 80367F5C 00363BBC  4B E5 EC ED */	bl __register_global_object_tmp
@@ -5118,10 +5118,10 @@ lbl_80367F68:
 /* 80367F6C 00363BCC  7C 00 07 75 */	extsb. r0, r0
 /* 80367F70 00363BD0  40 82 00 2C */	bne lbl_80367F9C
 /* 80367F74 00363BD4  38 6D B1 CC */	addi r3, r13, lbl_8064048C-_SDA_BASE_
-/* 80367F78 00363BD8  4B FF B2 19 */	bl __ct__Q34nw4r2ut19TagProcessorBase____esc_lt_w____esc_gt_Fv
-/* 80367F7C 00363BDC  3C 80 80 36 */	lis r4, __dt__Q34nw4r2ut19TagProcessorBase____esc_lt_w____esc_gt_Fv@ha
+/* 80367F78 00363BD8  4B FF B2 19 */	bl __ct__Q34nw4r2ut19TagProcessorBase____esc_ltw____esc_gtFv
+/* 80367F7C 00363BDC  3C 80 80 36 */	lis r4, __dt__Q34nw4r2ut19TagProcessorBase____esc_ltw____esc_gtFv@ha
 /* 80367F80 00363BE0  3C A0 80 62 */	lis r5, lbl_80621734@ha
-/* 80367F84 00363BE4  38 84 31 A0 */	addi r4, r4, __dt__Q34nw4r2ut19TagProcessorBase____esc_lt_w____esc_gt_Fv@l
+/* 80367F84 00363BE4  38 84 31 A0 */	addi r4, r4, __dt__Q34nw4r2ut19TagProcessorBase____esc_ltw____esc_gtFv@l
 /* 80367F88 00363BE8  38 6D B1 CC */	addi r3, r13, lbl_8064048C-_SDA_BASE_
 /* 80367F8C 00363BEC  38 A5 17 34 */	addi r5, r5, lbl_80621734@l
 /* 80367F90 00363BF0  4B E5 EC B9 */	bl __register_global_object_tmp
