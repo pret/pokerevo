@@ -28,8 +28,8 @@ TARGET := pbr_pal
 
 BUILD_DIR := build/$(TARGET)
 
-SRC_DIRS := src src/SDK/OS src/libstdc++ src/MetroTRK src/GameSpy
-ASM_DIRS := asm asm/SDK/OS asm/libstdc++ asm/MetroTRK asm/GameSpy
+SRC_DIRS := src src/SDK/OS src/libstdc++ src/MetroTRK src/GameSpy src/NW4R
+ASM_DIRS := asm asm/SDK/OS asm/libstdc++ asm/MetroTRK asm/GameSpy asm/NW4R
 
 # Inputs
 S_FILES := $(wildcard asm/*.s)
@@ -133,8 +133,8 @@ $(ELF): $(O_FILES) $(LDSCRIPT)
 	$(OBJCOPY) $@ $@
 $(BUILD_DIR)/%.o: %.s
 	$(AS) $(ASFLAGS) -o $@ $<
-	# resolve escape sequences for C++ mangled names in the .strtab section (assembler workaround).
-	$(PATCHSTRTAB) $<
+# resolve escape sequences for C++ mangled names in the .strtab section (assembler workaround).
+	$(PATCHSTRTAB) $@
 
 $(BUILD_DIR)/%.o: %.cpp
 	$(CC) $(CFLAGS) -lang c++ -c -o $@ $<

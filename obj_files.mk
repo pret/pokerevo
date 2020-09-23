@@ -90,6 +90,10 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/GameSpy/sb_serverbrowsing.o                  \
 	$(BUILD_DIR)/asm/GameSpy/sb_serverlist.o                      \
 	$(BUILD_DIR)/asm/text_10_2.o                                  \
+	$(BUILD_DIR)/asm/NW4R/ut_list.o                               \
+	$(BUILD_DIR)/asm/NW4R/ut_LinkList.o                           \
+	$(BUILD_DIR)/asm/NW4R/ut_binaryFileFormat.o                   \
+	$(BUILD_DIR)/asm/text_10_3.o                                  \
 	$(BUILD_DIR)/asm/text_11.o
 
 CTORS_O_FILES :=                                                  \

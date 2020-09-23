@@ -168,17 +168,6 @@ void Padding(FILE *fp, u32 padBytes)
 	}	
 }
 
-// Write bufSize bytes from the buffer referenced by bufPtr to fp.
-void Write(FILE *fp, const void *bufPtr, size_t bufSize)
-{
-	if (bufSize) {
-		if (fwrite(bufPtr, bufSize, 1, fp) != 1) {
-			fprintf(stderr, "ERROR: ins. disk space\n");
-			exit(7);
-		}
-	}
-}
-
 // Swap the endianness of every field of ehdr and return ehdr
 Elf32_Ehdr *SwapEhdr(Elf32_Ehdr *ehdr)
 {
@@ -274,15 +263,9 @@ char *LoadFile(char *path)
 }
 
 // Load the ELF file located by path into a newly malloc'd 
-// ElfStruct, then return the pointer to this ElfStruct. 
-
-// Return NULL if an error occurs during malloc, file load, 
-// or if path does not locate an ELF file. 
-
-// The ELF header, section header, symbols, and relas will all have their endianness
-// swapped correctly. 
-
-// Record pointers to the .symtab, .strtab, 
+// ElfStruct, then return the pointer to this ElfStruct.
+// The ELF header, section headers, and symbols will all have their endianness
+// swapped. Record pointers to the .symtab, .strtab, 
 // and .shstrtab section headers in the ElfStruct if they exist
 ElfStruct *LoadElfFile(char *path)
 {
