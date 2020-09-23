@@ -28,8 +28,8 @@ TARGET := pbr_pal
 
 BUILD_DIR := build/$(TARGET)
 
-SRC_DIRS := src src/SDK/OS src/libstdc++ src/MetroTRK src/GameSpy
-ASM_DIRS := asm asm/SDK/OS asm/libstdc++ asm/MetroTRK asm/GameSpy
+SRC_DIRS := src src/SDK/OS src/libstdc++ src/MetroTRK src/GameSpy src/NW4R
+ASM_DIRS := asm asm/SDK/OS asm/libstdc++ asm/MetroTRK asm/GameSpy asm/NW4R
 
 # Inputs
 S_FILES := $(wildcard asm/*.s)
@@ -55,14 +55,15 @@ O_FILES := $(EXTAB_O_FILES) $(EXTABINDEX_O_FILES) $(TEXT_O_FILES) \
 MWCC_VERSION := 3.0
 
 # Programs
-AS      := $(DEVKITPPC)/bin/powerpc-eabi-as
-OBJCOPY := $(DEVKITPPC)/bin/powerpc-eabi-objcopy
-CPP     := cpp -P
-CC      := $(WINE) tools/mwcc_compiler/$(MWCC_VERSION)/mwcceppc.exe
-LD      := $(WINE) tools/mwcc_compiler/$(MWCC_VERSION)/mwldeppc.exe
-ELF2DOL := tools/elf2dol/elf2dol$(EXE)
-SHA1SUM := sha1sum
-PYTHON  := python3
+AS          := $(DEVKITPPC)/bin/powerpc-eabi-as
+OBJCOPY     := $(DEVKITPPC)/bin/powerpc-eabi-objcopy
+CPP         := cpp -P
+CC          := $(WINE) tools/mwcc_compiler/$(MWCC_VERSION)/mwcceppc.exe
+LD          := $(WINE) tools/mwcc_compiler/$(MWCC_VERSION)/mwldeppc.exe
+PATCHSTRTAB := tools/patch_strtab/patch_strtab$(EXE)
+ELF2DOL     := tools/elf2dol/elf2dol$(EXE)
+SHA1SUM     := sha1sum
+PYTHON      := python3
 
 #POSTPROC := tools/postprocess.py
 
@@ -132,6 +133,8 @@ $(ELF): $(O_FILES) $(LDSCRIPT)
 	$(OBJCOPY) $@ $@
 $(BUILD_DIR)/%.o: %.s
 	$(AS) $(ASFLAGS) -o $@ $<
+# resolve escape sequences for C++ mangled names in the .strtab section (assembler workaround).
+	$(PATCHSTRTAB) $@
 
 $(BUILD_DIR)/%.o: %.cpp
 	$(CC) $(CFLAGS) -lang c++ -c -o $@ $<
