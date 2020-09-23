@@ -1,9 +1,12 @@
 /*
-patch_strtab
-
-by Max Parisi, 2020
-
-*/
+ * patch_strtab
+ *
+ * This program patches the .strtab section of an ELF relocatable module
+ * by replacing certain escape sequences with the characters they represent.
+ * 
+ * by Max Parisi, 2020
+ *
+ */
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,6 +1,6 @@
 README:
 
-The program patches the .strtab section of an ELF relocatable module
+This program patches the .strtab section of an ELF relocatable module
 by replacing certain escape sequences with the characters they represent.
 
 CodeWarrior's C++ name mangling scheme may produce linkage names that
