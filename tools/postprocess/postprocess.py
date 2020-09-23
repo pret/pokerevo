@@ -34,12 +34,12 @@ import struct
 
 # Substitutions
 substitutions = (
-    ('<',  '____esc_lt'),
-    ('>',  '____esc_gt'),
-    ('@',  '____esc_at'),
-    ('\\', '____esc_bs'),
-    (',',  '____esc_cm'),
-    ('-',  '____esc_hy')
+    ('<',  '$0'),
+    ('>',  '$1'),
+    ('@',  '$2'),
+    ('\\', '$3'),
+    (',',  '$4'),
+    ('-',  '$5')
 )
 
 def format(symbol):
