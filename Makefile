@@ -60,12 +60,11 @@ OBJCOPY     := $(DEVKITPPC)/bin/powerpc-eabi-objcopy
 CPP         := cpp -P
 CC          := $(WINE) tools/mwcc_compiler/$(MWCC_VERSION)/mwcceppc.exe
 LD          := $(WINE) tools/mwcc_compiler/$(MWCC_VERSION)/mwldeppc.exe
-PATCHSTRTAB := tools/patch_strtab/patch_strtab$(EXE)
 ELF2DOL     := tools/elf2dol/elf2dol$(EXE)
 SHA1SUM     := sha1sum
 PYTHON      := python3
 
-#POSTPROC := tools/postprocess.py
+POSTPROC := tools/postprocess/postprocess.py
 
 # Options
 INCLUDES := -i . -I- -i include -i include/SDK -i include/libstdc++
@@ -75,7 +74,7 @@ LDFLAGS := -map $(MAP) -fp hard -nodefaults
 CFLAGS  := -Cpp_exceptions off -proc gekko -fp hard -O4,p -nodefaults -msgstyle gcc -ipa file $(INCLUDES) -W all
 
 # for postprocess.py
-PROCFLAGS := -fprologue-fixup=old_stack
+PROCFLAGS := -fsymbol-fixup
 
 # elf2dol needs to know these in order to calculate sbss correctly.
 SDATA_PDHR := 9
@@ -84,7 +83,7 @@ SBSS_PDHR := 10
 infoshell = $(foreach line, $(shell $1 | sed "s/ /__SPACE__/g"), $(info $(subst __SPACE__, ,$(line))))
 
 TOOLS_DIR = tools
-TOOLDIRS = $(filter-out $(TOOLS_DIR)/mwcc_compiler,$(wildcard $(TOOLS_DIR)/*))
+TOOLDIRS = $(filter-out $(TOOLS_DIR)/mwcc_compiler $(TOOLS_DIR)/postprocess,$(wildcard $(TOOLS_DIR)/*))
 TOOLBASE = $(TOOLDIRS:$(TOOLS_DIR)/%=%)
 TOOLS = $(foreach tool,$(TOOLBASE),$(TOOLS_DIR)/$(tool)/$(tool)$(EXE))
 
@@ -134,7 +133,7 @@ $(ELF): $(O_FILES) $(LDSCRIPT)
 $(BUILD_DIR)/%.o: %.s
 	$(AS) $(ASFLAGS) -o $@ $<
 # resolve escape sequences for C++ mangled names in the .strtab section (assembler workaround).
-	$(PATCHSTRTAB) $@
+	$(PYTHON) $(POSTPROC) $(PROCFLAGS) $@ -fsymbol-fixup
 
 $(BUILD_DIR)/%.o: %.cpp
 	$(CC) $(CFLAGS) -lang c++ -c -o $@ $<

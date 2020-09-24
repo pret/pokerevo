@@ -95,7 +95,15 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/NW4R/ut_binaryFileFormat.o                   \
 	$(BUILD_DIR)/asm/NW4R/ut_CharStrmReader.o                     \
 	$(BUILD_DIR)/asm/NW4R/ut_TagProcessorBase.o                   \
+	$(BUILD_DIR)/asm/NW4R/ut_IOStream.o                           \
+	$(BUILD_DIR)/asm/NW4R/ut_FileStream.o                         \
+	$(BUILD_DIR)/asm/NW4R/ut_DvdFileStream.o                      \
+	$(BUILD_DIR)/asm/NW4R/ut_DvdLockedFileStream.o                \
+	$(BUILD_DIR)/asm/NW4R/ut_Font.o                               \
 	$(BUILD_DIR)/asm/text_10_3.o                                  \
+	$(BUILD_DIR)/asm/NW4R/ut_ResFont.o                                 \
+	$(BUILD_DIR)/asm/NW4R/ut_CharWriter.o                                 \
+	$(BUILD_DIR)/asm/text_10_4.o                                  \
 	$(BUILD_DIR)/asm/text_11.o
 
 CTORS_O_FILES :=                                                  \

@@ -94,7 +94,7 @@ func_803626D8:
 /* 803626EC 0035E34C  98 C3 00 19 */	stb r6, 0x19(r3)
 /* 803626F0 0035E350  98 A3 00 1A */	stb r5, 0x1a(r3)
 /* 803626F4 0035E354  98 03 00 1B */	stb r0, 0x1b(r3)
-/* 803626F8 0035E358  48 00 33 D4 */	b func_80365ACC
+/* 803626F8 0035E358  48 00 33 D4 */	b UpdateVertexColor__Q34nw4r2ut10CharWriterFv
 
 .global func_803626FC
 func_803626FC:
