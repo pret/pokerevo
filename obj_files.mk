@@ -118,6 +118,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/NW4R/snd_EnvGenerator.o                      \
 	$(BUILD_DIR)/asm/NW4R/snd_ExternalSoundPlayer.o               \
 	$(BUILD_DIR)/asm/NW4R/snd_FrameHeap.o                         \
+	$(BUILD_DIR)/asm/NW4R/snd_FxDelay.o                           \
 	$(BUILD_DIR)/asm/text_10_4.o                                  \
 	$(BUILD_DIR)/asm/text_11.o
 
