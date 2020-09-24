@@ -884,9 +884,9 @@ VoiceCallback__Q44nw4r3snd6detail7AxVoiceFPv:
 /* 80369FD8 00365C38  7C 7F 1B 78 */	mr r31, r3
 /* 80369FDC 00365C3C  90 1E 00 00 */	stw r0, 0(r30)
 /* 80369FE0 00365C40  90 1E 00 04 */	stw r0, 4(r30)
-/* 80369FE4 00365C44  48 00 1F C1 */	bl func_8036BFA4
+/* 80369FE4 00365C44  48 00 1F C1 */	bl GetInstance__Q44nw4r3snd6detail14AxVoiceManagerFv
 /* 80369FE8 00365C48  7F C4 F3 78 */	mr r4, r30
-/* 80369FEC 00365C4C  48 00 24 E5 */	bl func_8036C4D0
+/* 80369FEC 00365C4C  48 00 24 E5 */	bl ReserveForFreeAxVoice__Q44nw4r3snd6detail14AxVoiceManagerFPQ44nw4r3snd6detail7AxVoice
 /* 80369FF0 00365C50  7F E3 FB 78 */	mr r3, r31
 /* 80369FF4 00365C54  4B F0 47 91 */	bl OSRestoreInterrupts
 /* 80369FF8 00365C58  80 01 00 14 */	lwz r0, 0x14(r1)

@@ -106,6 +106,11 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/NW4R/ut_TextWriterBase.o                     \
 	$(BUILD_DIR)/asm/NW4R/snd_AxManager.o                         \
 	$(BUILD_DIR)/asm/NW4R/snd_AxVoice.o                           \
+	$(BUILD_DIR)/asm/NW4R/snd_AxVoiceManager.o                    \
+	$(BUILD_DIR)/asm/NW4R/snd_AxfxImpl.o                          \
+	$(BUILD_DIR)/asm/NW4R/snd_Bank.o                              \
+	$(BUILD_DIR)/asm/NW4R/snd_BankFile.o                          \
+	$(BUILD_DIR)/asm/NW4R/snd_BasicPlayer.o                       \
 	$(BUILD_DIR)/asm/text_10_4.o                                  \
 	$(BUILD_DIR)/asm/text_11.o
 
