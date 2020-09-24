@@ -102,6 +102,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/NW4R/ut_Font.o                               \
 	$(BUILD_DIR)/asm/text_10_3.o                                  \
 	$(BUILD_DIR)/asm/NW4R/ut_ResFont.o                                 \
+	$(BUILD_DIR)/asm/NW4R/ut_CharWriter.o                                 \
 	$(BUILD_DIR)/asm/text_10_4.o                                  \
 	$(BUILD_DIR)/asm/text_11.o
 
