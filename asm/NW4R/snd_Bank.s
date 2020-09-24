@@ -81,7 +81,7 @@ lbl_8036C950:
 /* 8036C954 003685B4  80 BE 00 14 */	lwz r5, 0x14(r30)
 /* 8036C958 003685B8  80 DE 00 1C */	lwz r6, 0x1c(r30)
 /* 8036C95C 003685BC  80 FE 00 20 */	lwz r7, 0x20(r30)
-/* 8036C960 003685C0  48 00 26 A5 */	bl func_8036F004
+/* 8036C960 003685C0  48 00 26 A5 */	bl AllocChannel__Q44nw4r3snd6detail7ChannelFiiiPFPQ44nw4r3snd6detail7ChannelQ54nw4r3snd6detail7Channel21ChannelCallbackStatusUl_vUl
 /* 8036C964 003685C4  2C 03 00 00 */	cmpwi r3, 0
 /* 8036C968 003685C8  7C 7F 1B 78 */	mr r31, r3
 /* 8036C96C 003685CC  40 82 00 0C */	bne lbl_8036C978
@@ -145,7 +145,7 @@ lbl_8036C978:
 /* 8036CA50 003686B0  EC 63 08 2A */	fadds f3, f3, f1
 /* 8036CA54 003686B4  D0 7F 00 AC */	stfs f3, 0xac(r31)
 /* 8036CA58 003686B8  D0 1F 00 B0 */	stfs f0, 0xb0(r31)
-/* 8036CA5C 003686BC  48 00 22 05 */	bl func_8036EC60
+/* 8036CA5C 003686BC  48 00 22 05 */	bl Start__Q44nw4r3snd6detail7ChannelFRCQ44nw4r3snd6detail8WaveDataiUl
 /* 8036CA60 003686C0  7F E3 FB 78 */	mr r3, r31
 lbl_8036CA64:
 /* 8036CA64 003686C4  80 01 00 D4 */	lwz r0, 0xd4(r1)
