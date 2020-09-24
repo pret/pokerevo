@@ -114,6 +114,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/NW4R/snd_BasicSound.o                        \
 	$(BUILD_DIR)/asm/NW4R/snd_Channel.o                           \
 	$(BUILD_DIR)/asm/NW4R/snd_DisposeCallbackManager.o            \
+	$(BUILD_DIR)/asm/NW4R/snd_DvdSoundArchive.o                   \
 	$(BUILD_DIR)/asm/text_10_4.o                                  \
 	$(BUILD_DIR)/asm/text_11.o
 
