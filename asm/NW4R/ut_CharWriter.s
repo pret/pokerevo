@@ -147,6 +147,7 @@ lbl_80364964:
 /* 80364A58 003606B8  38 21 00 20 */	addi r1, r1, 0x20
 /* 80364A5C 003606BC  4E 80 00 20 */	blr
 
+/* warning: symbol name may have been truncated at the end */
 .global SetColorMapping__Q34nw4r2ut10CharWriterFQ34nw4r2ut5Color
 SetColorMapping__Q34nw4r2ut10CharWriterFQ34nw4r2ut5Color:
 /* 80364A60 003606C0  89 64 00 00 */	lbz r11, 0(r4)
