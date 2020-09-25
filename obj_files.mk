@@ -135,6 +135,10 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_SeqFile.o                    \
 	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_SeqPlayer.o                  \
 	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_SeqSound.o                   \
+	$(BUILD_DIR)/asm/nw4r/snd/snd_SeqSoundHandle.o                    \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_SeqTrack.o                   \
+	$(BUILD_DIR)/asm/nw4r/snd/snd_Sound3DListener.o                   \
+	$(BUILD_DIR)/asm/nw4r/snd/snd_Sound3DManager.o                    \
 	$(BUILD_DIR)/asm/text_10_6.o                                      \
 	$(BUILD_DIR)/asm/text_11.o
 
