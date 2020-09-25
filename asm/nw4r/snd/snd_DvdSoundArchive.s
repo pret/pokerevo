@@ -14,7 +14,7 @@ __ct__Q34nw4r3snd15DvdSoundArchiveFv:
 /* 8036F6A4 0036B304  38 7F 01 08 */	addi r3, r31, 0x108
 /* 8036F6A8 0036B308  38 84 CA 08 */	addi r4, r4, lbl_8044CA08@l
 /* 8036F6AC 0036B30C  90 9F 00 00 */	stw r4, 0(r31)
-/* 8036F6B0 0036B310  48 00 7E CD */	bl GLXMemoryInfo___ct
+/* 8036F6B0 0036B310  48 00 7E CD */	bl __ct__Q44nw4r3snd6detail22SoundArchiveFileReaderFv
 /* 8036F6B4 0036B314  38 00 00 00 */	li r0, 0
 /* 8036F6B8 0036B318  7F E3 FB 78 */	mr r3, r31
 /* 8036F6BC 0036B31C  98 1F 01 88 */	stb r0, 0x188(r31)
@@ -110,7 +110,7 @@ lbl_8036F7C8:
 lbl_8036F7FC:
 /* 8036F7FC 0036B45C  7F E4 FB 78 */	mr r4, r31
 /* 8036F800 0036B460  38 7C 01 08 */	addi r3, r28, 0x108
-/* 8036F804 0036B464  48 00 7D 9D */	bl func_803775A0
+/* 8036F804 0036B464  48 00 7D 9D */	bl Init__Q44nw4r3snd6detail22SoundArchiveFileReaderFPCv
 /* 8036F808 0036B468  7F 83 E3 78 */	mr r3, r28
 /* 8036F80C 0036B46C  38 9C 01 08 */	addi r4, r28, 0x108
 /* 8036F810 0036B470  48 00 77 F5 */	bl Setup__Q34nw4r3snd12SoundArchiveFPQ44nw4r3snd6detail22SoundArchiveFileReader
@@ -328,7 +328,7 @@ lbl_8036FAD4:
 /* 8036FAD4 0036B734  7F C4 F3 78 */	mr r4, r30
 /* 8036FAD8 0036B738  7F E5 FB 78 */	mr r5, r31
 /* 8036FADC 0036B73C  38 7D 01 08 */	addi r3, r29, 0x108
-/* 8036FAE0 0036B740  48 00 7B 71 */	bl func_80377650
+/* 8036FAE0 0036B740  48 00 7B 71 */	bl SetInfoChunk__Q44nw4r3snd6detail22SoundArchiveFileReaderFPCvUl
 /* 8036FAE4 0036B744  38 60 00 01 */	li r3, 1
 lbl_8036FAE8:
 /* 8036FAE8 0036B748  80 01 00 24 */	lwz r0, 0x24(r1)
