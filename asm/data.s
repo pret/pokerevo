@@ -203,7 +203,8 @@ lbl_80406054:
 	.global lbl_804061BA
 lbl_804061BA:
 	.incbin "baserom.dol", 0x4022BA, 0xFA
-.global lbl_804062B4
+
+	.global lbl_804062B4
 lbl_804062B4:
 	.incbin "baserom.dol", 0x4023B4, 0x5E
 .global lbl_80406312
