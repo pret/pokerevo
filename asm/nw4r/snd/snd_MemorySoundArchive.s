@@ -6,4 +6,4 @@
 Shutdown__Q34nw4r3snd18MemorySoundArchiveFv:
 /* 80371DEC 0036DA4C  38 00 00 00 */	li r0, 0
 /* 80371DF0 0036DA50  90 03 01 08 */	stw r0, 0x108(r3)
-/* 80371DF4 0036DA54  48 00 52 18 */	b func_8037700C
+/* 80371DF4 0036DA54  48 00 52 18 */	b Shutdown__Q34nw4r3snd12SoundArchiveFv
