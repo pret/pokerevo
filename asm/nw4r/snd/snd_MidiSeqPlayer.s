@@ -51,7 +51,7 @@ func_80371E50:
 /* 80371E50 0036DAB0  38 63 FF 8C */	addi r3, r3, -116
 /* 80371E54 0036DAB4  4B FF FF B8 */	b InvalidateWaveData__Q44nw4r3snd6detail9SeqPlayerFPCvPCv
 
-/* @116@InvalidateData__Q44nw4r3snd6detail9SeqPlayerFPCvPCv */
+/* @116@InvalidateData__Q44nw4r3snd6detail9SeqPlayerFPCvPCv */ 
 .global func_80371E58
 func_80371E58:
 /* 80371E58 0036DAB8  38 63 FF 8C */	addi r3, r3, -116
