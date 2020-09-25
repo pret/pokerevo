@@ -28,8 +28,8 @@ TARGET := pbr_pal
 
 BUILD_DIR := build/$(TARGET)
 
-SRC_DIRS := src src/SDK/OS src/libstdc++ src/MetroTRK src/GameSpy src/NW4R
-ASM_DIRS := asm asm/SDK/OS asm/libstdc++ asm/MetroTRK asm/GameSpy asm/NW4R
+SRC_DIRS := src src/SDK/OS src/libstdc++ src/MetroTRK src/GameSpy src/nw4r/ut src/nw4r/snd
+ASM_DIRS := asm asm/SDK/OS asm/libstdc++ asm/MetroTRK asm/GameSpy asm/nw4r/ut asm/nw4r/snd
 
 # Inputs
 S_FILES := $(wildcard asm/*.s)
