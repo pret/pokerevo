@@ -18,7 +18,7 @@ Close__Q34nw4r3snd16NandSoundArchiveFv:
 /* 80372F74 0036EBD4  98 1F 01 D8 */	stb r0, 0x1d8(r31)
 lbl_80372F78:
 /* 80372F78 0036EBD8  7F E3 FB 78 */	mr r3, r31
-/* 80372F7C 0036EBDC  48 00 40 91 */	bl func_8037700C
+/* 80372F7C 0036EBDC  48 00 40 91 */	bl Shutdown__Q34nw4r3snd12SoundArchiveFv
 /* 80372F80 0036EBE0  80 01 00 14 */	lwz r0, 0x14(r1)
 /* 80372F84 0036EBE4  83 E1 00 0C */	lwz r31, 0xc(r1)
 /* 80372F88 0036EBE8  7C 08 03 A6 */	mtlr r0
