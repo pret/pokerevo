@@ -4,7 +4,7 @@
 
 .global OnUpdateFrameSoundThread__Q44nw4r3snd6detail9SeqPlayerFv
 OnUpdateFrameSoundThread__Q44nw4r3snd6detail9SeqPlayerFv:
-/* 80371DF8 0036DA58  48 00 28 AC */	b lbl_803746A4
+/* 80371DF8 0036DA58  48 00 28 AC */	b Update__Q44nw4r3snd6detail9SeqPlayerFv
 
 .global OnShutdownSoundThread__Q44nw4r3snd6detail9SeqPlayerFv
 OnShutdownSoundThread__Q44nw4r3snd6detail9SeqPlayerFv:
@@ -45,22 +45,26 @@ IsActive__Q44nw4r3snd6detail9SeqPlayerCFv:
 /* 80371E48 0036DAA8  54 03 0F FE */	srwi r3, r0, 0x1f
 /* 80371E4C 0036DAAC  4E 80 00 20 */	blr
 
-.global $2116$2InvalidateWaveData__Q44nw4r3snd6detail9SeqPlayerFPCvPCv
-$2116$2InvalidateWaveData__Q44nw4r3snd6detail9SeqPlayerFPCvPCv:
+/* @116@InvalidateWaveData__Q44nw4r3snd6detail9SeqPlayerFPCvPCv */
+.global func_80371E50
+func_80371E50:
 /* 80371E50 0036DAB0  38 63 FF 8C */	addi r3, r3, -116
 /* 80371E54 0036DAB4  4B FF FF B8 */	b InvalidateWaveData__Q44nw4r3snd6detail9SeqPlayerFPCvPCv
 
-.global $2116$2InvalidateData__Q44nw4r3snd6detail9SeqPlayerFPCvPCv
-$2116$2InvalidateData__Q44nw4r3snd6detail9SeqPlayerFPCvPCv:
+/* @116@InvalidateData__Q44nw4r3snd6detail9SeqPlayerFPCvPCv */
+.global func_80371E58
+func_80371E58:
 /* 80371E58 0036DAB8  38 63 FF 8C */	addi r3, r3, -116
-/* 80371E5C 0036DABC  48 00 25 AC */	b lbl_80374408
+/* 80371E5C 0036DABC  48 00 25 AC */	b InvalidateData__Q44nw4r3snd6detail9SeqPlayerFPCvPCv
 
-.global $2128$2OnShutdownSoundThread__Q44nw4r3snd6detail9SeqPlayerFv
-$2128$2OnShutdownSoundThread__Q44nw4r3snd6detail9SeqPlayerFv:
+/* @128@OnShutdownSoundThread__Q44nw4r3snd6detail9SeqPlayerFv */
+.global func_80371E60
+func_80371E60:
 /* 80371E60 0036DAC0  38 63 FF 80 */	addi r3, r3, -128
 /* 80371E64 0036DAC4  4B FF FF 98 */	b OnShutdownSoundThread__Q44nw4r3snd6detail9SeqPlayerFv
 
-.global $2128$2OnUpdateFrameSoundThread__Q44nw4r3snd6detail9SeqPlayerFv
-$2128$2OnUpdateFrameSoundThread__Q44nw4r3snd6detail9SeqPlayerFv:
+/* @128@OnUpdateFrameSoundThread__Q44nw4r3snd6detail9SeqPlayerFv */
+.global func_80371E68
+func_80371E68:
 /* 80371E68 0036DAC8  38 63 FF 80 */	addi r3, r3, -128
 /* 80371E6C 0036DACC  4B FF FF 8C */	b OnUpdateFrameSoundThread__Q44nw4r3snd6detail9SeqPlayerFv

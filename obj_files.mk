@@ -133,6 +133,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/nw4r/snd/snd_RemoteSpeaker.o                     \
 	$(BUILD_DIR)/asm/nw4r/snd/snd_RemoteSpeakerManager.o              \
 	$(BUILD_DIR)/asm/nw4r/snd/snd_SeqFile.o                           \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_SeqPlayer.o                  \
 	$(BUILD_DIR)/asm/text_10_6.o                                      \
 	$(BUILD_DIR)/asm/text_11.o
 
