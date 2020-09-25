@@ -1315,7 +1315,7 @@ func_80374C20:
 /* 80374C20 00370880  38 63 FF 8C */	addi r3, r3, -116
 /* 80374C24 00370884  4B FF EF 8C */	b __dt__Q44nw4r3snd6detail9SeqPlayerFv
 
-/* @128@__dt__Q44nw4r3snd6detail9SeqPlayerFv *.
+/* @128@__dt__Q44nw4r3snd6detail9SeqPlayerFv */
 .global func_80374C28
 func_80374C28:
 /* 80374C28 00370888  38 63 FF 80 */	addi r3, r3, -128

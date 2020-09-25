@@ -88,10 +88,10 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/GameSpy/sb_queryengine.o                     \
 	$(BUILD_DIR)/asm/GameSpy/sb_server.o                          \
 	$(BUILD_DIR)/asm/GameSpy/sb_serverbrowsing.o                  \
-	$(BUILD_DIR)/asm/GameSpy/sb_serverlist.o                       \
-	$(BUILD_DIR)/asm/text_10_2.o                                     \
-	$(BUILD_DIR)/asm/nw4r/ut/ut_list.o                              \
-	$(BUILD_DIR)/asm/nw4r/ut/ut_LinkList.o                            \
+	$(BUILD_DIR)/asm/GameSpy/sb_serverlist.o                      \
+	$(BUILD_DIR)/asm/text_10_2.o                                      \
+	$(BUILD_DIR)/asm/nw4r/ut/ut_list.o                                \
+	$(BUILD_DIR)/asm/nw4r/ut/detail/ut_LinkList.o                     \
 	$(BUILD_DIR)/asm/nw4r/ut/ut_binaryFileFormat.o                    \
 	$(BUILD_DIR)/asm/nw4r/ut/ut_CharStrmReader.o                      \
 	$(BUILD_DIR)/asm/nw4r/ut/ut_TagProcessorBase.o                    \
@@ -104,36 +104,37 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/nw4r/ut/ut_ResFont.o                             \
 	$(BUILD_DIR)/asm/nw4r/ut/ut_CharWriter.o                          \
 	$(BUILD_DIR)/asm/nw4r/ut/ut_TextWriterBase.o                      \
-	$(BUILD_DIR)/asm/nw4r/snd/snd_AxManager.o                         \
-	$(BUILD_DIR)/asm/nw4r/snd/snd_AxVoice.o                           \
-	$(BUILD_DIR)/asm/nw4r/snd/snd_AxVoiceManager.o                    \
-	$(BUILD_DIR)/asm/nw4r/snd/snd_AxfxImpl.o                          \
-	$(BUILD_DIR)/asm/nw4r/snd/snd_Bank.o                              \
-	$(BUILD_DIR)/asm/nw4r/snd/snd_BankFile.o                          \
-	$(BUILD_DIR)/asm/nw4r/snd/snd_BasicPlayer.o                       \
-	$(BUILD_DIR)/asm/nw4r/snd/snd_BasicSound.o                        \
-	$(BUILD_DIR)/asm/nw4r/snd/snd_Channel.o                           \
-	$(BUILD_DIR)/asm/nw4r/snd/snd_DisposeCallbackManager.o            \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_AxManager.o                  \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_AxVoice.o                    \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_AxVoiceManager.o             \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_AxfxImpl.o                   \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_Bank.o                       \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_BankFile.o                   \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_BasicPlayer.o                \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_BasicSound.o                 \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_Channel.o                    \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_DisposeCallbackManager.o     \
 	$(BUILD_DIR)/asm/nw4r/snd/snd_DvdSoundArchive.o                   \
-	$(BUILD_DIR)/asm/nw4r/snd/snd_EnvGenerator.o                      \
-	$(BUILD_DIR)/asm/nw4r/snd/snd_ExternalSoundPlayer.o               \
-	$(BUILD_DIR)/asm/nw4r/snd/snd_FrameHeap.o                         \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_EnvGenerator.o               \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_ExternalSoundPlayer.o        \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_FrameHeap.o                  \
 	$(BUILD_DIR)/asm/nw4r/snd/snd_FxDelay.o                           \
 	$(BUILD_DIR)/asm/text_10_4.o                                      \
 	$(BUILD_DIR)/asm/nw4r/snd/snd_FxReverbHi.o                        \
 	$(BUILD_DIR)/asm/text_10_5.o                                      \
-	$(BUILD_DIR)/asm/nw4r/snd/snd_InstancePool.o                      \
-	$(BUILD_DIR)/asm/nw4r/snd/snd_Lfo.o                               \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_InstancePool.o               \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_Lfo.o                        \
 	$(BUILD_DIR)/asm/nw4r/snd/snd_MemorySoundArchive.o                \
-	$(BUILD_DIR)/asm/nw4r/snd/snd_MidiSeqPlayer.o                     \
-	$(BUILD_DIR)/asm/nw4r/snd/snd_MmlParser.o                         \
-	$(BUILD_DIR)/asm/nw4r/snd/snd_MmlSeqTrack.o                       \
-	$(BUILD_DIR)/asm/nw4r/snd/snd_MmlSeqTrackAllocator.o              \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_MidiSeqPlayer.o              \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_MmlParser.o                  \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_MmlSeqTrack.o                \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_MmlSeqTrackAllocator.o       \
 	$(BUILD_DIR)/asm/nw4r/snd/snd_NandSoundArchive.o                  \
 	$(BUILD_DIR)/asm/nw4r/snd/snd_RemoteSpeaker.o                     \
-	$(BUILD_DIR)/asm/nw4r/snd/snd_RemoteSpeakerManager.o              \
-	$(BUILD_DIR)/asm/nw4r/snd/snd_SeqFile.o                           \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_RemoteSpeakerManager.o       \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_SeqFile.o                    \
 	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_SeqPlayer.o                  \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_SeqSound.o                   \
 	$(BUILD_DIR)/asm/text_10_6.o                                      \
 	$(BUILD_DIR)/asm/text_11.o
 
