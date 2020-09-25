@@ -428,7 +428,7 @@ lbl_803751A0:
 /* 803751E8 00370E48  54 03 0F FE */	srwi r3, r0, 0x1f
 /* 803751EC 00370E4C  4E 80 00 20 */	blr
 /* 803751F0 00370E50  80 63 02 0C */	lwz r3, 0x20c(r3)
-/* 803751F4 00370E54  48 00 01 78 */	b lbl_8037536C
+/* 803751F4 00370E54  48 00 01 78 */	b DetachSound__Q34nw4r3snd14SeqSoundHandleFv
 
 .global Execute__Q54nw4r3snd6detail8SeqSound11SeqLoadTaskFv
 Execute__Q54nw4r3snd6detail8SeqSound11SeqLoadTaskFv:
