@@ -124,6 +124,8 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/text_10_5.o                                      \
 	$(BUILD_DIR)/asm/nw4r/snd/snd_InstancePool.o                      \
 	$(BUILD_DIR)/asm/nw4r/snd/snd_Lfo.o                               \
+	$(BUILD_DIR)/asm/nw4r/snd/snd_MemorySoundArchive.o                \
+	$(BUILD_DIR)/asm/nw4r/snd/snd_MidiSeqPlayer.o                     \
 	$(BUILD_DIR)/asm/text_10_6.o                                      \
 	$(BUILD_DIR)/asm/text_11.o
 
