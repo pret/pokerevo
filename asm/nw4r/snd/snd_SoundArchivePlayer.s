@@ -1802,7 +1802,7 @@ lbl_8037A238:
 /* 8037A240 00375EA0  7F A6 EB 78 */	mr r6, r29
 /* 8037A244 00375EA4  7F C7 F3 78 */	mr r7, r30
 /* 8037A248 00375EA8  38 9A 00 BC */	addi r4, r26, 0xbc
-/* 8037A24C 00375EAC  48 00 53 E1 */	bl func_8037F62C
+/* 8037A24C 00375EAC  48 00 53 E1 */	bl Prepare__Q44nw4r3snd6detail9StrmSoundFPQ44nw4r3snd6detail14StrmBufferPoolQ54nw4r3snd6detail10StrmPlayer15StartOffsetTypeliPQ34nw4r2ut10FileStream
 /* 8037A250 00375EB0  2C 03 00 00 */	cmpwi r3, 0
 /* 8037A254 00375EB4  40 82 00 0C */	bne lbl_8037A260
 /* 8037A258 00375EB8  38 60 00 FF */	li r3, 0xff
