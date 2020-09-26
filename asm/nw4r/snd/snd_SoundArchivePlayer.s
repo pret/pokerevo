@@ -331,7 +331,7 @@ lbl_80378E00:
 /* 80378E04 00374A64  7F C5 F3 78 */	mr r5, r30
 /* 80378E08 00374A68  7F E6 FB 78 */	mr r6, r31
 /* 80378E0C 00374A6C  38 7B 00 BC */	addi r3, r27, 0xbc
-/* 80378E10 00374A70  48 00 3C B5 */	bl func_8037CAC4
+/* 80378E10 00374A70  48 00 3C B5 */	bl Setup__Q44nw4r3snd6detail14StrmBufferPoolFPvUli
 /* 80378E14 00374A74  38 00 00 01 */	li r0, 1
 lbl_80378E18:
 /* 80378E18 00374A78  2C 00 00 00 */	cmpwi r0, 0
@@ -416,7 +416,7 @@ lbl_80378E94:
 /* 80378F38 00374B98  80 BB 00 DC */	lwz r5, 0xdc(r27)
 /* 80378F3C 00374B9C  4B FF 9F BD */	bl Destroy__Q44nw4r3snd6detail20MmlSeqTrackAllocatorFPvUl
 /* 80378F40 00374BA0  38 7B 00 BC */	addi r3, r27, 0xbc
-/* 80378F44 00374BA4  48 00 3C 01 */	bl func_8037CB44
+/* 80378F44 00374BA4  48 00 3C 01 */	bl Shutdown__Q44nw4r3snd6detail14StrmBufferPoolFv
 /* 80378F48 00374BA8  93 DB 00 D8 */	stw r30, 0xd8(r27)
 /* 80378F4C 00374BAC  39 61 00 20 */	addi r11, r1, 0x20
 /* 80378F50 00374BB0  93 DB 00 DC */	stw r30, 0xdc(r27)
