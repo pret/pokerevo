@@ -198,21 +198,71 @@ lbl_8040601C:
 	.balign 4, 0
 	.global lbl_80406054
 lbl_80406054:
-	.incbin "baserom.dol", 0x402154, 0x166
+	.4byte lbl_8000C5C0, lbl_8000C5DC, lbl_8000C5F8, lbl_8000C614
+	.4byte lbl_8000C630, lbl_8000C64C, lbl_8000C67C, lbl_8000C698
+	.4byte lbl_8000C6C8, lbl_8000C6E4
+
+	.balign 4, 0
+	.global lbl_8040607C
+lbl_8040607C:
+	.asciz "[Jikkyo] SKIP BATTLE MSG [%d] : %cb_%03d(%d) (timing is bad, already turn-end phase.)\n"
+
+	.global lbl_804060D3
+lbl_804060D3:
+	.asciz "[Jikkyo] PLAY BATTLE MSG [%d] : %cb_%03d(%d)\n"
+
+	.global lbl_80406101
+lbl_80406101:
+	.asciz "[Jikkyo] SKIP BATTLE MSG (home button fade timing)\n"
+
+	.global lbl_80406135
+lbl_80406135:
+	.asciz "[Jikkyo] SKIP BATTLE MSG [%d] : %cb_%03d(%d) (timing is bad)\n"
+
+	.global lbl_80406173
+lbl_80406173:
+	.asciz "[Jikkyo] BATTLE MSG [%d] is not loaded. : %cb_%03d(%d)\n"
+
+	.global lbl_804061AB
+lbl_804061AB:
+	.asciz "StartJikkyoPre"
 
 	.global lbl_804061BA
 lbl_804061BA:
-	.incbin "baserom.dol", 0x4022BA, 0xFA
+	.asciz "[Jikkyo] Func : %s\n"
+
+	.global lbl_804061CE
+lbl_804061CE:
+	.asciz "## WARNING ## Input Heap : %d, Battle Heap : %d\n"
+
+	.global lbl_804061FF
+lbl_804061FF:
+	.asciz "[Jikkyo] INPUT HEAP  : [Used]%d(KByte) [Free]%d(KByte) [All]%d(KByte)\n"
+
+	.global lbl_80406246
+lbl_80406246:
+	.asciz "[Jikkyo] BATTLE HEAP : [Used]%d(KByte) [Free]%d(KByte) [All]%d(KByte)\n"
+
+	.global lbl_8040628D
+lbl_8040628D:
+	.asciz "StartJikkyo"
+
+	.global lbl_80406299
+lbl_80406299:
+	.asciz "## ERROR ## StartJikkyo()\n"
 
 	.global lbl_804062B4
 lbl_804062B4:
 	.incbin "baserom.dol", 0x4023B4, 0x5E
-.global lbl_80406312
+
+	.global lbl_80406312
 lbl_80406312:
 	.incbin "baserom.dol", 0x402412, 0x8C
-.global lbl_8040639E
+
+	.global lbl_8040639E
 lbl_8040639E:
 	.incbin "baserom.dol", 0x40249E, 0x196
+
 .global lbl_80406534
 lbl_80406534:
 	.incbin "baserom.dol", 0x402634, 0xF9
