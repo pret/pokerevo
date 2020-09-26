@@ -17,9 +17,9 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/libstdc++/global_destructor_chain.o          \
 	$(BUILD_DIR)/asm/libstdc++/NMWException.o                     \
 	$(BUILD_DIR)/src/libstdc++/ptmf.o                             \
-	$(BUILD_DIR)/asm/text_5_2.o                                   \
+	$(BUILD_DIR)/asm/libstdc++/runtime.o                          \
 	$(BUILD_DIR)/asm/libstdc++/__init_cpp_exceptions.o            \
-	$(BUILD_DIR)/asm/text_5_3.o                                   \
+	$(BUILD_DIR)/asm/text_5_2.o                                   \
 	$(BUILD_DIR)/asm/text_6.o                                     \
 	$(BUILD_DIR)/asm/MetroTRK/mem_TRK.o                           \
 	$(BUILD_DIR)/asm/init.o                                       \
