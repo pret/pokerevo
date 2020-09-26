@@ -141,6 +141,8 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/nw4r/snd/snd_Sound3DManager.o                    \
 	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_SoundArchive.o               \
 	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_SoundArchiveFile.o           \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_SoundArchiveLoader.o         \
+	$(BUILD_DIR)/asm/nw4r/snd/snd_SoundArchivePlayer.o                \
 	$(BUILD_DIR)/asm/text_10_6.o                                      \
 	$(BUILD_DIR)/asm/text_11.o
 
