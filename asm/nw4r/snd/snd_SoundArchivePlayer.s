@@ -368,7 +368,7 @@ lbl_80378E7C:
 /* 80378E7C 00374ADC  80 1B 00 34 */	lwz r0, 0x34(r27)
 /* 80378E80 00374AE0  38 80 FF FF */	li r4, -1
 /* 80378E84 00374AE4  7C 60 E2 14 */	add r3, r0, r28
-/* 80378E88 00374AE8  48 00 1E 91 */	bl func_8037AD18
+/* 80378E88 00374AE8  48 00 1E 91 */	bl __dt__Q34nw4r3snd11SoundPlayerFv
 /* 80378E8C 00374AEC  3B 9C 00 60 */	addi r28, r28, 0x60
 /* 80378E90 00374AF0  3B BD 00 01 */	addi r29, r29, 1
 lbl_80378E94:
@@ -759,7 +759,7 @@ lbl_803793F0:
 /* 803793F4 00375054  7F DC F3 78 */	mr r28, r30
 /* 803793F8 00375058  41 82 00 10 */	beq lbl_80379408
 /* 803793FC 0037505C  7F C3 F3 78 */	mr r3, r30
-/* 80379400 00375060  48 00 17 DD */	bl func_8037ABDC
+/* 80379400 00375060  48 00 17 DD */	bl __ct__Q34nw4r3snd11SoundPlayerFv
 /* 80379404 00375064  7C 7C 1B 78 */	mr r28, r3
 lbl_80379408:
 /* 80379408 00375068  7F 03 C3 78 */	mr r3, r24
@@ -770,10 +770,10 @@ lbl_80379408:
 /* 8037941C 0037507C  41 82 00 CC */	beq lbl_803794E8
 /* 80379420 00375080  80 81 00 08 */	lwz r4, 8(r1)
 /* 80379424 00375084  7F 83 E3 78 */	mr r3, r28
-/* 80379428 00375088  48 00 29 A9 */	bl func_8037BDD0
+/* 80379428 00375088  48 00 29 A9 */	bl SetPlayableSoundCount__Q34nw4r3snd11SoundPlayerFi
 /* 8037942C 0037508C  80 81 00 08 */	lwz r4, 8(r1)
 /* 80379430 00375090  7F 83 E3 78 */	mr r3, r28
-/* 80379434 00375094  48 00 2A 3D */	bl func_8037BE70
+/* 80379434 00375094  48 00 2A 3D */	bl detail_SetPlayableSoundLimit__Q34nw4r3snd11SoundPlayerFi
 /* 80379438 00375098  80 01 00 0C */	lwz r0, 0xc(r1)
 /* 8037943C 0037509C  2C 00 00 00 */	cmpwi r0, 0
 /* 80379440 003750A0  41 82 00 A8 */	beq lbl_803794E8
@@ -819,7 +819,7 @@ lbl_803794BC:
 lbl_803794CC:
 /* 803794CC 0037512C  7F 83 E3 78 */	mr r3, r28
 /* 803794D0 00375130  7E 84 A3 78 */	mr r4, r20
-/* 803794D4 00375134  48 00 2B 41 */	bl func_8037C014
+/* 803794D4 00375134  48 00 2B 41 */	bl detail_AppendPlayerHeap__Q34nw4r3snd11SoundPlayerFPQ44nw4r3snd6detail10PlayerHeap
 /* 803794D8 00375138  3B 7B 00 01 */	addi r27, r27, 1
 lbl_803794DC:
 /* 803794DC 0037513C  80 01 00 08 */	lwz r0, 8(r1)
@@ -854,7 +854,7 @@ Update__Q34nw4r3snd18SoundArchivePlayerFv:
 lbl_80379538:
 /* 80379538 00375198  80 1F 00 34 */	lwz r0, 0x34(r31)
 /* 8037953C 0037519C  7C 60 DA 14 */	add r3, r0, r27
-/* 80379540 003751A0  48 00 18 A1 */	bl func_8037ADE0
+/* 80379540 003751A0  48 00 18 A1 */	bl Update__Q34nw4r3snd11SoundPlayerFv
 /* 80379544 003751A4  3B 7B 00 60 */	addi r27, r27, 0x60
 /* 80379548 003751A8  3B 5A 00 01 */	addi r26, r26, 1
 lbl_8037954C:
@@ -1399,7 +1399,7 @@ lbl_80379C94:
 /* 80379CA4 00375904  7F E7 FB 78 */	mr r7, r31
 /* 80379CA8 00375908  7F A8 EB 78 */	mr r8, r29
 /* 80379CAC 0037590C  39 3B 00 38 */	addi r9, r27, 0x38
-/* 80379CB0 00375910  48 00 15 D5 */	bl func_8037B284
+/* 80379CB0 00375910  48 00 15 D5 */	bl detail_AllocSeqSound__Q34nw4r3snd11SoundPlayerFiiPQ54nw4r3snd6detail10BasicSound14AmbientArgInfoPQ44nw4r3snd6detail19ExternalSoundPlayerUlPQ44nw4r3snd6detail49SoundInstanceManager$0Q44nw4r3snd6detail8SeqSound$1
 /* 80379CB4 00375914  2C 03 00 00 */	cmpwi r3, 0
 /* 80379CB8 00375918  7C 78 1B 78 */	mr r24, r3
 /* 80379CBC 0037591C  40 82 00 0C */	bne lbl_80379CC8
@@ -1444,7 +1444,7 @@ lbl_80379D3C:
 /* 80379D4C 003759AC  7F E7 FB 78 */	mr r7, r31
 /* 80379D50 003759B0  7F A8 EB 78 */	mr r8, r29
 /* 80379D54 003759B4  39 3B 00 60 */	addi r9, r27, 0x60
-/* 80379D58 003759B8  48 00 18 F1 */	bl func_8037B648
+/* 80379D58 003759B8  48 00 18 F1 */	bl detail_AllocStrmSound__Q34nw4r3snd11SoundPlayerFiiPQ54nw4r3snd6detail10BasicSound14AmbientArgInfoPQ44nw4r3snd6detail19ExternalSoundPlayerUlPQ44nw4r3snd6detail50SoundInstanceManager$0Q44nw4r3snd6detail9StrmSound$1
 /* 80379D5C 003759BC  2C 03 00 00 */	cmpwi r3, 0
 /* 80379D60 003759C0  7C 78 1B 78 */	mr r24, r3
 /* 80379D64 003759C4  40 82 00 0C */	bne lbl_80379D70
@@ -1489,7 +1489,7 @@ lbl_80379DE4:
 /* 80379DF4 00375A54  7F E7 FB 78 */	mr r7, r31
 /* 80379DF8 00375A58  7F A8 EB 78 */	mr r8, r29
 /* 80379DFC 00375A5C  39 3B 00 88 */	addi r9, r27, 0x88
-/* 80379E00 00375A60  48 00 1C 0D */	bl func_8037BA0C
+/* 80379E00 00375A60  48 00 1C 0D */	bl detail_AllocWaveSound__Q34nw4r3snd11SoundPlayerFiiPQ54nw4r3snd6detail10BasicSound14AmbientArgInfoPQ44nw4r3snd6detail19ExternalSoundPlayerUlPQ44nw4r3snd6detail50SoundInstanceManager$0Q44nw4r3snd6detail9WaveSound$1
 /* 80379E04 00375A64  2C 03 00 00 */	cmpwi r3, 0
 /* 80379E08 00375A68  7C 78 1B 78 */	mr r24, r3
 /* 80379E0C 00375A6C  40 82 00 0C */	bne lbl_80379E18

@@ -771,11 +771,11 @@ lbl_8036DA78:
 /* 8036DAC4 00369724  C0 1D 00 98 */	lfs f0, 0x98(r29)
 /* 8036DAC8 00369728  EF 5A 00 72 */	fmuls f26, f26, f1
 /* 8036DACC 0036972C  EF 7B 00 32 */	fmuls f27, f27, f0
-/* 8036DAD0 00369730  48 00 D4 CD */	bl func_8037AF9C
+/* 8036DAD0 00369730  48 00 D4 CD */	bl detail_IsEnabledOutputLine__Q34nw4r3snd11SoundPlayerCFv
 /* 8036DAD4 00369734  2C 03 00 00 */	cmpwi r3, 0
 /* 8036DAD8 00369738  41 82 00 10 */	beq lbl_8036DAE8
 /* 8036DADC 0036973C  80 7D 00 10 */	lwz r3, 0x10(r29)
-/* 8036DAE0 00369740  48 00 D4 B5 */	bl func_8037AF94
+/* 8036DAE0 00369740  48 00 D4 B5 */	bl detail_GetOutputLine__Q34nw4r3snd11SoundPlayerCFv
 /* 8036DAE4 00369744  7C 7A 1B 78 */	mr r26, r3
 lbl_8036DAE8:
 /* 8036DAE8 00369748  88 1D 00 9C */	lbz r0, 0x9c(r29)
@@ -791,7 +791,7 @@ lbl_8036DB08:
 /* 8036DB08 00369768  D3 DC 00 00 */	stfs f30, 0(r28)
 /* 8036DB0C 0036976C  7F 24 CB 78 */	mr r4, r25
 /* 8036DB10 00369770  80 7D 00 10 */	lwz r3, 0x10(r29)
-/* 8036DB14 00369774  48 00 D4 91 */	bl func_8037AFA4
+/* 8036DB14 00369774  48 00 D4 91 */	bl detail_GetRemoteOutVolume__Q34nw4r3snd11SoundPlayerCFi
 /* 8036DB18 00369778  C0 1C 00 00 */	lfs f0, 0(r28)
 /* 8036DB1C 0036977C  3B 39 00 01 */	addi r25, r25, 1
 /* 8036DB20 00369780  C0 5B 00 A8 */	lfs f2, 0xa8(r27)
@@ -953,14 +953,14 @@ lbl_8036DD58:
 /* 8036DD60 003699C0  41 82 00 10 */	beq lbl_8036DD70
 /* 8036DD64 003699C4  80 7E 00 10 */	lwz r3, 0x10(r30)
 /* 8036DD68 003699C8  7F C4 F3 78 */	mr r4, r30
-/* 8036DD6C 003699CC  48 00 E3 1D */	bl func_8037C088
+/* 8036DD6C 003699CC  48 00 E3 1D */	bl detail_FreePlayerHeap__Q34nw4r3snd11SoundPlayerFPQ44nw4r3snd6detail10BasicSound
 lbl_8036DD70:
 /* 8036DD70 003699D0  80 7E 00 10 */	lwz r3, 0x10(r30)
 /* 8036DD74 003699D4  7F C4 F3 78 */	mr r4, r30
-/* 8036DD78 003699D8  48 00 D3 6D */	bl func_8037B0E4
+/* 8036DD78 003699D8  48 00 D3 6D */	bl detail_RemovePriorityList__Q34nw4r3snd11SoundPlayerFPQ44nw4r3snd6detail10BasicSound
 /* 8036DD7C 003699DC  80 7E 00 10 */	lwz r3, 0x10(r30)
 /* 8036DD80 003699E0  7F C4 F3 78 */	mr r4, r30
-/* 8036DD84 003699E4  48 00 D2 31 */	bl func_8037AFB4
+/* 8036DD84 003699E4  48 00 D2 31 */	bl detail_RemoveSoundList__Q34nw4r3snd11SoundPlayerFPQ44nw4r3snd6detail10BasicSound
 /* 8036DD88 003699E8  80 7E 00 14 */	lwz r3, 0x14(r30)
 /* 8036DD8C 003699EC  2C 03 00 00 */	cmpwi r3, 0
 /* 8036DD90 003699F0  41 82 00 0C */	beq lbl_8036DD9C
@@ -1002,10 +1002,10 @@ SetPlayerPriority__Q44nw4r3snd6detail10BasicSoundFi:
 /* 8036DE0C 00369A6C  41 82 00 1C */	beq lbl_8036DE28
 /* 8036DE10 00369A70  7C 03 03 78 */	mr r3, r0
 /* 8036DE14 00369A74  7F E4 FB 78 */	mr r4, r31
-/* 8036DE18 00369A78  48 00 D2 CD */	bl func_8037B0E4
+/* 8036DE18 00369A78  48 00 D2 CD */	bl detail_RemovePriorityList__Q34nw4r3snd11SoundPlayerFPQ44nw4r3snd6detail10BasicSound
 /* 8036DE1C 00369A7C  80 7F 00 10 */	lwz r3, 0x10(r31)
 /* 8036DE20 00369A80  7F E4 FB 78 */	mr r4, r31
-/* 8036DE24 00369A84  48 00 D1 F5 */	bl func_8037B018
+/* 8036DE24 00369A84  48 00 D1 F5 */	bl detail_InsertPriorityList__Q34nw4r3snd11SoundPlayerFPQ44nw4r3snd6detail10BasicSound
 lbl_8036DE28:
 /* 8036DE28 00369A88  80 01 00 14 */	lwz r0, 0x14(r1)
 /* 8036DE2C 00369A8C  83 E1 00 0C */	lwz r31, 0xc(r1)
