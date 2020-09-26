@@ -928,12 +928,12 @@ lbl_8036DCE8:
 /* 8036DD08 00369968  80 7E 00 08 */	lwz r3, 8(r30)
 /* 8036DD0C 0036996C  2C 03 00 00 */	cmpwi r3, 0
 /* 8036DD10 00369970  41 82 00 08 */	beq lbl_8036DD18
-/* 8036DD14 00369974  48 00 CC D9 */	bl func_8037A9EC
+/* 8036DD14 00369974  48 00 CC D9 */	bl DetachSound__Q34nw4r3snd11SoundHandleFv
 lbl_8036DD18:
 /* 8036DD18 00369978  80 7E 00 0C */	lwz r3, 0xc(r30)
 /* 8036DD1C 0036997C  2C 03 00 00 */	cmpwi r3, 0
 /* 8036DD20 00369980  41 82 00 08 */	beq lbl_8036DD28
-/* 8036DD24 00369984  48 00 CC C9 */	bl func_8037A9EC
+/* 8036DD24 00369984  48 00 CC C9 */	bl DetachSound__Q34nw4r3snd11SoundHandleFv
 lbl_8036DD28:
 /* 8036DD28 00369988  81 9E 00 00 */	lwz r12, 0(r30)
 /* 8036DD2C 0036998C  7F C3 F3 78 */	mr r3, r30
@@ -1242,12 +1242,12 @@ IsAttachedTempGeneralHandle__Q44nw4r3snd6detail10BasicSoundFv:
 .global DetachGeneralHandle__Q44nw4r3snd6detail10BasicSoundFv
 DetachGeneralHandle__Q44nw4r3snd6detail10BasicSoundFv:
 /* 8036E0F4 00369D54  80 63 00 08 */	lwz r3, 8(r3)
-/* 8036E0F8 00369D58  48 00 C8 F4 */	b func_8037A9EC
+/* 8036E0F8 00369D58  48 00 C8 F4 */	b DetachSound__Q34nw4r3snd11SoundHandleFv
 
 .global DetachTempGeneralHandle__Q44nw4r3snd6detail10BasicSoundFv
 DetachTempGeneralHandle__Q44nw4r3snd6detail10BasicSoundFv:
 /* 8036E0FC 00369D5C  80 63 00 0C */	lwz r3, 0xc(r3)
-/* 8036E100 00369D60  48 00 C8 EC */	b func_8037A9EC
+/* 8036E100 00369D60  48 00 C8 EC */	b DetachSound__Q34nw4r3snd11SoundHandleFv
 
 .global SetId__Q44nw4r3snd6detail10BasicSoundFUl
 SetId__Q44nw4r3snd6detail10BasicSoundFUl:
