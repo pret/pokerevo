@@ -127,7 +127,7 @@ lbl_8037C2B8:
 /* 8037C358 00377FB8  80 DA 00 0C */	lwz r6, 0xc(r26)
 /* 8037C35C 00377FBC  7F 65 DB 78 */	mr r5, r27
 /* 8037C360 00377FC0  38 63 1D 10 */	addi r3, r3, lbl_80621D10@l
-/* 8037C364 00377FC4  48 00 3D 3D */	bl func_803800A0
+/* 8037C364 00377FC4  48 00 3D 3D */	bl Create__Q44nw4r3snd6detail10TaskThreadFlPvUl
 /* 8037C368 00377FC8  48 00 00 E9 */	bl GetInstance__Q44nw4r3snd6detail11SoundThreadFv
 /* 8037C36C 00377FCC  80 9A 00 00 */	lwz r4, 0(r26)
 /* 8037C370 00377FD0  7F A5 EB 78 */	mr r5, r29
@@ -184,11 +184,11 @@ __sinit_$3snd_SoundSystem_cpp:
 /* 8037C414 00378074  93 E1 00 0C */	stw r31, 0xc(r1)
 /* 8037C418 00378078  3F E0 80 62 */	lis r31, lbl_80621D10@ha
 /* 8037C41C 0037807C  38 7F 1D 10 */	addi r3, r31, lbl_80621D10@l
-/* 8037C420 00378080  48 00 3B E9 */	bl func_80380008
-/* 8037C424 00378084  3C 80 80 38 */	lis r4, lbl_8038001C@ha
+/* 8037C420 00378080  48 00 3B E9 */	bl __ct__Q44nw4r3snd6detail10TaskThreadFv
+/* 8037C424 00378084  3C 80 80 38 */	lis r4, __dt__Q44nw4r3snd6detail10TaskThreadFv@ha
 /* 8037C428 00378088  3C A0 80 62 */	lis r5, lbl_80621D00@ha
 /* 8037C42C 0037808C  38 7F 1D 10 */	addi r3, r31, 0x1d10
-/* 8037C430 00378090  38 84 00 1C */	addi r4, r4, lbl_8038001C@l
+/* 8037C430 00378090  38 84 00 1C */	addi r4, r4, __dt__Q44nw4r3snd6detail10TaskThreadFv@l
 /* 8037C434 00378094  38 A5 1D 00 */	addi r5, r5, lbl_80621D00@l
 /* 8037C438 00378098  4B E4 A8 11 */	bl __register_global_object_tmp
 /* 8037C43C 0037809C  80 01 00 14 */	lwz r0, 0x14(r1)

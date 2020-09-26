@@ -155,6 +155,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_StrmSound.o                  \
 	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_Task.o                       \
 	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_TaskManager.o                \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_TaskThread.o                 \
 	$(BUILD_DIR)/asm/text_10_6.o                                      \
 	$(BUILD_DIR)/asm/text_11.o
 
