@@ -57489,7 +57489,7 @@ lbl_802547A8:
 lbl_8025482C:
 /* 8025482C 0025048C  80 7E 00 04 */	lwz r3, 4(r30)
 /* 80254830 00250490  7F 44 D3 78 */	mr r4, r26
-/* 80254834 00250494  48 12 50 79 */	bl FormationSet_GetFormationSpec
+/* 80254834 00250494  48 12 50 79 */	bl GetSoundPlayer__Q34nw4r3snd18SoundArchivePlayerFUl
 /* 80254838 00250498  A0 03 00 24 */	lhz r0, 0x24(r3)
 /* 8025483C 0025049C  2C 00 00 00 */	cmpwi r0, 0
 /* 80254840 002504A0  40 81 00 0C */	ble lbl_8025484C
@@ -58394,7 +58394,7 @@ func_802554A0:
 /* 802554AC 0025110C  93 E1 00 0C */	stw r31, 0xc(r1)
 /* 802554B0 00251110  7C BF 2B 78 */	mr r31, r5
 /* 802554B4 00251114  80 63 00 04 */	lwz r3, 4(r3)
-/* 802554B8 00251118  48 12 43 F5 */	bl FormationSet_GetFormationSpec
+/* 802554B8 00251118  48 12 43 F5 */	bl GetSoundPlayer__Q34nw4r3snd18SoundArchivePlayerFUl
 /* 802554BC 0025111C  7F E4 FB 78 */	mr r4, r31
 /* 802554C0 00251120  48 12 59 A9 */	bl func_8037AE68
 /* 802554C4 00251124  80 01 00 14 */	lwz r0, 0x14(r1)
@@ -58413,7 +58413,7 @@ func_802554D8:
 /* 802554EC 0025114C  93 C1 00 08 */	stw r30, 8(r1)
 /* 802554F0 00251150  7C BE 2B 78 */	mr r30, r5
 /* 802554F4 00251154  80 63 00 04 */	lwz r3, 4(r3)
-/* 802554F8 00251158  48 12 43 B5 */	bl FormationSet_GetFormationSpec
+/* 802554F8 00251158  48 12 43 B5 */	bl GetSoundPlayer__Q34nw4r3snd18SoundArchivePlayerFUl
 /* 802554FC 0025115C  7F C4 F3 78 */	mr r4, r30
 /* 80255500 00251160  7F E5 FB 78 */	mr r5, r31
 /* 80255504 00251164  48 12 59 E9 */	bl func_8037AEEC
@@ -58434,7 +58434,7 @@ func_80255520:
 /* 80255534 00251194  FF E0 08 90 */	fmr f31, f1
 /* 80255538 00251198  2C 03 00 00 */	cmpwi r3, 0
 /* 8025553C 0025119C  41 82 00 10 */	beq lbl_8025554C
-/* 80255540 002511A0  48 12 43 6D */	bl FormationSet_GetFormationSpec
+/* 80255540 002511A0  48 12 43 6D */	bl GetSoundPlayer__Q34nw4r3snd18SoundArchivePlayerFUl
 /* 80255544 002511A4  FC 20 F8 90 */	fmr f1, f31
 /* 80255548 002511A8  48 12 5A 21 */	bl func_8037AF68
 lbl_8025554C:
@@ -58628,7 +58628,7 @@ func_802557AC:
 /* 802557B0 00251410  7C 08 02 A6 */	mflr r0
 /* 802557B4 00251414  90 01 00 14 */	stw r0, 0x14(r1)
 /* 802557B8 00251418  80 63 00 04 */	lwz r3, 4(r3)
-/* 802557BC 0025141C  48 12 40 F1 */	bl FormationSet_GetFormationSpec
+/* 802557BC 0025141C  48 12 40 F1 */	bl GetSoundPlayer__Q34nw4r3snd18SoundArchivePlayerFUl
 /* 802557C0 00251420  80 63 00 00 */	lwz r3, 0(r3)
 /* 802557C4 00251424  7C 03 00 D0 */	neg r0, r3
 /* 802557C8 00251428  7C 00 18 78 */	andc r0, r0, r3
@@ -58644,7 +58644,7 @@ func_802557E0:
 /* 802557E4 00251444  7C 08 02 A6 */	mflr r0
 /* 802557E8 00251448  90 01 00 14 */	stw r0, 0x14(r1)
 /* 802557EC 0025144C  80 63 00 04 */	lwz r3, 4(r3)
-/* 802557F0 00251450  48 12 40 BD */	bl FormationSet_GetFormationSpec
+/* 802557F0 00251450  48 12 40 BD */	bl GetSoundPlayer__Q34nw4r3snd18SoundArchivePlayerFUl
 /* 802557F4 00251454  80 01 00 14 */	lwz r0, 0x14(r1)
 /* 802557F8 00251458  80 63 00 00 */	lwz r3, 0(r3)
 /* 802557FC 0025145C  7C 08 03 A6 */	mtlr r0
@@ -58708,7 +58708,7 @@ func_80255890:
 lbl_802558B8:
 /* 802558B8 00251518  80 7D 00 04 */	lwz r3, 4(r29)
 /* 802558BC 0025151C  7F C4 F3 78 */	mr r4, r30
-/* 802558C0 00251520  48 12 3F ED */	bl FormationSet_GetFormationSpec
+/* 802558C0 00251520  48 12 3F ED */	bl GetSoundPlayer__Q34nw4r3snd18SoundArchivePlayerFUl
 /* 802558C4 00251524  80 03 00 00 */	lwz r0, 0(r3)
 /* 802558C8 00251528  3B DE 00 01 */	addi r30, r30, 1
 /* 802558CC 0025152C  7F FF 02 14 */	add r31, r31, r0
