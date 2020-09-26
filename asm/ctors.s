@@ -68,7 +68,7 @@ lbl_803E1E60:
     .4byte func_80262AE0, func_80262E70, func_80263C9C, func_802674AC
     .4byte func_80268208, __sinit_$3ut_IOStream_cpp, __sinit_$3ut_FileStream_cpp, __sinit_$3ut_DvdFileStream_cpp
     .4byte ut_DvdLockedFileStream_cpp, __sinit_$3ut_TextWriterBase_cpp, __sinit_$3snd_BasicSound_cpp, __sinit_$3snd_SeqSound_cpp
-    .4byte func_8037C408, func_8037F8FC, func_80383998, func_80385E14
+    .4byte __sinit_$3snd_SoundSystem_cpp, func_8037F8FC, func_80383998, func_80385E14
     .4byte func_803872D0, func_80387EA8, func_8038A320, func_8038A3CC
     .4byte func_8038F254, func_803D91F4, func_803D9EA0
 
