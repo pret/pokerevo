@@ -167,20 +167,20 @@ __restore_gpr:
 _restgpr_15:
 /* 801C7144 001C2DA4  81 EB FF BC */	lwz r15, -0x44(r11)
 
-.global func_801C7148
-func_801C7148:
+.global _restgpr_16
+_restgpr_16:
 /* 801C7148 001C2DA8  82 0B FF C0 */	lwz r16, -0x40(r11)
 
-.global func_801C714C
-func_801C714C:
+.global _restgpr_17
+_restgpr_17:
 /* 801C714C 001C2DAC  82 2B FF C4 */	lwz r17, -0x3c(r11)
 
-.global func_801C7150
-func_801C7150:
+.global _restgpr_18
+_restgpr_18:
 /* 801C7150 001C2DB0  82 4B FF C8 */	lwz r18, -0x38(r11)
 
-.global func_801C7154
-func_801C7154:
+.global _restgpr_19
+_restgpr_19:
 /* 801C7154 001C2DB4  82 6B FF CC */	lwz r19, -0x34(r11)
 
 .global func_801C7158
