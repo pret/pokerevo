@@ -292,11 +292,11 @@ lbl_8036CE28:
 lbl_8036CE50:
 /* 8036CE50 00368AB0  7C 64 1B 78 */	mr r4, r3
 /* 8036CE54 00368AB4  38 61 00 08 */	addi r3, r1, 8
-/* 8036CE58 00368AB8  48 01 65 B5 */	bl func_8038340C
+/* 8036CE58 00368AB8  48 01 65 B5 */	bl __ct__Q44nw4r3snd6detail14WaveFileReaderFPCQ54nw4r3snd6detail8WaveFile8WaveInfo
 /* 8036CE5C 00368ABC  7F C4 F3 78 */	mr r4, r30
 /* 8036CE60 00368AC0  7F E5 FB 78 */	mr r5, r31
 /* 8036CE64 00368AC4  38 61 00 08 */	addi r3, r1, 8
-/* 8036CE68 00368AC8  48 01 65 AD */	bl func_80383414
+/* 8036CE68 00368AC8  48 01 65 AD */	bl ReadWaveParam__Q44nw4r3snd6detail14WaveFileReaderCFPQ44nw4r3snd6detail8WaveDataPCv
 lbl_8036CE6C:
 /* 8036CE6C 00368ACC  80 01 00 24 */	lwz r0, 0x24(r1)
 /* 8036CE70 00368AD0  83 E1 00 1C */	lwz r31, 0x1c(r1)

@@ -363,7 +363,7 @@ lbl_8037D790:
 /* 8037D7BC 0037941C  90 01 00 1C */	stw r0, 0x1c(r1)
 /* 8037D7C0 00379420  93 81 00 20 */	stw r28, 0x20(r1)
 /* 8037D7C4 00379424  88 7E 00 80 */	lbz r3, 0x80(r30)
-/* 8037D7C8 00379428  48 00 5E 61 */	bl func_80383628
+/* 8037D7C8 00379428  48 00 5E 61 */	bl GetAxVoiceFormatFromWaveFileFormat__Q44nw4r3snd6detail14WaveFileReaderFUl
 /* 8037D7CC 0037942C  80 BE 00 D4 */	lwz r5, 0xd4(r30)
 /* 8037D7D0 00379430  7C 64 1B 78 */	mr r4, r3
 /* 8037D7D4 00379434  80 1E 00 EC */	lwz r0, 0xec(r30)

@@ -159,6 +159,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_Voice.o                      \
 	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_VoiceManager.o               \
 	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_Util.o                       \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_WaveFile.o                   \
 	$(BUILD_DIR)/asm/text_11.o
 
 CTORS_O_FILES :=                                                  \
