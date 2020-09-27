@@ -363,7 +363,7 @@ lbl_8037D790:
 /* 8037D7BC 0037941C  90 01 00 1C */	stw r0, 0x1c(r1)
 /* 8037D7C0 00379420  93 81 00 20 */	stw r28, 0x20(r1)
 /* 8037D7C4 00379424  88 7E 00 80 */	lbz r3, 0x80(r30)
-/* 8037D7C8 00379428  48 00 5E 61 */	bl func_80383628
+/* 8037D7C8 00379428  48 00 5E 61 */	bl GetAxVoiceFormatFromWaveFileFormat__Q44nw4r3snd6detail14WaveFileReaderFUl
 /* 8037D7CC 0037942C  80 BE 00 D4 */	lwz r5, 0xd4(r30)
 /* 8037D7D0 00379430  7C 64 1B 78 */	mr r4, r3
 /* 8037D7D4 00379434  80 1E 00 EC */	lwz r0, 0xec(r30)
@@ -1275,14 +1275,14 @@ lbl_8037E464:
 lbl_8037E47C:
 /* 8037E47C 0037A0DC  7C 1D D8 00 */	cmpw r29, r27
 /* 8037E480 0037A0E0  41 80 FF 9C */	blt lbl_8037E41C
-/* 8037E484 0037A0E4  48 00 44 7D */	bl func_80382900
+/* 8037E484 0037A0E4  48 00 44 7D */	bl GetInstance__Q44nw4r3snd6detail12VoiceManagerFv
 /* 8037E488 0037A0E8  3C E0 80 38 */	lis r7, VoiceCallbackFunc__Q44nw4r3snd6detail10StrmPlayerFPQ44nw4r3snd6detail5VoiceQ54nw4r3snd6detail5Voice19VoiceCallbackStatusPv@ha
 /* 8037E48C 0037A0EC  7F 64 DB 78 */	mr r4, r27
 /* 8037E490 0037A0F0  7F 85 E3 78 */	mr r5, r28
 /* 8037E494 0037A0F4  7F 48 D3 78 */	mr r8, r26
 /* 8037E498 0037A0F8  38 E7 F1 A4 */	addi r7, r7, VoiceCallbackFunc__Q44nw4r3snd6detail10StrmPlayerFPQ44nw4r3snd6detail5VoiceQ54nw4r3snd6detail5Voice19VoiceCallbackStatusPv@l
 /* 8037E49C 0037A0FC  38 C0 00 FF */	li r6, 0xff
-/* 8037E4A0 0037A100  48 00 46 25 */	bl func_80382AC4
+/* 8037E4A0 0037A100  48 00 46 25 */	bl AllocVoice__Q44nw4r3snd6detail12VoiceManagerFiiiPFPQ44nw4r3snd6detail5VoiceQ54nw4r3snd6detail5Voice19VoiceCallbackStatusPv_vPv
 /* 8037E4A4 0037A104  2C 03 00 00 */	cmpwi r3, 0
 /* 8037E4A8 0037A108  40 82 00 3C */	bne lbl_8037E4E4
 /* 8037E4AC 0037A10C  7F 5E D3 78 */	mr r30, r26

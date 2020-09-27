@@ -238,8 +238,8 @@ lbl_8037C788:
 lbl_8037C7A0:
 /* 8037C7A0 00378400  7C 1F F0 40 */	cmplw r31, r30
 /* 8037C7A4 00378404  40 82 FF E4 */	bne lbl_8037C788
-/* 8037C7A8 00378408  48 00 61 59 */	bl func_80382900
-/* 8037C7AC 0037840C  48 00 66 1D */	bl func_80382DC8
+/* 8037C7A8 00378408  48 00 61 59 */	bl GetInstance__Q44nw4r3snd6detail12VoiceManagerFv
+/* 8037C7AC 0037840C  48 00 66 1D */	bl NotifyVoiceUpdate__Q44nw4r3snd6detail12VoiceManagerFv
 /* 8037C7B0 00378410  80 01 00 14 */	lwz r0, 0x14(r1)
 /* 8037C7B4 00378414  83 E1 00 0C */	lwz r31, 0xc(r1)
 /* 8037C7B8 00378418  83 C1 00 08 */	lwz r30, 8(r1)
@@ -400,9 +400,9 @@ lbl_8037C9D4:
 /* 8037C9E0 00378640  4B FF 17 B9 */	bl GetInstance__Q44nw4r3snd6detail14ChannelManagerFv
 /* 8037C9E4 00378644  4B FF 19 61 */	bl __ct__Q44nw4r3snd6detail7ChannelFv
 lbl_8037C9E8:
-/* 8037C9E8 00378648  48 00 69 DD */	bl func_803833C4
-/* 8037C9EC 0037864C  48 00 5F 15 */	bl func_80382900
-/* 8037C9F0 00378650  48 00 63 29 */	bl func_80382D18
+/* 8037C9E8 00378648  48 00 69 DD */	bl CalcRandom__Q44nw4r3snd6detail4UtilFv
+/* 8037C9EC 0037864C  48 00 5F 15 */	bl GetInstance__Q44nw4r3snd6detail12VoiceManagerFv
+/* 8037C9F0 00378650  48 00 63 29 */	bl UpdateAllVoices__Q44nw4r3snd6detail12VoiceManagerFv
 /* 8037C9F4 00378654  4B EF 5D DD */	bl func_802727D0
 /* 8037C9F8 00378658  7C 1B 18 50 */	subf r0, r27, r3
 /* 8037C9FC 0037865C  90 1F 03 90 */	stw r0, 0x390(r31)
