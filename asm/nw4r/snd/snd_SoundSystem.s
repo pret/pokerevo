@@ -103,16 +103,16 @@ lbl_8037C2B8:
 /* 8037C2F8 00377F58  7F E5 FB 78 */	mr r5, r31
 /* 8037C2FC 00377F5C  4B FE FD F9 */	bl Setup__Q44nw4r3snd6detail14AxVoiceManagerFPvUl
 /* 8037C300 00377F60  7F DC F3 78 */	mr r28, r30
-/* 8037C304 00377F64  48 00 65 FD */	bl func_80382900
-/* 8037C308 00377F68  48 00 66 F5 */	bl func_803829FC
+/* 8037C304 00377F64  48 00 65 FD */	bl GetInstance__Q44nw4r3snd6detail12VoiceManagerFv
+/* 8037C308 00377F68  48 00 66 F5 */	bl GetRequiredMemSize__Q44nw4r3snd6detail12VoiceManagerFv
 /* 8037C30C 00377F6C  7F DE 1A 14 */	add r30, r30, r3
-/* 8037C310 00377F70  48 00 65 F1 */	bl func_80382900
-/* 8037C314 00377F74  48 00 66 E9 */	bl func_803829FC
+/* 8037C310 00377F70  48 00 65 F1 */	bl GetInstance__Q44nw4r3snd6detail12VoiceManagerFv
+/* 8037C314 00377F74  48 00 66 E9 */	bl GetRequiredMemSize__Q44nw4r3snd6detail12VoiceManagerFv
 /* 8037C318 00377F78  7C 7F 1B 78 */	mr r31, r3
-/* 8037C31C 00377F7C  48 00 65 E5 */	bl func_80382900
+/* 8037C31C 00377F7C  48 00 65 E5 */	bl GetInstance__Q44nw4r3snd6detail12VoiceManagerFv
 /* 8037C320 00377F80  7F 84 E3 78 */	mr r4, r28
 /* 8037C324 00377F84  7F E5 FB 78 */	mr r5, r31
-/* 8037C328 00377F88  48 00 66 F9 */	bl func_80382A20
+/* 8037C328 00377F88  48 00 66 F9 */	bl Setup__Q44nw4r3snd6detail12VoiceManagerFPvUl
 /* 8037C32C 00377F8C  4B FF 1E 6D */	bl GetInstance__Q44nw4r3snd6detail14ChannelManagerFv
 /* 8037C330 00377F90  4B FF 1F 59 */	bl GetRequiredMemSize__Q44nw4r3snd6detail14ChannelManagerFv
 /* 8037C334 00377F94  4B FF 1E 65 */	bl GetInstance__Q44nw4r3snd6detail14ChannelManagerFv

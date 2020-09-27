@@ -20,7 +20,7 @@ ReadStrmInfo__Q44nw4r3snd6detail14StrmFileReaderCFPQ44nw4r3snd6detail8StrmInfo:
 /* 8037CD0C 0037896C  7C 9F 23 78 */	mr r31, r4
 /* 8037CD10 00378970  88 63 00 08 */	lbz r3, 8(r3)
 /* 8037CD14 00378974  80 85 00 04 */	lwz r4, 4(r5)
-/* 8037CD18 00378978  48 00 66 D1 */	bl func_803833E8
+/* 8037CD18 00378978  48 00 66 D1 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 8037CD1C 0037897C  88 03 00 00 */	lbz r0, 0(r3)
 /* 8037CD20 00378980  98 1F 00 00 */	stb r0, 0(r31)
 /* 8037CD24 00378984  88 03 00 01 */	lbz r0, 1(r3)
@@ -78,7 +78,7 @@ ReadAdpcmInfo__Q44nw4r3snd6detail14StrmFileReaderCFPQ44nw4r3snd6detail9AdpcmInfo
 /* 8037CDE8 00378A48  7C 7D 1B 78 */	mr r29, r3
 /* 8037CDEC 00378A4C  88 66 00 08 */	lbz r3, 8(r6)
 /* 8037CDF0 00378A50  80 86 00 0C */	lwz r4, 0xc(r6)
-/* 8037CDF4 00378A54  48 00 65 F5 */	bl func_803833E8
+/* 8037CDF4 00378A54  48 00 65 F5 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 8037CDF8 00378A58  88 03 00 00 */	lbz r0, 0(r3)
 /* 8037CDFC 00378A5C  28 00 00 02 */	cmplwi r0, 2
 /* 8037CE00 00378A60  41 82 00 0C */	beq lbl_8037CE0C
@@ -89,7 +89,7 @@ lbl_8037CE0C:
 /* 8037CE10 00378A70  88 64 00 18 */	lbz r3, 0x18(r4)
 /* 8037CE14 00378A74  38 A4 00 08 */	addi r5, r4, 8
 /* 8037CE18 00378A78  80 84 00 1C */	lwz r4, 0x1c(r4)
-/* 8037CE1C 00378A7C  48 00 65 CD */	bl func_803833E8
+/* 8037CE1C 00378A7C  48 00 65 CD */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 8037CE20 00378A80  88 03 00 00 */	lbz r0, 0(r3)
 /* 8037CE24 00378A84  7C 1E 00 00 */	cmpw r30, r0
 /* 8037CE28 00378A88  41 80 00 0C */	blt lbl_8037CE34
@@ -102,13 +102,13 @@ lbl_8037CE34:
 /* 8037CE40 00378AA0  38 A4 00 08 */	addi r5, r4, 8
 /* 8037CE44 00378AA4  88 66 00 04 */	lbz r3, 4(r6)
 /* 8037CE48 00378AA8  80 86 00 08 */	lwz r4, 8(r6)
-/* 8037CE4C 00378AAC  48 00 65 9D */	bl func_803833E8
+/* 8037CE4C 00378AAC  48 00 65 9D */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 8037CE50 00378AB0  7C 64 1B 78 */	mr r4, r3
 /* 8037CE54 00378AB4  80 BD 00 04 */	lwz r5, 4(r29)
 /* 8037CE58 00378AB8  88 63 00 00 */	lbz r3, 0(r3)
 /* 8037CE5C 00378ABC  80 84 00 04 */	lwz r4, 4(r4)
 /* 8037CE60 00378AC0  38 A5 00 08 */	addi r5, r5, 8
-/* 8037CE64 00378AC4  48 00 65 85 */	bl func_803833E8
+/* 8037CE64 00378AC4  48 00 65 85 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 8037CE68 00378AC8  A0 83 00 00 */	lhz r4, 0(r3)
 /* 8037CE6C 00378ACC  A0 03 00 02 */	lhz r0, 2(r3)
 /* 8037CE70 00378AD0  B0 9F 00 00 */	sth r4, 0(r31)
@@ -282,7 +282,7 @@ lbl_8037D0C0:
 /* 8037D0D8 00378D38  38 A3 00 08 */	addi r5, r3, 8
 /* 8037D0DC 00378D3C  88 63 00 08 */	lbz r3, 8(r3)
 /* 8037D0E0 00378D40  80 85 00 04 */	lwz r4, 4(r5)
-/* 8037D0E4 00378D44  48 00 63 05 */	bl func_803833E8
+/* 8037D0E4 00378D44  48 00 63 05 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 lbl_8037D0E8:
 /* 8037D0E8 00378D48  38 60 00 01 */	li r3, 1
 lbl_8037D0EC:
