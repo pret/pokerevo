@@ -178,8 +178,8 @@ GetRuntimeTypeInfo__Q34nw4r2ut19DvdLockedFileStreamCFv:
 /* 80363E70 0035FAD0  38 6D B1 B8 */	addi r3, r13, lbl_80640478-_SDA_BASE_
 /* 80363E74 0035FAD4  4E 80 00 20 */	blr
 
-.global ut_DvdLockedFileStream_cpp
-ut_DvdLockedFileStream_cpp:
+.global __sinit_$3ut_DvdLockedFileStream_cpp
+__sinit_$3ut_DvdLockedFileStream_cpp:
 /* 80363E78 0035FAD8  38 0D B1 B0 */	addi r0, r13, lbl_80640470-_SDA_BASE_
 /* 80363E7C 0035FADC  90 0D B1 B8 */	stw r0, lbl_80640478-_SDA_BASE_(r13)
 /* 80363E80 0035FAE0  4E 80 00 20 */	blr
