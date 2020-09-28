@@ -169,6 +169,9 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/nw4r/lyt/lyt_pane.o                              \
 	$(BUILD_DIR)/asm/nw4r/lyt/lyt_group.o                             \
 	$(BUILD_DIR)/asm/nw4r/lyt/lyt_layout.o                            \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_picture.o                           \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_textBox.o                           \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_window.o                            \
 	$(BUILD_DIR)/asm/text_11.o
 
 CTORS_O_FILES :=                                                  \
