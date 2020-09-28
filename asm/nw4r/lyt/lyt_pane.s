@@ -241,10 +241,19 @@ lbl_803852A4:
 /* 803852B4 00380F14  7C 08 03 A6 */	mtlr r0
 /* 803852B8 00380F18  38 21 00 30 */	addi r1, r1, 0x30
 /* 803852BC 00380F1C  4E 80 00 20 */	blr 
+
+.global GetVtxColor__Q34nw4r3lyt4PaneCFUl
+GetVtxColor__Q34nw4r3lyt4PaneCFUl:
 /* 803852C0 00380F20  38 00 FF FF */	li r0, -1
 /* 803852C4 00380F24  90 03 00 00 */	stw r0, 0(r3)
 /* 803852C8 00380F28  4E 80 00 20 */	blr 
-/* 803852CC 00380F2C  4E 80 00 20 */	blr 
+
+.global SetVtxColor__Q34nw4r3lyt4PaneFUlQ34nw4r2ut5Color
+SetVtxColor__Q34nw4r3lyt4PaneFUlQ34nw4r2ut5Color:
+/* 803852CC 00380F2C  4E 80 00 20 */	blr
+
+.global GetColorElement__Q34nw4r3lyt4PaneCFUl
+GetColorElement__Q34nw4r3lyt4PaneCFUl:
 /* 803852D0 00380F30  2C 04 00 10 */	cmpwi r4, 0x10
 /* 803852D4 00380F34  41 82 00 08 */	beq lbl_803852DC
 /* 803852D8 00380F38  48 00 00 0C */	b lbl_803852E4
@@ -257,6 +266,9 @@ lbl_803852E4:
 /* 803852EC 00380F4C  7D 89 03 A6 */	mtctr r12
 /* 803852F0 00380F50  4E 80 04 20 */	bctr 
 /* 803852F4 00380F54  4E 80 00 20 */	blr 
+
+.global SetColorElement__Q34nw4r3lyt4PaneFUlUc
+SetColorElement__Q34nw4r3lyt4PaneFUlUc:
 /* 803852F8 00380F58  2C 04 00 10 */	cmpwi r4, 0x10
 /* 803852FC 00380F5C  41 82 00 08 */	beq lbl_80385304
 /* 80385300 00380F60  48 00 00 0C */	b lbl_8038530C
@@ -269,9 +281,18 @@ lbl_8038530C:
 /* 80385314 00380F74  7D 89 03 A6 */	mtctr r12
 /* 80385318 00380F78  4E 80 04 20 */	bctr 
 /* 8038531C 00380F7C  4E 80 00 20 */	blr 
+
+.global GetVtxColorElement__Q34nw4r3lyt4PaneCFUl
+GetVtxColorElement__Q34nw4r3lyt4PaneCFUl:
 /* 80385320 00380F80  38 60 00 FF */	li r3, 0xff
 /* 80385324 00380F84  4E 80 00 20 */	blr 
+
+.global SetVtxColorElement__Q34nw4r3lyt4PaneFUlUc
+SetVtxColorElement__Q34nw4r3lyt4PaneFUlUc:
 /* 80385328 00380F88  4E 80 00 20 */	blr 
+
+.global FindPaneByName__Q34nw4r3lyt4PaneFPCcb
+FindPaneByName__Q34nw4r3lyt4PaneFPCcb:
 /* 8038532C 00380F8C  94 21 FF E0 */	stwu r1, -0x20(r1)
 /* 80385330 00380F90  7C 08 02 A6 */	mflr r0
 /* 80385334 00380F94  90 01 00 24 */	stw r0, 0x24(r1)
@@ -321,6 +342,9 @@ lbl_803853B8:
 /* 803853CC 0038102C  7C 08 03 A6 */	mtlr r0
 /* 803853D0 00381030  38 21 00 20 */	addi r1, r1, 0x20
 /* 803853D4 00381034  4E 80 00 20 */	blr 
+
+.global FindMaterialByName__Q34nw4r3lyt4PaneFPCcb
+FindMaterialByName__Q34nw4r3lyt4PaneFPCcb:
 /* 803853D8 00381038  94 21 FF E0 */	stwu r1, -0x20(r1)
 /* 803853DC 0038103C  7C 08 02 A6 */	mflr r0
 /* 803853E0 00381040  90 01 00 24 */	stw r0, 0x24(r1)
@@ -373,6 +397,9 @@ lbl_80385470:
 /* 80385484 003810E4  7C 08 03 A6 */	mtlr r0
 /* 80385488 003810E8  38 21 00 20 */	addi r1, r1, 0x20
 /* 8038548C 003810EC  4E 80 00 20 */	blr 
+
+.global CalculateMtx__Q34nw4r3lyt4PaneFRCQ34nw4r3lyt8DrawInfo
+CalculateMtx__Q34nw4r3lyt4PaneFRCQ34nw4r3lyt8DrawInfo:
 /* 80385490 003810F0  94 21 FF 20 */	stwu r1, -0xe0(r1)
 /* 80385494 003810F4  7C 08 02 A6 */	mflr r0
 /* 80385498 003810F8  90 01 00 E4 */	stw r0, 0xe4(r1)
@@ -575,6 +602,9 @@ lbl_80385768:
 /* 8038577C 003813DC  7C 08 03 A6 */	mtlr r0
 /* 80385780 003813E0  38 21 00 E0 */	addi r1, r1, 0xe0
 /* 80385784 003813E4  4E 80 00 20 */	blr 
+
+.global Draw__Q34nw4r3lyt4PaneFRCQ34nw4r3lyt8DrawInfo
+Draw__Q34nw4r3lyt4PaneFRCQ34nw4r3lyt8DrawInfo:
 /* 80385788 003813E8  94 21 FF E0 */	stwu r1, -0x20(r1)
 /* 8038578C 003813EC  7C 08 02 A6 */	mflr r0
 /* 80385790 003813F0  90 01 00 24 */	stw r0, 0x24(r1)
@@ -611,7 +641,13 @@ lbl_803857F0:
 /* 80385800 00381460  7C 08 03 A6 */	mtlr r0
 /* 80385804 00381464  38 21 00 20 */	addi r1, r1, 0x20
 /* 80385808 00381468  4E 80 00 20 */	blr 
+
+.global DrawSelf__Q34nw4r3lyt4PaneFRCQ34nw4r3lyt8DrawInfo
+DrawSelf__Q34nw4r3lyt4PaneFRCQ34nw4r3lyt8DrawInfo:
 /* 8038580C 0038146C  4E 80 00 20 */	blr 
+
+.global Animate__Q34nw4r3lyt4PaneFUl
+Animate__Q34nw4r3lyt4PaneFUl:
 /* 80385810 00381470  94 21 FF E0 */	stwu r1, -0x20(r1)
 /* 80385814 00381474  7C 08 02 A6 */	mflr r0
 /* 80385818 00381478  90 01 00 24 */	stw r0, 0x24(r1)
@@ -704,6 +740,9 @@ lbl_80385930:
 /* 80385944 003815A4  7C 08 03 A6 */	mtlr r0
 /* 80385948 003815A8  38 21 00 20 */	addi r1, r1, 0x20
 /* 8038594C 003815AC  4E 80 00 20 */	blr 
+
+.global BindAnimation__Q34nw4r3lyt4PaneFPQ34nw4r3lyt13AnimTransformb
+BindAnimation__Q34nw4r3lyt4PaneFPQ34nw4r3lyt13AnimTransformb:
 /* 80385950 003815B0  81 84 00 00 */	lwz r12, 0(r4)
 /* 80385954 003815B4  7C 60 1B 78 */	mr r0, r3
 /* 80385958 003815B8  7C 83 23 78 */	mr r3, r4
@@ -711,6 +750,9 @@ lbl_80385930:
 /* 80385960 003815C0  7C 04 03 78 */	mr r4, r0
 /* 80385964 003815C4  7D 89 03 A6 */	mtctr r12
 /* 80385968 003815C8  4E 80 04 20 */	bctr 
+
+.global UnbindAnimation__Q34nw4r3lyt4PaneFPQ34nw4r3lyt13AnimTransformb
+UnbindAnimation__Q34nw4r3lyt4PaneFPQ34nw4r3lyt13AnimTransformb:
 /* 8038596C 003815CC  94 21 FF E0 */	stwu r1, -0x20(r1)
 /* 80385970 003815D0  7C 08 02 A6 */	mflr r0
 /* 80385974 003815D4  90 01 00 24 */	stw r0, 0x24(r1)
@@ -750,6 +792,9 @@ lbl_803859DC:
 /* 803859F0 00381650  7C 08 03 A6 */	mtlr r0
 /* 803859F4 00381654  38 21 00 20 */	addi r1, r1, 0x20
 /* 803859F8 00381658  4E 80 00 20 */	blr 
+
+.global UnbindAllAnimation__Q34nw4r3lyt4PaneFb
+UnbindAllAnimation__Q34nw4r3lyt4PaneFb:
 /* 803859FC 0038165C  81 83 00 00 */	lwz r12, 0(r3)
 /* 80385A00 00381660  7C 85 23 78 */	mr r5, r4
 /* 80385A04 00381664  38 80 00 00 */	li r4, 0
@@ -909,6 +954,9 @@ lbl_80385C00:
 /* 80385C0C 0038186C  7C 08 03 A6 */	mtlr r0
 /* 80385C10 00381870  38 21 00 20 */	addi r1, r1, 0x20
 /* 80385C14 00381874  4E 80 00 20 */	blr 
+
+.global LoadMtx__Q34nw4r3lyt4PaneFRCQ34nw4r3lyt8DrawInfo
+LoadMtx__Q34nw4r3lyt4PaneFRCQ34nw4r3lyt8DrawInfo:
 /* 80385C18 00381878  94 21 FF C0 */	stwu r1, -0x40(r1)
 /* 80385C1C 0038187C  7C 08 02 A6 */	mflr r0
 /* 80385C20 00381880  7C 65 1B 78 */	mr r5, r3
@@ -1049,13 +1097,16 @@ lbl_80385DF4:
 /* 80385DF8 00381A58  80 81 00 0C */	lwz r4, 0xc(r1)
 /* 80385DFC 00381A5C  38 21 00 10 */	addi r1, r1, 0x10
 /* 80385E00 00381A60  4E 80 00 20 */	blr 
+
+.global GetMaterial__Q34nw4r3lyt4PaneCFv
+GetMaterial__Q34nw4r3lyt4PaneCFv:
 /* 80385E04 00381A64  80 63 00 28 */	lwz r3, 0x28(r3)
 /* 80385E08 00381A68  4E 80 00 20 */	blr 
+
+.global GetRuntimeTypeInfo__Q34nw4r3lyt4PaneCFv
+GetRuntimeTypeInfo__Q34nw4r3lyt4PaneCFv:
 /* 80385E0C 00381A6C  38 6D B2 A8 */	addi r3, r13, lbl_80640568-_SDA_BASE_
 /* 80385E10 00381A70  4E 80 00 20 */	blr
-
-.global FEAudio_ResetRandomVoiceToggleSFX
-FEAudio_ResetRandomVoiceToggleSFX:
 
 .global __sinit_$3lyt_pane_cpp
 __sinit_$3lyt_pane_cpp:

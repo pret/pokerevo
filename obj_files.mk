@@ -168,6 +168,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/nw4r/math/math_triangular.o                      \
 	$(BUILD_DIR)/asm/nw4r/lyt/lyt_pane.o                              \
 	$(BUILD_DIR)/asm/nw4r/lyt/lyt_group.o                             \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_layout.o                            \
 	$(BUILD_DIR)/asm/text_11.o
 
 CTORS_O_FILES :=                                                  \
