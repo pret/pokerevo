@@ -19,6 +19,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/src/libstdc++/ptmf.o                             \
 	$(BUILD_DIR)/asm/libstdc++/runtime.o                          \
 	$(BUILD_DIR)/asm/libstdc++/__init_cpp_exceptions.o            \
+	$(BUILD_DIR)/asm/libstdc++/Gecko_ExceptionPPC.o               \
 	$(BUILD_DIR)/asm/text_5_2.o                                   \
 	$(BUILD_DIR)/asm/text_6.o                                     \
 	$(BUILD_DIR)/asm/MetroTRK/mem_TRK.o                           \
