@@ -27,7 +27,11 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/libstdc++/direct_io.o                        \
 	$(BUILD_DIR)/asm/libstdc++/file_io.o                          \
 	$(BUILD_DIR)/asm/libstdc++/FILE_POS.o                         \
-	$(BUILD_DIR)/asm/text_5_2.o                                   \
+	$(BUILD_DIR)/asm/libstdc++/mbstring.o                         \
+	$(BUILD_DIR)/asm/libstdc++/mem.o                              \
+	$(BUILD_DIR)/asm/libstdc++/mem_funcs.o                        \
+	$(BUILD_DIR)/asm/libstdc++/math_api.o                         \
+	$(BUILD_DIR)/asm/libstdc++/misc_io.o                          \
 	$(BUILD_DIR)/asm/text_6.o                                     \
 	$(BUILD_DIR)/asm/MetroTRK/mem_TRK.o                           \
 	$(BUILD_DIR)/asm/init.o                                       \
