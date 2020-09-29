@@ -19,7 +19,24 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/src/libstdc++/ptmf.o                             \
 	$(BUILD_DIR)/asm/libstdc++/runtime.o                          \
 	$(BUILD_DIR)/asm/libstdc++/__init_cpp_exceptions.o            \
-	$(BUILD_DIR)/asm/text_5_2.o                                   \
+	$(BUILD_DIR)/asm/libstdc++/Gecko_ExceptionPPC.o               \
+	$(BUILD_DIR)/asm/libstdc++/ansi_files.o                       \
+	$(BUILD_DIR)/asm/libstdc++/ansi_fp.o                          \
+	$(BUILD_DIR)/asm/libstdc++/arith.o                            \
+	$(BUILD_DIR)/asm/libstdc++/buffer_io.o                        \
+	$(BUILD_DIR)/asm/libstdc++/direct_io.o                        \
+	$(BUILD_DIR)/asm/libstdc++/file_io.o                          \
+	$(BUILD_DIR)/asm/libstdc++/FILE_POS.o                         \
+	$(BUILD_DIR)/asm/libstdc++/mbstring.o                         \
+	$(BUILD_DIR)/asm/libstdc++/mem.o                              \
+	$(BUILD_DIR)/asm/libstdc++/mem_funcs.o                        \
+	$(BUILD_DIR)/asm/libstdc++/math_api.o                         \
+	$(BUILD_DIR)/asm/libstdc++/misc_io.o                          \
+	$(BUILD_DIR)/asm/libstdc++/printf.o                           \
+	$(BUILD_DIR)/asm/libstdc++/qsort.o                            \
+	$(BUILD_DIR)/asm/libstdc++/rand.o                             \
+	$(BUILD_DIR)/asm/libstdc++/scanf.o                            \
+	$(BUILD_DIR)/asm/libstdc++/string.o                           \
 	$(BUILD_DIR)/asm/text_6.o                                     \
 	$(BUILD_DIR)/asm/MetroTRK/mem_TRK.o                           \
 	$(BUILD_DIR)/asm/init.o                                       \
@@ -174,6 +191,12 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/nw4r/lyt/lyt_window.o                            \
 	$(BUILD_DIR)/asm/nw4r/lyt/lyt_bounding.o                          \
 	$(BUILD_DIR)/asm/nw4r/lyt/lyt_material.o                          \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_texMap.o                            \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_drawInfo.o                          \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_animation.o                         \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_resourceAccessor.o                  \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_arcResourceAccessor.o               \
+	$(BUILD_DIR)/asm/nw4r/lyt/detail/lyt_common.o                     \
 	$(BUILD_DIR)/asm/text_11.o
 
 CTORS_O_FILES :=                                                  \

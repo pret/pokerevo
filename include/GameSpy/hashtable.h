@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-#include "darray.h"
+#include "GameSpy/darray.h"
 
 typedef s32 (*HashFunction)(void *, s32);
 

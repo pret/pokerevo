@@ -1,7 +1,7 @@
 #include "types.h"
-#include "qsort.h"
-#include "nonport.h"
-#include "darray.h"
+#include "libstdc++/qsort.h"
+#include "GameSpy/nonport.h"
+#include "GameSpy/darray.h"
 
 #pragma auto_inline on
 

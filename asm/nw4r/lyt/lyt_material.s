@@ -263,7 +263,7 @@ __ct__Q34nw4r3lyt8MaterialFPCQ44nw4r3lyt3res8MaterialRCQ34nw4r3lyt11ResBlockSet:
 /* 8038A7AC 0038640C  90 0F 00 3C */	stw r0, 0x3c(r15)
 /* 8038A7B0 00386410  99 CF 00 59 */	stb r14, 0x59(r15)
 /* 8038A7B4 00386414  91 CF 00 40 */	stw r14, 0x40(r15)
-/* 8038A7B8 00386418  4B E4 3B D9 */	bl func_801CE390
+/* 8038A7B8 00386418  4B E4 3B D9 */	bl strncpy
 /* 8038A7BC 0038641C  80 90 00 3C */	lwz r4, 0x3c(r16)
 /* 8038A7C0 00386420  3A F0 00 40 */	addi r23, r16, 0x40
 /* 8038A7C4 00386424  AB B0 00 14 */	lha r29, 0x14(r16)
@@ -442,7 +442,7 @@ lbl_8038AA18:
 /* 8038AA4C 003866AC  7C 64 1B 78 */	mr r4, r3
 /* 8038AA50 003866B0  38 61 00 18 */	addi r3, r1, 0x18
 /* 8038AA54 003866B4  38 A0 00 00 */	li r5, 0
-/* 8038AA58 003866B8  48 00 2A 39 */	bl func_8038D490
+/* 8038AA58 003866B8  48 00 2A 39 */	bl Set__Q34nw4r3lyt6TexMapFP10TPLPaletteUl
 /* 8038AA5C 003866BC  80 61 00 30 */	lwz r3, 0x30(r1)
 /* 8038AA60 003866C0  56 40 06 3E */	clrlwi r0, r18, 0x18
 /* 8038AA64 003866C4  1F 20 00 1C */	mulli r25, r0, 0x1c
@@ -452,7 +452,7 @@ lbl_8038AA18:
 /* 8038AA74 003866D4  90 01 00 30 */	stw r0, 0x30(r1)
 /* 8038AA78 003866D8  80 0F 00 40 */	lwz r0, 0x40(r15)
 /* 8038AA7C 003866DC  7C 60 CA 14 */	add r3, r0, r25
-/* 8038AA80 003866E0  48 00 2A A1 */	bl func_8038D520
+/* 8038AA80 003866E0  48 00 2A A1 */	bl SetNoWrap__Q34nw4r3lyt6TexMapFRCQ34nw4r3lyt6TexMap
 /* 8038AA84 003866E4  88 7A 00 02 */	lbz r3, 2(r26)
 /* 8038AA88 003866E8  7C 93 CA 14 */	add r4, r19, r25
 /* 8038AA8C 003866EC  80 04 00 18 */	lwz r0, 0x18(r4)
@@ -2232,7 +2232,7 @@ lbl_8038C45C:
 /* 8038C464 003880C4  38 61 00 24 */	addi r3, r1, 0x24
 /* 8038C468 003880C8  38 81 00 28 */	addi r4, r1, 0x28
 /* 8038C46C 003880CC  90 01 00 28 */	stw r0, 0x28(r1)
-/* 8038C470 003880D0  48 00 25 CD */	bl func_8038EA3C
+/* 8038C470 003880D0  48 00 25 CD */	bl MultipleAlpha__Q34nw4r3lyt6detailFQ34nw4r2ut5ColorUc
 /* 8038C474 003880D4  88 E1 00 24 */	lbz r7, 0x24(r1)
 /* 8038C478 003880D8  38 81 00 20 */	addi r4, r1, 0x20
 /* 8038C47C 003880DC  88 C1 00 25 */	lbz r6, 0x25(r1)
@@ -2362,7 +2362,7 @@ lbl_8038C624:
 lbl_8038C644:
 /* 8038C644 003882A4  7F 03 C3 78 */	mr r3, r24
 /* 8038C648 003882A8  38 81 00 80 */	addi r4, r1, 0x80
-/* 8038C64C 003882AC  48 00 0D 3D */	bl func_8038D388
+/* 8038C64C 003882AC  48 00 0D 3D */	bl Get__Q34nw4r3lyt6TexMapCFP9_GXTexObj
 /* 8038C650 003882B0  80 18 00 18 */	lwz r0, 0x18(r24)
 /* 8038C654 003882B4  54 03 27 3E */	srwi r3, r0, 0x1c
 /* 8038C658 003882B8  38 03 FF F8 */	addi r0, r3, -8
@@ -2382,7 +2382,7 @@ lbl_8038C680:
 /* 8038C688 003882E8  4B EF 63 B5 */	bl func_80282A3C
 /* 8038C68C 003882EC  7F 03 C3 78 */	mr r3, r24
 /* 8038C690 003882F0  38 81 00 50 */	addi r4, r1, 0x50
-/* 8038C694 003882F4  48 00 0D E1 */	bl func_8038D474
+/* 8038C694 003882F4  48 00 0D E1 */	bl Get__Q34nw4r3lyt6TexMapCFP10_GXTlutObj
 /* 8038C698 003882F8  7F 84 E3 78 */	mr r4, r28
 /* 8038C69C 003882FC  38 61 00 50 */	addi r3, r1, 0x50
 /* 8038C6A0 00388300  4B EF 65 A1 */	bl func_80282C40
@@ -3225,7 +3225,7 @@ AddAnimationLink__Q34nw4r3lyt8MaterialFPQ34nw4r3lyt13AnimationLink:
 .global FindAnimationLink__Q34nw4r3lyt8MaterialFPQ34nw4r3lyt13AnimTransform
 FindAnimationLink__Q34nw4r3lyt8MaterialFPQ34nw4r3lyt13AnimTransform:
 /* 8038D2C4 00388F24  38 63 00 04 */	addi r3, r3, 4
-/* 8038D2C8 00388F28  48 00 0F E4 */	b func_8038E2AC
+/* 8038D2C8 00388F28  48 00 0F E4 */	b FindAnimationLink__Q34nw4r3lyt6detailFPQ34nw4r2ut38LinkList$0Q34nw4r3lyt13AnimationLink$40$1PQ34nw4r3lyt13AnimTransform
 
 .global SetAnimationEnable__Q34nw4r3lyt8MaterialFPQ34nw4r3lyt13AnimTransformb
 SetAnimationEnable__Q34nw4r3lyt8MaterialFPQ34nw4r3lyt13AnimTransformb:
