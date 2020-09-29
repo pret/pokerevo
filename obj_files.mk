@@ -32,6 +32,11 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/libstdc++/mem_funcs.o                        \
 	$(BUILD_DIR)/asm/libstdc++/math_api.o                         \
 	$(BUILD_DIR)/asm/libstdc++/misc_io.o                          \
+	$(BUILD_DIR)/asm/libstdc++/printf.o                           \
+	$(BUILD_DIR)/asm/libstdc++/qsort.o                            \
+	$(BUILD_DIR)/asm/libstdc++/rand.o                             \
+	$(BUILD_DIR)/asm/libstdc++/scanf.o                            \
+	$(BUILD_DIR)/asm/libstdc++/string.o                           \
 	$(BUILD_DIR)/asm/text_6.o                                     \
 	$(BUILD_DIR)/asm/MetroTRK/mem_TRK.o                           \
 	$(BUILD_DIR)/asm/init.o                                       \
