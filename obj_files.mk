@@ -70,6 +70,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/libstdc++/e_sqrt.o                           \
 	$(BUILD_DIR)/asm/libstdc++/math_ppc.o                         \
 	$(BUILD_DIR)/asm/libstdc++/w_sqrt.o                           \
+	$(BUILD_DIR)/asm/MetroTRK/mainloop.o                          \
 	$(BUILD_DIR)/asm/text_6.o                                     \
 	$(BUILD_DIR)/asm/MetroTRK/mem_TRK.o                           \
 	$(BUILD_DIR)/asm/init.o                                       \
