@@ -875,7 +875,7 @@ FindAnimationLink__Q34nw4r3lyt4PaneFPQ34nw4r3lyt13AnimTransform:
 /* 80385AFC 0038175C  93 C1 00 08 */	stw r30, 8(r1)
 /* 80385B00 00381760  7C 7E 1B 78 */	mr r30, r3
 /* 80385B04 00381764  38 63 00 1C */	addi r3, r3, 0x1c
-/* 80385B08 00381768  48 00 87 A5 */	bl func_8038E2AC
+/* 80385B08 00381768  48 00 87 A5 */	bl FindAnimationLink__Q34nw4r3lyt6detailFPQ34nw4r2ut38LinkList$0Q34nw4r3lyt13AnimationLink$40$1PQ34nw4r3lyt13AnimTransform
 /* 80385B0C 0038176C  2C 03 00 00 */	cmpwi r3, 0
 /* 80385B10 00381770  41 82 00 08 */	beq lbl_80385B18
 /* 80385B14 00381774  48 00 00 34 */	b lbl_80385B48
@@ -913,7 +913,7 @@ SetAnimationEnable__Q34nw4r3lyt4PaneFPQ34nw4r3lyt13AnimTransformbb:
 /* 80385B7C 003817DC  7C BC 2B 78 */	mr r28, r5
 /* 80385B80 003817E0  7C DD 33 78 */	mr r29, r6
 /* 80385B84 003817E4  38 63 00 1C */	addi r3, r3, 0x1c
-/* 80385B88 003817E8  48 00 87 25 */	bl func_8038E2AC
+/* 80385B88 003817E8  48 00 87 25 */	bl FindAnimationLink__Q34nw4r3lyt6detailFPQ34nw4r2ut38LinkList$0Q34nw4r3lyt13AnimationLink$40$1PQ34nw4r3lyt13AnimTransform
 /* 80385B8C 003817EC  2C 03 00 00 */	cmpwi r3, 0
 /* 80385B90 003817F0  41 82 00 10 */	beq lbl_80385BA0
 /* 80385B94 003817F4  7F 80 00 34 */	cntlzw r0, r28

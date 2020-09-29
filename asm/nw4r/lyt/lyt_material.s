@@ -3225,7 +3225,7 @@ AddAnimationLink__Q34nw4r3lyt8MaterialFPQ34nw4r3lyt13AnimationLink:
 .global FindAnimationLink__Q34nw4r3lyt8MaterialFPQ34nw4r3lyt13AnimTransform
 FindAnimationLink__Q34nw4r3lyt8MaterialFPQ34nw4r3lyt13AnimTransform:
 /* 8038D2C4 00388F24  38 63 00 04 */	addi r3, r3, 4
-/* 8038D2C8 00388F28  48 00 0F E4 */	b func_8038E2AC
+/* 8038D2C8 00388F28  48 00 0F E4 */	b FindAnimationLink__Q34nw4r3lyt6detailFPQ34nw4r2ut38LinkList$0Q34nw4r3lyt13AnimationLink$40$1PQ34nw4r3lyt13AnimTransform
 
 .global SetAnimationEnable__Q34nw4r3lyt8MaterialFPQ34nw4r3lyt13AnimTransformb
 SetAnimationEnable__Q34nw4r3lyt8MaterialFPQ34nw4r3lyt13AnimTransformb:
