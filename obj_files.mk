@@ -178,6 +178,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/nw4r/lyt/lyt_drawInfo.o                          \
 	$(BUILD_DIR)/asm/nw4r/lyt/lyt_animation.o                         \
 	$(BUILD_DIR)/asm/nw4r/lyt/lyt_resourceAccessor.o                  \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_arcResourceAccessor.o               \
 	$(BUILD_DIR)/asm/text_11.o
 
 CTORS_O_FILES :=                                                  \
