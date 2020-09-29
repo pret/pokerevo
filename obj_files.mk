@@ -174,6 +174,8 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/nw4r/lyt/lyt_window.o                            \
 	$(BUILD_DIR)/asm/nw4r/lyt/lyt_bounding.o                          \
 	$(BUILD_DIR)/asm/nw4r/lyt/lyt_material.o                          \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_texMap.o                            \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_drawInfo.o                          \
 	$(BUILD_DIR)/asm/text_11.o
 
 CTORS_O_FILES :=                                                  \
