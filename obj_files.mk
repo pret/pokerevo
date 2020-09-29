@@ -21,6 +21,12 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/libstdc++/__init_cpp_exceptions.o            \
 	$(BUILD_DIR)/asm/libstdc++/Gecko_ExceptionPPC.o               \
 	$(BUILD_DIR)/asm/libstdc++/ansi_files.o                       \
+	$(BUILD_DIR)/asm/libstdc++/ansi_fp.o                          \
+	$(BUILD_DIR)/asm/libstdc++/arith.o                            \
+	$(BUILD_DIR)/asm/libstdc++/buffer_io.o                        \
+	$(BUILD_DIR)/asm/libstdc++/direct_io.o                        \
+	$(BUILD_DIR)/asm/libstdc++/file_io.o                          \
+	$(BUILD_DIR)/asm/libstdc++/FILE_POS.o                         \
 	$(BUILD_DIR)/asm/text_5_2.o                                   \
 	$(BUILD_DIR)/asm/text_6.o                                     \
 	$(BUILD_DIR)/asm/MetroTRK/mem_TRK.o                           \
