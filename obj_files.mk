@@ -37,6 +37,39 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/libstdc++/rand.o                             \
 	$(BUILD_DIR)/asm/libstdc++/scanf.o                            \
 	$(BUILD_DIR)/asm/libstdc++/string.o                           \
+	$(BUILD_DIR)/asm/libstdc++/strtold.o                          \
+	$(BUILD_DIR)/asm/libstdc++/strtoul.o                          \
+	$(BUILD_DIR)/asm/libstdc++/wstring.o                          \
+	$(BUILD_DIR)/asm/libstdc++/wchar_io.o                         \
+	$(BUILD_DIR)/asm/libstdc++/uart_console_io_gcn.o              \
+	$(BUILD_DIR)/asm/libstdc++/math_sun.o                         \
+	$(BUILD_DIR)/asm/libstdc++/extras.o                           \
+	$(BUILD_DIR)/asm/libstdc++/e_acos.o                           \
+	$(BUILD_DIR)/asm/libstdc++/e_asin.o                           \
+	$(BUILD_DIR)/asm/libstdc++/e_atan2.o                          \
+	$(BUILD_DIR)/asm/libstdc++/e_fmod.o                           \
+	$(BUILD_DIR)/asm/libstdc++/e_pow.o                            \
+	$(BUILD_DIR)/asm/libstdc++/e_rem_pio2.o                       \
+	$(BUILD_DIR)/asm/libstdc++/k_cos.o                            \
+	$(BUILD_DIR)/asm/libstdc++/k_rem_pio2.o                       \
+	$(BUILD_DIR)/asm/libstdc++/k_sin.o                            \
+	$(BUILD_DIR)/asm/libstdc++/k_tan.o                            \
+	$(BUILD_DIR)/asm/libstdc++/s_atan.o                           \
+	$(BUILD_DIR)/asm/libstdc++/s_copysign.o                       \
+	$(BUILD_DIR)/asm/libstdc++/s_cos.o                            \
+	$(BUILD_DIR)/asm/libstdc++/s_floor.o                          \
+	$(BUILD_DIR)/asm/libstdc++/s_frexp.o                          \
+	$(BUILD_DIR)/asm/libstdc++/s_ldexp.o                          \
+	$(BUILD_DIR)/asm/libstdc++/s_sin.o                            \
+	$(BUILD_DIR)/asm/libstdc++/s_tan.o                            \
+	$(BUILD_DIR)/asm/libstdc++/w_acos.o                           \
+	$(BUILD_DIR)/asm/libstdc++/w_asin.o                           \
+	$(BUILD_DIR)/asm/libstdc++/w_atan2.o                          \
+	$(BUILD_DIR)/asm/libstdc++/w_fmod.o                           \
+	$(BUILD_DIR)/asm/libstdc++/w_pow.o                            \
+	$(BUILD_DIR)/asm/libstdc++/e_sqrt.o                           \
+	$(BUILD_DIR)/asm/libstdc++/math_ppc.o                         \
+	$(BUILD_DIR)/asm/libstdc++/w_sqrt.o                           \
 	$(BUILD_DIR)/asm/text_6.o                                     \
 	$(BUILD_DIR)/asm/MetroTRK/mem_TRK.o                           \
 	$(BUILD_DIR)/asm/init.o                                       \
