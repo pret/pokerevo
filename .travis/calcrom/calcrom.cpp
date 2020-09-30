@@ -134,7 +134,7 @@ void analyze(string basedir, string version) {
         string ext = fname_s.substr(fname_s.rfind('.'), 4);
         bool is_asm = ext == ".s";
         string fileroot = fname_s.substr(fname_s.rfind('/') + 1);
-        string unsplit_regex("(init|extab|extabindex|text|ctors|dtors|rodata|data|sdata|sdata2)(_[^.]*)?[.]s");
+        string unsplit_regex("(code|init|extab|extabindex|text|ctors|dtors|rodata|data|sdata|sdata2)(_[^.]*)?[.]s");
         bool is_unsplit = is_asm && regex_match(fileroot, regex(unsplit_regex));
         
         // open the .s file and count incbins
