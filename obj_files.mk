@@ -71,6 +71,11 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/MSL_C/PPC_EABI/math_ppc.o                         \
 	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/w_sqrt.o                           \
 	$(BUILD_DIR)/asm/MetroTRK/mainloop.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/nubevent.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/nubinit.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/msg.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/msgbuf.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/serpoll.o                          \
 	$(BUILD_DIR)/asm/text_6.o                                     \
 	$(BUILD_DIR)/asm/MetroTRK/mem_TRK.o                           \
 	$(BUILD_DIR)/asm/init.o                                       \
