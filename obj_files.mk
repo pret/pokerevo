@@ -76,6 +76,10 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/MetroTRK/msg.o                          \
 	$(BUILD_DIR)/asm/MetroTRK/msgbuf.o                          \
 	$(BUILD_DIR)/asm/MetroTRK/serpoll.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/usr_put.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/dispatch.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/msghndlr.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/support.o                          \
 	$(BUILD_DIR)/asm/text_6.o                                     \
 	$(BUILD_DIR)/asm/MetroTRK/mem_TRK.o                           \
 	$(BUILD_DIR)/asm/init.o                                       \
