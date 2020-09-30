@@ -98,6 +98,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/MetroTRK/main.o                                       \
 	$(BUILD_DIR)/asm/MetroTRK/CircleBuffer.o                                       \
 	$(BUILD_DIR)/asm/MetroTRK/MWCriticalSection_gc.o                                       \
+	$(BUILD_DIR)/asm/SDK/DebuggerDriver.o                                       \
 	$(BUILD_DIR)/asm/text_6_2.o                                   \
 	$(BUILD_DIR)/asm/text_7.o                                     \
 	$(BUILD_DIR)/asm/SDK/OS/OS.o                                  \
