@@ -71,9 +71,22 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/MSL_C/PPC_EABI/math_ppc.o                         \
 	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/w_sqrt.o                           \
 	$(BUILD_DIR)/asm/MetroTRK/mainloop.o                          \
-	$(BUILD_DIR)/asm/text_6.o                                     \
+	$(BUILD_DIR)/asm/MetroTRK/nubevent.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/nubinit.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/msg.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/msgbuf.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/serpoll.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/usr_put.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/dispatch.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/msghndlr.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/support.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/mutex_TRK.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/notify.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/flush_cache.o                                     \
 	$(BUILD_DIR)/asm/MetroTRK/mem_TRK.o                           \
 	$(BUILD_DIR)/asm/init.o                                       \
+	$(BUILD_DIR)/asm/MetroTRK/string_TRK.o                                       \
+	$(BUILD_DIR)/asm/MetroTRK/targimpl.o                                       \
 	$(BUILD_DIR)/asm/text_6_2.o                                   \
 	$(BUILD_DIR)/asm/text_7.o                                     \
 	$(BUILD_DIR)/asm/SDK/OS/OS.o                                  \
