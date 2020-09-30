@@ -7,6 +7,17 @@ EXTABINDEX_O_FILES :=                                             \
 #init is included here so that linking is in the right order
 #todo fix with makefile implementation
 TEXT_O_FILES := 						                          \
+    $(BUILD_DIR)/asm/code_80006980.o							  \
+	$(BUILD_DIR)/asm/code_8000748C.o							  \
+	$(BUILD_DIR)/asm/code_80007940.o							  \
+	$(BUILD_DIR)/asm/code_800097D8.o							  \
+	$(BUILD_DIR)/asm/code_8000A7C4.o							  \
+	$(BUILD_DIR)/asm/code_8000AAC4.o							  \
+	$(BUILD_DIR)/asm/code_8000ADC0.o							  \
+	$(BUILD_DIR)/asm/code_80024914.o							  \
+	$(BUILD_DIR)/asm/code_80025390.o							  \
+	$(BUILD_DIR)/asm/code_80028554.o							  \
+	$(BUILD_DIR)/asm/code_8002A910.o							  \
 	$(BUILD_DIR)/asm/text_1.o                                     \
 	$(BUILD_DIR)/asm/text_2.o                                     \
 	$(BUILD_DIR)/asm/text_3.o                                     \
