@@ -167,32 +167,32 @@ __restore_gpr:
 _restgpr_15:
 /* 801C7144 001C2DA4  81 EB FF BC */	lwz r15, -0x44(r11)
 
-.global func_801C7148
-func_801C7148:
+.global _restgpr_16
+_restgpr_16:
 /* 801C7148 001C2DA8  82 0B FF C0 */	lwz r16, -0x40(r11)
 
-.global func_801C714C
-func_801C714C:
+.global _restgpr_17
+_restgpr_17:
 /* 801C714C 001C2DAC  82 2B FF C4 */	lwz r17, -0x3c(r11)
 
-.global func_801C7150
-func_801C7150:
+.global _restgpr_18
+_restgpr_18:
 /* 801C7150 001C2DB0  82 4B FF C8 */	lwz r18, -0x38(r11)
 
-.global func_801C7154
-func_801C7154:
+.global _restgpr_19
+_restgpr_19:
 /* 801C7154 001C2DB4  82 6B FF CC */	lwz r19, -0x34(r11)
 
-.global func_801C7158
-func_801C7158:
+.global _restgpr_20
+_restgpr_20:
 /* 801C7158 001C2DB8  82 8B FF D0 */	lwz r20, -0x30(r11)
 
-.global func_801C715C
-func_801C715C:
+.global _restgpr_21
+_restgpr_21:
 /* 801C715C 001C2DBC  82 AB FF D4 */	lwz r21, -0x2c(r11)
 
-.global func_801C7160
-func_801C7160:
+.global _restgpr_22
+_restgpr_22:
 /* 801C7160 001C2DC0  82 CB FF D8 */	lwz r22, -0x28(r11)
 
 .global _restgpr_23
@@ -203,24 +203,24 @@ _restgpr_23:
 _restgpr_24:
 /* 801C7168 001C2DC8  83 0B FF E0 */	lwz r24, -0x20(r11)
 
-.global func_801C716C
-func_801C716C:
+.global _restgpr_25
+_restgpr_25:
 /* 801C716C 001C2DCC  83 2B FF E4 */	lwz r25, -0x1c(r11)
 
-.global func_801C7170
-func_801C7170:
+.global _restgpr_26
+_restgpr_26:
 /* 801C7170 001C2DD0  83 4B FF E8 */	lwz r26, -0x18(r11)
 
 .global _restgpr_27
 _restgpr_27:
 /* 801C7174 001C2DD4  83 6B FF EC */	lwz r27, -0x14(r11)
 
-.global func_801C7178
-func_801C7178:
+.global _restgpr_28
+_restgpr_28:
 /* 801C7178 001C2DD8  83 8B FF F0 */	lwz r28, -0x10(r11)
 
-.global func_801C717C
-func_801C717C:
+.global _restgpr_29
+_restgpr_29:
 /* 801C717C 001C2DDC  83 AB FF F4 */	lwz r29, -0xc(r11)
 /* 801C7180 001C2DE0  83 CB FF F8 */	lwz r30, -8(r11)
 /* 801C7184 001C2DE4  83 EB FF FC */	lwz r31, -4(r11)
@@ -606,7 +606,7 @@ lbl_801C7660:
 /* 801C7670 001C32D0  38 21 00 10 */	addi r1, r1, 0x10
 /* 801C7674 001C32D4  4E 80 00 20 */	blr
 
-.global func_801C7678
+.global func_801C7678 #either __cvt_ull_flt or __cvt_dbl_usll
 func_801C7678:
 /* 801C7678 001C32D8  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 801C767C 001C32DC  7C 67 23 79 */	or. r7, r3, r4

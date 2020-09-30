@@ -35,7 +35,7 @@ __fini_cpp_exceptions_tmp: #__fini_cpp_exceptions
 /* 801C7808 001C3468  80 6D 83 D8 */	lwz r3, lbl_8063D698-_SDA_BASE_(r13)
 /* 801C780C 001C346C  2C 03 FF FE */	cmpwi r3, -2
 /* 801C7810 001C3470  41 82 00 10 */	beq lbl_801C7820
-/* 801C7814 001C3474  48 00 00 51 */	bl func_801C7864
+/* 801C7814 001C3474  48 00 00 51 */	bl __unregister_fragment
 /* 801C7818 001C3478  38 00 FF FE */	li r0, -2
 /* 801C781C 001C347C  90 0D 83 D8 */	stw r0, lbl_8063D698-_SDA_BASE_(r13)
 lbl_801C7820:

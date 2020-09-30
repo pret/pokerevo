@@ -12,17 +12,81 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/text_3.o                                     \
 	$(BUILD_DIR)/asm/text_4.o                                     \
 	$(BUILD_DIR)/asm/text_5.o                                     \
-	$(BUILD_DIR)/asm/libstdc++/__mem.o                            \
-	$(BUILD_DIR)/asm/libstdc++/__va_arg.o                         \
-	$(BUILD_DIR)/asm/libstdc++/global_destructor_chain.o          \
-	$(BUILD_DIR)/asm/libstdc++/NMWException.o                     \
-	$(BUILD_DIR)/src/libstdc++/ptmf.o                             \
-	$(BUILD_DIR)/asm/text_5_2.o                                   \
-	$(BUILD_DIR)/asm/libstdc++/__init_cpp_exceptions.o            \
-	$(BUILD_DIR)/asm/text_5_3.o                                   \
-	$(BUILD_DIR)/asm/text_6.o                                     \
+	$(BUILD_DIR)/asm/Runtime/__mem.o                            \
+	$(BUILD_DIR)/asm/Runtime/__va_arg.o                         \
+	$(BUILD_DIR)/asm/Runtime/global_destructor_chain.o          \
+	$(BUILD_DIR)/asm/Runtime/NMWException.o                     \
+	$(BUILD_DIR)/src/Runtime/ptmf.o                             \
+	$(BUILD_DIR)/asm/Runtime/runtime.o                          \
+	$(BUILD_DIR)/asm/Runtime/__init_cpp_exceptions.o            \
+	$(BUILD_DIR)/asm/Runtime/Gecko_ExceptionPPC.o               \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common/ansi_files.o                       \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/ansi_fp.o                          \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common/arith.o                            \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common/buffer_io.o                        \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common/direct_io.o                        \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common/file_io.o                          \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common/file_pos.o                         \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common/mbstring.o                         \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common/mem.o                              \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common/mem_funcs.o                        \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common/math_api.o                         \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common/misc_io.o                          \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common/printf.o                           \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common/qsort.o                            \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common/rand.o                             \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common/scanf.o                            \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common/string.o                           \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common/strtold.o                          \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common/strtoul.o                          \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common/wstring.o                          \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common/wchar_io.o                         \
+	$(BUILD_DIR)/asm/MSL_C/PPC_EABI/uart_console_io_gcn.o              \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/math_sun.o                         \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common/extras.o                           \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/e_acos.o                           \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/e_asin.o                           \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/e_atan2.o                          \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/e_fmod.o                           \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/e_pow.o                            \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/e_rem_pio2.o                       \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/k_cos.o                            \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/k_rem_pio2.o                       \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/k_sin.o                            \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/k_tan.o                            \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/s_atan.o                           \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/s_copysign.o                       \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/s_cos.o                            \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/s_floor.o                          \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/s_frexp.o                          \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/s_ldexp.o                          \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/s_sin.o                            \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/s_tan.o                            \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/w_acos.o                           \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/w_asin.o                           \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/w_atan2.o                          \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/w_fmod.o                           \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/w_pow.o                            \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/e_sqrt.o                           \
+	$(BUILD_DIR)/asm/MSL_C/PPC_EABI/math_ppc.o                         \
+	$(BUILD_DIR)/asm/MSL_C/MSL_Common_Embedded/Math/w_sqrt.o                           \
+	$(BUILD_DIR)/asm/MetroTRK/mainloop.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/nubevent.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/nubinit.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/msg.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/msgbuf.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/serpoll.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/usr_put.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/dispatch.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/msghndlr.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/support.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/mutex_TRK.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/notify.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/flush_cache.o                                     \
 	$(BUILD_DIR)/asm/MetroTRK/mem_TRK.o                           \
 	$(BUILD_DIR)/asm/init.o                                       \
+	$(BUILD_DIR)/asm/MetroTRK/string_TRK.o                                       \
+	$(BUILD_DIR)/asm/MetroTRK/targimpl.o                                       \
 	$(BUILD_DIR)/asm/text_6_2.o                                   \
 	$(BUILD_DIR)/asm/text_7.o                                     \
 	$(BUILD_DIR)/asm/SDK/OS/OS.o                                  \
@@ -143,7 +207,43 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_SoundArchiveFile.o           \
 	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_SoundArchiveLoader.o         \
 	$(BUILD_DIR)/asm/nw4r/snd/snd_SoundArchivePlayer.o                \
-	$(BUILD_DIR)/asm/text_10_6.o                                      \
+	$(BUILD_DIR)/asm/nw4r/snd/snd_SoundHandle.o                       \
+	$(BUILD_DIR)/asm/nw4r/snd/snd_SoundHeap.o                         \
+	$(BUILD_DIR)/asm/nw4r/snd/snd_SoundPlayer.o                       \
+	$(BUILD_DIR)/asm/nw4r/snd/snd_SoundStartable.o                    \
+	$(BUILD_DIR)/asm/nw4r/snd/snd_SoundSystem.o                       \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_SoundThread.o                \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_StrmChannel.o                \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_StrmFile.o                   \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_StrmPlayer.o                 \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_StrmSound.o                  \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_Task.o                       \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_TaskManager.o                \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_TaskThread.o                 \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_Voice.o                      \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_VoiceManager.o               \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_Util.o                       \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_WaveFile.o                   \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_WaveSound.o                  \
+	$(BUILD_DIR)/asm/nw4r/snd/snd_WaveSoundHandle.o                   \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_WsdFile.o                    \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_WsdPlayer.o                  \
+	$(BUILD_DIR)/asm/nw4r/snd/detail/snd_adpcm.o                      \
+	$(BUILD_DIR)/asm/nw4r/math/math_triangular.o                      \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_pane.o                              \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_group.o                             \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_layout.o                            \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_picture.o                           \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_textBox.o                           \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_window.o                            \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_bounding.o                          \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_material.o                          \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_texMap.o                            \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_drawInfo.o                          \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_animation.o                         \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_resourceAccessor.o                  \
+	$(BUILD_DIR)/asm/nw4r/lyt/lyt_arcResourceAccessor.o               \
+	$(BUILD_DIR)/asm/nw4r/lyt/detail/lyt_common.o                     \
 	$(BUILD_DIR)/asm/text_11.o
 
 CTORS_O_FILES :=                                                  \

@@ -83,7 +83,7 @@ GetSoundType__Q44nw4r3snd6detail22SoundArchiveFileReaderCFUl:
 /* 80377678 003732D8  7C 7E 1B 78 */	mr r30, r3
 /* 8037767C 003732DC  88 65 00 00 */	lbz r3, 0(r5)
 /* 80377680 003732E0  80 85 00 04 */	lwz r4, 4(r5)
-/* 80377684 003732E4  48 00 BD 65 */	bl func_803833E8
+/* 80377684 003732E4  48 00 BD 65 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377688 003732E8  2C 03 00 00 */	cmpwi r3, 0
 /* 8037768C 003732EC  40 82 00 0C */	bne lbl_80377698
 /* 80377690 003732F0  38 60 00 00 */	li r3, 0
@@ -103,7 +103,7 @@ lbl_803776AC:
 /* 803776C0 00373320  7C 83 02 14 */	add r4, r3, r0
 /* 803776C4 00373324  88 64 00 04 */	lbz r3, 4(r4)
 /* 803776C8 00373328  80 84 00 08 */	lwz r4, 8(r4)
-/* 803776CC 0037332C  48 00 BD 1D */	bl func_803833E8
+/* 803776CC 0037332C  48 00 BD 1D */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 803776D0 00373330  2C 03 00 00 */	cmpwi r3, 0
 /* 803776D4 00373334  40 82 00 0C */	bne lbl_803776E0
 /* 803776D8 00373338  38 60 00 00 */	li r3, 0
@@ -160,7 +160,7 @@ ReadSoundInfo__Q44nw4r3snd6detail22SoundArchiveFileReaderCFUlPQ44nw4r3snd12Sound
 /* 80377774 003733D4  7C 7D 1B 78 */	mr r29, r3
 /* 80377778 003733D8  88 66 00 00 */	lbz r3, 0(r6)
 /* 8037777C 003733DC  80 86 00 04 */	lwz r4, 4(r6)
-/* 80377780 003733E0  48 00 BC 69 */	bl func_803833E8
+/* 80377780 003733E0  48 00 BC 69 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377784 003733E4  2C 03 00 00 */	cmpwi r3, 0
 /* 80377788 003733E8  40 82 00 0C */	bne lbl_80377794
 /* 8037778C 003733EC  38 60 00 00 */	li r3, 0
@@ -180,7 +180,7 @@ lbl_803777A8:
 /* 803777BC 0037341C  7C 83 02 14 */	add r4, r3, r0
 /* 803777C0 00373420  88 64 00 04 */	lbz r3, 4(r4)
 /* 803777C4 00373424  80 84 00 08 */	lwz r4, 8(r4)
-/* 803777C8 00373428  48 00 BC 21 */	bl func_803833E8
+/* 803777C8 00373428  48 00 BC 21 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 803777CC 0037342C  48 00 00 18 */	b lbl_803777E4
 lbl_803777D0:
 /* 803777D0 00373430  57 C4 18 38 */	slwi r4, r30, 3
@@ -242,7 +242,7 @@ ReadSeqSoundInfo__Q44nw4r3snd6detail22SoundArchiveFileReaderCFUlPQ44nw4r3snd12So
 /* 80377890 003734F0  80 BE 00 28 */	lwz r5, 0x28(r30)
 /* 80377894 003734F4  90 81 00 0C */	stw r4, 0xc(r1)
 /* 80377898 003734F8  88 61 00 08 */	lbz r3, 8(r1)
-/* 8037789C 003734FC  48 00 BB 4D */	bl func_803833E8
+/* 8037789C 003734FC  48 00 BB 4D */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 803778A0 00373500  2C 03 00 00 */	cmpwi r3, 0
 /* 803778A4 00373504  40 82 00 0C */	bne lbl_803778B0
 /* 803778A8 00373508  38 60 00 00 */	li r3, 0
@@ -290,7 +290,7 @@ ReadStrmSoundInfo__Q44nw4r3snd6detail22SoundArchiveFileReaderCFUlPQ44nw4r3snd12S
 /* 80377934 00373594  80 BF 00 28 */	lwz r5, 0x28(r31)
 /* 80377938 00373598  90 81 00 0C */	stw r4, 0xc(r1)
 /* 8037793C 0037359C  88 61 00 08 */	lbz r3, 8(r1)
-/* 80377940 003735A0  48 00 BA A9 */	bl func_803833E8
+/* 80377940 003735A0  48 00 BA A9 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377944 003735A4  7C 03 00 D0 */	neg r0, r3
 /* 80377948 003735A8  83 E1 00 1C */	lwz r31, 0x1c(r1)
 /* 8037794C 003735AC  7C 00 1B 78 */	or r0, r0, r3
@@ -314,7 +314,7 @@ ReadWaveSoundInfo__Q44nw4r3snd6detail22SoundArchiveFileReaderCFUlPQ44nw4r3snd12S
 /* 80377988 003735E8  80 BE 00 28 */	lwz r5, 0x28(r30)
 /* 8037798C 003735EC  90 81 00 0C */	stw r4, 0xc(r1)
 /* 80377990 003735F0  88 61 00 08 */	lbz r3, 8(r1)
-/* 80377994 003735F4  48 00 BA 55 */	bl func_803833E8
+/* 80377994 003735F4  48 00 BA 55 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377998 003735F8  2C 03 00 00 */	cmpwi r3, 0
 /* 8037799C 003735FC  40 82 00 0C */	bne lbl_803779A8
 /* 803779A0 00373600  38 60 00 00 */	li r3, 0
@@ -361,7 +361,7 @@ ReadBankInfo__Q44nw4r3snd6detail22SoundArchiveFileReaderCFUlPQ44nw4r3snd12SoundA
 /* 80377A28 00373688  7C 7D 1B 78 */	mr r29, r3
 /* 80377A2C 0037368C  88 66 00 08 */	lbz r3, 8(r6)
 /* 80377A30 00373690  80 86 00 0C */	lwz r4, 0xc(r6)
-/* 80377A34 00373694  48 00 B9 B5 */	bl func_803833E8
+/* 80377A34 00373694  48 00 B9 B5 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377A38 00373698  2C 03 00 00 */	cmpwi r3, 0
 /* 80377A3C 0037369C  40 82 00 0C */	bne lbl_80377A48
 /* 80377A40 003736A0  38 60 00 00 */	li r3, 0
@@ -378,7 +378,7 @@ lbl_80377A5C:
 /* 80377A64 003736C4  7C 83 02 14 */	add r4, r3, r0
 /* 80377A68 003736C8  88 64 00 04 */	lbz r3, 4(r4)
 /* 80377A6C 003736CC  80 84 00 08 */	lwz r4, 8(r4)
-/* 80377A70 003736D0  48 00 B9 79 */	bl func_803833E8
+/* 80377A70 003736D0  48 00 B9 79 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 lbl_80377A74:
 /* 80377A74 003736D4  2C 03 00 00 */	cmpwi r3, 0
 /* 80377A78 003736D8  40 82 00 0C */	bne lbl_80377A84
@@ -412,7 +412,7 @@ ReadPlayerInfo__Q44nw4r3snd6detail22SoundArchiveFileReaderCFUlPQ44nw4r3snd12Soun
 /* 80377AD4 00373734  7C 7D 1B 78 */	mr r29, r3
 /* 80377AD8 00373738  88 66 00 10 */	lbz r3, 0x10(r6)
 /* 80377ADC 0037373C  80 86 00 14 */	lwz r4, 0x14(r6)
-/* 80377AE0 00373740  48 00 B9 09 */	bl func_803833E8
+/* 80377AE0 00373740  48 00 B9 09 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377AE4 00373744  2C 03 00 00 */	cmpwi r3, 0
 /* 80377AE8 00373748  40 82 00 0C */	bne lbl_80377AF4
 /* 80377AEC 0037374C  38 80 00 00 */	li r4, 0
@@ -429,7 +429,7 @@ lbl_80377B08:
 /* 80377B10 00373770  7C 83 02 14 */	add r4, r3, r0
 /* 80377B14 00373774  88 64 00 04 */	lbz r3, 4(r4)
 /* 80377B18 00373778  80 84 00 08 */	lwz r4, 8(r4)
-/* 80377B1C 0037377C  48 00 B8 CD */	bl func_803833E8
+/* 80377B1C 0037377C  48 00 B8 CD */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377B20 00373780  7C 64 1B 78 */	mr r4, r3
 lbl_80377B24:
 /* 80377B24 00373784  2C 04 00 00 */	cmpwi r4, 0
@@ -467,7 +467,7 @@ ReadGroupInfo__Q44nw4r3snd6detail22SoundArchiveFileReaderCFUlPQ44nw4r3snd12Sound
 /* 80377B90 003737F0  7C 7C 1B 78 */	mr r28, r3
 /* 80377B94 003737F4  88 66 00 20 */	lbz r3, 0x20(r6)
 /* 80377B98 003737F8  80 86 00 24 */	lwz r4, 0x24(r6)
-/* 80377B9C 003737FC  48 00 B8 4D */	bl func_803833E8
+/* 80377B9C 003737FC  48 00 B8 4D */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377BA0 00373800  2C 03 00 00 */	cmpwi r3, 0
 /* 80377BA4 00373804  40 82 00 0C */	bne lbl_80377BB0
 /* 80377BA8 00373808  3B C0 00 00 */	li r30, 0
@@ -484,7 +484,7 @@ lbl_80377BC4:
 /* 80377BCC 0037382C  7C 83 02 14 */	add r4, r3, r0
 /* 80377BD0 00373830  88 64 00 04 */	lbz r3, 4(r4)
 /* 80377BD4 00373834  80 84 00 08 */	lwz r4, 8(r4)
-/* 80377BD8 00373838  48 00 B8 11 */	bl func_803833E8
+/* 80377BD8 00373838  48 00 B8 11 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377BDC 0037383C  7C 7E 1B 78 */	mr r30, r3
 lbl_80377BE0:
 /* 80377BE0 00373840  2C 1E 00 00 */	cmpwi r30, 0
@@ -495,7 +495,7 @@ lbl_80377BF0:
 /* 80377BF0 00373850  88 7E 00 20 */	lbz r3, 0x20(r30)
 /* 80377BF4 00373854  80 9E 00 24 */	lwz r4, 0x24(r30)
 /* 80377BF8 00373858  80 BC 00 28 */	lwz r5, 0x28(r28)
-/* 80377BFC 0037385C  48 00 B7 ED */	bl func_803833E8
+/* 80377BFC 0037385C  48 00 B7 ED */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377C00 00373860  2C 03 00 00 */	cmpwi r3, 0
 /* 80377C04 00373864  7C 7F 1B 78 */	mr r31, r3
 /* 80377C08 00373868  40 82 00 0C */	bne lbl_80377C14
@@ -505,7 +505,7 @@ lbl_80377C14:
 /* 80377C14 00373874  88 7E 00 08 */	lbz r3, 8(r30)
 /* 80377C18 00373878  80 9E 00 0C */	lwz r4, 0xc(r30)
 /* 80377C1C 0037387C  80 BC 00 28 */	lwz r5, 0x28(r28)
-/* 80377C20 00373880  48 00 B7 C9 */	bl func_803833E8
+/* 80377C20 00373880  48 00 B7 C9 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377C24 00373884  90 7D 00 04 */	stw r3, 4(r29)
 /* 80377C28 00373888  38 60 00 01 */	li r3, 1
 /* 80377C2C 0037388C  80 1E 00 10 */	lwz r0, 0x10(r30)
@@ -545,7 +545,7 @@ ReadGroupItemInfo__Q44nw4r3snd6detail22SoundArchiveFileReaderCFUlUlPQ44nw4r3snd1
 /* 80377CA4 00373904  7C 7C 1B 78 */	mr r28, r3
 /* 80377CA8 00373908  88 67 00 20 */	lbz r3, 0x20(r7)
 /* 80377CAC 0037390C  80 87 00 24 */	lwz r4, 0x24(r7)
-/* 80377CB0 00373910  48 00 B7 39 */	bl func_803833E8
+/* 80377CB0 00373910  48 00 B7 39 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377CB4 00373914  2C 03 00 00 */	cmpwi r3, 0
 /* 80377CB8 00373918  40 82 00 0C */	bne lbl_80377CC4
 /* 80377CBC 0037391C  38 80 00 00 */	li r4, 0
@@ -562,7 +562,7 @@ lbl_80377CD8:
 /* 80377CE0 00373940  7C 83 02 14 */	add r4, r3, r0
 /* 80377CE4 00373944  88 64 00 04 */	lbz r3, 4(r4)
 /* 80377CE8 00373948  80 84 00 08 */	lwz r4, 8(r4)
-/* 80377CEC 0037394C  48 00 B6 FD */	bl func_803833E8
+/* 80377CEC 0037394C  48 00 B6 FD */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377CF0 00373950  7C 64 1B 78 */	mr r4, r3
 lbl_80377CF4:
 /* 80377CF4 00373954  2C 04 00 00 */	cmpwi r4, 0
@@ -573,7 +573,7 @@ lbl_80377D04:
 /* 80377D04 00373964  88 64 00 20 */	lbz r3, 0x20(r4)
 /* 80377D08 00373968  80 84 00 24 */	lwz r4, 0x24(r4)
 /* 80377D0C 0037396C  80 BC 00 28 */	lwz r5, 0x28(r28)
-/* 80377D10 00373970  48 00 B6 D9 */	bl func_803833E8
+/* 80377D10 00373970  48 00 B6 D9 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377D14 00373974  2C 03 00 00 */	cmpwi r3, 0
 /* 80377D18 00373978  40 82 00 0C */	bne lbl_80377D24
 /* 80377D1C 0037397C  38 60 00 00 */	li r3, 0
@@ -590,7 +590,7 @@ lbl_80377D38:
 /* 80377D40 003739A0  7C 83 02 14 */	add r4, r3, r0
 /* 80377D44 003739A4  88 64 00 04 */	lbz r3, 4(r4)
 /* 80377D48 003739A8  80 84 00 08 */	lwz r4, 8(r4)
-/* 80377D4C 003739AC  48 00 B6 9D */	bl func_803833E8
+/* 80377D4C 003739AC  48 00 B6 9D */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377D50 003739B0  2C 03 00 00 */	cmpwi r3, 0
 /* 80377D54 003739B4  40 82 00 0C */	bne lbl_80377D60
 /* 80377D58 003739B8  38 60 00 00 */	li r3, 0
@@ -627,7 +627,7 @@ ReadSoundArchivePlayerInfo__Q44nw4r3snd6detail22SoundArchiveFileReaderCFPQ44nw4r
 /* 80377DC0 00373A20  7C 9F 23 78 */	mr r31, r4
 /* 80377DC4 00373A24  88 65 00 28 */	lbz r3, 0x28(r5)
 /* 80377DC8 00373A28  80 85 00 2C */	lwz r4, 0x2c(r5)
-/* 80377DCC 00373A2C  48 00 B6 1D */	bl func_803833E8
+/* 80377DCC 00373A2C  48 00 B6 1D */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377DD0 00373A30  2C 1F 00 00 */	cmpwi r31, 0
 /* 80377DD4 00373A34  40 82 00 0C */	bne lbl_80377DE0
 /* 80377DD8 00373A38  38 60 00 00 */	li r3, 0
@@ -663,7 +663,7 @@ GetSoundCount__Q44nw4r3snd6detail22SoundArchiveFileReaderCFv:
 /* 80377E3C 00373A9C  90 01 00 14 */	stw r0, 0x14(r1)
 /* 80377E40 00373AA0  88 65 00 00 */	lbz r3, 0(r5)
 /* 80377E44 00373AA4  80 85 00 04 */	lwz r4, 4(r5)
-/* 80377E48 00373AA8  48 00 B5 A1 */	bl func_803833E8
+/* 80377E48 00373AA8  48 00 B5 A1 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377E4C 00373AAC  2C 03 00 00 */	cmpwi r3, 0
 /* 80377E50 00373AB0  40 82 00 0C */	bne lbl_80377E5C
 /* 80377E54 00373AB4  38 60 00 00 */	li r3, 0
@@ -684,7 +684,7 @@ GetPlayerCount__Q44nw4r3snd6detail22SoundArchiveFileReaderCFv:
 /* 80377E7C 00373ADC  90 01 00 14 */	stw r0, 0x14(r1)
 /* 80377E80 00373AE0  88 65 00 10 */	lbz r3, 0x10(r5)
 /* 80377E84 00373AE4  80 85 00 14 */	lwz r4, 0x14(r5)
-/* 80377E88 00373AE8  48 00 B5 61 */	bl func_803833E8
+/* 80377E88 00373AE8  48 00 B5 61 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377E8C 00373AEC  2C 03 00 00 */	cmpwi r3, 0
 /* 80377E90 00373AF0  40 82 00 0C */	bne lbl_80377E9C
 /* 80377E94 00373AF4  38 60 00 00 */	li r3, 0
@@ -705,7 +705,7 @@ GetGroupCount__Q44nw4r3snd6detail22SoundArchiveFileReaderCFv:
 /* 80377EBC 00373B1C  90 01 00 14 */	stw r0, 0x14(r1)
 /* 80377EC0 00373B20  88 65 00 20 */	lbz r3, 0x20(r5)
 /* 80377EC4 00373B24  80 85 00 24 */	lwz r4, 0x24(r5)
-/* 80377EC8 00373B28  48 00 B5 21 */	bl func_803833E8
+/* 80377EC8 00373B28  48 00 B5 21 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377ECC 00373B2C  2C 03 00 00 */	cmpwi r3, 0
 /* 80377ED0 00373B30  40 82 00 0C */	bne lbl_80377EDC
 /* 80377ED4 00373B34  38 60 00 00 */	li r3, 0
@@ -735,7 +735,7 @@ ReadFileInfo__Q44nw4r3snd6detail22SoundArchiveFileReaderCFUlPQ44nw4r3snd12SoundA
 /* 80377F20 00373B80  7C 7C 1B 78 */	mr r28, r3
 /* 80377F24 00373B84  88 66 00 18 */	lbz r3, 0x18(r6)
 /* 80377F28 00373B88  80 86 00 1C */	lwz r4, 0x1c(r6)
-/* 80377F2C 00373B8C  48 00 B4 BD */	bl func_803833E8
+/* 80377F2C 00373B8C  48 00 B4 BD */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377F30 00373B90  2C 03 00 00 */	cmpwi r3, 0
 /* 80377F34 00373B94  40 82 00 0C */	bne lbl_80377F40
 /* 80377F38 00373B98  38 60 00 00 */	li r3, 0
@@ -752,7 +752,7 @@ lbl_80377F54:
 /* 80377F5C 00373BBC  7C 83 02 14 */	add r4, r3, r0
 /* 80377F60 00373BC0  88 64 00 04 */	lbz r3, 4(r4)
 /* 80377F64 00373BC4  80 84 00 08 */	lwz r4, 8(r4)
-/* 80377F68 00373BC8  48 00 B4 81 */	bl func_803833E8
+/* 80377F68 00373BC8  48 00 B4 81 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377F6C 00373BCC  2C 03 00 00 */	cmpwi r3, 0
 /* 80377F70 00373BD0  7C 7E 1B 78 */	mr r30, r3
 /* 80377F74 00373BD4  40 82 00 0C */	bne lbl_80377F80
@@ -762,7 +762,7 @@ lbl_80377F80:
 /* 80377F80 00373BE0  88 63 00 14 */	lbz r3, 0x14(r3)
 /* 80377F84 00373BE4  80 9E 00 18 */	lwz r4, 0x18(r30)
 /* 80377F88 00373BE8  80 BC 00 28 */	lwz r5, 0x28(r28)
-/* 80377F8C 00373BEC  48 00 B4 5D */	bl func_803833E8
+/* 80377F8C 00373BEC  48 00 B4 5D */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377F90 00373BF0  2C 03 00 00 */	cmpwi r3, 0
 /* 80377F94 00373BF4  7C 7F 1B 78 */	mr r31, r3
 /* 80377F98 00373BF8  40 82 00 0C */	bne lbl_80377FA4
@@ -776,7 +776,7 @@ lbl_80377FA4:
 /* 80377FB4 00373C14  90 1D 00 04 */	stw r0, 4(r29)
 /* 80377FB8 00373C18  88 7E 00 0C */	lbz r3, 0xc(r30)
 /* 80377FBC 00373C1C  80 9E 00 10 */	lwz r4, 0x10(r30)
-/* 80377FC0 00373C20  48 00 B4 29 */	bl func_803833E8
+/* 80377FC0 00373C20  48 00 B4 29 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80377FC4 00373C24  90 7D 00 08 */	stw r3, 8(r29)
 /* 80377FC8 00373C28  38 60 00 01 */	li r3, 1
 /* 80377FCC 00373C2C  80 1F 00 00 */	lwz r0, 0(r31)
@@ -808,7 +808,7 @@ ReadFilePos__Q44nw4r3snd6detail22SoundArchiveFileReaderCFUlUlPQ44nw4r3snd12Sound
 /* 80378024 00373C84  7C 7C 1B 78 */	mr r28, r3
 /* 80378028 00373C88  88 67 00 18 */	lbz r3, 0x18(r7)
 /* 8037802C 00373C8C  80 87 00 1C */	lwz r4, 0x1c(r7)
-/* 80378030 00373C90  48 00 B3 B9 */	bl func_803833E8
+/* 80378030 00373C90  48 00 B3 B9 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80378034 00373C94  2C 03 00 00 */	cmpwi r3, 0
 /* 80378038 00373C98  40 82 00 0C */	bne lbl_80378044
 /* 8037803C 00373C9C  38 60 00 00 */	li r3, 0
@@ -825,7 +825,7 @@ lbl_80378058:
 /* 80378060 00373CC0  7C 83 02 14 */	add r4, r3, r0
 /* 80378064 00373CC4  88 64 00 04 */	lbz r3, 4(r4)
 /* 80378068 00373CC8  80 84 00 08 */	lwz r4, 8(r4)
-/* 8037806C 00373CCC  48 00 B3 7D */	bl func_803833E8
+/* 8037806C 00373CCC  48 00 B3 7D */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80378070 00373CD0  2C 03 00 00 */	cmpwi r3, 0
 /* 80378074 00373CD4  7C 64 1B 78 */	mr r4, r3
 /* 80378078 00373CD8  40 82 00 0C */	bne lbl_80378084
@@ -835,7 +835,7 @@ lbl_80378084:
 /* 80378084 00373CE4  88 63 00 14 */	lbz r3, 0x14(r3)
 /* 80378088 00373CE8  80 84 00 18 */	lwz r4, 0x18(r4)
 /* 8037808C 00373CEC  80 BC 00 28 */	lwz r5, 0x28(r28)
-/* 80378090 00373CF0  48 00 B3 59 */	bl func_803833E8
+/* 80378090 00373CF0  48 00 B3 59 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80378094 00373CF4  2C 03 00 00 */	cmpwi r3, 0
 /* 80378098 00373CF8  40 82 00 0C */	bne lbl_803780A4
 /* 8037809C 00373CFC  38 60 00 00 */	li r3, 0
@@ -852,7 +852,7 @@ lbl_803780B8:
 /* 803780C0 00373D20  7C 83 02 14 */	add r4, r3, r0
 /* 803780C4 00373D24  88 64 00 04 */	lbz r3, 4(r4)
 /* 803780C8 00373D28  80 84 00 08 */	lwz r4, 8(r4)
-/* 803780CC 00373D2C  48 00 B3 1D */	bl func_803833E8
+/* 803780CC 00373D2C  48 00 B3 1D */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 803780D0 00373D30  2C 03 00 00 */	cmpwi r3, 0
 /* 803780D4 00373D34  40 82 00 0C */	bne lbl_803780E0
 /* 803780D8 00373D38  38 60 00 00 */	li r3, 0
@@ -953,7 +953,7 @@ lbl_8037821C:
 /* 8037821C 00373E7C  7C 80 22 14 */	add r4, r0, r4
 lbl_80378220:
 /* 80378220 00373E80  7F C3 F3 78 */	mr r3, r30
-/* 80378224 00373E84  4B E5 62 29 */	bl func_801CE44C
+/* 80378224 00373E84  4B E5 62 29 */	bl strcmp
 /* 80378228 00373E88  2C 03 00 00 */	cmpwi r3, 0
 /* 8037822C 00373E8C  40 82 00 0C */	bne lbl_80378238
 /* 80378230 00373E90  80 7F 00 10 */	lwz r3, 0x10(r31)
@@ -982,7 +982,7 @@ impl_GetSoundInfoOffset__Q44nw4r3snd6detail22SoundArchiveFileReaderCFUl:
 /* 80378278 00373ED8  7C 7E 1B 78 */	mr r30, r3
 /* 8037827C 00373EDC  88 65 00 00 */	lbz r3, 0(r5)
 /* 80378280 00373EE0  80 85 00 04 */	lwz r4, 4(r5)
-/* 80378284 00373EE4  48 00 B1 65 */	bl func_803833E8
+/* 80378284 00373EE4  48 00 B1 65 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 80378288 00373EE8  2C 03 00 00 */	cmpwi r3, 0
 /* 8037828C 00373EEC  40 82 00 10 */	bne lbl_8037829C
 /* 80378290 00373EF0  80 6D B2 68 */	lwz r3, lbl_80640528-_SDA_BASE_(r13)
@@ -1004,7 +1004,7 @@ lbl_803782B4:
 /* 803782C8 00373F28  7C 83 02 14 */	add r4, r3, r0
 /* 803782CC 00373F2C  88 64 00 04 */	lbz r3, 4(r4)
 /* 803782D0 00373F30  80 84 00 08 */	lwz r4, 8(r4)
-/* 803782D4 00373F34  48 00 B1 15 */	bl func_803833E8
+/* 803782D4 00373F34  48 00 B1 15 */	bl GetDataRefAddressImpl__Q44nw4r3snd6detail4UtilFQ54nw4r3snd6detail4Util7RefTypeUlPCv
 /* 803782D8 00373F38  2C 03 00 00 */	cmpwi r3, 0
 /* 803782DC 00373F3C  40 82 00 18 */	bne lbl_803782F4
 /* 803782E0 00373F40  80 6D B2 68 */	lwz r3, lbl_80640528-_SDA_BASE_(r13)
