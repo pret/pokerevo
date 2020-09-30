@@ -80,7 +80,9 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/MetroTRK/dispatch.o                          \
 	$(BUILD_DIR)/asm/MetroTRK/msghndlr.o                          \
 	$(BUILD_DIR)/asm/MetroTRK/support.o                          \
-	$(BUILD_DIR)/asm/text_6.o                                     \
+	$(BUILD_DIR)/asm/MetroTRK/mutex_TRK.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/notify.o                          \
+	$(BUILD_DIR)/asm/MetroTRK/flush_cache.o                                     \
 	$(BUILD_DIR)/asm/MetroTRK/mem_TRK.o                           \
 	$(BUILD_DIR)/asm/init.o                                       \
 	$(BUILD_DIR)/asm/text_6_2.o                                   \
