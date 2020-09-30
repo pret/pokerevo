@@ -87,6 +87,17 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/init.o                                       \
 	$(BUILD_DIR)/asm/MetroTRK/string_TRK.o                                       \
 	$(BUILD_DIR)/asm/MetroTRK/targimpl.o                                       \
+	$(BUILD_DIR)/asm/MetroTRK/mpc_7xx_603e.o                                       \
+	$(BUILD_DIR)/asm/MetroTRK/mslsupp.o                                       \
+	$(BUILD_DIR)/asm/MetroTRK/dolphin_trk.o                                       \
+	$(BUILD_DIR)/asm/MetroTRK/main_TRK.o                                       \
+	$(BUILD_DIR)/asm/MetroTRK/dolphin_trk_glue.o                                       \
+	$(BUILD_DIR)/asm/MetroTRK/targcont.o                                       \
+	$(BUILD_DIR)/asm/MetroTRK/target_options.o                                       \
+	$(BUILD_DIR)/asm/MetroTRK/UDP_Stubs.o                                       \
+	$(BUILD_DIR)/asm/MetroTRK/main.o                                       \
+	$(BUILD_DIR)/asm/MetroTRK/CircleBuffer.o                                       \
+	$(BUILD_DIR)/asm/MetroTRK/MWCriticalSection_gc.o                                       \
 	$(BUILD_DIR)/asm/text_6_2.o                                   \
 	$(BUILD_DIR)/asm/text_7.o                                     \
 	$(BUILD_DIR)/asm/SDK/OS/OS.o                                  \
