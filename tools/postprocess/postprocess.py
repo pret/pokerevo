@@ -22,6 +22,7 @@ BANNER = """
 #       3: \\
 #       4: ,
 #       5: -
+#       6: *
 #
 #    This option is enabled with -fsymbol-fixup, and disabled by default with -fno-symbol-fixup
 #
@@ -39,7 +40,8 @@ substitutions = (
     ('@',  '$2'),
     ('\\', '$3'),
     (',',  '$4'),
-    ('-',  '$5')
+    ('-',  '$5'),
+    ('*',  '$6')
 )
 
 def format(symbol):
