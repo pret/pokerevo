@@ -272,6 +272,9 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/HBM/HBMBase.o                                \
 	$(BUILD_DIR)/asm/SDK/HBM/HBMAnmController.o                                \
 	$(BUILD_DIR)/asm/SDK/HBM/HBMFrameController.o                                \
+	$(BUILD_DIR)/asm/SDK/HBM/HBMGUIManager.o                                \
+	$(BUILD_DIR)/asm/SDK/HBM/HBMController.o                                \
+	$(BUILD_DIR)/asm/SDK/HBM/HBMRemoteSpk.o                                \
 	$(BUILD_DIR)/asm/text_11_2.o
 
 CTORS_O_FILES :=                                                  \
