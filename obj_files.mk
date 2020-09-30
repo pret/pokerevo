@@ -16,7 +16,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/code_8000ADC0.o							  \
 	$(BUILD_DIR)/asm/code_80024914.o							  \
 	$(BUILD_DIR)/asm/code_80025390.o							  \
-	$(BUILD_DIR)/asm/code_80028554.o							  \
+	$(BUILD_DIR)/asm/code_800284B0.o							  \
 	$(BUILD_DIR)/asm/code_8002A910.o							  \
 	$(BUILD_DIR)/asm/text_1.o                                     \
 	$(BUILD_DIR)/asm/text_2.o                                     \
