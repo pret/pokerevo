@@ -98,6 +98,8 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/MetroTRK/main.o                                       \
 	$(BUILD_DIR)/asm/MetroTRK/CircleBuffer.o                                       \
 	$(BUILD_DIR)/asm/MetroTRK/MWCriticalSection_gc.o                                       \
+	$(BUILD_DIR)/asm/SDK/DebuggerDriver.o                                       \
+	$(BUILD_DIR)/asm/SDK/exi2.o                                       \
 	$(BUILD_DIR)/asm/text_6_2.o                                   \
 	$(BUILD_DIR)/asm/text_7.o                                     \
 	$(BUILD_DIR)/asm/SDK/OS/OS.o                                  \
@@ -255,7 +257,9 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/nw4r/lyt/lyt_resourceAccessor.o                  \
 	$(BUILD_DIR)/asm/nw4r/lyt/lyt_arcResourceAccessor.o               \
 	$(BUILD_DIR)/asm/nw4r/lyt/detail/lyt_common.o                     \
-	$(BUILD_DIR)/asm/text_11.o
+	$(BUILD_DIR)/asm/text_11.o                                        \
+	$(BUILD_DIR)/asm/SDK/HBM/HBMBase.o                                \
+	$(BUILD_DIR)/asm/text_11_2.o
 
 CTORS_O_FILES :=                                                  \
     $(BUILD_DIR)/asm/ctors.o
