@@ -26,7 +26,6 @@ OSGetConsoleSimulatedMem2Size:
 /* 8026F124 0026AD84  80 63 31 1C */	lwz r3, 0x8000311C@l(r3)
 /* 8026F128 0026AD88  4E 80 00 20 */	blr
 
-.global OnShutdown
 OnShutdown:
 /* 8026F12C 0026AD8C  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 8026F130 0026AD90  7C 08 02 A6 */	mflr r0

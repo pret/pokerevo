@@ -151,7 +151,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/SI/SIBios.o                              \
 	$(BUILD_DIR)/asm/SDK/SI/SISamplingRate.o                              \
 	$(BUILD_DIR)/asm/SDK/DB/db.o                              \
-	$(BUILD_DIR)/asm/text_7_2.o                                   \
+	$(BUILD_DIR)/asm/SDK/VI/vi.o                                   \
 	$(BUILD_DIR)/asm/text_8.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
