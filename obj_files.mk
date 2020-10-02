@@ -113,6 +113,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/exi2.o                                       \
 	$(BUILD_DIR)/asm/text_6_2.o                                   \
 	$(BUILD_DIR)/asm/text_7.o                                     \
+	$(BUILD_DIR)/asm/SDK/base/PPCArch.o                                  \
 	$(BUILD_DIR)/asm/SDK/OS/OS.o                                  \
 	$(BUILD_DIR)/asm/SDK/OS/OSAlarm.o                             \
 	$(BUILD_DIR)/src/SDK/OS/OSAlloc.o                             \
@@ -122,6 +123,8 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/OS/OSContext.o                           \
 	$(BUILD_DIR)/asm/SDK/OS/OSError.o                             \
 	$(BUILD_DIR)/asm/SDK/OS/OSExec.o                              \
+	$(BUILD_DIR)/asm/SDK/OS/OSFatal.o                              \
+	$(BUILD_DIR)/asm/SDK/OS/OSFont.o                              \
 	$(BUILD_DIR)/asm/text_7_2.o                                   \
 	$(BUILD_DIR)/asm/text_8.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
