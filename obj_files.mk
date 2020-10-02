@@ -152,6 +152,8 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/SI/SISamplingRate.o                              \
 	$(BUILD_DIR)/asm/SDK/DB/db.o                              \
 	$(BUILD_DIR)/asm/SDK/VI/vi.o                                   \
+	$(BUILD_DIR)/asm/SDK/VI/i2c.o                                   \
+	$(BUILD_DIR)/asm/SDK/VI/vi3in1.o                                   \
 	$(BUILD_DIR)/asm/text_8.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
