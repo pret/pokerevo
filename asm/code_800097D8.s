@@ -808,7 +808,7 @@ lbl_8000A2B4:
 /* 8000A2C4 00005F24  38 80 00 00 */	li r4, 0
 /* 8000A2C8 00005F28  38 A0 00 00 */	li r5, 0
 /* 8000A2CC 00005F2C  38 C0 00 00 */	li r6, 0
-/* 8000A2D0 00005F30  48 26 83 79 */	bl func_80272648
+/* 8000A2D0 00005F30  48 26 83 79 */	bl OSSetIdleFunction
 /* 8000A2D4 00005F34  48 35 E1 F1 */	bl GetInstance__Q44nw4r3snd6detail9AxManagerFv
 /* 8000A2D8 00005F38  48 35 F1 6D */	bl PrepareReset__Q44nw4r3snd6detail9AxManagerFv
 /* 8000A2DC 00005F3C  48 37 20 B9 */	bl WaitForResetReady__Q34nw4r3snd11SoundSystemFv

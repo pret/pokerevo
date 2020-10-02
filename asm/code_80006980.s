@@ -618,7 +618,7 @@ func_800071F8:
 /* 8000721C 00002E7C  38 80 00 00 */	li r4, 0
 /* 80007220 00002E80  38 A0 00 00 */	li r5, 0
 /* 80007224 00002E84  38 C0 00 00 */	li r6, 0
-/* 80007228 00002E88  48 26 B4 21 */	bl func_80272648
+/* 80007228 00002E88  48 26 B4 21 */	bl OSSetIdleFunction
 /* 8000722C 00002E8C  48 36 12 99 */	bl GetInstance__Q44nw4r3snd6detail9AxManagerFv
 /* 80007230 00002E90  48 36 22 15 */	bl PrepareReset__Q44nw4r3snd6detail9AxManagerFv
 /* 80007234 00002E94  48 37 51 61 */	bl WaitForResetReady__Q34nw4r3snd11SoundSystemFv
@@ -648,7 +648,7 @@ func_80007260:
 /* 80007284 00002EE4  38 80 00 00 */	li r4, 0
 /* 80007288 00002EE8  38 A0 00 00 */	li r5, 0
 /* 8000728C 00002EEC  38 C0 00 00 */	li r6, 0
-/* 80007290 00002EF0  48 26 B3 B9 */	bl func_80272648
+/* 80007290 00002EF0  48 26 B3 B9 */	bl OSSetIdleFunction
 /* 80007294 00002EF4  48 36 12 31 */	bl GetInstance__Q44nw4r3snd6detail9AxManagerFv
 /* 80007298 00002EF8  48 36 21 AD */	bl PrepareReset__Q44nw4r3snd6detail9AxManagerFv
 /* 8000729C 00002EFC  48 37 50 F9 */	bl WaitForResetReady__Q34nw4r3snd11SoundSystemFv

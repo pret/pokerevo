@@ -25,9 +25,9 @@ GetInstance__Q44nw4r3snd6detail11TaskManagerFv:
 /* 8037F9C8 0037B628  38 7F 00 2C */	addi r3, r31, 0x2c
 /* 8037F9CC 0037B62C  90 1F 00 24 */	stw r0, 0x24(r31)
 /* 8037F9D0 0037B630  98 1F 00 28 */	stb r0, 0x28(r31)
-/* 8037F9D4 0037B634  4B EF 19 15 */	bl func_802712E8
+/* 8037F9D4 0037B634  4B EF 19 15 */	bl OSInitThreadQueue
 /* 8037F9D8 0037B638  38 7F 00 34 */	addi r3, r31, 0x34
-/* 8037F9DC 0037B63C  4B EF 19 0D */	bl func_802712E8
+/* 8037F9DC 0037B63C  4B EF 19 0D */	bl OSInitThreadQueue
 /* 8037F9E0 0037B640  3C 80 80 38 */	lis r4, __dt__Q44nw4r3snd6detail11TaskManagerFv@ha
 /* 8037F9E4 0037B644  3C A0 80 64 */	lis r5, lbl_8063CD98@ha
 /* 8037F9E8 0037B648  7F E3 FB 78 */	mr r3, r31
@@ -134,7 +134,7 @@ AppendTask__Q44nw4r3snd6detail11TaskManagerFPQ44nw4r3snd6detail4TaskQ54nw4r3snd6
 /* 8037FB40 0037B7A0  90 01 00 08 */	stw r0, 8(r1)
 /* 8037FB44 0037B7A4  4B FE 31 05 */	bl Insert__Q44nw4r2ut6detail12LinkListImplFQ54nw4r2ut6detail12LinkListImpl8IteratorPQ34nw4r2ut12LinkListNode
 /* 8037FB48 0037B7A8  38 7D 00 2C */	addi r3, r29, 0x2c
-/* 8037FB4C 0037B7AC  4B EF 29 15 */	bl func_80272460
+/* 8037FB4C 0037B7AC  4B EF 29 15 */	bl OSWakeupThread
 /* 8037FB50 0037B7B0  7F E3 FB 78 */	mr r3, r31
 /* 8037FB54 0037B7B4  4B EE EC 31 */	bl OSRestoreInterrupts
 /* 8037FB58 0037B7B8  80 01 00 24 */	lwz r0, 0x24(r1)
@@ -350,7 +350,7 @@ lbl_8037FE10:
 /* 8037FE28 0037BA88  4E 80 04 21 */	bctrl
 /* 8037FE2C 0037BA8C  93 FD 00 24 */	stw r31, 0x24(r29)
 /* 8037FE30 0037BA90  38 7D 00 34 */	addi r3, r29, 0x34
-/* 8037FE34 0037BA94  4B EF 26 2D */	bl func_80272460
+/* 8037FE34 0037BA94  4B EF 26 2D */	bl OSWakeupThread
 /* 8037FE38 0037BA98  7F C3 F3 78 */	mr r3, r30
 lbl_8037FE3C:
 /* 8037FE3C 0037BA9C  80 01 00 24 */	lwz r0, 0x24(r1)
@@ -383,7 +383,7 @@ CancelTask__Q44nw4r3snd6detail11TaskManagerFPQ44nw4r3snd6detail4Task:
 /* 8037FE9C 0037BAFC  48 00 00 0C */	b lbl_8037FEA8
 lbl_8037FEA0:
 /* 8037FEA0 0037BB00  38 79 00 34 */	addi r3, r25, 0x34
-/* 8037FEA4 0037BB04  4B EF 24 D1 */	bl func_80272374
+/* 8037FEA4 0037BB04  4B EF 24 D1 */	bl OSSleepThread
 lbl_8037FEA8:
 /* 8037FEA8 0037BB08  80 19 00 24 */	lwz r0, 0x24(r25)
 /* 8037FEAC 0037BB0C  7C 1A 00 40 */	cmplw r26, r0
@@ -447,7 +447,7 @@ WaitTask__Q44nw4r3snd6detail11TaskManagerFv:
 /* 8037FF70 0037BBD0  48 00 00 0C */	b lbl_8037FF7C
 lbl_8037FF74:
 /* 8037FF74 0037BBD4  38 7E 00 2C */	addi r3, r30, 0x2c
-/* 8037FF78 0037BBD8  4B EF 23 FD */	bl func_80272374
+/* 8037FF78 0037BBD8  4B EF 23 FD */	bl OSSleepThread
 lbl_8037FF7C:
 /* 8037FF7C 0037BBDC  7F C3 F3 78 */	mr r3, r30
 /* 8037FF80 0037BBE0  4B FF FD 51 */	bl GetNextTask__Q44nw4r3snd6detail11TaskManagerFv
@@ -479,7 +479,7 @@ CancelWaitTask__Q44nw4r3snd6detail11TaskManagerFv:
 /* 8037FFD8 0037BC38  7C 7F 1B 78 */	mr r31, r3
 /* 8037FFDC 0037BC3C  98 1E 00 28 */	stb r0, 0x28(r30)
 /* 8037FFE0 0037BC40  38 7E 00 2C */	addi r3, r30, 0x2c
-/* 8037FFE4 0037BC44  4B EF 24 7D */	bl func_80272460
+/* 8037FFE4 0037BC44  4B EF 24 7D */	bl OSWakeupThread
 /* 8037FFE8 0037BC48  7F E3 FB 78 */	mr r3, r31
 /* 8037FFEC 0037BC4C  4B EE E7 99 */	bl OSRestoreInterrupts
 /* 8037FFF0 0037BC50  80 01 00 14 */	lwz r0, 0x14(r1)

@@ -132,6 +132,10 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/OS/OSMutex.o                              \
 	$(BUILD_DIR)/asm/SDK/OS/OSReboot.o                              \
 	$(BUILD_DIR)/asm/SDK/OS/OSReset.o                              \
+	$(BUILD_DIR)/asm/SDK/OS/OSRtc.o                              \
+	$(BUILD_DIR)/asm/SDK/OS/OSSemaphore.o                              \
+	$(BUILD_DIR)/asm/SDK/OS/OSSync.o                              \
+	$(BUILD_DIR)/asm/SDK/OS/OSThread.o                              \
 	$(BUILD_DIR)/asm/text_7_2.o                                   \
 	$(BUILD_DIR)/asm/text_8.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
