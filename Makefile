@@ -28,12 +28,12 @@ TARGET := pbr_pal
 
 BUILD_DIR := build/$(TARGET)
 
-SRC_DIRS := src src/SDK/OS src/SDK/EXI src/SDK/SI src/SDK/DB src/SDK/VI src/SDK/base \
+SRC_DIRS := src src/SDK/OS src/SDK/EXI src/SDK/SI src/SDK/DB src/SDK/VI src/SDK/MTX src/SDK/base \
             src/SDK/HBM src/MSL_C/MSL_Common src/MSL_C/MSL_Common_Embedded \
             src/MSL_C/MSL_Common_Embedded/Math src/MSL_C/PPC_EABI src/Runtime \
             src/MetroTRK src/GameSpy src/nw4r/ut src/nw4r/snd src/nw4r/ut/detail \
             src/nw4r/snd/detail src/nw4r/math src/nw4r/lyt src/nw4r/lyt/detail
-ASM_DIRS := asm asm/SDK/OS asm/SDK/EXI asm/SDK/SI asm/SDK/DB asm/SDK/VI asm/SDK/base \
+ASM_DIRS := asm asm/SDK/OS asm/SDK/EXI asm/SDK/SI asm/SDK/DB asm/SDK/VI asm/SDK/MTX asm/SDK/base \
             asm/SDK/HBM asm/MSL_C/MSL_Common asm/MSL_C/MSL_Common_Embedded \
             asm/MSL_C/MSL_Common_Embedded/Math asm/MSL_C/PPC_EABI asm/Runtime \
             asm/MetroTRK asm/GameSpy asm/nw4r/ut asm/nw4r/snd asm/nw4r/ut/detail \
