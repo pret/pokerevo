@@ -145,6 +145,12 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/OS/OSNet.o                              \
 	$(BUILD_DIR)/asm/SDK/OS/OSNandbootInfo.o                              \
 	$(BUILD_DIR)/asm/Runtime/__ppc_eabi_init.o                              \
+	$(BUILD_DIR)/asm/SDK/EXI/EXIBios.o                              \
+	$(BUILD_DIR)/asm/SDK/EXI/EXIUart.o                              \
+	$(BUILD_DIR)/asm/SDK/EXI/EXICommon.o                              \
+	$(BUILD_DIR)/asm/SDK/SI/SIBios.o                              \
+	$(BUILD_DIR)/asm/SDK/SI/SISamplingRate.o                              \
+	$(BUILD_DIR)/asm/SDK/DB/db.o                              \
 	$(BUILD_DIR)/asm/text_7_2.o                                   \
 	$(BUILD_DIR)/asm/text_8.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
