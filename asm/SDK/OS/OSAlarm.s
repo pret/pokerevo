@@ -21,7 +21,7 @@ __OSInitAlarm:
 /* 80269704 00265364  4B FF FD D1 */	bl __OSSetExceptionHandler
 /* 80269708 00265368  3C 60 80 42 */	lis r3, lbl_804269D0@ha
 /* 8026970C 0026536C  38 63 69 D0 */	addi r3, r3, lbl_804269D0@l
-/* 80269710 00265370  48 00 65 81 */	bl func_8026FC90
+/* 80269710 00265370  48 00 65 81 */	bl OSRegisterShutdownFunction
 lbl_80269714:
 /* 80269714 00265374  80 01 00 14 */	lwz r0, 0x14(r1)
 /* 80269718 00265378  7C 08 03 A6 */	mtlr r0

@@ -125,6 +125,13 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/OS/OSExec.o                              \
 	$(BUILD_DIR)/asm/SDK/OS/OSFatal.o                              \
 	$(BUILD_DIR)/asm/SDK/OS/OSFont.o                              \
+	$(BUILD_DIR)/asm/SDK/OS/OSInterrupt.o                              \
+	$(BUILD_DIR)/asm/SDK/OS/OSLink.o                              \
+	$(BUILD_DIR)/asm/SDK/OS/OSMessage.o                              \
+	$(BUILD_DIR)/asm/SDK/OS/OSMemory.o                              \
+	$(BUILD_DIR)/asm/SDK/OS/OSMutex.o                              \
+	$(BUILD_DIR)/asm/SDK/OS/OSReboot.o                              \
+	$(BUILD_DIR)/asm/SDK/OS/OSReset.o                              \
 	$(BUILD_DIR)/asm/text_7_2.o                                   \
 	$(BUILD_DIR)/asm/text_8.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
