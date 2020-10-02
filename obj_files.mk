@@ -141,6 +141,10 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/OS/OSIpc.o                              \
 	$(BUILD_DIR)/asm/SDK/OS/OSStateTM.o                              \
 	$(BUILD_DIR)/asm/SDK/OS/OSPlayRecord.o                              \
+	$(BUILD_DIR)/asm/SDK/OS/OSStateFlags.o                              \
+	$(BUILD_DIR)/asm/SDK/OS/OSNet.o                              \
+	$(BUILD_DIR)/asm/SDK/OS/OSNandbootInfo.o                              \
+	$(BUILD_DIR)/asm/Runtime/__ppc_eabi_init.o                              \
 	$(BUILD_DIR)/asm/text_7_2.o                                   \
 	$(BUILD_DIR)/asm/text_8.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
