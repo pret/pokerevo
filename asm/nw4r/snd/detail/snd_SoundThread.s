@@ -369,7 +369,7 @@ lbl_8037C960:
 /* 8037C96C 003785CC  4B EF 1E 19 */	bl OSRestoreInterrupts
 /* 8037C970 003785D0  7F C3 F3 78 */	mr r3, r30
 /* 8037C974 003785D4  4B EF 1E 11 */	bl OSRestoreInterrupts
-/* 8037C978 003785D8  4B EF 5E 59 */	bl func_802727D0
+/* 8037C978 003785D8  4B EF 5E 59 */	bl OSGetTick
 /* 8037C97C 003785DC  7C 7B 1B 78 */	mr r27, r3
 /* 8037C980 003785E0  4B FE F6 25 */	bl GetInstance__Q44nw4r3snd6detail14AxVoiceManagerFv
 /* 8037C984 003785E4  4B FE FB E1 */	bl FreeAllReservedAxVoice__Q44nw4r3snd6detail14AxVoiceManagerFv
@@ -403,7 +403,7 @@ lbl_8037C9E8:
 /* 8037C9E8 00378648  48 00 69 DD */	bl CalcRandom__Q44nw4r3snd6detail4UtilFv
 /* 8037C9EC 0037864C  48 00 5F 15 */	bl GetInstance__Q44nw4r3snd6detail12VoiceManagerFv
 /* 8037C9F0 00378650  48 00 63 29 */	bl UpdateAllVoices__Q44nw4r3snd6detail12VoiceManagerFv
-/* 8037C9F4 00378654  4B EF 5D DD */	bl func_802727D0
+/* 8037C9F4 00378654  4B EF 5D DD */	bl OSGetTick
 /* 8037C9F8 00378658  7C 1B 18 50 */	subf r0, r27, r3
 /* 8037C9FC 0037865C  90 1F 03 90 */	stw r0, 0x390(r31)
 /* 8037CA00 00378660  4B EF 1D 5D */	bl OSDisableInterrupts
