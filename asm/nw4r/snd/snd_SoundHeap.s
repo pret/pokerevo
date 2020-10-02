@@ -15,7 +15,7 @@ __ct__Q34nw4r3snd9SoundHeapFv:
 /* 8037AA5C 003766BC  38 63 00 1C */	addi r3, r3, 0x1c
 /* 8037AA60 003766C0  4B FF 55 FD */	bl __ct__Q44nw4r3snd6detail9FrameHeapFv
 /* 8037AA64 003766C4  38 7F 00 04 */	addi r3, r31, 4
-/* 8037AA68 003766C8  4B EF 4E A9 */	bl func_8026F910
+/* 8037AA68 003766C8  4B EF 4E A9 */	bl OSInitMutex
 /* 8037AA6C 003766CC  7F E3 FB 78 */	mr r3, r31
 /* 8037AA70 003766D0  83 E1 00 0C */	lwz r31, 0xc(r1)
 /* 8037AA74 003766D4  80 01 00 14 */	lwz r0, 0x14(r1)
@@ -77,7 +77,7 @@ Alloc__Q34nw4r3snd9SoundHeapFUl:
 /* 8037AB20 00376780  93 A1 00 14 */	stw r29, 0x14(r1)
 /* 8037AB24 00376784  7C 7D 1B 78 */	mr r29, r3
 /* 8037AB28 00376788  7F E3 FB 78 */	mr r3, r31
-/* 8037AB2C 0037678C  4B EF 4E 1D */	bl func_8026F948
+/* 8037AB2C 0037678C  4B EF 4E 1D */	bl OSLockMutex
 /* 8037AB30 00376790  3C A0 80 38 */	lis r5, DisposeCallbackFunc__Q34nw4r3snd9SoundHeapFPvUlPv@ha
 /* 8037AB34 00376794  7F C4 F3 78 */	mr r4, r30
 /* 8037AB38 00376798  38 7D 00 1C */	addi r3, r29, 0x1c
@@ -86,7 +86,7 @@ Alloc__Q34nw4r3snd9SoundHeapFUl:
 /* 8037AB44 003767A4  4B FF 5A 09 */	bl Alloc__Q44nw4r3snd6detail9FrameHeapFUlPFPvUlPv_vPv
 /* 8037AB48 003767A8  7C 7E 1B 78 */	mr r30, r3
 /* 8037AB4C 003767AC  7F E3 FB 78 */	mr r3, r31
-/* 8037AB50 003767B0  4B EF 4E D5 */	bl func_8026FA24
+/* 8037AB50 003767B0  4B EF 4E D5 */	bl OSUnlockMutex
 /* 8037AB54 003767B4  7F C3 F3 78 */	mr r3, r30
 /* 8037AB58 003767B8  83 E1 00 1C */	lwz r31, 0x1c(r1)
 /* 8037AB5C 003767BC  83 C1 00 18 */	lwz r30, 0x18(r1)

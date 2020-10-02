@@ -238,8 +238,8 @@ OSLoadContext:
 /* 8026AF58 00266BB8  38 A4 E7 5C */	addi r5, r4, OSDisableInterrupts@l
 /* 8026AF5C 00266BBC  7C 06 28 40 */	cmplw r6, r5
 /* 8026AF60 00266BC0  40 81 00 18 */	ble lbl_8026AF78
-/* 8026AF64 00266BC4  3C 80 80 27 */	lis r4, lbl_8026E768@ha
-/* 8026AF68 00266BC8  38 04 E7 68 */	addi r0, r4, lbl_8026E768@l
+/* 8026AF64 00266BC4  3C 80 80 27 */	lis r4, __RAS_OSDisableInterrupts_end@ha
+/* 8026AF68 00266BC8  38 04 E7 68 */	addi r0, r4, __RAS_OSDisableInterrupts_end@l
 /* 8026AF6C 00266BCC  7C 06 00 40 */	cmplw r6, r0
 /* 8026AF70 00266BD0  40 80 00 08 */	bge lbl_8026AF78
 /* 8026AF74 00266BD4  90 A3 01 98 */	stw r5, 0x198(r3)
