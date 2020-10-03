@@ -154,7 +154,29 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/VI/vi.o                                   \
 	$(BUILD_DIR)/asm/SDK/VI/i2c.o                                   \
 	$(BUILD_DIR)/asm/SDK/VI/vi3in1.o                                   \
+	$(BUILD_DIR)/asm/SDK/MTX/mtx.o                                   \
+	$(BUILD_DIR)/asm/SDK/MTX/mtxvec.o                                   \
+	$(BUILD_DIR)/asm/SDK/MTX/mtx44.o                                   \
+	$(BUILD_DIR)/asm/SDK/MTX/vec.o                                   \
+	$(BUILD_DIR)/asm/SDK/MTX/quat.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXInit.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXFifo.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXAttr.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXMisc.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXGeometry.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXFrameBuf.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXLight.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXTexture.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXBump.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXTev.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXPixel.o                                   \
 	$(BUILD_DIR)/asm/text_8.o                                     \
+	$(BUILD_DIR)/asm/SDK/GX/GXDraw.o                                     \
+	$(BUILD_DIR)/asm/text_8_2.o                                     \
+	$(BUILD_DIR)/asm/SDK/GX/GXDisplayList.o                                     \
+	$(BUILD_DIR)/asm/SDK/GX/GXTransform.o                                     \
+	$(BUILD_DIR)/asm/SDK/GX/GXPerf.o                                     \
+	$(BUILD_DIR)/asm/text_8_3.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
 	$(BUILD_DIR)/src/GameSpy/darray.o                             \
