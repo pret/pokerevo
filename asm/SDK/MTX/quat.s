@@ -28,9 +28,8 @@ PSQUATMultiply:
 /* 8027D078 00278CD8  F0 A5 00 08 */	psq_st f5, 8(r5), 0, qr0
 /* 8027D07C 00278CDC  4E 80 00 20 */	blr
 
-# either PSQUATNormalize or PSQUATInverse
-.global func_8027D080
-func_8027D080:
+.global PSQUATInverse
+PSQUATInverse:
 /* 8027D080 00278CE0  E0 03 00 00 */	psq_l f0, 0(r3), 0, qr0
 /* 8027D084 00278CE4  C0 A2 A0 B8 */	lfs f5, lbl_806426B8-_SDA2_BASE_(r2)
 /* 8027D088 00278CE8  10 40 00 32 */	ps_mul f2, f0, f0
@@ -65,7 +64,7 @@ PSQUATDivide:
 /* 8027D0EC 00278D4C  7C 7E 1B 78 */	mr r30, r3
 /* 8027D0F0 00278D50  7C 83 23 78 */	mr r3, r4
 /* 8027D0F4 00278D54  38 81 00 08 */	addi r4, r1, 8
-/* 8027D0F8 00278D58  4B FF FF 89 */	bl func_8027D080
+/* 8027D0F8 00278D58  4B FF FF 89 */	bl PSQUATInverse
 /* 8027D0FC 00278D5C  7F C4 F3 78 */	mr r4, r30
 /* 8027D100 00278D60  7F E5 FB 78 */	mr r5, r31
 /* 8027D104 00278D64  38 61 00 08 */	addi r3, r1, 8

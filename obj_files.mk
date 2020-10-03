@@ -159,6 +159,13 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/MTX/mtx44.o                                   \
 	$(BUILD_DIR)/asm/SDK/MTX/vec.o                                   \
 	$(BUILD_DIR)/asm/SDK/MTX/quat.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXInit.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXFifo.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXAttr.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXMisc.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXGeometry.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXFrameBuf.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXLight.o                                   \
 	$(BUILD_DIR)/asm/text_8.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
