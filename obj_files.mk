@@ -166,6 +166,10 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/GX/GXGeometry.o                                   \
 	$(BUILD_DIR)/asm/SDK/GX/GXFrameBuf.o                                   \
 	$(BUILD_DIR)/asm/SDK/GX/GXLight.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXTexture.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXBump.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXTev.o                                   \
+	$(BUILD_DIR)/asm/SDK/GX/GXPixel.o                                   \
 	$(BUILD_DIR)/asm/text_8.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
