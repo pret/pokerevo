@@ -154,6 +154,11 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/VI/vi.o                                   \
 	$(BUILD_DIR)/asm/SDK/VI/i2c.o                                   \
 	$(BUILD_DIR)/asm/SDK/VI/vi3in1.o                                   \
+	$(BUILD_DIR)/asm/SDK/MTX/mtx.o                                   \
+	$(BUILD_DIR)/asm/SDK/MTX/mtxvec.o                                   \
+	$(BUILD_DIR)/asm/SDK/MTX/mtx44.o                                   \
+	$(BUILD_DIR)/asm/SDK/MTX/vec.o                                   \
+	$(BUILD_DIR)/asm/SDK/MTX/quat.o                                   \
 	$(BUILD_DIR)/asm/text_8.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
