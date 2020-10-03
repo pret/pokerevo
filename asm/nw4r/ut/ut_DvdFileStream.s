@@ -60,7 +60,7 @@ __ct__Q34nw4r2ut13DvdFileStreamFl:
 lbl_803636D4:
 /* 803636D4 0035F334  7C 83 23 78 */	mr r3, r4
 /* 803636D8 0035F338  38 9F 00 28 */	addi r4, r31, 0x28
-/* 803636DC 0035F33C  4B F2 42 E9 */	bl func_802879C4
+/* 803636DC 0035F33C  4B F2 42 E9 */	bl DVDFastOpen
 /* 803636E0 0035F340  2C 03 00 00 */	cmpwi r3, 0
 /* 803636E4 0035F344  41 82 00 2C */	beq lbl_80363710
 /* 803636E8 0035F348  80 1F 00 5C */	lwz r0, 0x5c(r31)
@@ -210,7 +210,7 @@ Close__Q34nw4r2ut13DvdFileStreamFv:
 /* 803638F4 0035F554  2C 00 00 00 */	cmpwi r0, 0
 /* 803638F8 0035F558  41 82 00 14 */	beq lbl_8036390C
 /* 803638FC 0035F55C  38 63 00 28 */	addi r3, r3, 0x28
-/* 80363900 0035F560  4B F2 43 D9 */	bl func_80287CD8
+/* 80363900 0035F560  4B F2 43 D9 */	bl DVDClose
 /* 80363904 0035F564  38 00 00 00 */	li r0, 0
 /* 80363908 0035F568  98 1F 00 04 */	stb r0, 4(r31)
 lbl_8036390C:
@@ -243,7 +243,7 @@ Read__Q34nw4r2ut13DvdFileStreamFPvUl:
 lbl_80363968:
 /* 80363968 0035F5C8  80 E3 00 68 */	lwz r7, 0x68(r3)
 /* 8036396C 0035F5CC  38 63 00 28 */	addi r3, r3, 0x28
-/* 80363970 0035F5D0  4B F2 46 35 */	bl func_80287FA4
+/* 80363970 0035F5D0  4B F2 46 35 */	bl DVDReadPrio
 /* 80363974 0035F5D4  2C 03 00 00 */	cmpwi r3, 0
 /* 80363978 0035F5D8  7C 7F 1B 78 */	mr r31, r3
 /* 8036397C 0035F5DC  40 81 00 10 */	ble lbl_8036398C
@@ -305,7 +305,7 @@ lbl_80363A3C:
 /* 80363A44 0035F6A4  7D 66 5B 78 */	mr r6, r11
 /* 80363A48 0035F6A8  38 63 00 28 */	addi r3, r3, 0x28
 /* 80363A4C 0035F6AC  38 E7 36 18 */	addi r7, r7, DvdAsyncCallback___Q34nw4r2ut13DvdFileStreamFlP11DVDFileInfo@l
-/* 80363A50 0035F6B0  4B F2 44 6D */	bl func_80287EBC
+/* 80363A50 0035F6B0  4B F2 44 6D */	bl DVDReadAsyncPrio
 /* 80363A54 0035F6B4  7C 03 00 D0 */	neg r0, r3
 /* 80363A58 0035F6B8  7C 00 1B 78 */	or r0, r0, r3
 /* 80363A5C 0035F6BC  54 1D 0F FF */	rlwinm. r29, r0, 1, 0x1f, 0x1f
@@ -344,7 +344,7 @@ Peek__Q34nw4r2ut13DvdFileStreamFPvUl:
 lbl_80363ACC:
 /* 80363ACC 0035F72C  80 E3 00 68 */	lwz r7, 0x68(r3)
 /* 80363AD0 0035F730  38 63 00 28 */	addi r3, r3, 0x28
-/* 80363AD4 0035F734  4B F2 44 D0 */	b func_80287FA4
+/* 80363AD4 0035F734  4B F2 44 D0 */	b DVDReadPrio
 
 .global PeekAsync__Q34nw4r2ut13DvdFileStreamFPvUlPFlPQ34nw4r2ut8IOStreamPv_vPv
 PeekAsync__Q34nw4r2ut13DvdFileStreamFPvUlPFlPQ34nw4r2ut8IOStreamPv_vPv:
@@ -373,7 +373,7 @@ lbl_80363B24:
 /* 80363B2C 0035F78C  7D 66 5B 78 */	mr r6, r11
 /* 80363B30 0035F790  38 63 00 28 */	addi r3, r3, 0x28
 /* 80363B34 0035F794  38 E7 36 18 */	addi r7, r7, DvdAsyncCallback___Q34nw4r2ut13DvdFileStreamFlP11DVDFileInfo@l
-/* 80363B38 0035F798  4B F2 43 85 */	bl func_80287EBC
+/* 80363B38 0035F798  4B F2 43 85 */	bl DVDReadAsyncPrio
 /* 80363B3C 0035F79C  7C 03 00 D0 */	neg r0, r3
 /* 80363B40 0035F7A0  7C 00 1B 78 */	or r0, r0, r3
 /* 80363B44 0035F7A4  54 03 0F FE */	srwi r3, r0, 0x1f
@@ -390,7 +390,7 @@ Seek__Q34nw4r2ut13DvdFileStreamFlUl:
 .global Cancel__Q34nw4r2ut13DvdFileStreamFv
 Cancel__Q34nw4r2ut13DvdFileStreamFv:
 /* 80363B60 0035F7C0  38 63 00 28 */	addi r3, r3, 0x28
-/* 80363B64 0035F7C4  4B F2 87 B8 */	b func_8028C31C
+/* 80363B64 0035F7C4  4B F2 87 B8 */	b DVDCancel
 
 .global CancelAsync__Q34nw4r2ut13DvdFileStreamFPFlPQ34nw4r2ut8IOStreamPv_vPv
 CancelAsync__Q34nw4r2ut13DvdFileStreamFPFlPQ34nw4r2ut8IOStreamPv_vPv:
@@ -404,7 +404,7 @@ CancelAsync__Q34nw4r2ut13DvdFileStreamFPFlPQ34nw4r2ut8IOStreamPv_vPv:
 /* 80363B84 0035F7E4  38 84 36 44 */	addi r4, r4, DvdCBAsyncCallback___Q34nw4r2ut13DvdFileStreamFlP15DVDCommandBlock@l
 /* 80363B88 0035F7E8  90 A3 00 20 */	stw r5, 0x20(r3)
 /* 80363B8C 0035F7EC  38 63 00 28 */	addi r3, r3, 0x28
-/* 80363B90 0035F7F0  4B F2 84 39 */	bl func_8028BFC8
+/* 80363B90 0035F7F0  4B F2 84 39 */	bl DVDCancelAsync
 /* 80363B94 0035F7F4  2C 03 00 00 */	cmpwi r3, 0
 /* 80363B98 0035F7F8  41 82 00 0C */	beq lbl_80363BA4
 /* 80363B9C 0035F7FC  38 00 00 01 */	li r0, 1
