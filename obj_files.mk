@@ -176,6 +176,8 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/GX/GXDisplayList.o                                     \
 	$(BUILD_DIR)/asm/SDK/GX/GXTransform.o                                     \
 	$(BUILD_DIR)/asm/SDK/GX/GXPerf.o                                     \
+	$(BUILD_DIR)/asm/SDK/DVD/dvdfs.o                                     \
+	$(BUILD_DIR)/asm/SDK/DVD/dvd.o                                     \
 	$(BUILD_DIR)/asm/text_8_3.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
