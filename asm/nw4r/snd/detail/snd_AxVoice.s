@@ -49,7 +49,7 @@ lbl_803694C4:
 /* 803694E4 00365144  90 A3 00 48 */	stw r5, 0x48(r3)
 /* 803694E8 00365148  90 03 00 50 */	stw r0, 0x50(r3)
 /* 803694EC 0036514C  38 64 95 0C */	addi r3, r4, AiDmaCallbackFunc__Q44nw4r3snd6detail9AxManagerFv@l
-/* 803694F0 00365150  4B F2 56 15 */	bl func_8028EB04
+/* 803694F0 00365150  4B F2 56 15 */	bl AIRegisterDMACallback
 /* 803694F4 00365154  90 7F 00 4C */	stw r3, 0x4c(r31)
 lbl_803694F8:
 /* 803694F8 00365158  80 01 00 24 */	lwz r0, 0x24(r1)
@@ -968,7 +968,7 @@ SetPriority__Q44nw4r3snd6detail7AxVoiceFUl:
 /* 8036A0D8 00365D38  80 63 00 00 */	lwz r3, 0(r3)
 /* 8036A0DC 00365D3C  2C 03 00 00 */	cmpwi r3, 0
 /* 8036A0E0 00365D40  4D 82 00 20 */	beqlr
-/* 8036A0E4 00365D44  4B F2 53 CC */	b func_8028F4B0
+/* 8036A0E4 00365D44  4B F2 53 CC */	b AXSetVoicePriority
 /* 8036A0E8 00365D48  4E 80 00 20 */	blr
 
 .global SetVoiceType__Q44nw4r3snd6detail7AxVoiceFQ54nw4r3snd6detail7AxVoice9VoiceType
