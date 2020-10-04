@@ -198,6 +198,9 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/text_8_4.o                                     \
 	$(BUILD_DIR)/asm/SDK/AX/AXFXDelay.o                                     \
 	$(BUILD_DIR)/asm/text_8_5.o                                     \
+	$(BUILD_DIR)/asm/SDK/MEM/mem_heapCommon.o                                     \
+	$(BUILD_DIR)/asm/SDK/MEM/mem_expHeap.o                                     \
+	$(BUILD_DIR)/asm/text_8_6.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
 	$(BUILD_DIR)/src/GameSpy/darray.o                             \
