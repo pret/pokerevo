@@ -208,6 +208,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/DSP/dsp.o                                     \
 	$(BUILD_DIR)/asm/SDK/DSP/dsp_debug.o                                     \
 	$(BUILD_DIR)/asm/SDK/DSP/dsp_task.o                                     \
+	$(BUILD_DIR)/asm/SDK/TPL/TPL.o                                     \
 	$(BUILD_DIR)/asm/text_8_6.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
