@@ -183,7 +183,21 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/DVD/dvdidutils.o                                     \
 	$(BUILD_DIR)/asm/SDK/DVD/dvdFatal.o                                     \
 	$(BUILD_DIR)/asm/SDK/DVD/dvd_broadway.o                                     \
+	$(BUILD_DIR)/asm/SDK/AI/ai.o                                     \
+	$(BUILD_DIR)/asm/SDK/AX/AX.o                                     \
+	$(BUILD_DIR)/asm/SDK/AX/AXAlloc.o                                     \
+	$(BUILD_DIR)/asm/SDK/AX/AXAux.o                                     \
+	$(BUILD_DIR)/asm/SDK/AX/AXCL.o                                     \
+	$(BUILD_DIR)/asm/SDK/AX/AXOut.o                                     \
+	$(BUILD_DIR)/asm/SDK/AX/AXSPB.o                                     \
+	$(BUILD_DIR)/asm/SDK/AX/AXVPB.o                                     \
+	$(BUILD_DIR)/asm/SDK/AX/AXProf.o                                     \
+	$(BUILD_DIR)/asm/SDK/AX/AXFXReverbHi.o                                     \
 	$(BUILD_DIR)/asm/text_8_3.o                                     \
+	$(BUILD_DIR)/asm/SDK/AX/AXFXReverbHiExp.o                            \
+	$(BUILD_DIR)/asm/text_8_4.o                                     \
+	$(BUILD_DIR)/asm/SDK/AX/AXFXDelay.o                                     \
+	$(BUILD_DIR)/asm/text_8_5.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
 	$(BUILD_DIR)/src/GameSpy/darray.o                             \
