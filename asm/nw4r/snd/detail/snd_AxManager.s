@@ -461,7 +461,7 @@ Init__Q44nw4r3snd6detail9AxManagerFv:
 /* 80368638 00364298  4B F2 76 8D */	bl AXRegisterAuxCCallback
 /* 8036863C 0036429C  3C 60 80 37 */	lis r3, AxCallbackFunc__Q44nw4r3snd6detail9AxManagerFv@ha
 /* 80368640 003642A0  38 63 8C 60 */	addi r3, r3, AxCallbackFunc__Q44nw4r3snd6detail9AxManagerFv@l
-/* 80368644 003642A4  4B F2 88 0D */	bl func_80290E50
+/* 80368644 003642A4  4B F2 88 0D */	bl AXRegisterCallback
 /* 80368648 003642A8  38 00 00 01 */	li r0, 1
 /* 8036864C 003642AC  90 7E 00 14 */	stw r3, 0x14(r30)
 /* 80368650 003642B0  7F E3 FB 78 */	mr r3, r31

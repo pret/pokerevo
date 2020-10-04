@@ -188,6 +188,9 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/AX/AXAlloc.o                                     \
 	$(BUILD_DIR)/asm/SDK/AX/AXAux.o                                     \
 	$(BUILD_DIR)/asm/SDK/AX/AXCL.o                                     \
+	$(BUILD_DIR)/asm/SDK/AX/AXOut.o                                     \
+	$(BUILD_DIR)/asm/SDK/AX/AXSPB.o                                     \
+	$(BUILD_DIR)/asm/SDK/AX/AXVPB.o                                     \
 	$(BUILD_DIR)/asm/text_8_3.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \

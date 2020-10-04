@@ -92,7 +92,7 @@ GetRequiredMemSize__Q44nw4r3snd6detail14AxVoiceManagerFv:
 /* 8036C0CC 00367D2C  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 8036C0D0 00367D30  7C 08 02 A6 */	mflr r0
 /* 8036C0D4 00367D34  90 01 00 14 */	stw r0, 0x14(r1)
-/* 8036C0D8 00367D38  4B F2 62 45 */	bl func_8029231C
+/* 8036C0D8 00367D38  4B F2 62 45 */	bl AXGetMaxVoices
 /* 8036C0DC 00367D3C  38 03 00 10 */	addi r0, r3, 0x10
 /* 8036C0E0 00367D40  1C 60 00 48 */	mulli r3, r0, 0x48
 /* 8036C0E4 00367D44  80 01 00 14 */	lwz r0, 0x14(r1)
