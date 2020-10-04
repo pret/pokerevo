@@ -6,7 +6,7 @@
 AXFXReverbHiGetMemSize:
 /* 80292364 0028DFC4  C0 03 01 58 */	lfs f0, 0x158(r3)
 /* 80292368 0028DFC8  D0 03 01 14 */	stfs f0, 0x114(r3)
-/* 8029236C 0028DFCC  48 00 02 30 */	b lbl_8029259C
+/* 8029236C 0028DFCC  48 00 02 30 */	b AXFXReverbHiExpGetMemSize
 
 .global AXFXReverbHiInit
 AXFXReverbHiInit:
@@ -34,14 +34,14 @@ AXFXReverbHiInit:
 /* 802923C4 0028E024  90 03 01 3C */	stw r0, 0x13c(r3)
 /* 802923C8 0028E028  D0 03 01 40 */	stfs f0, 0x140(r3)
 /* 802923CC 0028E02C  D0 43 01 44 */	stfs f2, 0x144(r3)
-/* 802923D0 0028E030  48 00 02 54 */	b func_80292624
+/* 802923D0 0028E030  48 00 02 54 */	b AXFXReverbHiExpInit
 
 .global AXFXReverbHiShutdown
 AXFXReverbHiShutdown:
 /* 802923D4 0028E034  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 802923D8 0028E038  7C 08 02 A6 */	mflr r0
 /* 802923DC 0028E03C  90 01 00 14 */	stw r0, 0x14(r1)
-/* 802923E0 0028E040  48 00 04 B1 */	bl func_80292890
+/* 802923E0 0028E040  48 00 04 B1 */	bl AXFXReverbHiExpShutdown
 /* 802923E4 0028E044  80 01 00 14 */	lwz r0, 0x14(r1)
 /* 802923E8 0028E048  38 60 00 01 */	li r3, 1
 /* 802923EC 0028E04C  7C 08 03 A6 */	mtlr r0
@@ -74,8 +74,8 @@ AXFXReverbHiSettings:
 /* 8029244C 0028E0AC  90 03 01 3C */	stw r0, 0x13c(r3)
 /* 80292450 0028E0B0  D0 03 01 40 */	stfs f0, 0x140(r3)
 /* 80292454 0028E0B4  D0 43 01 44 */	stfs f2, 0x144(r3)
-/* 80292458 0028E0B8  48 00 03 68 */	b lbl_802927C0
+/* 80292458 0028E0B8  48 00 03 68 */	b AXFXReverbHiExpSettings
 
 .global AXFXReverbHiCallback
 AXFXReverbHiCallback:
-/* 8029245C 0028E0BC  48 00 04 88 */	b lbl_802928E4
+/* 8029245C 0028E0BC  48 00 04 88 */	b AXFXReverbHiExpCallback
