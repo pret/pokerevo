@@ -200,6 +200,11 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/text_8_5.o                                     \
 	$(BUILD_DIR)/asm/SDK/MEM/mem_heapCommon.o                                     \
 	$(BUILD_DIR)/asm/SDK/MEM/mem_expHeap.o                                     \
+	$(BUILD_DIR)/asm/SDK/MEM/mem_frameHeap.o                                     \
+	$(BUILD_DIR)/asm/SDK/MEM/mem_allocator.o                                     \
+	$(BUILD_DIR)/asm/SDK/MEM/mem_list.o                                     \
+	$(BUILD_DIR)/asm/SDK/MIX/mix.o                                     \
+	$(BUILD_DIR)/asm/SDK/MIX/remote.o                                     \
 	$(BUILD_DIR)/asm/text_8_6.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
