@@ -21,13 +21,13 @@ lbl_803A5914:
 /* 803A5918 003A1578  2C 00 00 00 */	cmpwi r0, 0
 /* 803A591C 003A157C  41 82 02 04 */	beq lbl_803A5B20
 /* 803A5920 003A1580  7F 83 E3 78 */	mr r3, r28
-/* 803A5924 003A1584  4B F0 42 AD */	bl func_802A9BD0
+/* 803A5924 003A1584  4B F0 42 AD */	bl WPADIsSpeakerEnabled
 /* 803A5928 003A1588  2C 03 00 00 */	cmpwi r3, 0
 /* 803A592C 003A158C  41 82 01 F4 */	beq lbl_803A5B20
 /* 803A5930 003A1590  4B EC 8E 2D */	bl OSDisableInterrupts
 /* 803A5934 003A1594  7C 7B 1B 78 */	mr r27, r3
 /* 803A5938 003A1598  7F 83 E3 78 */	mr r3, r28
-/* 803A593C 003A159C  4B F0 5A B1 */	bl func_802AB3EC
+/* 803A593C 003A159C  4B F0 5A B1 */	bl WPADCanSendStreamData
 /* 803A5940 003A15A0  2C 03 00 00 */	cmpwi r3, 0
 /* 803A5944 003A15A4  41 82 01 B4 */	beq lbl_803A5AF8
 /* 803A5948 003A15A8  80 1D 00 54 */	lwz r0, 0x54(r29)
@@ -134,7 +134,7 @@ lbl_803A5A98:
 /* 803A5AB8 003A1718  7F 83 E3 78 */	mr r3, r28
 /* 803A5ABC 003A171C  38 81 00 08 */	addi r4, r1, 8
 /* 803A5AC0 003A1720  38 A0 00 14 */	li r5, 0x14
-/* 803A5AC4 003A1724  4B F0 59 AD */	bl func_802AB470
+/* 803A5AC4 003A1724  4B F0 59 AD */	bl WPADSendStreamData
 /* 803A5AC8 003A1728  9B FD 00 5C */	stb r31, 0x5c(r29)
 /* 803A5ACC 003A172C  9B FD 00 5E */	stb r31, 0x5e(r29)
 /* 803A5AD0 003A1730  80 7D 00 50 */	lwz r3, 0x50(r29)
@@ -339,7 +339,7 @@ DelaySpeakerOnCallback__Q210homebutton9RemoteSpkFP7OSAlarmP9OSContext:
 /* 803A5D7C 003A19DC  3C A0 80 3A */	lis r5, SpeakerOnCallback__Q210homebutton9RemoteSpkFll@ha
 /* 803A5D80 003A19E0  38 80 00 01 */	li r4, 1
 /* 803A5D84 003A19E4  38 A5 5D 9C */	addi r5, r5, SpeakerOnCallback__Q210homebutton9RemoteSpkFll@l
-/* 803A5D88 003A19E8  4B F0 3E 8D */	bl func_802A9C14
+/* 803A5D88 003A19E8  4B F0 3E 8D */	bl WPADControlSpeaker
 /* 803A5D8C 003A19EC  80 01 00 14 */	lwz r0, 0x14(r1)
 /* 803A5D90 003A19F0  7C 08 03 A6 */	mtlr r0
 /* 803A5D94 003A19F4  38 21 00 10 */	addi r1, r1, 0x10
@@ -370,7 +370,7 @@ lbl_803A5DD0:
 /* 803A5DE8 003A1A48  7C C6 02 14 */	add r6, r6, r0
 /* 803A5DEC 003A1A4C  38 80 00 04 */	li r4, 4
 /* 803A5DF0 003A1A50  98 E6 00 5C */	stb r7, 0x5c(r6)
-/* 803A5DF4 003A1A54  4B F0 3E 21 */	bl func_802A9C14
+/* 803A5DF4 003A1A54  4B F0 3E 21 */	bl WPADControlSpeaker
 /* 803A5DF8 003A1A58  48 00 00 54 */	b lbl_803A5E4C
 lbl_803A5DFC:
 /* 803A5DFC 003A1A5C  1C 03 00 68 */	mulli r0, r3, 0x68
@@ -409,7 +409,7 @@ DelaySpeakerPlayCallback__Q210homebutton9RemoteSpkFP7OSAlarmP9OSContext:
 /* 803A5E70 003A1AD0  3C A0 80 3A */	lis r5, SpeakerPlayCallback__Q210homebutton9RemoteSpkFll@ha
 /* 803A5E74 003A1AD4  38 80 00 04 */	li r4, 4
 /* 803A5E78 003A1AD8  38 A5 5E 90 */	addi r5, r5, SpeakerPlayCallback__Q210homebutton9RemoteSpkFll@l
-/* 803A5E7C 003A1ADC  4B F0 3D 99 */	bl func_802A9C14
+/* 803A5E7C 003A1ADC  4B F0 3D 99 */	bl WPADControlSpeaker
 /* 803A5E80 003A1AE0  80 01 00 14 */	lwz r0, 0x14(r1)
 /* 803A5E84 003A1AE4  7C 08 03 A6 */	mtlr r0
 /* 803A5E88 003A1AE8  38 21 00 10 */	addi r1, r1, 0x10
@@ -488,7 +488,7 @@ Connect__Q210homebutton9RemoteSpkFl:
 /* 803A5F84 003A1BE4  7F E3 FB 78 */	mr r3, r31
 /* 803A5F88 003A1BE8  38 A5 5D 9C */	addi r5, r5, SpeakerOnCallback__Q210homebutton9RemoteSpkFll@l
 /* 803A5F8C 003A1BEC  38 80 00 01 */	li r4, 1
-/* 803A5F90 003A1BF0  4B F0 3C 85 */	bl func_802A9C14
+/* 803A5F90 003A1BF0  4B F0 3C 85 */	bl WPADControlSpeaker
 /* 803A5F94 003A1BF4  1F FF 00 68 */	mulli r31, r31, 0x68
 /* 803A5F98 003A1BF8  38 80 00 00 */	li r4, 0
 /* 803A5F9C 003A1BFC  38 A0 00 20 */	li r5, 0x20
