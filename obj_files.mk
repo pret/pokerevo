@@ -221,7 +221,9 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/PAD/Pad.o                                     \
 	$(BUILD_DIR)/asm/SDK/WPAD/WPAD.o                                     \
 	$(BUILD_DIR)/asm/SDK/WPAD/WPADHIDParser.o                               \
-	$(BUILD_DIR)/asm/text_8_7.o                                     \
+	$(BUILD_DIR)/asm/SDK/WPAD/WPADEncrypt.o                               \
+	$(BUILD_DIR)/asm/SDK/WPAD/WPADMem.o                               \
+	$(BUILD_DIR)/asm/SDK/WPAD/debug_msg.o                               \
 	$(BUILD_DIR)/asm/text_8_8.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
