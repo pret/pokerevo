@@ -226,6 +226,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/WPAD/debug_msg.o                               \
 	$(BUILD_DIR)/asm/SDK/euart.o                               \
 	$(BUILD_DIR)/asm/SDK/usb.o                               \
+	$(BUILD_DIR)/asm/SDK/WUD.o                               \
 	$(BUILD_DIR)/asm/text_8_7.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
