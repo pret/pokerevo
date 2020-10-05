@@ -253,22 +253,65 @@ lbl_80406299:
 
 	.global lbl_804062B4
 lbl_804062B4:
-	.incbin "baserom.dol", 0x4023B4, 0x5E
+	.asciz "EndJikkyo"
+
+	.global lbl_804062BE
+lbl_804062BE:
+	.asciz "[Jikkyo] SKIP POKEMON RETURN MSG %cb_%03d(%d). battle msg with poke sound is left.\n"
 
 	.global lbl_80406312
 lbl_80406312:
-	.incbin "baserom.dol", 0x402412, 0x8C
+	.asciz "[Jikkyo] SKIP INPUT MSG (home button fade timing)\n"
+
+	.global lbl_80406345
+lbl_80406345:
+	.asciz "[Jikkyo] INPUT MSG : %u (SoundMsg Id) Return Pokemon\n"
+
+	.global lbl_8040637B
+lbl_8040637B:
+	.asciz "## ERROR ## Play SoundMsg Id : %u\n"
 
 	.global lbl_8040639E
 lbl_8040639E:
-	.incbin "baserom.dol", 0x40249E, 0x196
+	.asciz "[Jikkyo] FADE OUT INPUT MSG (home button fade timing)\n"
 
-.global lbl_80406534
+	.global lbl_804063D5
+lbl_804063D5:
+	.asciz "[Jikkyo] SKIP REQUEST_RETURN_POKEMON %cb_%03d(%d)\n"
+
+	.global lbl_80406408
+lbl_80406408:
+	.asciz "[Jikkyo] INPUT MSG : JIKKYO_REQUEST_APPEAR_POKEMON\n"
+
+	.global lbl_8040643C
+lbl_8040643C:
+	.asciz "## ERROR ## Can't play JIKKYO_REQUEST_APPEAR_POKEMON\n"
+
+	.global lbl_80406472
+lbl_80406472:
+	.asciz "## ERROR ## pokemon sound message is empty. : %d (Pokemon ID)\n"
+
+	.global lbl_804064B1
+lbl_804064B1:
+	.asciz "[Jikkyo] SKIP POKEMON APPEAR MSG. input msg is left.\n"
+
+	.global lbl_804064E7
+lbl_804064E7:
+	.asciz "[Jikkyo] Request Count : %d -> %d\n"
+
+	.balign 4, 0
+	.global lbl_8040650C
+lbl_8040650C:
+	.incbin "baserom.dol", 0x40260C, 0x28
+
+	.global lbl_80406534
 lbl_80406534:
 	.incbin "baserom.dol", 0x402634, 0xF9
-.global lbl_8040662D
+
+	.global lbl_8040662D
 lbl_8040662D:
 	.incbin "baserom.dol", 0x40272D, 0x2D
+
 .global lbl_8040665A
 lbl_8040665A:
 	.incbin "baserom.dol", 0x40275A, 0x4B
