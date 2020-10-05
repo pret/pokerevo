@@ -109,8 +109,8 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/MetroTRK/main.o                                       \
 	$(BUILD_DIR)/asm/MetroTRK/CircleBuffer.o                                       \
 	$(BUILD_DIR)/asm/MetroTRK/MWCriticalSection_gc.o                                       \
-	$(BUILD_DIR)/asm/SDK/DebuggerDriver.o                                       \
-	$(BUILD_DIR)/asm/SDK/exi2.o                                       \
+	$(BUILD_DIR)/asm/SDK/NdevExi2A/DebuggerDriver.o                                       \
+	$(BUILD_DIR)/asm/SDK/NdevExi2A/exi2.o                                       \
 	$(BUILD_DIR)/asm/text_6_2.o                                   \
 	$(BUILD_DIR)/asm/text_7.o                                     \
 	$(BUILD_DIR)/asm/SDK/base/PPCArch.o                                  \
@@ -213,13 +213,14 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/THP/THPAudio.o                                     \
 	$(BUILD_DIR)/asm/SDK/KPAD/KPAD.o                                     \
 	$(BUILD_DIR)/asm/text_8_6.o                                     \
-	$(BUILD_DIR)/asm/SDK/ipcMain.o                                     \
-	$(BUILD_DIR)/asm/SDK/ipcclt.o                                     \
-	$(BUILD_DIR)/asm/SDK/memory.o                                     \
-	$(BUILD_DIR)/asm/SDK/ipcProfile.o                                     \
-	$(BUILD_DIR)/asm/SDK/fs.o                                     \
+	$(BUILD_DIR)/asm/SDK/IPC/ipcMain.o                                     \
+	$(BUILD_DIR)/asm/SDK/IPC/ipcclt.o                                     \
+	$(BUILD_DIR)/asm/SDK/IPC/memory.o                                     \
+	$(BUILD_DIR)/asm/SDK/IPC/ipcProfile.o                                     \
+	$(BUILD_DIR)/asm/SDK/FS/fs.o                                     \
 	$(BUILD_DIR)/asm/SDK/PAD/Pad.o                                     \
 	$(BUILD_DIR)/asm/SDK/WPAD/WPAD.o                                     \
+	$(BUILD_DIR)/asm/SDK/WPAD/WPADHIDParser.o                               \
 	$(BUILD_DIR)/asm/text_8_7.o                                     \
 	$(BUILD_DIR)/asm/text_8_8.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
