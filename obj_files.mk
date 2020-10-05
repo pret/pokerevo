@@ -231,6 +231,8 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/WUD/debug_msg.o                               \
 	$(BUILD_DIR)/asm/SDK/BTE/gki_buffer.o                               \
 	$(BUILD_DIR)/asm/SDK/BTE/gki_time.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/gki_ppc.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/hcisu_h2.o                               \
 	$(BUILD_DIR)/asm/text_8_7.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
