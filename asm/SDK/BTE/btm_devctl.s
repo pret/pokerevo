@@ -595,7 +595,7 @@ btm_read_hci_buf_size_complete:
 /* 802C6080 002C1CE0  7C 65 1A 14 */	add r3, r5, r3
 /* 802C6084 002C1CE4  B0 06 00 7E */	sth r0, 0x7e(r6)
 /* 802C6088 002C1CE8  54 63 04 3E */	clrlwi r3, r3, 0x10
-/* 802C608C 002C1CEC  48 01 25 7D */	bl func_802D8608
+/* 802C608C 002C1CEC  48 01 25 7D */	bl l2c_link_processs_num_bufs
 /* 802C6090 002C1CF0  38 60 06 9B */	li r3, 0x69b
 /* 802C6094 002C1CF4  38 80 00 1E */	li r4, 0x1e
 /* 802C6098 002C1CF8  38 A0 00 14 */	li r5, 0x14
