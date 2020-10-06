@@ -9,7 +9,7 @@ btu_init_core:
 /* 802CEAE0 002CA740  90 01 00 14 */	stw r0, 0x14(r1)
 /* 802CEAE4 002CA744  4B FF A2 AD */	bl btm_init
 /* 802CEAE8 002CA748  48 00 9F 7D */	bl l2c_init
-/* 802CEAEC 002CA74C  48 01 60 A9 */	bl func_802E4B94
+/* 802CEAEC 002CA74C  48 01 60 A9 */	bl sdp_init
 /* 802CEAF0 002CA750  4B FF 86 D5 */	bl btm_discovery_db_init
 /* 802CEAF4 002CA754  80 01 00 14 */	lwz r0, 0x14(r1)
 /* 802CEAF8 002CA758  7C 08 03 A6 */	mtlr r0

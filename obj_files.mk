@@ -286,6 +286,14 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/BTE/rfc_mx_fsm.o                               \
 	$(BUILD_DIR)/asm/SDK/BTE/rfc_port_fsm.o                               \
 	$(BUILD_DIR)/asm/SDK/BTE/rfc_port_if.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/rfc_ts_frames.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/rfc_utils.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/sdp_api.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/sdp_db.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/sdp_discovery.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/sdp_main.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/sdp_server.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/sdp_utils.o                               \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
 	$(BUILD_DIR)/src/GameSpy/darray.o                             \
