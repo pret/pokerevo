@@ -32,7 +32,7 @@ bta_dm_enable:
 /* 802BDD58 002B99B8  3C 60 80 40 */	lis r3, lbl_803FDBF0@ha
 /* 802BDD5C 002B99BC  90 04 00 50 */	stw r0, 0x50(r4)
 /* 802BDD60 002B99C0  38 63 DB F0 */	addi r3, r3, lbl_803FDBF0@l
-/* 802BDD64 002B99C4  48 00 CB 55 */	bl func_802CA8B8
+/* 802BDD64 002B99C4  48 00 CB 55 */	bl BTM_SecRegister
 /* 802BDD68 002B99C8  3B FF DA C0 */	addi r31, r31, -9536
 /* 802BDD6C 002B99CC  A0 7F 00 08 */	lhz r3, 8(r31)
 /* 802BDD70 002B99D0  48 00 64 E1 */	bl BTM_SetDefaultLinkSuperTout
@@ -64,7 +64,7 @@ bta_dm_enable:
 /* 802BDDD8 002B9A38  38 80 00 00 */	li r4, 0
 /* 802BDDDC 002B9A3C  38 63 FB 14 */	addi r3, r3, bta_dm_l2cap_server_compress_cback@l
 /* 802BDDE0 002B9A40  48 01 86 19 */	bl func_802D63F8
-/* 802BDDE4 002B9A44  48 01 0D 6D */	bl func_802CEB50
+/* 802BDDE4 002B9A44  48 01 0D 6D */	bl WBT_ExtCreateRecord
 /* 802BDDE8 002B9A48  80 01 00 24 */	lwz r0, 0x24(r1)
 /* 802BDDEC 002B9A4C  83 E1 00 1C */	lwz r31, 0x1c(r1)
 /* 802BDDF0 002B9A50  83 C1 00 18 */	lwz r30, 0x18(r1)
@@ -205,7 +205,7 @@ bta_dm_bond:
 /* 802BDFC8 002B9C28  93 E1 00 1C */	stw r31, 0x1c(r1)
 /* 802BDFCC 002B9C2C  7C 7F 1B 78 */	mr r31, r3
 /* 802BDFD0 002B9C30  38 63 00 08 */	addi r3, r3, 8
-/* 802BDFD4 002B9C34  48 00 F8 75 */	bl func_802CD848
+/* 802BDFD4 002B9C34  48 00 F8 75 */	bl btm_read_trusted_mask
 /* 802BDFD8 002B9C38  2C 03 00 00 */	cmpwi r3, 0
 /* 802BDFDC 002B9C3C  41 82 00 18 */	beq lbl_802BDFF4
 /* 802BDFE0 002B9C40  7C 64 1B 78 */	mr r4, r3
@@ -223,7 +223,7 @@ lbl_802BE004:
 /* 802BE008 002B9C68  38 7F 00 08 */	addi r3, r31, 8
 /* 802BE00C 002B9C6C  38 BF 00 0F */	addi r5, r31, 0xf
 /* 802BE010 002B9C70  38 C1 00 08 */	addi r6, r1, 8
-/* 802BE014 002B9C74  48 00 CF 39 */	bl func_802CAF4C
+/* 802BE014 002B9C74  48 00 CF 39 */	bl BTM_SecBond
 /* 802BE018 002B9C78  80 01 00 24 */	lwz r0, 0x24(r1)
 /* 802BE01C 002B9C7C  83 E1 00 1C */	lwz r31, 0x1c(r1)
 /* 802BE020 002B9C80  7C 08 03 A6 */	mtlr r0
@@ -237,7 +237,7 @@ bta_dm_pin_reply:
 /* 802BE038 002B9C98  93 E1 00 1C */	stw r31, 0x1c(r1)
 /* 802BE03C 002B9C9C  7C 7F 1B 78 */	mr r31, r3
 /* 802BE040 002B9CA0  38 63 00 08 */	addi r3, r3, 8
-/* 802BE044 002B9CA4  48 00 F8 05 */	bl func_802CD848
+/* 802BE044 002B9CA4  48 00 F8 05 */	bl btm_read_trusted_mask
 /* 802BE048 002B9CA8  2C 03 00 00 */	cmpwi r3, 0
 /* 802BE04C 002B9CAC  41 82 00 18 */	beq lbl_802BE064
 /* 802BE050 002B9CB0  7C 64 1B 78 */	mr r4, r3
@@ -259,7 +259,7 @@ lbl_802BE074:
 /* 802BE088 002B9CE8  38 DF 00 10 */	addi r6, r31, 0x10
 /* 802BE08C 002B9CEC  38 E1 00 08 */	addi r7, r1, 8
 /* 802BE090 002B9CF0  38 80 00 00 */	li r4, 0
-/* 802BE094 002B9CF4  48 00 CC 19 */	bl func_802CACAC
+/* 802BE094 002B9CF4  48 00 CC 19 */	bl BTM_PINCodeReply
 /* 802BE098 002B9CF8  48 00 00 1C */	b lbl_802BE0B4
 lbl_802BE09C:
 /* 802BE09C 002B9CFC  38 7F 00 08 */	addi r3, r31, 8
@@ -267,7 +267,7 @@ lbl_802BE09C:
 /* 802BE0A4 002B9D04  38 80 00 0B */	li r4, 0xb
 /* 802BE0A8 002B9D08  38 A0 00 00 */	li r5, 0
 /* 802BE0AC 002B9D0C  38 C0 00 00 */	li r6, 0
-/* 802BE0B0 002B9D10  48 00 CB FD */	bl func_802CACAC
+/* 802BE0B0 002B9D10  48 00 CB FD */	bl BTM_PINCodeReply
 lbl_802BE0B4:
 /* 802BE0B4 002B9D14  80 01 00 24 */	lwz r0, 0x24(r1)
 /* 802BE0B8 002B9D18  83 E1 00 1C */	lwz r31, 0x1c(r1)
@@ -282,7 +282,7 @@ bta_dm_auth_reply:
 /* 802BE0D4 002B9D34  93 E1 00 1C */	stw r31, 0x1c(r1)
 /* 802BE0D8 002B9D38  7C 7F 1B 78 */	mr r31, r3
 /* 802BE0DC 002B9D3C  38 63 00 08 */	addi r3, r3, 8
-/* 802BE0E0 002B9D40  48 00 F7 69 */	bl func_802CD848
+/* 802BE0E0 002B9D40  48 00 F7 69 */	bl btm_read_trusted_mask
 /* 802BE0E4 002B9D44  2C 03 00 00 */	cmpwi r3, 0
 /* 802BE0E8 002B9D48  41 82 00 18 */	beq lbl_802BE100
 /* 802BE0EC 002B9D4C  7C 64 1B 78 */	mr r4, r3
@@ -321,13 +321,13 @@ lbl_802BE164:
 /* 802BE164 002B9DC4  38 7F 00 08 */	addi r3, r31, 8
 /* 802BE168 002B9DC8  38 A1 00 08 */	addi r5, r1, 8
 /* 802BE16C 002B9DCC  38 80 00 00 */	li r4, 0
-/* 802BE170 002B9DD0  48 00 CC 01 */	bl func_802CAD70
+/* 802BE170 002B9DD0  48 00 CC 01 */	bl BTM_DeviceAuthorized
 /* 802BE174 002B9DD4  48 00 00 14 */	b lbl_802BE188
 lbl_802BE178:
 /* 802BE178 002B9DD8  38 7F 00 08 */	addi r3, r31, 8
 /* 802BE17C 002B9DDC  38 A1 00 08 */	addi r5, r1, 8
 /* 802BE180 002B9DE0  38 80 00 0B */	li r4, 0xb
-/* 802BE184 002B9DE4  48 00 CB ED */	bl func_802CAD70
+/* 802BE184 002B9DE4  48 00 CB ED */	bl BTM_DeviceAuthorized
 lbl_802BE188:
 /* 802BE188 002B9DE8  80 01 00 24 */	lwz r0, 0x24(r1)
 /* 802BE18C 002B9DEC  83 E1 00 1C */	lwz r31, 0x1c(r1)
@@ -418,7 +418,7 @@ bta_dm_discover:
 /* 802BE2C0 002B9F20  98 1F 00 70 */	stb r0, 0x70(r31)
 /* 802BE2C4 002B9F24  90 1F 00 10 */	stw r0, 0x10(r31)
 /* 802BE2C8 002B9F28  98 1F 00 20 */	stb r0, 0x20(r31)
-/* 802BE2CC 002B9F2C  48 00 C6 65 */	bl func_802CA930
+/* 802BE2CC 002B9F2C  48 00 C6 65 */	bl BTM_SecAddRmtNameNotifyCallback
 /* 802BE2D0 002B9F30  38 7F 00 1A */	addi r3, r31, 0x1a
 /* 802BE2D4 002B9F34  38 9E 00 08 */	addi r4, r30, 8
 /* 802BE2D8 002B9F38  4B FF F2 89 */	bl bdcpy
@@ -507,7 +507,7 @@ lbl_802BE3FC:
 /* 802BE408 002BA068  3B A0 00 00 */	li r29, 0
 /* 802BE40C 002BA06C  9B BE 00 79 */	stb r29, 0x79(r30)
 /* 802BE410 002BA070  38 63 F0 A0 */	addi r3, r3, bta_dm_service_search_remname_cback@l
-/* 802BE414 002BA074  48 00 C5 1D */	bl func_802CA930
+/* 802BE414 002BA074  48 00 C5 1D */	bl BTM_SecAddRmtNameNotifyCallback
 /* 802BE418 002BA078  80 1E 00 08 */	lwz r0, 8(r30)
 /* 802BE41C 002BA07C  38 7E 00 1A */	addi r3, r30, 0x1a
 /* 802BE420 002BA080  80 9E 00 04 */	lwz r4, 4(r30)
@@ -826,7 +826,7 @@ lbl_802BE864:
 lbl_802BE894:
 /* 802BE894 002BA4F4  3C 60 80 2C */	lis r3, bta_dm_service_search_remname_cback@ha
 /* 802BE898 002BA4F8  38 63 F0 A0 */	addi r3, r3, bta_dm_service_search_remname_cback@l
-/* 802BE89C 002BA4FC  48 00 C0 E5 */	bl func_802CA980
+/* 802BE89C 002BA4FC  48 00 C0 E5 */	bl BTM_SecDeleteRmtNameNotifyCallback
 /* 802BE8A0 002BA500  38 60 01 10 */	li r3, 0x110
 /* 802BE8A4 002BA504  4B FF B2 09 */	bl GKI_getbuf
 /* 802BE8A8 002BA508  2C 03 00 00 */	cmpwi r3, 0
@@ -878,7 +878,7 @@ lbl_802BE93C:
 /* 802BE950 002BA5B0  3C 60 80 2C */	lis r3, bta_dm_service_search_remname_cback@ha
 /* 802BE954 002BA5B4  90 1F 00 14 */	stw r0, 0x14(r31)
 /* 802BE958 002BA5B8  38 63 F0 A0 */	addi r3, r3, bta_dm_service_search_remname_cback@l
-/* 802BE95C 002BA5BC  48 00 C0 25 */	bl func_802CA980
+/* 802BE95C 002BA5BC  48 00 C0 25 */	bl BTM_SecDeleteRmtNameNotifyCallback
 /* 802BE960 002BA5C0  38 60 01 10 */	li r3, 0x110
 /* 802BE964 002BA5C4  4B FF B1 49 */	bl GKI_getbuf
 /* 802BE968 002BA5C8  2C 03 00 00 */	cmpwi r3, 0
@@ -1289,7 +1289,7 @@ lbl_802BEEF0:
 /* 802BEEFC 002BAB5C  3B C0 00 00 */	li r30, 0
 /* 802BEF00 002BAB60  9B DF 00 79 */	stb r30, 0x79(r31)
 /* 802BEF04 002BAB64  38 63 F0 A0 */	addi r3, r3, bta_dm_service_search_remname_cback@l
-/* 802BEF08 002BAB68  48 00 BA 29 */	bl func_802CA930
+/* 802BEF08 002BAB68  48 00 BA 29 */	bl BTM_SecAddRmtNameNotifyCallback
 /* 802BEF0C 002BAB6C  80 1F 00 08 */	lwz r0, 8(r31)
 /* 802BEF10 002BAB70  38 7F 00 1A */	addi r3, r31, 0x1a
 /* 802BEF14 002BAB74  80 9F 00 04 */	lwz r4, 4(r31)
@@ -1416,7 +1416,7 @@ bta_dm_service_search_remname_cback:
 /* 802BF0C0 002BAD20  4B F0 F2 D1 */	bl strncpy
 /* 802BF0C4 002BAD24  3C 60 80 2C */	lis r3, bta_dm_service_search_remname_cback@ha
 /* 802BF0C8 002BAD28  38 63 F0 A0 */	addi r3, r3, bta_dm_service_search_remname_cback@l
-/* 802BF0CC 002BAD2C  48 00 B8 B5 */	bl func_802CA980
+/* 802BF0CC 002BAD2C  48 00 B8 B5 */	bl BTM_SecDeleteRmtNameNotifyCallback
 /* 802BF0D0 002BAD30  80 01 00 14 */	lwz r0, 0x14(r1)
 /* 802BF0D4 002BAD34  7C 08 03 A6 */	mtlr r0
 /* 802BF0D8 002BAD38  38 21 00 10 */	addi r1, r1, 0x10
@@ -2513,7 +2513,7 @@ bta_dm_send_hci_reset:
 /* 802C0000 002BBC60  2C 03 00 00 */	cmpwi r3, 0
 /* 802C0004 002BBC64  41 82 00 0C */	beq lbl_802C0010
 /* 802C0008 002BBC68  38 80 00 00 */	li r4, 0
-/* 802C000C 002BBC6C  48 01 19 35 */	bl func_802D1940
+/* 802C000C 002BBC6C  48 01 19 35 */	bl btsnd_hcic_write_scan_enable
 lbl_802C0010:
 /* 802C0010 002BBC70  3C 60 80 2C */	lis r3, bta_dm_reset_complete@ha
 /* 802C0014 002BBC74  38 63 FF D8 */	addi r3, r3, bta_dm_reset_complete@l

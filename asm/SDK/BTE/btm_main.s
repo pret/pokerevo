@@ -19,8 +19,8 @@ btm_init:
 /* 802C8DC0 002C4A20  4B FF F4 85 */	bl btm_inq_db_init
 /* 802C8DC4 002C4A24  4B FF A6 69 */	bl btm_acl_init
 /* 802C8DC8 002C4A28  38 60 00 02 */	li r3, 2
-/* 802C8DCC 002C4A2C  48 00 2D 79 */	bl func_802CBB44
-/* 802C8DD0 002C4A30  48 00 0C B1 */	bl func_802C9A80
+/* 802C8DCC 002C4A2C  48 00 2D 79 */	bl btm_sec_init
+/* 802C8DD0 002C4A30  48 00 0C B1 */	bl btm_sco_init
 /* 802C8DD4 002C4A34  4B FF CA 69 */	bl btm_dev_init
 /* 802C8DD8 002C4A38  80 01 00 14 */	lwz r0, 0x14(r1)
 /* 802C8DDC 002C4A3C  83 E1 00 0C */	lwz r31, 0xc(r1)
