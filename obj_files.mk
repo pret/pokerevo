@@ -294,6 +294,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/BTE/sdp_main.o                               \
 	$(BUILD_DIR)/asm/SDK/BTE/sdp_server.o                               \
 	$(BUILD_DIR)/asm/SDK/BTE/sdp_utils.o                               \
+	$(BUILD_DIR)/asm/SDK/NAND/nand.o                               \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
 	$(BUILD_DIR)/src/GameSpy/darray.o                             \
