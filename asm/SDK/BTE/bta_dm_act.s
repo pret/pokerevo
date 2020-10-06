@@ -52,7 +52,7 @@ bta_dm_enable:
 /* 802BDDA8 002B9A08  3F E0 80 2C */	lis r31, bta_dm_compress_cback@ha
 /* 802BDDAC 002B9A0C  38 7F FB F8 */	addi r3, r31, bta_dm_compress_cback@l
 /* 802BDDB0 002B9A10  4B FF F8 95 */	bl bta_sys_compress_register
-/* 802BDDB4 002B9A14  48 00 28 45 */	bl func_802C05F8
+/* 802BDDB4 002B9A14  48 00 28 45 */	bl bta_dm_init_pm
 /* 802BDDB8 002B9A18  3C 60 80 57 */	lis r3, lbl_80568768@ha
 /* 802BDDBC 002B9A1C  38 80 00 00 */	li r4, 0
 /* 802BDDC0 002B9A20  38 63 87 68 */	addi r3, r3, lbl_80568768@l
@@ -88,7 +88,7 @@ bta_dm_disable:
 /* 802BDE30 002B9A90  38 80 00 00 */	li r4, 0
 /* 802BDE34 002B9A94  38 A0 00 00 */	li r5, 0
 /* 802BDE38 002B9A98  48 00 99 3D */	bl func_802C7774
-/* 802BDE3C 002B9A9C  48 00 28 25 */	bl func_802C0660
+/* 802BDE3C 002B9A9C  48 00 28 25 */	bl bta_dm_disable_pm
 /* 802BDE40 002B9AA0  48 00 64 F9 */	bl func_802C4338
 /* 802BDE44 002B9AA4  54 60 04 3F */	clrlwi. r0, r3, 0x10
 /* 802BDE48 002B9AA8  40 82 00 2C */	bne lbl_802BDE74

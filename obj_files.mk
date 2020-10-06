@@ -246,6 +246,10 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/BTE/utl.o                               \
 	$(BUILD_DIR)/asm/SDK/BTE/bta_dm_act.o                               \
 	$(BUILD_DIR)/asm/SDK/BTE/bta_dm_api.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/bta_dm_main.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/bta_dm_pm.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/bta_hh_act.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/bta_hh_api.o                               \
 	$(BUILD_DIR)/asm/text_8_7.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
