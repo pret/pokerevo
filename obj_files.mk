@@ -233,6 +233,18 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/BTE/gki_time.o                               \
 	$(BUILD_DIR)/asm/SDK/BTE/gki_ppc.o                               \
 	$(BUILD_DIR)/asm/SDK/BTE/hcisu_h2.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/uusb_ppc.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/bte_hcisu.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/bte_init.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/bte_logmsg.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/bte_main.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/btu_task1.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/bd.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/bta_sys_conn.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/bta_sys_main.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/ptim.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/utl.o                               \
+	$(BUILD_DIR)/asm/SDK/BTE/bta_dm_api.o                               \
 	$(BUILD_DIR)/asm/text_8_7.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
