@@ -13,16 +13,16 @@ GAP_Init:
 /* 802CEC48 002CA8A8  3F E0 80 57 */	lis r31, lbl_8056B340@ha
 /* 802CEC4C 002CA8AC  38 7F B3 40 */	addi r3, r31, lbl_8056B340@l
 /* 802CEC50 002CA8B0  4B D3 54 B5 */	bl memset
-/* 802CEC54 002CA8B4  3C A0 80 2D */	lis r5, lbl_802CF9A4@ha
-/* 802CEC58 002CA8B8  3C 60 80 2D */	lis r3, lbl_802CF9B0@ha
-/* 802CEC5C 002CA8BC  38 A5 F9 A4 */	addi r5, r5, lbl_802CF9A4@l
+/* 802CEC54 002CA8B4  3C A0 80 2D */	lis r5, gap_btm_cback0@ha
+/* 802CEC58 002CA8B8  3C 60 80 2D */	lis r3, gap_btm_cback1@ha
+/* 802CEC5C 002CA8BC  38 A5 F9 A4 */	addi r5, r5, gap_btm_cback0@l
 /* 802CEC60 002CA8C0  38 9F B3 40 */	addi r4, r31, -19648
-/* 802CEC64 002CA8C4  38 63 F9 B0 */	addi r3, r3, lbl_802CF9B0@l
+/* 802CEC64 002CA8C4  38 63 F9 B0 */	addi r3, r3, gap_btm_cback1@l
 /* 802CEC68 002CA8C8  38 00 00 05 */	li r0, 5
 /* 802CEC6C 002CA8CC  90 A4 00 20 */	stw r5, 0x20(r4)
 /* 802CEC70 002CA8D0  90 64 00 24 */	stw r3, 0x24(r4)
 /* 802CEC74 002CA8D4  98 04 00 28 */	stb r0, 0x28(r4)
-/* 802CEC78 002CA8D8  48 00 00 19 */	bl func_802CEC90
+/* 802CEC78 002CA8D8  48 00 00 19 */	bl gap_conn_init
 /* 802CEC7C 002CA8DC  80 01 00 14 */	lwz r0, 0x14(r1)
 /* 802CEC80 002CA8E0  83 E1 00 0C */	lwz r31, 0xc(r1)
 /* 802CEC84 002CA8E4  7C 08 03 A6 */	mtlr r0

@@ -2513,7 +2513,7 @@ bta_dm_send_hci_reset:
 /* 802C0000 002BBC60  2C 03 00 00 */	cmpwi r3, 0
 /* 802C0004 002BBC64  41 82 00 0C */	beq lbl_802C0010
 /* 802C0008 002BBC68  38 80 00 00 */	li r4, 0
-/* 802C000C 002BBC6C  48 01 19 35 */	bl func_802D1940
+/* 802C000C 002BBC6C  48 01 19 35 */	bl btsnd_hcic_write_scan_enable
 lbl_802C0010:
 /* 802C0010 002BBC70  3C 60 80 2C */	lis r3, bta_dm_reset_complete@ha
 /* 802C0014 002BBC74  38 63 FF D8 */	addi r3, r3, bta_dm_reset_complete@l
