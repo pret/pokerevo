@@ -22,7 +22,6 @@ lbl_802A2744:
 /* 802A2744 0029E3A4  7C 03 03 78 */	mr r3, r0
 /* 802A2748 0029E3A8  4E 80 00 20 */	blr
 
-# todo: confirm that this symbol is correct
 .global CXUncompressLZ
 CXUncompressLZ:
 /* 802A274C 0029E3AC  80 A3 00 00 */	lwz r5, 0(r3)
