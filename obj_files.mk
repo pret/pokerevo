@@ -199,7 +199,9 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/AX/AXFXReverbStdExp.o                                     \
 	$(BUILD_DIR)/asm/SDK/AX/AXFXChorus.o                                     \
 	$(BUILD_DIR)/asm/SDK/AX/AXFXChorusExp.o                                     \
-	$(BUILD_DIR)/asm/text_8_5.o                                     \
+	$(BUILD_DIR)/asm/SDK/AX/AXFXLfoTable.o                                     \
+	$(BUILD_DIR)/asm/SDK/AX/AXFXSrcCoef.o                                     \
+	$(BUILD_DIR)/asm/SDK/AX/AXFXHooks.o                                     \
 	$(BUILD_DIR)/asm/SDK/MEM/mem_heapCommon.o                                     \
 	$(BUILD_DIR)/asm/SDK/MEM/mem_expHeap.o                                     \
 	$(BUILD_DIR)/asm/SDK/MEM/mem_frameHeap.o                                     \

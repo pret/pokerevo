@@ -2,34 +2,24 @@
 
 .section .text, "ax"  # 0x80006980 - 0x803E1E60
 
-.global func_80296474
-func_80296474:
-/* 80296474 002920D4  3C 60 80 44 */	lis r3, lbl_8043A770@ha
-/* 80296478 002920D8  38 63 A7 70 */	addi r3, r3, lbl_8043A770@l
-/* 8029647C 002920DC  4E 80 00 20 */	blr
-
-.global func_80296480
-func_80296480:
-/* 80296480 002920E0  3C 80 80 44 */	lis r4, lbl_8043A970@ha
-/* 80296484 002920E4  54 60 20 36 */	slwi r0, r3, 4
-/* 80296488 002920E8  38 84 A9 70 */	addi r4, r4, lbl_8043A970@l
-/* 8029648C 002920EC  7C 64 02 14 */	add r3, r4, r0
-/* 80296490 002920F0  4E 80 00 20 */	blr
+__AXFXAllocFunction:
 /* 80296494 002920F4  7C 64 1B 78 */	mr r4, r3
 /* 80296498 002920F8  80 6D 87 A8 */	lwz r3, lbl_8063DA68-_SDA_BASE_(r13)
 /* 8029649C 002920FC  4B FD 3A C0 */	b OSAllocFromHeap
+
+__AXFXFreeFunction:
 /* 802964A0 00292100  7C 64 1B 78 */	mr r4, r3
 /* 802964A4 00292104  80 6D 87 A8 */	lwz r3, lbl_8063DA68-_SDA_BASE_(r13)
 /* 802964A8 00292108  4B FD 3B AC */	b OSFreeToHeap
 
-.global func_802964AC
-func_802964AC:
+.global AXFXSetHooks
+AXFXSetHooks:
 /* 802964AC 0029210C  90 6D 88 F8 */	stw r3, lbl_8063DBB8-_SDA_BASE_(r13)
 /* 802964B0 00292110  90 8D 88 FC */	stw r4, lbl_8063DBBC-_SDA_BASE_(r13)
 /* 802964B4 00292114  4E 80 00 20 */	blr
 
-.global func_802964B8
-func_802964B8:
+.global AXFXGetHooks
+AXFXGetHooks:
 /* 802964B8 00292118  80 0D 88 F8 */	lwz r0, lbl_8063DBB8-_SDA_BASE_(r13)
 /* 802964BC 0029211C  90 03 00 00 */	stw r0, 0(r3)
 /* 802964C0 00292120  80 0D 88 FC */	lwz r0, lbl_8063DBBC-_SDA_BASE_(r13)
