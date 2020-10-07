@@ -216,7 +216,8 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/THP/THPDec.o                                     \
 	$(BUILD_DIR)/asm/SDK/THP/THPAudio.o                                     \
 	$(BUILD_DIR)/asm/SDK/KPAD/KPAD.o                                     \
-	$(BUILD_DIR)/asm/text_8_6.o                                     \
+	$(BUILD_DIR)/asm/SDK/CX/CXCompression.o                                     \
+	$(BUILD_DIR)/asm/SDK/CX/CXUncompression.o                                     \
 	$(BUILD_DIR)/asm/SDK/IPC/ipcMain.o                                     \
 	$(BUILD_DIR)/asm/SDK/IPC/ipcclt.o                                     \
 	$(BUILD_DIR)/asm/SDK/IPC/memory.o                                     \
