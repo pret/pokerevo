@@ -2,14 +2,14 @@
 
 .section .text, "ax"  # 0x80006980 - 0x803E1E60
 
-.global func_80292460
-func_80292460:
+.global AXFXReverbHiGetMemSizeDpl2
+AXFXReverbHiGetMemSizeDpl2:
 /* 80292460 0028E0C0  C0 03 01 88 */	lfs f0, 0x188(r3)
 /* 80292464 0028E0C4  D0 03 01 44 */	stfs f0, 0x144(r3)
-/* 80292468 0028E0C8  48 00 10 64 */	b lbl_802934CC
+/* 80292468 0028E0C8  48 00 10 64 */	b AXFXReverbHiExpGetMemSizeDpl2
 
-.global func_8029246C
-func_8029246C:
+.global AXFXReverbHiInitDpl2
+AXFXReverbHiInitDpl2:
 /* 8029246C 0028E0CC  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 80292470 0028E0D0  7C 08 02 A6 */	mflr r0
 /* 80292474 0028E0D4  90 01 00 14 */	stw r0, 0x14(r1)
@@ -46,7 +46,7 @@ lbl_80292494:
 /* 802924EC 0028E14C  90 1F 01 6C */	stw r0, 0x16c(r31)
 /* 802924F0 0028E150  D0 1F 01 70 */	stfs f0, 0x170(r31)
 /* 802924F4 0028E154  D0 5F 01 74 */	stfs f2, 0x174(r31)
-/* 802924F8 0028E158  48 00 10 61 */	bl func_80293558
+/* 802924F8 0028E158  48 00 10 61 */	bl AXFXReverbHiExpInitDpl2
 lbl_802924FC:
 /* 802924FC 0028E15C  80 01 00 14 */	lwz r0, 0x14(r1)
 /* 80292500 0028E160  83 E1 00 0C */	lwz r31, 0xc(r1)
@@ -54,20 +54,20 @@ lbl_802924FC:
 /* 80292508 0028E168  38 21 00 10 */	addi r1, r1, 0x10
 /* 8029250C 0028E16C  4E 80 00 20 */	blr
 
-.global func_80292510
-func_80292510:
+.global AXFXReverbHiShutdownDpl2
+AXFXReverbHiShutdownDpl2:
 /* 80292510 0028E170  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 80292514 0028E174  7C 08 02 A6 */	mflr r0
 /* 80292518 0028E178  90 01 00 14 */	stw r0, 0x14(r1)
-/* 8029251C 0028E17C  48 00 12 CD */	bl func_802937E8
+/* 8029251C 0028E17C  48 00 12 CD */	bl AXFXReverbHiExpShutdownDpl2
 /* 80292520 0028E180  80 01 00 14 */	lwz r0, 0x14(r1)
 /* 80292524 0028E184  38 60 00 01 */	li r3, 1
 /* 80292528 0028E188  7C 08 03 A6 */	mtlr r0
 /* 8029252C 0028E18C  38 21 00 10 */	addi r1, r1, 0x10
 /* 80292530 0028E190  4E 80 00 20 */	blr
 
-.global func_80292534
-func_80292534:
+.global AXFXReverbHiSettingsDpl2
+AXFXReverbHiSettingsDpl2:
 /* 80292534 0028E194  C0 E3 01 88 */	lfs f7, 0x188(r3)
 /* 80292538 0028E198  38 00 00 00 */	li r0, 0
 /* 8029253C 0028E19C  C0 42 A2 40 */	lfs f2, lbl_80642840-_SDA2_BASE_(r2)
@@ -92,8 +92,8 @@ func_80292534:
 /* 80292588 0028E1E8  90 03 01 6C */	stw r0, 0x16c(r3)
 /* 8029258C 0028E1EC  D0 03 01 70 */	stfs f0, 0x170(r3)
 /* 80292590 0028E1F0  D0 43 01 74 */	stfs f2, 0x174(r3)
-/* 80292594 0028E1F4  48 00 11 84 */	b lbl_80293718
+/* 80292594 0028E1F4  48 00 11 84 */	b AXFXReverbHiExpSettingsDpl2
 
-.global func_80292598
-func_80292598:
-/* 80292598 0028E1F8  48 00 12 A4 */	b lbl_8029383C
+.global AXFXReverbHiCallbackDpl2
+AXFXReverbHiCallbackDpl2:
+/* 80292598 0028E1F8  48 00 12 A4 */	b AXFXReverbHiExpCallbackDpl2

@@ -580,7 +580,6 @@ lbl_80292DE4:
 /* 80292DF4 0028EA54  38 21 00 70 */	addi r1, r1, 0x70
 /* 80292DF8 0028EA58  4E 80 00 20 */	blr
 
-.global __AllocDelayLine
 __AllocDelayLine:
 /* 80292DFC 0028EA5C  94 21 FF D0 */	stwu r1, -0x30(r1)
 /* 80292E00 0028EA60  7C 08 02 A6 */	mflr r0
@@ -686,7 +685,6 @@ lbl_80292F58:
 /* 80292F68 0028EBC8  38 21 00 30 */	addi r1, r1, 0x30
 /* 80292F6C 0028EBCC  4E 80 00 20 */	blr
 
-.global __BzeroDelayLines
 __BzeroDelayLines:
 /* 80292F70 0028EBD0  94 21 FF D0 */	stwu r1, -0x30(r1)
 /* 80292F74 0028EBD4  7C 08 02 A6 */	mflr r0
@@ -770,7 +768,6 @@ lbl_80293064:
 /* 8029308C 0028ECEC  38 21 00 30 */	addi r1, r1, 0x30
 /* 80293090 0028ECF0  4E 80 00 20 */	blr
 
-.global __FreeDelayLine
 __FreeDelayLine:
 /* 80293094 0028ECF4  94 21 FF D0 */	stwu r1, -0x30(r1)
 /* 80293098 0028ECF8  7C 08 02 A6 */	mflr r0
