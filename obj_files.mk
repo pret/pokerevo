@@ -298,6 +298,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/NAND/NANDOpenClose.o                               \
 	$(BUILD_DIR)/asm/SDK/NAND/NANDCore.o                               \
 	$(BUILD_DIR)/asm/SDK/NAND/NANDCheck.o                               \
+	$(BUILD_DIR)/asm/SDK/SC/scsystem.o                               \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
 	$(BUILD_DIR)/src/GameSpy/darray.o                             \
