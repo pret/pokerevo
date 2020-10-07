@@ -195,6 +195,8 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/AX/AXFXReverbHiExp.o                            \
 	$(BUILD_DIR)/asm/SDK/AX/AXFXReverbHiExpDpl2.o                                     \
 	$(BUILD_DIR)/asm/SDK/AX/AXFXDelay.o                                     \
+	$(BUILD_DIR)/asm/SDK/AX/AXFXReverbStd.o                                     \
+	$(BUILD_DIR)/asm/SDK/AX/AXFXReverbStdExp.o                                     \
 	$(BUILD_DIR)/asm/text_8_5.o                                     \
 	$(BUILD_DIR)/asm/SDK/MEM/mem_heapCommon.o                                     \
 	$(BUILD_DIR)/asm/SDK/MEM/mem_expHeap.o                                     \
