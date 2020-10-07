@@ -170,9 +170,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/GX/GXBump.o                                   \
 	$(BUILD_DIR)/asm/SDK/GX/GXTev.o                                   \
 	$(BUILD_DIR)/asm/SDK/GX/GXPixel.o                                   \
-	$(BUILD_DIR)/asm/text_8.o                                     \
 	$(BUILD_DIR)/asm/SDK/GX/GXDraw.o                                     \
-	$(BUILD_DIR)/asm/text_8_2.o                                     \
 	$(BUILD_DIR)/asm/SDK/GX/GXDisplayList.o                                     \
 	$(BUILD_DIR)/asm/SDK/GX/GXTransform.o                                     \
 	$(BUILD_DIR)/asm/SDK/GX/GXPerf.o                                     \
@@ -192,12 +190,18 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/AX/AXSPB.o                                     \
 	$(BUILD_DIR)/asm/SDK/AX/AXVPB.o                                     \
 	$(BUILD_DIR)/asm/SDK/AX/AXProf.o                                     \
-	$(BUILD_DIR)/asm/SDK/AX/AXFXReverbHi.o                                     \
-	$(BUILD_DIR)/asm/text_8_3.o                                     \
-	$(BUILD_DIR)/asm/SDK/AX/AXFXReverbHiExp.o                            \
-	$(BUILD_DIR)/asm/text_8_4.o                                     \
-	$(BUILD_DIR)/asm/SDK/AX/AXFXDelay.o                                     \
-	$(BUILD_DIR)/asm/text_8_5.o                                     \
+	$(BUILD_DIR)/asm/SDK/AXFX/AXFXReverbHi.o                                     \
+	$(BUILD_DIR)/asm/SDK/AXFX/AXFXReverbHiDpl2.o                                     \
+	$(BUILD_DIR)/asm/SDK/AXFX/AXFXReverbHiExp.o                            \
+	$(BUILD_DIR)/asm/SDK/AXFX/AXFXReverbHiExpDpl2.o                                     \
+	$(BUILD_DIR)/asm/SDK/AXFX/AXFXDelay.o                                     \
+	$(BUILD_DIR)/asm/SDK/AXFX/AXFXReverbStd.o                                     \
+	$(BUILD_DIR)/asm/SDK/AXFX/AXFXReverbStdExp.o                                     \
+	$(BUILD_DIR)/asm/SDK/AXFX/AXFXChorus.o                                     \
+	$(BUILD_DIR)/asm/SDK/AXFX/AXFXChorusExp.o                                     \
+	$(BUILD_DIR)/asm/SDK/AXFX/AXFXLfoTable.o                                     \
+	$(BUILD_DIR)/asm/SDK/AXFX/AXFXSrcCoef.o                                     \
+	$(BUILD_DIR)/asm/SDK/AXFX/AXFXHooks.o                                     \
 	$(BUILD_DIR)/asm/SDK/MEM/mem_heapCommon.o                                     \
 	$(BUILD_DIR)/asm/SDK/MEM/mem_expHeap.o                                     \
 	$(BUILD_DIR)/asm/SDK/MEM/mem_frameHeap.o                                     \
@@ -298,6 +302,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/NAND/NANDOpenClose.o                               \
 	$(BUILD_DIR)/asm/SDK/NAND/NANDCore.o                               \
 	$(BUILD_DIR)/asm/SDK/NAND/NANDCheck.o                               \
+	$(BUILD_DIR)/asm/SDK/SC/scsystem.o                               \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
 	$(BUILD_DIR)/src/GameSpy/darray.o                             \
