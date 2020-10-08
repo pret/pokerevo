@@ -308,6 +308,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/SC/scapi_prdinfo.o                               \
 	$(BUILD_DIR)/asm/SDK/WENC/wenc.o                               \
 	$(BUILD_DIR)/asm/SDK/ARC/arc.o                               \
+	$(BUILD_DIR)/asm/SDK/NCD/ncdsystem.o                               \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
 	$(BUILD_DIR)/src/GameSpy/darray.o                             \
