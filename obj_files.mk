@@ -317,12 +317,25 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/NTR/math.o                                     \
 	$(BUILD_DIR)/asm/SDK/NTR/wdp_common.o                                     \
 	$(BUILD_DIR)/asm/SDK/NTR/wdp_parent.o                                     \
-	$(BUILD_DIR)/asm/text_9.o                                     \
+	$(BUILD_DIR)/asm/SDK/MP/mpsystem.o                                     \
+	$(BUILD_DIR)/asm/SDK/MP/mpwd.o                                     \
+	$(BUILD_DIR)/asm/SDK/MP/mpmisc.o                                     \
+	$(BUILD_DIR)/asm/SDK/MP/mptxrx.o                                     \
+	$(BUILD_DIR)/asm/SDK/MP/mpconnection.o                                     \
+	$(BUILD_DIR)/asm/SDK/MP/mpparent.o                                     \
+	$(BUILD_DIR)/asm/SDK/MP/mpnotification.o                                     \
+	$(BUILD_DIR)/asm/SDK/MP/mpport.o                                     \
+	$(BUILD_DIR)/asm/SDK/MP/mpbeacon.o                                     \
+	$(BUILD_DIR)/asm/SDK/MPDL/mpdlsystem.o                                     \
+	$(BUILD_DIR)/asm/SDK/NET/neterrorcode.o                                     \
+	$(BUILD_DIR)/asm/SDK/NET/neterrorcode.o                                     \
+	$(BUILD_DIR)/asm/SDK/NET/NETVersion.o                                     \
+	$(BUILD_DIR)/asm/SDK/NET/wireless_macaddr.o                                     \
 	$(BUILD_DIR)/asm/SDK/SO/SOCommon.o                                     \
 	$(BUILD_DIR)/asm/SDK/SO/SOBasic.o                                     \
 	$(BUILD_DIR)/asm/SDK/SO/SOInformation.o                                     \
 	$(BUILD_DIR)/asm/SDK/SO/SOOption.o                                     \
-	$(BUILD_DIR)/asm/text_9_2.o                                     \
+	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
 	$(BUILD_DIR)/src/GameSpy/darray.o                             \
 	$(BUILD_DIR)/src/GameSpy/hashtable.o                          \
