@@ -335,6 +335,19 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/SO/SOBasic.o                                     \
 	$(BUILD_DIR)/asm/SDK/SO/SOInformation.o                                     \
 	$(BUILD_DIR)/asm/SDK/SO/SOOption.o                                     \
+	$(BUILD_DIR)/asm/SDK/NHTTP/NHTTP_bgnend.o                                     \
+	$(BUILD_DIR)/asm/SDK/NHTTP/NHTTP_control.o                                     \
+	$(BUILD_DIR)/asm/SDK/NHTTP/NHTTP_list.o                                     \
+	$(BUILD_DIR)/asm/SDK/NHTTP/NHTTP_os_RVL.o                                     \
+	$(BUILD_DIR)/asm/SDK/NHTTP/NHTTP_recvbuf.o                                     \
+	$(BUILD_DIR)/asm/SDK/NHTTP/NHTTP_request.o                                     \
+	$(BUILD_DIR)/asm/SDK/NHTTP/NHTTP_response.o                                     \
+	$(BUILD_DIR)/asm/SDK/NHTTP/NHTTP_socket_RVL.o                                     \
+	$(BUILD_DIR)/asm/SDK/NHTTP/NHTTP_stdlib_RVL.o                                     \
+	$(BUILD_DIR)/asm/SDK/NHTTP/NHTTP_thread.o                                     \
+	$(BUILD_DIR)/asm/SDK/NHTTP/d_nhttp_private.o                                     \
+	$(BUILD_DIR)/asm/SDK/NHTTP/d_nhttp.o                                     \
+	$(BUILD_DIR)/asm/SDK/NHTTP/d_nhttp_common.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
 	$(BUILD_DIR)/src/GameSpy/darray.o                             \
