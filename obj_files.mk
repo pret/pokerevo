@@ -317,6 +317,10 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/NTR/math.o                                     \
 	$(BUILD_DIR)/asm/SDK/NTR/wdp_common.o                                     \
 	$(BUILD_DIR)/asm/SDK/NTR/wdp_parent.o                                     \
+	$(BUILD_DIR)/asm/SDK/MP/mpsystem.o                                     \
+	$(BUILD_DIR)/asm/SDK/MP/mpwd.o                                     \
+	$(BUILD_DIR)/asm/SDK/MP/mpmisc.o                                     \
+	$(BUILD_DIR)/asm/SDK/MP/mptxrx.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/SDK/SO/SOCommon.o                                     \
 	$(BUILD_DIR)/asm/SDK/SO/SOBasic.o                                     \
