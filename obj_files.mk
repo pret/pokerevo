@@ -308,7 +308,21 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/SC/scapi_prdinfo.o                               \
 	$(BUILD_DIR)/asm/SDK/WENC/wenc.o                               \
 	$(BUILD_DIR)/asm/SDK/ARC/arc.o                               \
+	$(BUILD_DIR)/asm/SDK/NCD/ncdsystem.o                               \
+	$(BUILD_DIR)/asm/SDK/WD/wd_misc.o                                     \
+	$(BUILD_DIR)/asm/SDK/WD/wd_request.o                                     \
+	$(BUILD_DIR)/asm/SDK/WD/wd_receive.o                                     \
+	$(BUILD_DIR)/asm/SDK/WD/wd_init.o                                     \
+	$(BUILD_DIR)/asm/SDK/NTR/crc.o                                     \
+	$(BUILD_DIR)/asm/SDK/NTR/math.o                                     \
+	$(BUILD_DIR)/asm/SDK/NTR/wdp_common.o                                     \
+	$(BUILD_DIR)/asm/SDK/NTR/wdp_parent.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
+	$(BUILD_DIR)/asm/SDK/SO/SOCommon.o                                     \
+	$(BUILD_DIR)/asm/SDK/SO/SOBasic.o                                     \
+	$(BUILD_DIR)/asm/SDK/SO/SOInformation.o                                     \
+	$(BUILD_DIR)/asm/SDK/SO/SOOption.o                                     \
+	$(BUILD_DIR)/asm/text_9_2.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
 	$(BUILD_DIR)/src/GameSpy/darray.o                             \
 	$(BUILD_DIR)/src/GameSpy/hashtable.o                          \
