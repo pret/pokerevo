@@ -338,7 +338,7 @@ SBServerGetPublicAddress:
 /* 8035D804 00359464  80 03 00 00 */	lwz r0, 0(r3)
 /* 8035D808 00359468  38 61 00 08 */	addi r3, r1, 8
 /* 8035D80C 0035946C  90 01 00 08 */	stw r0, 8(r1)
-/* 8035D810 00359470  4B F9 95 09 */	bl func_802F6D18
+/* 8035D810 00359470  4B F9 95 09 */	bl SOInetNtoA
 /* 8035D814 00359474  80 01 00 14 */	lwz r0, 0x14(r1)
 /* 8035D818 00359478  7C 08 03 A6 */	mtlr r0
 /* 8035D81C 0035947C  38 21 00 10 */	addi r1, r1, 0x10
@@ -352,7 +352,7 @@ SBServerGetPublicInetAddress:
 .global SBServerGetPublicQueryPort
 SBServerGetPublicQueryPort:
 /* 8035D82C 0035948C  A0 63 00 04 */	lhz r3, 4(r3)
-/* 8035D830 00359490  4B F9 95 40 */	b func_802F6D70
+/* 8035D830 00359490  4B F9 95 40 */	b SONtoHs
 
 .global SBServerGetPublicQueryPortNBO
 SBServerGetPublicQueryPortNBO:
@@ -373,7 +373,7 @@ SBServerGetPrivateAddress:
 /* 8035D854 003594B4  80 03 00 08 */	lwz r0, 8(r3)
 /* 8035D858 003594B8  38 61 00 08 */	addi r3, r1, 8
 /* 8035D85C 003594BC  90 01 00 08 */	stw r0, 8(r1)
-/* 8035D860 003594C0  4B F9 94 B9 */	bl func_802F6D18
+/* 8035D860 003594C0  4B F9 94 B9 */	bl SOInetNtoA
 /* 8035D864 003594C4  80 01 00 14 */	lwz r0, 0x14(r1)
 /* 8035D868 003594C8  7C 08 03 A6 */	mtlr r0
 /* 8035D86C 003594CC  38 21 00 10 */	addi r1, r1, 0x10
@@ -387,7 +387,7 @@ SBServerGetPrivateInetAddress:
 .global SBServerGetPrivateQueryPort
 SBServerGetPrivateQueryPort:
 /* 8035D87C 003594DC  A0 63 00 0C */	lhz r3, 0xc(r3)
-/* 8035D880 003594E0  4B F9 94 F0 */	b func_802F6D70
+/* 8035D880 003594E0  4B F9 94 F0 */	b SONtoHs
 
 .global SBServerSetNext
 SBServerSetNext:
@@ -589,7 +589,7 @@ lbl_8035DAF8:
 /* 8035DB08 00359768  38 A0 00 02 */	li r5, 2
 /* 8035DB0C 0035976C  4B CA 64 F5 */	bl memcpy
 /* 8035DB10 00359770  A0 61 00 08 */	lhz r3, 8(r1)
-/* 8035DB14 00359774  4B F9 92 5D */	bl func_802F6D70
+/* 8035DB14 00359774  4B F9 92 5D */	bl SONtoHs
 /* 8035DB18 00359778  3B DE 00 02 */	addi r30, r30, 2
 /* 8035DB1C 0035977C  B0 61 00 08 */	sth r3, 8(r1)
 /* 8035DB20 00359780  7F DA F3 78 */	mr r26, r30
