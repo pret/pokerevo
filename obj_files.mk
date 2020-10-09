@@ -326,6 +326,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/MP/mpnotification.o                                     \
 	$(BUILD_DIR)/asm/SDK/MP/mpport.o                                     \
 	$(BUILD_DIR)/asm/SDK/MP/mpbeacon.o                                     \
+	$(BUILD_DIR)/asm/SDK/MPDL/mpdlsystem.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/SDK/SO/SOCommon.o                                     \
 	$(BUILD_DIR)/asm/SDK/SO/SOBasic.o                                     \
