@@ -2,7 +2,6 @@
 
 .section .text, "ax"  # 0x80006980 - 0x803E1E60
 
-# TODO: verify this symbol is correct
 .global NCDSetNwc24Permission
 NCDSetNwc24Permission:
 /* 802ED204 002E8E64  94 21 FF E0 */	stwu r1, -0x20(r1)
