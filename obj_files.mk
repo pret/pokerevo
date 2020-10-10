@@ -376,6 +376,18 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/VF/pf_volume.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/pf_cp932.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/pf_api_util.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_errnum.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_fclose.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_finfo.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_fopen.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_fread.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_fseek.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_fwrite.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_init_prfile2.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_filelock.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_system.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/d_vf.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/d_vf_sys.o                                     \
 	$(BUILD_DIR)/asm/text_9_2.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
 	$(BUILD_DIR)/src/GameSpy/darray.o                             \
