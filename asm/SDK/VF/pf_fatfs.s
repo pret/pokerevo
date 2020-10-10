@@ -4,4 +4,4 @@
 
 .global VFiPFFATFS_initializeFATFS
 VFiPFFATFS_initializeFATFS:
-/* 80312810 0030E470  48 00 69 D0 */	b lbl_803191E0
+/* 80312810 0030E470  48 00 69 D0 */	b VFiPFVOL_InitModule
