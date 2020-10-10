@@ -349,6 +349,34 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/NHTTP/d_nhttp.o                                     \
 	$(BUILD_DIR)/asm/SDK/NHTTP/d_nhttp_common.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_clib.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_code.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_service.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_str.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_w_clib.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_driver.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pdm_bpb.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pdm_disk.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pdm_partition.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pdm_mbr.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pdm_dskmng.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_cache.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_cluster.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_dir.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_entry.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_entry_iterator.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_fat.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_fat12.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_fat16.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_fat32.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_fatfs.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_file.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_path.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_sector.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_volume.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_cp932.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_api_util.o                                     \
+	$(BUILD_DIR)/asm/text_9_2.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
 	$(BUILD_DIR)/src/GameSpy/darray.o                             \
 	$(BUILD_DIR)/src/GameSpy/hashtable.o                          \
