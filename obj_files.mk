@@ -392,6 +392,15 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/VF/d_time.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/d_common.o                                     \
 	$(BUILD_DIR)/asm/text_9_2.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_common/dwc_base64.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_common/dwc_error.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_common/dwc_init.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_common/dwc_memfunc.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_common/dwc_report.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_ghttp/dwc_ghttp.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_lanmatch/dwc_lanmatch.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_match/dwc_common.o                                     \
+	$(BUILD_DIR)/asm/text_9_3.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
 	$(BUILD_DIR)/src/GameSpy/darray.o                             \
 	$(BUILD_DIR)/src/GameSpy/hashtable.o                          \
