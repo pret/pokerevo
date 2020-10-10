@@ -374,6 +374,8 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/VF/pf_path.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/pf_sector.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/pf_volume.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_cp932.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_api_util.o                                     \
 	$(BUILD_DIR)/asm/text_9_2.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
 	$(BUILD_DIR)/src/GameSpy/darray.o                             \
