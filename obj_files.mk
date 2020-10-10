@@ -388,6 +388,9 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/VF/pf_system.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/d_vf.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/d_vf_sys.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/d_hash.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/d_time.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/d_common.o                                     \
 	$(BUILD_DIR)/asm/text_9_2.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
 	$(BUILD_DIR)/src/GameSpy/darray.o                             \
