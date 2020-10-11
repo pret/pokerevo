@@ -376,7 +376,34 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/VF/pf_volume.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/pf_cp932.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/pf_api_util.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_errnum.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_fclose.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_finfo.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_fopen.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_fread.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_fseek.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_fwrite.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_init_prfile2.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_filelock.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/pf_system.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/d_vf.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/d_vf_sys.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/d_hash.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/d_time.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/d_common.o                                     \
 	$(BUILD_DIR)/asm/text_9_2.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_common/dwc_base64.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_common/dwc_error.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_common/dwc_init.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_common/dwc_memfunc.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_common/dwc_report.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_ghttp/dwc_ghttp.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_lanmatch/dwc_lanmatch.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_match/dwc_common.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_match/dwc_friend.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_match/dwc_login.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_match/dwc_main.o                                     \
+	$(BUILD_DIR)/asm/text_9_3.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
 	$(BUILD_DIR)/src/GameSpy/darray.o                             \
 	$(BUILD_DIR)/src/GameSpy/hashtable.o                          \
