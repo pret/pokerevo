@@ -86,6 +86,7 @@ lbl_80324430:
 /* 80324438 00320098  38 21 00 10 */	addi r1, r1, 0x10
 /* 8032443C 0032009C  4E 80 00 20 */	blr
 
+# note: might be DWC_AddMatchKeyString
 .global DWC_AddMatchKeyInt
 DWC_AddMatchKeyInt:
 /* 80324440 003200A0  94 21 FF E0 */	stwu r1, -0x20(r1)
@@ -9944,7 +9945,7 @@ lbl_8032D124:
 /* 8032D128 00328D88  7F C4 F3 78 */	mr r4, r30
 /* 8032D12C 00328D8C  38 A1 00 08 */	addi r5, r1, 8
 /* 8032D130 00328D90  38 C0 00 04 */	li r6, 4
-/* 8032D134 00328D94  48 00 39 D9 */	bl func_80330B0C
+/* 8032D134 00328D94  48 00 39 D9 */	bl DWCi_SendReliable
 /* 8032D138 00328D98  4B F4 56 81 */	bl OSGetTime
 /* 8032D13C 00328D9C  80 AD B0 68 */	lwz r5, lbl_80640328-_SDA_BASE_(r13)
 /* 8032D140 00328DA0  90 85 01 F4 */	stw r4, 0x1f4(r5)
