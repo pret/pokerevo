@@ -391,7 +391,8 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/VF/d_hash.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/d_time.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/d_common.o                                     \
-	$(BUILD_DIR)/asm/text_9_2.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/nand_drv.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/sd_drv.o                                     \
 	$(BUILD_DIR)/asm/SDK/DWC/dwc_common/dwc_base64.o                                     \
 	$(BUILD_DIR)/asm/SDK/DWC/dwc_common/dwc_error.o                                     \
 	$(BUILD_DIR)/asm/SDK/DWC/dwc_common/dwc_init.o                                     \
@@ -404,7 +405,12 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/DWC/dwc_match/dwc_login.o                                     \
 	$(BUILD_DIR)/asm/SDK/DWC/dwc_match/dwc_main.o                                     \
 	$(BUILD_DIR)/asm/SDK/DWC/dwc_match/dwc_match.o                                     \
-	$(BUILD_DIR)/asm/text_10.o                                    \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_match/dwc_transport.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_nonport/dwc_nonport.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_nonport/dwci_np_math.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwcsec_account/dwc_account.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwcsec_auth/dwc_auth_interface.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwcsec_nas/dwc_naslogin.o                                     \
 	$(BUILD_DIR)/src/GameSpy/darray.o                             \
 	$(BUILD_DIR)/src/GameSpy/hashtable.o                          \
 	$(BUILD_DIR)/asm/GameSpy/md5c.o                               \

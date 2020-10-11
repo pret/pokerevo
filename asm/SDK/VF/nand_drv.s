@@ -2,8 +2,8 @@
 
 .section .text, "ax"  # 0x80006980 - 0x803E1E60
 
-.global func_8031BE1C
-func_8031BE1C:
+.global VFi_NandFlushNANDFromHandleIdx
+VFi_NandFlushNANDFromHandleIdx:
 /* 8031BE1C 00317A7C  94 21 FF D0 */	stwu r1, -0x30(r1)
 /* 8031BE20 00317A80  7C 08 02 A6 */	mflr r0
 /* 8031BE24 00317A84  90 01 00 34 */	stw r0, 0x34(r1)
@@ -220,7 +220,3 @@ lbl_8031C108:
 /* 8031C114 00317D74  7C 08 03 A6 */	mtlr r0
 /* 8031C118 00317D78  38 21 00 30 */	addi r1, r1, 0x30
 /* 8031C11C 00317D7C  4E 80 00 20 */	blr
-
-.global func_8031C120
-func_8031C120:
-/* 8031C120 00317D80  4E 80 00 20 */	blr
