@@ -403,7 +403,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/DWC/dwc_match/dwc_friend.o                                     \
 	$(BUILD_DIR)/asm/SDK/DWC/dwc_match/dwc_login.o                                     \
 	$(BUILD_DIR)/asm/SDK/DWC/dwc_match/dwc_main.o                                     \
-	$(BUILD_DIR)/asm/text_9_3.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_match/dwc_match.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
 	$(BUILD_DIR)/src/GameSpy/darray.o                             \
 	$(BUILD_DIR)/src/GameSpy/hashtable.o                          \
