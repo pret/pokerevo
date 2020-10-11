@@ -391,7 +391,8 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/VF/d_hash.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/d_time.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/d_common.o                                     \
-	$(BUILD_DIR)/asm/text_9_2.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/nand_drv.o                                     \
+	$(BUILD_DIR)/asm/SDK/VF/sd_drv.o                                     \
 	$(BUILD_DIR)/asm/SDK/DWC/dwc_common/dwc_base64.o                                     \
 	$(BUILD_DIR)/asm/SDK/DWC/dwc_common/dwc_error.o                                     \
 	$(BUILD_DIR)/asm/SDK/DWC/dwc_common/dwc_init.o                                     \
