@@ -401,6 +401,8 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/DWC/dwc_lanmatch/dwc_lanmatch.o                                     \
 	$(BUILD_DIR)/asm/SDK/DWC/dwc_match/dwc_common.o                                     \
 	$(BUILD_DIR)/asm/SDK/DWC/dwc_match/dwc_friend.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_match/dwc_login.o                                     \
+	$(BUILD_DIR)/asm/SDK/DWC/dwc_match/dwc_main.o                                     \
 	$(BUILD_DIR)/asm/text_9_3.o                                     \
 	$(BUILD_DIR)/asm/text_10.o                                    \
 	$(BUILD_DIR)/src/GameSpy/darray.o                             \
