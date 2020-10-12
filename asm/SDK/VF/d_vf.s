@@ -10,8 +10,8 @@ VFIsAvailable:
 /* 8031A4AC 0031610C  54 03 0F FE */	srwi r3, r0, 0x1f
 /* 8031A4B0 00316110  4E 80 00 20 */	blr
 
-.global VFInitEx
-VFInitEx:
+.global VFInit
+VFInit:
 /* 8031A4B4 00316114  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 8031A4B8 00316118  7C 08 02 A6 */	mflr r0
 /* 8031A4BC 0031611C  90 01 00 14 */	stw r0, 0x14(r1)

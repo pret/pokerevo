@@ -348,7 +348,22 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/NHTTP/d_nhttp_private.o                                     \
 	$(BUILD_DIR)/asm/SDK/NHTTP/d_nhttp.o                                     \
 	$(BUILD_DIR)/asm/SDK/NHTTP/d_nhttp_common.o                                     \
+	$(BUILD_DIR)/asm/SDK/SSL/ssl_api.o                                     \
+	$(BUILD_DIR)/asm/SDK/SSL/ssl_mutex.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
+	$(BUILD_DIR)/asm/SDK/NWC24/NWC24StdAPI.o                                     \
+	$(BUILD_DIR)/asm/SDK/NWC24/NWC24FileAPI.o                                     \
+	$(BUILD_DIR)/asm/SDK/NWC24/NWC24Config.o                                     \
+	$(BUILD_DIR)/asm/SDK/NWC24/NWC24Manage.o                                     \
+	$(BUILD_DIR)/asm/SDK/NWC24/NWC24MBoxCtrl.o                                     \
+	$(BUILD_DIR)/asm/SDK/NWC24/NWC24Mime.o                                     \
+	$(BUILD_DIR)/asm/SDK/NWC24/NWC24Schedule.o                                     \
+	$(BUILD_DIR)/asm/SDK/NWC24/NWC24FriendList.o                                     \
+	$(BUILD_DIR)/asm/SDK/NWC24/NWC24SecretFList.o                                     \
+	$(BUILD_DIR)/asm/SDK/NWC24/NWC24Time.o                                     \
+	$(BUILD_DIR)/asm/SDK/NWC24/NWC24Ipc.o                                     \
+	$(BUILD_DIR)/asm/SDK/NWC24/NWC24Download.o                                     \
+	$(BUILD_DIR)/asm/SDK/NWC24/NWC24System.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/pf_clib.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/pf_code.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/pf_service.o                                     \
