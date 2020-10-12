@@ -363,7 +363,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/NWC24/NWC24Time.o                                     \
 	$(BUILD_DIR)/asm/SDK/NWC24/NWC24Ipc.o                                     \
 	$(BUILD_DIR)/asm/SDK/NWC24/NWC24Download.o                                     \
-	$(BUILD_DIR)/asm/text_9_2.o                                     \
+	$(BUILD_DIR)/asm/SDK/NWC24/NWC24System.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/pf_clib.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/pf_code.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/pf_service.o                                     \

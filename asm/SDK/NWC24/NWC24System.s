@@ -2,17 +2,17 @@
 
 .section .text, "ax"  # 0x80006980 - 0x803E1E60
 
-.global func_80304D1C
-func_80304D1C:
+.global NWC24iPrepareShutdown
+NWC24iPrepareShutdown:
 /* 80304D1C 0030097C  94 21 FF E0 */	stwu r1, -0x20(r1)
 /* 80304D20 00300980  7C 08 02 A6 */	mflr r0
 /* 80304D24 00300984  90 01 00 24 */	stw r0, 0x24(r1)
 /* 80304D28 00300988  93 E1 00 1C */	stw r31, 0x1c(r1)
 /* 80304D2C 0030098C  3B E0 00 00 */	li r31, 0
 /* 80304D30 00300990  4B FF E3 25 */	bl NWC24iRegister
-/* 80304D34 00300994  3C A0 80 30 */	lis r5, lbl_80304DC4@ha
+/* 80304D34 00300994  3C A0 80 30 */	lis r5, NWC24Shutdown@ha
 /* 80304D38 00300998  3C 80 80 58 */	lis r4, lbl_8057EA00@ha
-/* 80304D3C 0030099C  38 A5 4D C4 */	addi r5, r5, lbl_80304DC4@l
+/* 80304D3C 0030099C  38 A5 4D C4 */	addi r5, r5, NWC24Shutdown@l
 /* 80304D40 003009A0  38 00 00 6E */	li r0, 0x6e
 /* 80304D44 003009A4  38 64 EA 00 */	addi r3, r4, lbl_8057EA00@l
 /* 80304D48 003009A8  90 A4 EA 00 */	stw r5, -0x1600(r4)
@@ -49,7 +49,8 @@ lbl_80304DAC:
 /* 80304DB8 00300A18  7C 08 03 A6 */	mtlr r0
 /* 80304DBC 00300A1C  38 21 00 20 */	addi r1, r1, 0x20
 /* 80304DC0 00300A20  4E 80 00 20 */	blr
-lbl_80304DC4:
+
+NWC24Shutdown:
 /* 80304DC4 00300A24  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 80304DC8 00300A28  7C 08 02 A6 */	mflr r0
 /* 80304DCC 00300A2C  2C 03 00 00 */	cmpwi r3, 0
