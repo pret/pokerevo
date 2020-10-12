@@ -348,6 +348,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/NHTTP/d_nhttp_private.o                                     \
 	$(BUILD_DIR)/asm/SDK/NHTTP/d_nhttp.o                                     \
 	$(BUILD_DIR)/asm/SDK/NHTTP/d_nhttp_common.o                                     \
+	$(BUILD_DIR)/asm/SDK/SSL/ssl_api.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/pf_clib.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/pf_code.o                                     \
