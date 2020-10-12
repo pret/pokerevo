@@ -352,6 +352,10 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/SSL/ssl_mutex.o                                     \
 	$(BUILD_DIR)/asm/text_9.o                                     \
 	$(BUILD_DIR)/asm/SDK/NWC24/NWC24StdAPI.o                                     \
+	$(BUILD_DIR)/asm/SDK/NWC24/NWC24FileAPI.o                                     \
+	$(BUILD_DIR)/asm/SDK/NWC24/NWC24Config.o                                     \
+	$(BUILD_DIR)/asm/SDK/NWC24/NWC24Manage.o                                     \
+	$(BUILD_DIR)/asm/SDK/NWC24/NWC24MBoxCtrl.o                                     \
 	$(BUILD_DIR)/asm/text_9_2.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/pf_clib.o                                     \
 	$(BUILD_DIR)/asm/SDK/VF/pf_code.o                                     \
