@@ -488,7 +488,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/nw4r/ut/ut_DvdFileStream.o                       \
 	$(BUILD_DIR)/asm/nw4r/ut/ut_DvdLockedFileStream.o                 \
 	$(BUILD_DIR)/asm/nw4r/ut/ut_Font.o                                \
-	$(BUILD_DIR)/asm/text_10_3.o                                      \
+	$(BUILD_DIR)/asm/nw4r/ut/detail/ut_ResFontBase.o                                      \
 	$(BUILD_DIR)/asm/nw4r/ut/ut_ResFont.o                             \
 	$(BUILD_DIR)/asm/nw4r/ut/ut_CharWriter.o                          \
 	$(BUILD_DIR)/asm/nw4r/ut/ut_TextWriterBase.o                      \
