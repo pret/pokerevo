@@ -56,7 +56,21 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/code_8005A588.o							  \
 	$(BUILD_DIR)/asm/code_8005B4A4.o							  \
 	$(BUILD_DIR)/asm/code_8005CEAC.o							  \
-	$(BUILD_DIR)/asm/text_2.o                                     \
+	$(BUILD_DIR)/asm/code_8006A878.o							  \
+	$(BUILD_DIR)/asm/code_8006E554.o							  \
+	$(BUILD_DIR)/asm/code_8007CFB0.o							  \
+	$(BUILD_DIR)/asm/code_8007F8C4.o							  \
+	$(BUILD_DIR)/asm/code_8008A2D4.o							  \
+	$(BUILD_DIR)/asm/code_8008D8CC.o							  \
+	$(BUILD_DIR)/asm/code_80091268.o							  \
+	$(BUILD_DIR)/asm/code_80094DC0.o							  \
+	$(BUILD_DIR)/asm/code_8009598C.o							  \
+	$(BUILD_DIR)/asm/code_8009A2BC.o							  \
+	$(BUILD_DIR)/asm/code_8009C1A8.o							  \
+	$(BUILD_DIR)/asm/code_8009F6C4.o							  \
+	$(BUILD_DIR)/asm/code_800AA038.o							  \
+	$(BUILD_DIR)/asm/code_800AA470.o							  \
+	$(BUILD_DIR)/asm/code_800B9E10.o							  \
 	$(BUILD_DIR)/asm/text_3.o                                     \
 	$(BUILD_DIR)/asm/text_4.o                                     \
 	$(BUILD_DIR)/asm/text_5.o                                     \
