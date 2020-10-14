@@ -477,7 +477,9 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/GameSpy/sb_server.o                          \
 	$(BUILD_DIR)/asm/GameSpy/sb_serverbrowsing.o                  \
 	$(BUILD_DIR)/asm/GameSpy/sb_serverlist.o                      \
+	$(BUILD_DIR)/asm/nw4r/db/db_console.o                                      \
 	$(BUILD_DIR)/asm/text_10_2.o                                      \
+	$(BUILD_DIR)/asm/nw4r/db/db_assert.o                                      \
 	$(BUILD_DIR)/asm/nw4r/ut/ut_list.o                                \
 	$(BUILD_DIR)/asm/nw4r/ut/detail/ut_LinkList.o                     \
 	$(BUILD_DIR)/asm/nw4r/ut/ut_binaryFileFormat.o                    \

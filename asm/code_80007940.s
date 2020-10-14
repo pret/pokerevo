@@ -129,8 +129,8 @@ lbl_80007AB0:
 /* 80007ABC 0000371C  38 21 00 10 */	addi r1, r1, 0x10
 /* 80007AC0 00003720  4E 80 00 20 */	blr
 
-.global func_80007AC4
-func_80007AC4:
+.global OSReport
+OSReport:
 /* 80007AC4 00003724  94 21 FF 90 */	stwu r1, -0x70(r1)
 /* 80007AC8 00003728  40 86 00 24 */	bne cr1, lbl_80007AEC
 /* 80007ACC 0000372C  D8 21 00 28 */	stfd f1, 0x28(r1)
@@ -153,8 +153,8 @@ lbl_80007AEC:
 /* 80007B0C 0000376C  38 21 00 70 */	addi r1, r1, 0x70
 /* 80007B10 00003770  4E 80 00 20 */	blr
 
-.global func_80007B14
-func_80007B14:
+.global OSVReport
+OSVReport:
 /* 80007B14 00003774  4E 80 00 20 */	blr
 
 .global func_80007B18
