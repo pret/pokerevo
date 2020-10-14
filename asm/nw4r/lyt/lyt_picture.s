@@ -24,11 +24,11 @@ __ct__Q34nw4r3lyt7PictureFPCQ44nw4r3lyt3res7PictureRCQ34nw4r3lyt11ResBlockSet:
 /* 80386DEC 00382A4C  3C 60 80 45 */	lis r3, lbl_8044E2E8@ha
 /* 80386DF0 00382A50  3C 80 80 38 */	lis r4, __ct__Q34nw4r2ut5ColorFv@ha
 /* 80386DF4 00382A54  38 63 E2 E8 */	addi r3, r3, lbl_8044E2E8@l
-/* 80386DF8 00382A58  3C A0 80 36 */	lis r5, func_80362698@ha
+/* 80386DF8 00382A58  3C A0 80 36 */	lis r5, __dt__Q34nw4r2ut5ColorFv@ha
 /* 80386DFC 00382A5C  90 7C 00 00 */	stw r3, 0(r28)
 /* 80386E00 00382A60  38 7C 00 D4 */	addi r3, r28, 0xd4
 /* 80386E04 00382A64  38 84 6D B4 */	addi r4, r4, __ct__Q34nw4r2ut5ColorFv@l
-/* 80386E08 00382A68  38 A5 26 98 */	addi r5, r5, func_80362698@l
+/* 80386E08 00382A68  38 A5 26 98 */	addi r5, r5, __dt__Q34nw4r2ut5ColorFv@l
 /* 80386E0C 00382A6C  38 C0 00 04 */	li r6, 4
 /* 80386E10 00382A70  38 E0 00 04 */	li r7, 4
 /* 80386E14 00382A74  4B E4 00 55 */	bl __construct_array
@@ -123,9 +123,9 @@ __dt__Q34nw4r3lyt7PictureFv:
 lbl_80386F58:
 /* 80386F58 00382BB8  38 7E 00 E4 */	addi r3, r30, 0xe4
 /* 80386F5C 00382BBC  48 00 78 2D */	bl Free__Q44nw4r3lyt6detail11TexCoordAryFv
-/* 80386F60 00382BC0  3C 80 80 36 */	lis r4, func_80362698@ha
+/* 80386F60 00382BC0  3C 80 80 36 */	lis r4, __dt__Q34nw4r2ut5ColorFv@ha
 /* 80386F64 00382BC4  38 7E 00 D4 */	addi r3, r30, 0xd4
-/* 80386F68 00382BC8  38 84 26 98 */	addi r4, r4, func_80362698@l
+/* 80386F68 00382BC8  38 84 26 98 */	addi r4, r4, __dt__Q34nw4r2ut5ColorFv@l
 /* 80386F6C 00382BCC  38 A0 00 04 */	li r5, 4
 /* 80386F70 00382BD0  38 C0 00 04 */	li r6, 4
 /* 80386F74 00382BD4  4B E3 FF ED */	bl __destroy_arr

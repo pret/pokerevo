@@ -2,8 +2,8 @@
 
 .section .text, "ax"  # 0x80006980 - 0x803E1E60
 
-.global func_80362698
-func_80362698:
+.global __dt__Q34nw4r2ut5ColorFv
+__dt__Q34nw4r2ut5ColorFv:
 /* 80362698 0035E2F8  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 8036269C 0035E2FC  7C 08 02 A6 */	mflr r0
 /* 803626A0 0035E300  2C 03 00 00 */	cmpwi r3, 0
@@ -22,8 +22,8 @@ lbl_803626C0:
 /* 803626D0 0035E330  38 21 00 10 */	addi r1, r1, 0x10
 /* 803626D4 0035E334  4E 80 00 20 */	blr
 
-.global func_803626D8
-func_803626D8:
+.global SetTextColor__Q34nw4r2ut10CharWriterFQ34nw4r2ut5Color
+SetTextColor__Q34nw4r2ut10CharWriterFQ34nw4r2ut5Color:
 /* 803626D8 0035E338  88 E4 00 00 */	lbz r7, 0(r4)
 /* 803626DC 0035E33C  88 C4 00 01 */	lbz r6, 1(r4)
 /* 803626E0 0035E340  88 A4 00 02 */	lbz r5, 2(r4)

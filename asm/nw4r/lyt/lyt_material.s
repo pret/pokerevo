@@ -220,11 +220,11 @@ __ct__Q34nw4r3lyt8MaterialFPCQ44nw4r3lyt3res8MaterialRCQ34nw4r3lyt11ResBlockSet:
 /* 8038A700 00386360  39 08 E5 28 */	addi r8, r8, lbl_8044E528@l
 /* 8038A704 00386364  3C E0 80 38 */	lis r7, __ct__Q34nw4r2ut5ColorFv@ha
 /* 8038A708 00386368  91 C3 00 0C */	stw r14, 0xc(r3)
-/* 8038A70C 0038636C  3C C0 80 36 */	lis r6, func_80362698@ha
+/* 8038A70C 0038636C  3C C0 80 36 */	lis r6, __dt__Q34nw4r2ut5ColorFv@ha
 /* 8038A710 00386370  7C 90 23 78 */	mr r16, r4
 /* 8038A714 00386374  7C B1 2B 78 */	mr r17, r5
 /* 8038A718 00386378  38 87 6D B4 */	addi r4, r7, __ct__Q34nw4r2ut5ColorFv@l
-/* 8038A71C 0038637C  38 A6 26 98 */	addi r5, r6, func_80362698@l
+/* 8038A71C 0038637C  38 A6 26 98 */	addi r5, r6, __dt__Q34nw4r2ut5ColorFv@l
 /* 8038A720 00386380  91 03 00 00 */	stw r8, 0(r3)
 /* 8038A724 00386384  7C 6F 1B 78 */	mr r15, r3
 /* 8038A728 00386388  38 C0 00 04 */	li r6, 4
@@ -1323,9 +1323,9 @@ __dt__Q34nw4r3lyt8MaterialFv:
 /* 8038B768 003873C8  38 00 00 00 */	li r0, 0
 /* 8038B76C 003873CC  90 1E 00 40 */	stw r0, 0x40(r30)
 lbl_8038B770:
-/* 8038B770 003873D0  3C 80 80 36 */	lis r4, func_80362698@ha
+/* 8038B770 003873D0  3C 80 80 36 */	lis r4, __dt__Q34nw4r2ut5ColorFv@ha
 /* 8038B774 003873D4  38 7E 00 28 */	addi r3, r30, 0x28
-/* 8038B778 003873D8  38 84 26 98 */	addi r4, r4, func_80362698@l
+/* 8038B778 003873D8  38 84 26 98 */	addi r4, r4, __dt__Q34nw4r2ut5ColorFv@l
 /* 8038B77C 003873DC  38 A0 00 04 */	li r5, 4
 /* 8038B780 003873E0  38 C0 00 04 */	li r6, 4
 /* 8038B784 003873E4  4B E3 B7 DD */	bl __destroy_arr

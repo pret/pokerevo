@@ -16,12 +16,12 @@ __ct__Q34nw4r3lyt6WindowFPCQ44nw4r3lyt3res6WindowRCQ34nw4r3lyt11ResBlockSet:
 /* 80387ED8 00383B38  3C 60 80 45 */	lis r3, lbl_8044E404@ha
 /* 80387EDC 00383B3C  3C 80 80 38 */	lis r4, __ct__Q34nw4r2ut5ColorFv@ha
 /* 80387EE0 00383B40  38 63 E4 04 */	addi r3, r3, lbl_8044E404@l
-/* 80387EE4 00383B44  3C A0 80 36 */	lis r5, func_80362698@ha
+/* 80387EE4 00383B44  3C A0 80 36 */	lis r5, __dt__Q34nw4r2ut5ColorFv@ha
 /* 80387EE8 00383B48  3B 78 00 E4 */	addi r27, r24, 0xe4
 /* 80387EEC 00383B4C  90 78 00 00 */	stw r3, 0(r24)
 /* 80387EF0 00383B50  7F 63 DB 78 */	mr r3, r27
 /* 80387EF4 00383B54  38 84 6D B4 */	addi r4, r4, __ct__Q34nw4r2ut5ColorFv@l
-/* 80387EF8 00383B58  38 A5 26 98 */	addi r5, r5, func_80362698@l
+/* 80387EF8 00383B58  38 A5 26 98 */	addi r5, r5, __dt__Q34nw4r2ut5ColorFv@l
 /* 80387EFC 00383B5C  38 C0 00 04 */	li r6, 4
 /* 80387F00 00383B60  38 E0 00 04 */	li r7, 4
 /* 80387F04 00383B64  4B E3 EF 65 */	bl __construct_array
@@ -211,9 +211,9 @@ lbl_803881A0:
 /* 803881A4 00383E04  48 00 65 E5 */	bl Free__Q44nw4r3lyt6detail11TexCoordAryFv
 /* 803881A8 00383E08  34 7C 00 E4 */	addic. r3, r28, 0xe4
 /* 803881AC 00383E0C  41 82 00 18 */	beq lbl_803881C4
-/* 803881B0 00383E10  3C 80 80 36 */	lis r4, func_80362698@ha
+/* 803881B0 00383E10  3C 80 80 36 */	lis r4, __dt__Q34nw4r2ut5ColorFv@ha
 /* 803881B4 00383E14  38 A0 00 04 */	li r5, 4
-/* 803881B8 00383E18  38 84 26 98 */	addi r4, r4, func_80362698@l
+/* 803881B8 00383E18  38 84 26 98 */	addi r4, r4, __dt__Q34nw4r2ut5ColorFv@l
 /* 803881BC 00383E1C  38 C0 00 04 */	li r6, 4
 /* 803881C0 00383E20  4B E3 ED A1 */	bl __destroy_arr
 lbl_803881C4:
