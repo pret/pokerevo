@@ -37,7 +37,7 @@ SRC_DIRS := src src/SDK/OS src/SDK/EXI src/SDK/SI src/SDK/DB src/SDK/VI src/SDK/
 			src/SDK/DWC/dwc_lanmatch src/SDK/DWC/dwc_match src/SDK/DWC/dwc_nonport src/SDK/DWC/dwcsec_account \
 			src/SDK/DWC/dwcsec_auth src/SDK/DWC/dwcsec_nas src/SDK/SSL src/SDK/SO src/SDK/base src/SDK/HBM src/MSL_C/MSL_Common src/MSL_C/MSL_Common_Embedded \
             src/MSL_C/MSL_Common_Embedded/Math src/MSL_C/PPC_EABI src/Runtime \
-            src/MetroTRK src/GameSpy src/nw4r/ut src/nw4r/snd src/nw4r/ut/detail \
+            src/MetroTRK src/GameSpy src/nw4r/db src/nw4r/ut src/nw4r/snd src/nw4r/ut/detail \
             src/nw4r/snd/detail src/nw4r/math src/nw4r/lyt src/nw4r/lyt/detail
 ASM_DIRS := asm asm/SDK/OS asm/SDK/EXI asm/SDK/SI asm/SDK/DB asm/SDK/VI asm/SDK/MTX \
             asm/SDK/GX asm/SDK/DVD asm/SDK/AI asm/SDK/AX asm/SDK/AXFX asm/SDK/MEM asm/SDK/MIX asm/SDK/DSP \
@@ -48,7 +48,7 @@ ASM_DIRS := asm asm/SDK/OS asm/SDK/EXI asm/SDK/SI asm/SDK/DB asm/SDK/VI asm/SDK/
 			asm/SDK/DWC/dwc_lanmatch asm/SDK/DWC/dwc_match asm/SDK/DWC/dwc_nonport asm/SDK/DWC/dwcsec_account \
 			asm/SDK/DWC/dwcsec_auth asm/SDK/DWC/dwcsec_nas asm/SDK/SSL asm/SDK/SO asm/SDK/base asm/SDK/HBM asm/MSL_C/MSL_Common asm/MSL_C/MSL_Common_Embedded \
             asm/MSL_C/MSL_Common_Embedded/Math asm/MSL_C/PPC_EABI asm/Runtime \
-            asm/MetroTRK asm/GameSpy asm/nw4r/ut asm/nw4r/snd asm/nw4r/ut/detail \
+            asm/MetroTRK asm/GameSpy asm/nw4r/db asm/nw4r/ut asm/nw4r/snd asm/nw4r/ut/detail \
             asm/nw4r/snd/detail asm/nw4r/math asm/nw4r/lyt asm/nw4r/lyt/detail
 
 # Inputs
