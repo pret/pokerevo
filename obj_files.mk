@@ -18,6 +18,20 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/code_80025390.o							  \
 	$(BUILD_DIR)/asm/code_800284B0.o							  \
 	$(BUILD_DIR)/asm/code_8002A910.o							  \
+	$(BUILD_DIR)/asm/code_8002ABE8.o							  \
+	$(BUILD_DIR)/asm/code_8002BB44.o							  \
+	$(BUILD_DIR)/asm/code_8002CB00.o							  \
+	$(BUILD_DIR)/asm/code_8002DE2C.o							  \
+	$(BUILD_DIR)/asm/code_80030134.o							  \
+	$(BUILD_DIR)/asm/code_80030320.o							  \
+	$(BUILD_DIR)/asm/code_80030BA0.o							  \
+	$(BUILD_DIR)/asm/code_800310D8.o							  \
+	$(BUILD_DIR)/asm/code_80031544.o							  \
+	$(BUILD_DIR)/asm/code_800321E4.o							  \
+	$(BUILD_DIR)/asm/code_800324A8.o							  \
+	$(BUILD_DIR)/asm/code_80032BC8.o							  \
+	$(BUILD_DIR)/asm/code_80032E60.o							  \
+	$(BUILD_DIR)/asm/code_80032FE8.o							  \
 	$(BUILD_DIR)/asm/text_1.o                                     \
 	$(BUILD_DIR)/asm/text_2.o                                     \
 	$(BUILD_DIR)/asm/text_3.o                                     \
