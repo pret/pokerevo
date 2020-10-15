@@ -5,6 +5,8 @@
 .global func_800E96C4
 func_800E96C4:
 /* 800E96C4 000E5324  4E 80 00 20 */	blr
+
+.global lbl_800E96C8
 lbl_800E96C8:
 /* 800E96C8 000E5328  94 21 FF E0 */	stwu r1, -0x20(r1)
 /* 800E96CC 000E532C  7C 08 02 A6 */	mflr r0

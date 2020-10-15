@@ -2,6 +2,8 @@
 
 .section .text, "ax"  # 0x80006980 - 0x803E1E60
 
+
+.global lbl_8015D390
 lbl_8015D390:
 /* 8015D390 00158FF0  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 8015D394 00158FF4  7C 08 02 A6 */	mflr r0
