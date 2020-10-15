@@ -264,6 +264,55 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/code_8021FB44.o                                   \
 	$(BUILD_DIR)/asm/code_8022063C.o                                   \
 	$(BUILD_DIR)/asm/code_80220DC4.o                                   \
+	$(BUILD_DIR)/asm/code_802233C8.o                                   \
+	$(BUILD_DIR)/asm/code_80223694.o                                   \
+	$(BUILD_DIR)/asm/code_802236C0.o                                   \
+	$(BUILD_DIR)/asm/code_80223830.o                                   \
+	$(BUILD_DIR)/asm/code_802238A0.o                                   \
+	$(BUILD_DIR)/asm/code_80223A0C.o                                   \
+	$(BUILD_DIR)/asm/code_80223BC8.o                                   \
+	$(BUILD_DIR)/asm/code_80223C54.o                                   \
+	$(BUILD_DIR)/asm/code_80224104.o                                   \
+	$(BUILD_DIR)/asm/code_802247A0.o                                   \
+	$(BUILD_DIR)/asm/code_8022494C.o                                   \
+	$(BUILD_DIR)/asm/code_80224B10.o                                   \
+	$(BUILD_DIR)/asm/code_80225E44.o                                   \
+	$(BUILD_DIR)/asm/code_80226364.o                                   \
+	$(BUILD_DIR)/asm/code_8022773C.o                                   \
+	$(BUILD_DIR)/asm/code_80228970.o                                   \
+	$(BUILD_DIR)/asm/code_80228B0C.o                                   \
+	$(BUILD_DIR)/asm/code_8022910C.o                                   \
+	$(BUILD_DIR)/asm/code_8022D72C.o                                   \
+	$(BUILD_DIR)/asm/code_80230BD4.o                                   \
+	$(BUILD_DIR)/asm/code_80230E48.o                                   \
+	$(BUILD_DIR)/asm/code_8023234C.o                                   \
+	$(BUILD_DIR)/asm/code_8023283C.o                                   \
+	$(BUILD_DIR)/asm/code_80232D24.o                                   \
+	$(BUILD_DIR)/asm/code_802353F8.o                                   \
+	$(BUILD_DIR)/asm/code_80235474.o                                   \
+	$(BUILD_DIR)/asm/code_80235A74.o                                   \
+	$(BUILD_DIR)/asm/code_80236704.o                                   \
+	$(BUILD_DIR)/asm/code_8023694C.o                                   \
+	$(BUILD_DIR)/asm/code_80236B08.o                                   \
+	$(BUILD_DIR)/asm/code_80237794.o                                   \
+	$(BUILD_DIR)/asm/code_802377BC.o                                   \
+	$(BUILD_DIR)/asm/code_8023AF8C.o                                   \
+	$(BUILD_DIR)/asm/code_8023B64C.o                                   \
+	$(BUILD_DIR)/asm/code_8023B9F4.o                                   \
+	$(BUILD_DIR)/asm/code_8023D008.o                                   \
+	$(BUILD_DIR)/asm/code_8023EA44.o                                   \
+	$(BUILD_DIR)/asm/code_8023EE6C.o                                   \
+	$(BUILD_DIR)/asm/code_80240060.o                                   \
+	$(BUILD_DIR)/asm/code_8024052C.o                                   \
+	$(BUILD_DIR)/asm/code_802437EC.o                                   \
+	$(BUILD_DIR)/asm/code_80244904.o                                   \
+	$(BUILD_DIR)/asm/code_80244A18.o                                   \
+	$(BUILD_DIR)/asm/code_80244EDC.o                                   \
+	$(BUILD_DIR)/asm/code_802452E8.o                                   \
+	$(BUILD_DIR)/asm/code_80245C60.o                                   \
+	$(BUILD_DIR)/asm/code_80246CCC.o                                   \
+	$(BUILD_DIR)/asm/code_80247038.o                                   \
+	$(BUILD_DIR)/asm/code_80247280.o                                   \
 	$(BUILD_DIR)/asm/text_7.o                                     \
 	$(BUILD_DIR)/asm/SDK/base/PPCArch.o                                  \
 	$(BUILD_DIR)/asm/SDK/OS/OS.o                                  \
