@@ -32,8 +32,45 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/code_80032BC8.o							  \
 	$(BUILD_DIR)/asm/code_80032E60.o							  \
 	$(BUILD_DIR)/asm/code_80032FE8.o							  \
-	$(BUILD_DIR)/asm/text_1.o                                     \
-	$(BUILD_DIR)/asm/text_2.o                                     \
+	$(BUILD_DIR)/asm/code_80035CB0.o							  \
+	$(BUILD_DIR)/asm/code_80036F88.o							  \
+	$(BUILD_DIR)/asm/code_8003E03C.o							  \
+	$(BUILD_DIR)/asm/code_8003E854.o							  \
+	$(BUILD_DIR)/asm/code_800400E8.o							  \
+	$(BUILD_DIR)/asm/code_800447E4.o							  \
+	$(BUILD_DIR)/asm/code_80044F28.o							  \
+	$(BUILD_DIR)/asm/code_800477E8.o							  \
+	$(BUILD_DIR)/asm/code_800478C0.o							  \
+	$(BUILD_DIR)/asm/code_80048728.o							  \
+	$(BUILD_DIR)/asm/code_80049084.o							  \
+	$(BUILD_DIR)/asm/code_8004ACF4.o							  \
+	$(BUILD_DIR)/asm/code_8004D724.o							  \
+	$(BUILD_DIR)/asm/code_8004DE88.o							  \
+	$(BUILD_DIR)/asm/code_8004E9F0.o							  \
+	$(BUILD_DIR)/asm/code_8004F37C.o							  \
+	$(BUILD_DIR)/asm/code_8005018C.o							  \
+	$(BUILD_DIR)/asm/code_80050324.o							  \
+	$(BUILD_DIR)/asm/code_80055504.o							  \
+	$(BUILD_DIR)/asm/code_800559D4.o							  \
+	$(BUILD_DIR)/asm/code_800598F8.o							  \
+	$(BUILD_DIR)/asm/code_8005A588.o							  \
+	$(BUILD_DIR)/asm/code_8005B4A4.o							  \
+	$(BUILD_DIR)/asm/code_8005CEAC.o							  \
+	$(BUILD_DIR)/asm/code_8006A878.o							  \
+	$(BUILD_DIR)/asm/code_8006E554.o							  \
+	$(BUILD_DIR)/asm/code_8007CFB0.o							  \
+	$(BUILD_DIR)/asm/code_8007F8C4.o							  \
+	$(BUILD_DIR)/asm/code_8008A2D4.o							  \
+	$(BUILD_DIR)/asm/code_8008D8CC.o							  \
+	$(BUILD_DIR)/asm/code_80091268.o							  \
+	$(BUILD_DIR)/asm/code_80094DC0.o							  \
+	$(BUILD_DIR)/asm/code_8009598C.o							  \
+	$(BUILD_DIR)/asm/code_8009A2BC.o							  \
+	$(BUILD_DIR)/asm/code_8009C1A8.o							  \
+	$(BUILD_DIR)/asm/code_8009F6C4.o							  \
+	$(BUILD_DIR)/asm/code_800AA038.o							  \
+	$(BUILD_DIR)/asm/code_800AA470.o							  \
+	$(BUILD_DIR)/asm/code_800B9E10.o							  \
 	$(BUILD_DIR)/asm/text_3.o                                     \
 	$(BUILD_DIR)/asm/text_4.o                                     \
 	$(BUILD_DIR)/asm/text_5.o                                     \
