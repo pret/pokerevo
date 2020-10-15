@@ -214,7 +214,56 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/MetroTRK/MWCriticalSection_gc.o                                       \
 	$(BUILD_DIR)/asm/SDK/NdevExi2A/DebuggerDriver.o                                       \
 	$(BUILD_DIR)/asm/SDK/NdevExi2A/exi2.o                                       \
-	$(BUILD_DIR)/asm/text_6_2.o                                   \
+	$(BUILD_DIR)/asm/code_801DAA30.o                                   \
+	$(BUILD_DIR)/asm/code_801DAAE0.o                                   \
+	$(BUILD_DIR)/asm/code_801DB040.o                                   \
+	$(BUILD_DIR)/asm/code_801DB81C.o                                   \
+	$(BUILD_DIR)/asm/code_801DBB3C.o                                   \
+	$(BUILD_DIR)/asm/code_801DBE90.o                                   \
+	$(BUILD_DIR)/asm/code_801DCE6C.o                                   \
+	$(BUILD_DIR)/asm/code_801DD5C8.o                                   \
+	$(BUILD_DIR)/asm/code_801DD8C0.o                                   \
+	$(BUILD_DIR)/asm/code_801DDF78.o                                   \
+	$(BUILD_DIR)/asm/code_801DF040.o                                   \
+	$(BUILD_DIR)/asm/code_801E07E8.o                                   \
+	$(BUILD_DIR)/asm/code_801E0810.o                                   \
+	$(BUILD_DIR)/asm/code_801E0A54.o                                   \
+	$(BUILD_DIR)/asm/code_801E4360.o                                   \
+	$(BUILD_DIR)/asm/code_801E474C.o                                   \
+	$(BUILD_DIR)/asm/code_801E5F7C.o                                   \
+	$(BUILD_DIR)/asm/code_801E6BF8.o                                   \
+	$(BUILD_DIR)/asm/code_801ED3F0.o                                   \
+	$(BUILD_DIR)/asm/code_801EE044.o                                   \
+	$(BUILD_DIR)/asm/code_801F1AE8.o                                   \
+	$(BUILD_DIR)/asm/code_801F40E0.o                                   \
+	$(BUILD_DIR)/asm/code_801F98EC.o                                   \
+	$(BUILD_DIR)/asm/code_801FA094.o                                   \
+	$(BUILD_DIR)/asm/code_801FA38C.o                                   \
+	$(BUILD_DIR)/asm/code_801FB42C.o                                   \
+	$(BUILD_DIR)/asm/code_801FF308.o                                   \
+	$(BUILD_DIR)/asm/code_802000B0.o                                   \
+	$(BUILD_DIR)/asm/code_80202E54.o                                   \
+	$(BUILD_DIR)/asm/code_80204058.o                                   \
+	$(BUILD_DIR)/asm/code_80205954.o                                   \
+	$(BUILD_DIR)/asm/code_802078B8.o                                   \
+	$(BUILD_DIR)/asm/code_80207C4C.o                                   \
+	$(BUILD_DIR)/asm/code_8020B4F8.o                                   \
+	$(BUILD_DIR)/asm/code_8020CA38.o                                   \
+	$(BUILD_DIR)/asm/code_8020D250.o                                   \
+	$(BUILD_DIR)/asm/code_8020EB1C.o                                   \
+	$(BUILD_DIR)/asm/code_8020F998.o                                   \
+	$(BUILD_DIR)/asm/code_80211564.o                                   \
+	$(BUILD_DIR)/asm/code_80211A04.o                                   \
+	$(BUILD_DIR)/asm/code_80213694.o                                   \
+	$(BUILD_DIR)/asm/code_80219E48.o                                   \
+	$(BUILD_DIR)/asm/code_8021C220.o                                   \
+	$(BUILD_DIR)/asm/code_8021CAA0.o                                   \
+	$(BUILD_DIR)/asm/code_8021D0E0.o                                   \
+	$(BUILD_DIR)/asm/code_8021D424.o                                   \
+	$(BUILD_DIR)/asm/code_8021EA48.o                                   \
+	$(BUILD_DIR)/asm/code_8021FB44.o                                   \
+	$(BUILD_DIR)/asm/code_8022063C.o                                   \
+	$(BUILD_DIR)/asm/code_80220DC4.o                                   \
 	$(BUILD_DIR)/asm/text_7.o                                     \
 	$(BUILD_DIR)/asm/SDK/base/PPCArch.o                                  \
 	$(BUILD_DIR)/asm/SDK/OS/OS.o                                  \
