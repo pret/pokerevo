@@ -71,7 +71,41 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/code_800AA038.o							  \
 	$(BUILD_DIR)/asm/code_800AA470.o							  \
 	$(BUILD_DIR)/asm/code_800B9E10.o							  \
-	$(BUILD_DIR)/asm/text_3.o                                     \
+	$(BUILD_DIR)/asm/code_800C5968.o							  \
+	$(BUILD_DIR)/asm/code_800D7C90.o							  \
+	$(BUILD_DIR)/asm/code_800E4234.o							  \
+	$(BUILD_DIR)/asm/code_800E96C4.o							  \
+	$(BUILD_DIR)/asm/code_800F8AC4.o							  \
+	$(BUILD_DIR)/asm/code_80104354.o							  \
+	$(BUILD_DIR)/asm/code_801166F8.o							  \
+	$(BUILD_DIR)/asm/code_8011B19C.o							  \
+	$(BUILD_DIR)/asm/code_8011C954.o							  \
+	$(BUILD_DIR)/asm/code_8011C974.o							  \
+	$(BUILD_DIR)/asm/code_8011E1FC.o							  \
+	$(BUILD_DIR)/asm/code_8012F0D8.o							  \
+	$(BUILD_DIR)/asm/code_80131CF0.o							  \
+	$(BUILD_DIR)/asm/code_8013A930.o							  \
+	$(BUILD_DIR)/asm/code_8013F044.o							  \
+	$(BUILD_DIR)/asm/code_8014FEA8.o							  \
+	$(BUILD_DIR)/asm/code_80151474.o							  \
+	$(BUILD_DIR)/asm/code_80155B50.o							  \
+	$(BUILD_DIR)/asm/code_80157854.o							  \
+	$(BUILD_DIR)/asm/code_801581B8.o							  \
+	$(BUILD_DIR)/asm/code_80158E50.o							  \
+	$(BUILD_DIR)/asm/code_8015D390.o							  \
+	$(BUILD_DIR)/asm/code_80162784.o							  \
+	$(BUILD_DIR)/asm/code_80162B70.o							  \
+	$(BUILD_DIR)/asm/code_8016340C.o							  \
+	$(BUILD_DIR)/asm/code_80163674.o							  \
+	$(BUILD_DIR)/asm/code_80164CE8.o							  \
+	$(BUILD_DIR)/asm/code_80164E3C.o							  \
+	$(BUILD_DIR)/asm/code_80164FA0.o							  \
+	$(BUILD_DIR)/asm/code_80165534.o							  \
+	$(BUILD_DIR)/asm/code_80166D6C.o							  \
+	$(BUILD_DIR)/asm/code_80167298.o							  \
+	$(BUILD_DIR)/asm/code_80167820.o							  \
+	$(BUILD_DIR)/asm/code_80167994.o							  \
+	$(BUILD_DIR)/asm/code_801679F8.o							  \
 	$(BUILD_DIR)/asm/text_4.o                                     \
 	$(BUILD_DIR)/asm/text_5.o                                     \
 	$(BUILD_DIR)/asm/Runtime/__mem.o                            \
