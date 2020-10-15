@@ -2,6 +2,8 @@
 
 .section .text, "ax"  # 0x80006980 - 0x803E1E60
 
+
+.global lbl_8025B6E8
 lbl_8025B6E8:
 /* 8025B6E8 00257348  48 00 03 18 */	b lbl_8025BA00
 
