@@ -801,6 +801,7 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/nw4r/lyt/lyt_resourceAccessor.o                  \
 	$(BUILD_DIR)/asm/nw4r/lyt/lyt_arcResourceAccessor.o               \
 	$(BUILD_DIR)/asm/nw4r/lyt/detail/lyt_common.o                     \
+	$(BUILD_DIR)/asm/code_8038F1CC.o                                        \
 	$(BUILD_DIR)/asm/text_11.o                                        \
 	$(BUILD_DIR)/asm/SDK/HBM/HBMBase.o                                \
 	$(BUILD_DIR)/asm/SDK/HBM/HBMAnmController.o                                \
@@ -808,6 +809,8 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/HBM/HBMGUIManager.o                                \
 	$(BUILD_DIR)/asm/SDK/HBM/HBMController.o                                \
 	$(BUILD_DIR)/asm/SDK/HBM/HBMRemoteSpk.o                                \
+	$(BUILD_DIR)/asm/code_803A60D8.o \
+	$(BUILD_DIR)/asm/code_803D9208.o \
 	$(BUILD_DIR)/asm/text_11_2.o
 
 CTORS_O_FILES :=                                                  \
