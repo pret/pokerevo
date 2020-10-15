@@ -115,6 +115,16 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/code_8016E2B8.o							  \
 	$(BUILD_DIR)/asm/code_8016EFCC.o							  \
 	$(BUILD_DIR)/asm/code_801708DC.o							  \
+	$(BUILD_DIR)/asm/code_80176EB4.o							  \
+	$(BUILD_DIR)/asm/code_80177C24.o							  \
+	$(BUILD_DIR)/asm/code_8017B4B8.o							  \
+	$(BUILD_DIR)/asm/code_8017C588.o							  \
+	$(BUILD_DIR)/asm/code_8017C980.o							  \
+	$(BUILD_DIR)/asm/code_8017CC8C.o							  \
+	$(BUILD_DIR)/asm/code_8017E3F4.o							  \
+	$(BUILD_DIR)/asm/code_8017E954.o							  \
+	$(BUILD_DIR)/asm/code_80185AE0.o							  \
+	$(BUILD_DIR)/asm/code_8018777C.o							  \
 	$(BUILD_DIR)/asm/text_5.o                                     \
 	$(BUILD_DIR)/asm/Runtime/__mem.o                            \
 	$(BUILD_DIR)/asm/Runtime/__va_arg.o                         \
