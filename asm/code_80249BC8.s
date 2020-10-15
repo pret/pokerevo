@@ -1,0 +1,19 @@
+.include "macros.inc"
+
+.section .text, "ax"  # 0x80006980 - 0x803E1E60
+
+.global func_80249BC8
+func_80249BC8:
+/* 80249BC8 00245828  80 6D A5 F0 */	lwz r3, lbl_8063F8B0-_SDA_BASE_(r13)
+/* 80249BCC 0024582C  4E 80 00 20 */	blr
+
+.global func_80249BD0
+func_80249BD0:
+/* 80249BD0 00245830  38 A0 00 01 */	li r5, 1
+/* 80249BD4 00245834  38 6D A5 E8 */	addi r3, r13, lbl_8063F8A8-_SDA_BASE_
+/* 80249BD8 00245838  38 80 00 04 */	li r4, 4
+/* 80249BDC 0024583C  38 00 00 00 */	li r0, 0
+/* 80249BE0 00245840  98 AD A5 E8 */	stb r5, lbl_8063F8A8-_SDA_BASE_(r13)
+/* 80249BE4 00245844  B0 83 00 02 */	sth r4, 2(r3)
+/* 80249BE8 00245848  98 03 00 04 */	stb r0, 4(r3)
+/* 80249BEC 0024584C  4E 80 00 20 */	blr

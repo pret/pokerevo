@@ -313,7 +313,37 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/code_80246CCC.o                                   \
 	$(BUILD_DIR)/asm/code_80247038.o                                   \
 	$(BUILD_DIR)/asm/code_80247280.o                                   \
-	$(BUILD_DIR)/asm/text_7.o                                     \
+	$(BUILD_DIR)/asm/code_80249B7C.o                                   \
+	$(BUILD_DIR)/asm/code_80249BA0.o                                   \
+	$(BUILD_DIR)/asm/code_80249BC8.o                                   \
+	$(BUILD_DIR)/asm/code_80249BF0.o                                   \
+	$(BUILD_DIR)/asm/code_80249D38.o                                   \
+	$(BUILD_DIR)/asm/code_80250F18.o                                   \
+	$(BUILD_DIR)/asm/code_80253FEC.o                                   \
+	$(BUILD_DIR)/asm/code_80254260.o                                   \
+	$(BUILD_DIR)/asm/code_80254460.o                                   \
+	$(BUILD_DIR)/asm/code_8025716C.o                                   \
+	$(BUILD_DIR)/asm/code_80259AA4.o                                   \
+	$(BUILD_DIR)/asm/code_8025A710.o                                   \
+	$(BUILD_DIR)/asm/code_8025AD84.o                                   \
+	$(BUILD_DIR)/asm/code_8025B164.o                                   \
+	$(BUILD_DIR)/asm/code_8025B6AC.o                                   \
+	$(BUILD_DIR)/asm/code_8025B6E8.o                                   \
+	$(BUILD_DIR)/asm/code_8025D3B8.o                                   \
+	$(BUILD_DIR)/asm/code_8025D7CC.o                                   \
+	$(BUILD_DIR)/asm/code_8025DCC0.o                                   \
+	$(BUILD_DIR)/asm/code_8025DF80.o                                   \
+	$(BUILD_DIR)/asm/code_8025E348.o                                   \
+	$(BUILD_DIR)/asm/code_8025E86C.o                                   \
+	$(BUILD_DIR)/asm/code_8025EC68.o                                   \
+	$(BUILD_DIR)/asm/code_8025F07C.o                                   \
+	$(BUILD_DIR)/asm/code_8025FFF8.o                                   \
+	$(BUILD_DIR)/asm/code_802609E0.o                                   \
+	$(BUILD_DIR)/asm/code_802613A4.o                                   \
+	$(BUILD_DIR)/asm/code_80262B00.o                                   \
+	$(BUILD_DIR)/asm/code_80262E90.o                                   \
+	$(BUILD_DIR)/asm/code_80263CBC.o                                   \
+	$(BUILD_DIR)/asm/code_802674CC.o                                   \
 	$(BUILD_DIR)/asm/SDK/base/PPCArch.o                                  \
 	$(BUILD_DIR)/asm/SDK/OS/OS.o                                  \
 	$(BUILD_DIR)/asm/SDK/OS/OSAlarm.o                             \
