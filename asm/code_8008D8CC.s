@@ -2,7 +2,6 @@
 
 .section .text, "ax"  # 0x80006980 - 0x803E1E60
 
-
 .global lbl_8008D8CC
 lbl_8008D8CC:
 /* 8008D8CC 0008952C  94 21 FF A0 */	stwu r1, -0x60(r1)
@@ -829,8 +828,6 @@ lbl_8008E4D8:
 /* 8008E4E4 0008A144  7C 08 03 A6 */	mtlr r0
 /* 8008E4E8 0008A148  38 21 00 70 */	addi r1, r1, 0x70
 /* 8008E4EC 0008A14C  4E 80 00 20 */	blr
-
-.global lbl_8008E4F0
 
 .global lbl_8008E4F0
 lbl_8008E4F0:
@@ -3136,8 +3133,6 @@ lbl_80090610:
 /* 80090624 0008C284  4E 80 00 20 */	blr
 
 .global lbl_80090628
-
-.global lbl_80090628
 lbl_80090628:
 /* 80090628 0008C288  94 21 FF C0 */	stwu r1, -0x40(r1)
 /* 8009062C 0008C28C  7C 08 02 A6 */	mflr r0
@@ -3519,8 +3514,6 @@ lbl_80090B7C:
 /* 80090B88 0008C7E8  7C 08 03 A6 */	mtlr r0
 /* 80090B8C 0008C7EC  38 21 00 20 */	addi r1, r1, 0x20
 /* 80090B90 0008C7F0  4E 80 00 20 */	blr
-
-.global lbl_80090B94
 
 .global lbl_80090B94
 lbl_80090B94:

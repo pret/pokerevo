@@ -3,8 +3,6 @@
 .section .text, "ax"  # 0x80006980 - 0x803E1E60
 
 .global func_8021D0E0
-
-.global func_8021D0E0
 func_8021D0E0:
 /* 8021D0E0 00218D40  3C 80 80 42 */	lis r4, lbl_80423B38@ha
 /* 8021D0E4 00218D44  38 00 00 00 */	li r0, 0
@@ -34,8 +32,6 @@ lbl_8021D124:
 /* 8021D138 00218D98  38 60 00 01 */	li r3, 1
 /* 8021D13C 00218D9C  4E 80 00 20 */	blr
 /* 8021D140 00218DA0  4E 80 00 20 */	blr
-
-.global func_8021D144
 
 .global func_8021D144
 func_8021D144:
