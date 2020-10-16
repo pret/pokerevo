@@ -163,8 +163,8 @@ lbl_80006B0C:
 /* 80006BBC 0000281C  38 21 00 10 */	addi r1, r1, 0x10
 /* 80006BC0 00002820  4E 80 00 20 */	blr
 
-.global func_80006BC4
-func_80006BC4:
+.global main
+main:
 /* 80006BC4 00002824  94 21 FF D0 */	stwu r1, -0x30(r1)
 /* 80006BC8 00002828  7C 08 02 A6 */	mflr r0
 /* 80006BCC 0000282C  90 01 00 34 */	stw r0, 0x34(r1)
