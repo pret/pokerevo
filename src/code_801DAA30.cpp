@@ -20,7 +20,7 @@ public:
         : unk0(p1), unk2(p2), unk4(p3) { }
 };
 
-unkStruct unk(1, 4, 0);
+unkStruct gUnk8063F2C8(1, 4, 0);
 
 void* operator new(size_t sz)
 {

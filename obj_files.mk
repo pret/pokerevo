@@ -7,6 +7,8 @@ EXTABINDEX_O_FILES :=                                             \
 #init is included here so that linking is in the right order
 #todo fix with makefile implementation
 TEXT_O_FILES := 						                          \
+    $(BUILD_DIR)/asm/ctors.o						              \
+    $(BUILD_DIR)/asm/sbss.o						                  \
     $(BUILD_DIR)/asm/code_80006980.o							  \
 	$(BUILD_DIR)/asm/code_8000748C.o							  \
 	$(BUILD_DIR)/asm/code_80007940.o							  \
@@ -811,10 +813,13 @@ TEXT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/HBM/HBMRemoteSpk.o                                \
 	$(BUILD_DIR)/asm/code_803A60D8.o \
 	$(BUILD_DIR)/asm/code_803D9208.o \
-	$(BUILD_DIR)/asm/text_11_2.o
+	$(BUILD_DIR)/asm/text_11_2.o \
+	$(BUILD_DIR)/asm/ctors_2.o \
+	$(BUILD_DIR)/asm/sbss_2.o \
 
-CTORS_O_FILES :=                                                  \
-    $(BUILD_DIR)/asm/ctors.o
+
+#CTORS_O_FILES :=                                                  \
+#    $(BUILD_DIR)/asm/ctors.o
 
 DTORS_O_FILES :=                                                  \
     $(BUILD_DIR)/asm/dtors.o
@@ -831,8 +836,8 @@ BSS_O_FILES :=                                                    \
 SDATA_O_FILES :=                                                  \
     $(BUILD_DIR)/asm/sdata.o
 
-SBSS_O_FILES :=                                                   \
-    $(BUILD_DIR)/asm/sbss.o
+#SBSS_O_FILES :=                                                   \
+#    $(BUILD_DIR)/asm/sbss.o
 
 SDATA2_O_FILES :=                                                 \
     $(BUILD_DIR)/asm/sdata2.o
