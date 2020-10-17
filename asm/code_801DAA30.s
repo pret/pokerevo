@@ -24,8 +24,8 @@ lbl_801DAA60:
 /* 801DAA6C 001D66CC  38 21 00 10 */	addi r1, r1, 0x10
 /* 801DAA70 001D66D0  4E 80 00 20 */	blr
 
-.global func_801DAA74
-func_801DAA74:
+.global __nwa__FUl
+__nwa__FUl:
 /* 801DAA74 001D66D4  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 801DAA78 001D66D8  7C 08 02 A6 */	mflr r0
 /* 801DAA7C 001D66DC  90 01 00 14 */	stw r0, 0x14(r1)
@@ -50,8 +50,8 @@ lbl_801DAAA4:
 __dl__FPv:
 /* 801DAAB8 001D6718  48 00 03 EC */	b func_801DAEA4
 
-.global func_801DAABC
-func_801DAABC:
+.global __dla__FPv
+__dla__FPv:
 /* 801DAABC 001D671C  48 00 03 E8 */	b func_801DAEA4
 
 .global func_801DAAC0
