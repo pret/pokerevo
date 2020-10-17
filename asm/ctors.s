@@ -33,7 +33,7 @@ lbl_803E1E60:
     .4byte func_8016A08C, func_8016E298, func_8016EFAC, func_801708BC
     .4byte func_80176E94, func_80177C04, func_8017B498, func_8017C568
     .4byte func_8017C960, func_8017CC78, func_8017E3E0, func_8017E940
-    .4byte func_80185ACC, func_80187768, func_8019BEA4, func_801DAAC0
+    .4byte func_80185ACC, func_80187768, func_8019BEA4, __sinit_$3code_801DAA30_cpp
     .4byte func_801DB020, func_801DB7FC, func_801DBB1C, func_801DBE70
     .4byte func_801DCE4C, func_801DD5A8, func_801DD8A0, func_801DDF58
     .4byte func_801DF020, func_801E07C8, func_801E07F0, func_801E0A34

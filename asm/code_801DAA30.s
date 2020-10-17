@@ -54,8 +54,8 @@ __dl__FPv:
 __dla__FPv:
 /* 801DAABC 001D671C  48 00 03 E8 */	b func_801DAEA4
 
-.global func_801DAAC0
-func_801DAAC0:
+.global __sinit_$3code_801DAA30_cpp
+__sinit_$3code_801DAA30_cpp:
 /* 801DAAC0 001D6720  38 A0 00 01 */	li r5, 1
 /* 801DAAC4 001D6724  38 6D A0 08 */	addi r3, r13, lbl_8063F2C8-_SDA_BASE_
 /* 801DAAC8 001D6728  38 80 00 04 */	li r4, 4
