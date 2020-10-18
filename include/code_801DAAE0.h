@@ -5,7 +5,6 @@
 extern "C" {
 #endif
 
-// TODO: move, determine actual type definition
 typedef void *MEMHeapHandle;
 
 
@@ -22,7 +21,6 @@ struct unkClass2
     u16 groupID;
     u32 unk8;
 };
-
 
 unkClass* func_801DAAE0(void);
 BOOL func_801DAB28(void);

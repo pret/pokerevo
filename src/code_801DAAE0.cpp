@@ -6,15 +6,12 @@
 
 extern "C" {
 
-unkStruct gUnk8063F2D0(1, 4, 0);
-MEMHeapHandle lbl_8063F2D8;
-u16 lbl_8063F2DC;
 
-// TODO: move to headers
-extern MEMHeapHandle lbl_8063E8E8;
-extern MEMHeapHandle lbl_8063E8EC;
+// TODO: define, don't reference
+extern MEMHeapHandle lbl_8063F2D8;
+extern u16 lbl_8063F2DC;
 
-
+// TODO: move, determine actual type definition
 typedef void (*MEMHeapVisitor)(void *memBlock, MEMHeapHandle heap, u32 userParam);
 
 void *memset(void *s, int c, size_t n);
@@ -30,11 +27,20 @@ u16 MEMGetGroupIDForMBlockExpHeap(const void *memBlock);
 void MEMVisitAllocatedForExpHeap(MEMHeapHandle heap, MEMHeapVisitor visitor, u32 userParam);
 
 
-unkClass gUnk804912B0[16];
+#define ARR_SIZE 16
+static unkClass gUnk804912B0[ARR_SIZE];
+
+static unkStruct gUnk8063F2D0(1, 4, 0);
+static u8 gUnk8063F2D6;
+static u8 gUnk8063F2D7;
+// TODO: move to headers
+extern MEMHeapHandle lbl_8063E8E8;
+extern MEMHeapHandle lbl_8063E8EC;
+
 
 unkClass* func_801DAAE0(void)
 {
-    for (u32 i = 0; i < 16; i++)
+    for (u32 i = 0; i < ARR_SIZE; i++)
         if (gUnk804912B0[i].unk0 == 0)
             return &gUnk804912B0[i];
     return NULL;
@@ -42,7 +48,7 @@ unkClass* func_801DAAE0(void)
 
 BOOL func_801DAB28(void)
 {
-    return gUnk8063F2D0.unk6;
+    return gUnk8063F2D6;
 }
 
 void func_801DAB30(void)
@@ -50,8 +56,8 @@ void func_801DAB30(void)
     memset(gUnk804912B0, 0, sizeof(gUnk804912B0));
     lbl_8063F2D8 = 0;
     lbl_8063F2DC = 0;
-    gUnk8063F2D0.unk6 = 1;
-    gUnk8063F2D0.unk7 = 0;
+    gUnk8063F2D6 = 1;
+    gUnk8063F2D7 = 0;
 }
 
 MEMHeapHandle func_801DAB78(void* p1, u32 p2, u16 p3)
