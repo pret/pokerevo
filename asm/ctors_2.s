@@ -42,4 +42,5 @@
 .4byte 0, 0, 0
 
 # placed by the compiler it seems
+# commenting out for now and writing the padding in directly for OK
 #.balign 0x20, 0
