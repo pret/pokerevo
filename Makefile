@@ -63,7 +63,7 @@ MAP     := $(BUILD_DIR)/$(TARGET).map
 
 include obj_files.mk
 
-O_FILES := $(EXTAB_O_FILES) $(EXTABINDEX_O_FILES) $(TEXT_O_FILES) \
+O_FILES := $(EXTAB_O_FILES) $(EXTABINDEX_O_FILES) $(SPLIT_O_FILES) \
            $(DTORS_O_FILES) $(RODATA_O_FILES) $(DATA_O_FILES)    \
            $(BSS_O_FILES) $(SDATA_O_FILES) $(SDATA2_O_FILES) 	  \
 		   $(SBSS2_O_FILES)
