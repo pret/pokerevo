@@ -1,6 +1,9 @@
 #ifndef POKEREVO_CODE_UNKSTRUCT_H
 #define POKEREVO_CODE_UNKSTRUCT_H
 
+// Note: Many instances of this class appear in .sbss, and they are partially initialized
+// by the static initializers in .ctors
+
 class unkStruct
 {
     u8 unk0;
