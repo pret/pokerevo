@@ -8,6 +8,7 @@ EXTABINDEX_O_FILES :=                                             \
 #todo fix with makefile implementation
 SPLIT_O_FILES := 						                          \
     $(BUILD_DIR)/asm/ctors.o						              \
+    $(BUILD_DIR)/asm/bss.o		    				              \
     $(BUILD_DIR)/asm/sbss.o						                  \
     $(BUILD_DIR)/asm/code_80006980.o							  \
 	$(BUILD_DIR)/asm/code_8000748C.o							  \
@@ -217,7 +218,8 @@ SPLIT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/NdevExi2A/DebuggerDriver.o                                       \
 	$(BUILD_DIR)/asm/SDK/NdevExi2A/exi2.o                                       \
 	$(BUILD_DIR)/src/code_801DAA30.o                                   \
-	$(BUILD_DIR)/asm/code_801DAAE0.o                                   \
+	$(BUILD_DIR)/src/code_801DAAE0.o                                   \
+	$(BUILD_DIR)/asm/code_801DAAE0_asm.o                                   \
 	$(BUILD_DIR)/asm/code_801DB040.o                                   \
 	$(BUILD_DIR)/asm/code_801DB81C.o                                   \
 	$(BUILD_DIR)/asm/code_801DBB3C.o                                   \
@@ -815,6 +817,7 @@ SPLIT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/code_803D9208.o \
 	$(BUILD_DIR)/asm/text_11_2.o \
 	$(BUILD_DIR)/asm/ctors_2.o \
+	$(BUILD_DIR)/asm/bss_2.o \
 	$(BUILD_DIR)/asm/sbss_2.o \
 
 
@@ -826,9 +829,6 @@ RODATA_O_FILES :=                                                 \
 
 DATA_O_FILES :=                                                   \
     $(BUILD_DIR)/asm/data.o
-
-BSS_O_FILES :=                                                    \
-    $(BUILD_DIR)/asm/bss.o
 
 SDATA_O_FILES :=                                                  \
     $(BUILD_DIR)/asm/sdata.o
