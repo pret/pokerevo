@@ -8,13 +8,16 @@ extern "C" {
 
 // unkStruct gUnk8063F2D0(1, 4, 0);
 // TODO: move
+extern u32 lbl_8063E8E8;
+extern u32 lbl_8063E8EC;
 extern u8 lbl_8063F2D6;
 extern u8 lbl_8063F2D7;
 extern u32 lbl_8063F2D8;
 extern u16 lbl_8063F2DC;
+
 void *memset(void *s, int c, size_t n);
 MEMHeapHandle MEMCreateExpHeapEx(void* p1, u32 p2, u16 p3);
-
+u16 MEMSetGroupIDForExpHeap(MEMHeapHandle heap, u16 groupID);
 
 unkClass gUnk804912B0[16];
 
@@ -53,5 +56,29 @@ MEMHeapHandle func_801DAB78(void* p1, u32 p2, u16 p3)
     r31->unk8 = p2;
     return r3;
 }
+
+u32 func_801DAC0C(void)
+{
+    return lbl_8063F2D8;
+}
+
+u32 func_801DAC14(u32 p1)
+{
+    u32 r3 = func_801DAC0C();
+    lbl_8063F2D8 = p1;
+    return r3;
+}
+
+u16 func_801DAC44(u16 p1)
+{
+    u16 r31 = lbl_8063F2DC;
+    lbl_8063F2DC = p1;
+    MEMSetGroupIDForExpHeap(lbl_8063E8E8, (u16)(p1 & 0xff));
+    MEMSetGroupIDForExpHeap(lbl_8063E8EC, (u16)(lbl_8063F2DC & 0xff));
+    return r31;
+}
+
+
+
 
 }
