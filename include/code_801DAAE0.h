@@ -20,6 +20,7 @@ struct unkClass2
 {
     MEMHeapHandle heap;
     u16 groupID;
+    u32 unk8;
 };
 
 
@@ -49,8 +50,8 @@ void func_801DAEA4(void *memBlock);
 u32 func_801DAEE0(const void *memBlock);
 u32 func_801DAEF8(void);
 void lbl_801DAF1C(void *memBlock, MEMHeapHandle, u32 p3);
-
-
+void func_801DAF70(MEMHeapHandle heap, u16 groupID);
+void func_801DAFAC(void *dest, const void *src, size_t n);
 void func_801DAEA4(void*);
 
 #ifdef __cplusplus

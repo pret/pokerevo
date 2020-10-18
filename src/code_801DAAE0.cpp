@@ -6,16 +6,19 @@
 
 extern "C" {
 
-// unkStruct gUnk8063F2D0(1, 4, 0);
+unkStruct gUnk8063F2D0(1, 4, 0);
+MEMHeapHandle lbl_8063F2D8;
+u16 lbl_8063F2DC;
+
 // TODO: move to headers
 extern MEMHeapHandle lbl_8063E8E8;
 extern MEMHeapHandle lbl_8063E8EC;
-extern u8 lbl_8063F2D6;
-extern u8 lbl_8063F2D7;
-extern MEMHeapHandle lbl_8063F2D8;
-extern u16 lbl_8063F2DC;
+
+
+typedef void (*MEMHeapVisitor)(void *memBlock, MEMHeapHandle heap, u32 userParam);
 
 void *memset(void *s, int c, size_t n);
+void *memcpy(void *dest, const void *src, size_t n);
 MEMHeapHandle MEMCreateExpHeapEx(void* p1, u32 p2, u16 p3);
 u16 MEMSetGroupIDForExpHeap(MEMHeapHandle heap, u16 groupID);
 void *MEMAllocFromExpHeapEx(MEMHeapHandle heap, u32 size, int alignment);
@@ -24,7 +27,7 @@ void MEMFreeToExpHeap(MEMHeapHandle heap, void *memBlock);
 u32 MEMGetSizeForMBlockExpHeap(const void *memBlock);
 u32 MEMGetTotalFreeSizeForExpHeap(MEMHeapHandle heap);
 u16 MEMGetGroupIDForMBlockExpHeap(const void *memBlock);
-//void MEMVisitAllocatedForExpHeap(MEMHeapHandle heap, MEMHeapVisitor visitor, u32 userParam);
+void MEMVisitAllocatedForExpHeap(MEMHeapHandle heap, MEMHeapVisitor visitor, u32 userParam);
 
 
 unkClass gUnk804912B0[16];
@@ -39,7 +42,7 @@ unkClass* func_801DAAE0(void)
 
 BOOL func_801DAB28(void)
 {
-    return lbl_8063F2D6;
+    return gUnk8063F2D0.unk6;
 }
 
 void func_801DAB30(void)
@@ -47,8 +50,8 @@ void func_801DAB30(void)
     memset(gUnk804912B0, 0, sizeof(gUnk804912B0));
     lbl_8063F2D8 = 0;
     lbl_8063F2DC = 0;
-    lbl_8063F2D6 = 1;
-    lbl_8063F2D7 = 0;
+    gUnk8063F2D0.unk6 = 1;
+    gUnk8063F2D0.unk7 = 0;
 }
 
 MEMHeapHandle func_801DAB78(void* p1, u32 p2, u16 p3)
@@ -190,30 +193,49 @@ void lbl_801DAF1C(void *memBlock, MEMHeapHandle, u32 p3)
         MEMFreeToExpHeap(((unkClass2 *)p3)->heap, memBlock);
 }
 
-/*
-func_801DAF70
+void func_801DAF70(MEMHeapHandle heap, u16 groupID)
 {
-    lbl_801DAF1C
+    unkClass2 param;
+    param.heap = heap;
+    param.groupID = groupID;
+    param.unk8 = 0;
+    MEMVisitAllocatedForExpHeap(heap, lbl_801DAF1C, (u32)&param);
 }
-*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+void func_801DAFAC(register void *dest, register const void *src, register size_t n)
+{
+    if ((u32)dest & 0x1f || (u32)src & 0x1f || n & 0x1f) {
+        memcpy(dest, src, n);
+    } else {
+        n /= 32;
+        // Note: reg0 prevents the previous if condition from using 
+        // r12 as its scratch register instead of r0
+        register u32 reg0;
+        asm
+        {
+            mtctr n
+            addi r3, dest, -4
+            addi r4, src, -4
+        lbl_801DAFD8:
+            lwzu reg0, 4(r4)
+            lwzu r5, 4(r4)
+            lwzu r6, 4(r4)
+            lwzu r7, 4(r4)
+            lwzu r8, 4(r4)
+            lwzu r9, 4(r4)
+            lwzu r10, 4(r4)
+            lwzu r11, 4(r4)
+            stwu reg0, 4(r3)
+            stwu r5, 4(r3)
+            stwu r6, 4(r3)
+            stwu r7, 4(r3)
+            stwu r8, 4(r3)
+            stwu r9, 4(r3)
+            stwu r10, 4(r3)
+            stwu r11, 4(r3)
+            bdnz lbl_801DAFD8
+        }
+    }
+}
 
 }
