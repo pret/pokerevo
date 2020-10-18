@@ -4,30 +4,33 @@
 #include "Runtime/__mem.h"
 #include "SDK/mem.h"
 
+namespace
+{
+    struct unkClass
+    {
+        u8 unk0;
+        MEMHeapHandle unk4;
+        u32 unk8;
+    };
+
+    struct unkClass2
+    {
+        MEMHeapHandle heap;
+        u16 groupID;
+        u32 unk8;
+    };
+    
+    const size_t ARR_SIZE = 16;
+    unkClass gUnk804912B0[ARR_SIZE];
+
+    unkStruct gUnk8063F2D0(1, 4, 0);
+    u8 gUnk8063F2D6;
+    u8 gUnk8063F2D7;
+    MEMHeapHandle gUnk8063F2D8;
+    u16 gUnk8063F2DC;
+}
+
 extern "C" {
-
-struct unkClass
-{
-    u8 unk0;
-    MEMHeapHandle unk4;
-    u32 unk8;
-};
-
-struct unkClass2
-{
-    MEMHeapHandle heap;
-    u16 groupID;
-    u32 unk8;
-};
-
-#define ARR_SIZE 16
-unkClass gUnk804912B0[ARR_SIZE];
-
-unkStruct gUnk8063F2D0(1, 4, 0);
-u8 gUnk8063F2D6;
-u8 gUnk8063F2D7;
-MEMHeapHandle gUnk8063F2D8;
-u16 gUnk8063F2DC;
 
 static unkClass* func_801DAAE0(void)
 {
