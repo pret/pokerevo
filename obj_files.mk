@@ -219,7 +219,8 @@ SPLIT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/SDK/NdevExi2A/exi2.o                                       \
 	$(BUILD_DIR)/src/code_801DAA30.o                                   \
 	$(BUILD_DIR)/src/code_801DAAE0.o                                   \
-	$(BUILD_DIR)/asm/code_801DB040.o                                   \
+	$(BUILD_DIR)/src/code_801DB040.o                                   \
+	$(BUILD_DIR)/asm/code_801DB040_asm.o                               \
 	$(BUILD_DIR)/asm/code_801DB81C.o                                   \
 	$(BUILD_DIR)/asm/code_801DBB3C.o                                   \
 	$(BUILD_DIR)/asm/code_801DBE90.o                                   \
