@@ -1,9 +1,11 @@
 #include "types.h"
 #include "unkStruct.h"
 #include "code_801DAAE0.h"
-#include "code_801DAA30.h"
 
-unkStruct gUnk8063F2C8(1, 4, 0);
+namespace
+{
+    unkStruct gUnk8063F2C8(1, 4, 0);
+}
 
 void* operator new(size_t sz)
 {
