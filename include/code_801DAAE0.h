@@ -29,7 +29,7 @@ void func_801DAEA4(void* memBlock);
 u32 func_801DAEE0(const void* memBlock);
 u32 func_801DAEF8(void);
 void func_801DAF70(MEMHeapHandle heap, u16 groupID);
-void func_801DAFAC(void* dest, const void* src, size_t n);
+void func_801DAFAC(u32* dest, const u32* src, size_t n);
 void func_801DAEA4(void*);
 
 #ifdef __cplusplus

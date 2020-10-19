@@ -202,13 +202,29 @@ void func_801DAF70(MEMHeapHandle heap, u16 groupID)
     MEMVisitAllocatedForExpHeap(heap, lbl_801DAF1C, (u32)&param);
 }
 
-#ifdef USES_INLINE_ASM
-void func_801DAFAC(register void* dest, register const void* src, register size_t n)
+void func_801DAFAC(register u32* dest, register const u32* src, register size_t n)
 {
     if ((u32)dest & 0x1f || (u32)src & 0x1f || n & 0x1f) {
         memcpy(dest, src, n);
     } else {
         n /= 32;
+        #ifdef NONMATCHING
+        // 1. instruction order of loads and stores is not right
+        // 2. branch instruction should be bdnz, not bne
+        dest--;
+        src--;
+        do
+        {
+            *++dest = *++src;
+            *++dest = *++src;
+            *++dest = *++src;
+            *++dest = *++src;
+            *++dest = *++src;
+            *++dest = *++src;
+            *++dest = *++src;
+            *++dest = *++src;
+        } while (--n > 0);
+        #else
         // Note: reg0 prevents the previous if condition from using 
         // r12 as its scratch register instead of r0
         register u32 reg0;
@@ -236,46 +252,9 @@ void func_801DAFAC(register void* dest, register const void* src, register size_
             stwu r11, 4(r3)
             bdnz lbl_801DAFD8
         }
+        #pragma peephole on
+        #endif
     }
 }
-#else
-asm void func_801DAFAC(register void* dest, register const void* src, register size_t n)
-{
-    nofralloc
-    /* 801DAFAC 001D6C0C  54 60 06 FF */	clrlwi. r0, r3, 0x1b
-    /* 801DAFB0 001D6C10  40 82 00 14 */	bne lbl_801DAFC4
-    /* 801DAFB4 001D6C14  54 80 06 FF */	clrlwi. r0, r4, 0x1b
-    /* 801DAFB8 001D6C18  40 82 00 0C */	bne lbl_801DAFC4
-    /* 801DAFBC 001D6C1C  54 A0 06 FF */	clrlwi. r0, r5, 0x1b
-    /* 801DAFC0 001D6C20  41 82 00 08 */	beq lbl_801DAFC8
-    lbl_801DAFC4:
-    /* 801DAFC4 001D6C24  4B E2 90 3C */	b memcpy
-    lbl_801DAFC8:
-    /* 801DAFC8 001D6C28  54 A5 D9 7E */	srwi r5, r5, 5
-    /* 801DAFCC 001D6C2C  7C A9 03 A6 */	mtctr r5
-    /* 801DAFD0 001D6C30  38 63 FF FC */	addi r3, r3, -4
-    /* 801DAFD4 001D6C34  38 84 FF FC */	addi r4, r4, -4
-    lbl_801DAFD8:
-    /* 801DAFD8 001D6C38  84 04 00 04 */	lwzu r0, 4(r4)
-    /* 801DAFDC 001D6C3C  84 A4 00 04 */	lwzu r5, 4(r4)
-    /* 801DAFE0 001D6C40  84 C4 00 04 */	lwzu r6, 4(r4)
-    /* 801DAFE4 001D6C44  84 E4 00 04 */	lwzu r7, 4(r4)
-    /* 801DAFE8 001D6C48  85 04 00 04 */	lwzu r8, 4(r4)
-    /* 801DAFEC 001D6C4C  85 24 00 04 */	lwzu r9, 4(r4)
-    /* 801DAFF0 001D6C50  85 44 00 04 */	lwzu r10, 4(r4)
-    /* 801DAFF4 001D6C54  85 64 00 04 */	lwzu r11, 4(r4)
-    /* 801DAFF8 001D6C58  94 03 00 04 */	stwu r0, 4(r3)
-    /* 801DAFFC 001D6C5C  94 A3 00 04 */	stwu r5, 4(r3)
-    /* 801DB000 001D6C60  94 C3 00 04 */	stwu r6, 4(r3)
-    /* 801DB004 001D6C64  94 E3 00 04 */	stwu r7, 4(r3)
-    /* 801DB008 001D6C68  95 03 00 04 */	stwu r8, 4(r3)
-    /* 801DB00C 001D6C6C  95 23 00 04 */	stwu r9, 4(r3)
-    /* 801DB010 001D6C70  95 43 00 04 */	stwu r10, 4(r3)
-    /* 801DB014 001D6C74  95 63 00 04 */	stwu r11, 4(r3)
-    /* 801DB018 001D6C78  42 00 FF C0 */	bdnz lbl_801DAFD8
-    /* 801DB01C 001D6C7C  4E 80 00 20 */	blr
-}
-#pragma peephole on
-#endif
 
 } //extern "C"
