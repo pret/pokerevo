@@ -9,10 +9,12 @@ typedef u32 (*FuncPtr)(void*, u32, u32);
 // TODO: func_801DBD00 might need this definition
 struct unkClass
 {
-    u8 unk0;
-    u8 unk1[0x7];
+    u8 unk0; // u8, u32, or union?
+    u8 unk1;
+    u8 unk2[0x2];
+    u32 unk4;
     MEMHeapHandle unk8;
-    void* unkC; // or, a more specific pointer
+    void* unkC; // or, a more specific pointer. ptr to heap allocated mem
     u32 unk10;
     u32 unk14;
     FuncPtr unk18;
@@ -20,7 +22,18 @@ struct unkClass
     unkClass* unk20; //prev?
 };
 
-extern void func_801DBD00(u32 p1, unkClass* p2);
+struct unkClass2
+{
+    u8 pad[0x24];
+};
+
+
+// TODO: move to other headers
+unkClass* func_801DBC58(unkClass2* p1);
+void func_801DBD00(unkClass2* p1, unkClass* p2);
+unkClass2* func_801DBD74(u32 p1, u32 p2);
+
+
 
 namespace
 {
@@ -30,9 +43,11 @@ namespace
     //unkStruct gUnk8063F2E0(1, 4, 0);
 }
 
-// head of doubly linked list
+// head of doubly linked list?
 extern unkClass* lbl_8063F2E8; //TODO: rename/define/internalize
-extern u32 lbl_8063F2EC; //TODO: rename/define/internalize
+
+// TODO: pointer to some class, a free pool?
+extern unkClass2* lbl_8063F2EC; //TODO: rename/define/internalize
 
 
 
@@ -42,6 +57,9 @@ extern u32 lbl_8063F2EC; //TODO: rename/define/internalize
 //static
 unkClass* func_801DB040(u32 p1, u32 p2);
 unkClass* func_801DB07C(unkClass* p1, BOOL p2);
+void func_801DB15C(u32 p1);
+void* func_801DB184(MEMHeapHandle p1, u32 size, u32 p3, u32 p4, FuncPtr p5);
+
 
 //static
 unkClass* func_801DB040(u32 p1, u32 p2)
@@ -85,8 +103,45 @@ unkClass* func_801DB07C(unkClass* p1, BOOL p2)
     return r31;
 }
 
+void func_801DB15C(u32 p1)
+{
+    // TODO: magic number
+    lbl_8063F2EC = func_801DBD74(p1, 36);
+}
 
-
+// Add node to start of linked list
+//static
+void* func_801DB184(MEMHeapHandle p1, u32 size, u32 p3, u32 p4, FuncPtr p5)
+{
+    if (func_801DB040(p3, p4))
+        return NULL;
+    // allocate linked list node from free store?
+    unkClass* r31 = func_801DBC58(lbl_8063F2EC);
+    if (!r31)
+        return NULL;
+    // alloc
+    // void* func_801DAC94(MEMHeapHandle heap, u32 size)
+    if ((r31->unkC = func_801DAC94(p1, size)) == NULL) {
+        // return node to free store?
+        func_801DBD00(lbl_8063F2EC, r31);
+        return NULL;
+    }
+    if (lbl_8063F2E8)
+        lbl_8063F2E8->unk20 = r31;
+    
+    r31->unk1C = lbl_8063F2E8;
+    r31->unk20 = NULL;
+    lbl_8063F2E8 = r31;
+    
+    r31->unk0 = 1;
+    r31->unk8 = p1;
+    r31->unk1 = 0;
+    r31->unk10 = p3;
+    r31->unk14 = p4;
+    r31->unk18 = p5;
+    r31->unk4 = 0;
+    return r31->unkC;
+}
 
 
 
