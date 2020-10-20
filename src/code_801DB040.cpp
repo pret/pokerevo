@@ -40,10 +40,7 @@ unkClass2* func_801DBD74(u32 p1, u32 p2);
 
 namespace
 {
-    
-
-    
-    //unkStruct gUnk8063F2E0(1, 4, 0);
+    unkStruct gUnk8063F2E0(1, 4, 0);
 }
 
 // head of doubly linked list?
@@ -74,8 +71,8 @@ u32 func_801DB5E4(u32 p1, u32 p2);
 void func_801DB644(u32 p1, u32 p2);
 void func_801DB674(u32 p1);
 BOOL func_801DB6D0(u32 p1, u32 p2, MEMHeapHandle p3, u32 p4, u32 p5, FuncPtr p6);
-
-
+void func_801DB79C(u32 p1, u32 p2);
+void func_801DB7CC(u32 p1, u32 p2);
 
 //static
 unkClass* func_801DB040(u32 p1, u32 p2)
@@ -299,7 +296,7 @@ void func_801DB674(u32 p1)
 }
 
 // append a new node to the start of the linked list,
-// making its data payload a copy of the specified node's payload
+// making its data payload a copy of the specified node's payload. Indicate success
 BOOL func_801DB6D0(u32 p1, u32 p2, MEMHeapHandle heap, u32 p4, u32 p5, FuncPtr p6)
 {
     unkClass* r31 = func_801DB040(p1, p2);
@@ -315,11 +312,20 @@ BOOL func_801DB6D0(u32 p1, u32 p2, MEMHeapHandle heap, u32 p4, u32 p5, FuncPtr p
     return TRUE;
 }
 
-func_801DB79C()
+// Set the unk1 flag of the specified node
+void func_801DB79C(u32 p1, u32 p2)
 {
-    
+    unkClass* r3 = func_801DB040(p1, p2);
+    if (r3)
+        r3->unk1 = 1;
 }
 
-
+// Clear the unk1 flag of the specified node
+void func_801DB7CC(u32 p1, u32 p2)
+{
+    unkClass* r3 = func_801DB040(p1, p2);
+    if (r3)
+        r3->unk1 = 0;
+}
 
 } //extern "C"
