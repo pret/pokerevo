@@ -16,8 +16,8 @@ struct unkClass
     u32 unk10;
     u32 unk14;
     FuncPtr unk18;
-    unkClass* unk1C;
-    unkClass* unk20;
+    unkClass* unk1C; //next?
+    unkClass* unk20; //prev?
 };
 
 extern void func_801DBD00(u32 p1, unkClass* p2);
@@ -30,6 +30,7 @@ namespace
     //unkStruct gUnk8063F2E0(1, 4, 0);
 }
 
+// head of doubly linked list
 extern unkClass* lbl_8063F2E8; //TODO: rename/define/internalize
 extern u32 lbl_8063F2EC; //TODO: rename/define/internalize
 
@@ -40,7 +41,7 @@ extern u32 lbl_8063F2EC; //TODO: rename/define/internalize
 
 //static
 unkClass* func_801DB040(u32 p1, u32 p2);
-unkClass* func_801DB07C(unkClass* p1, u32 p2);
+unkClass* func_801DB07C(unkClass* p1, BOOL p2);
 
 //static
 unkClass* func_801DB040(u32 p1, u32 p2)
@@ -51,7 +52,7 @@ unkClass* func_801DB040(u32 p1, u32 p2)
     return NULL;
 }
 
-unkClass* func_801DB07C(unkClass* p1, u32 p2)
+unkClass* func_801DB07C(unkClass* p1, BOOL p2)
 {
     unkClass* r31;
     if (p1->unk18 && p1->unk18(p1->unkC, p1->unk10, p1->unk14) == 0)
@@ -67,16 +68,18 @@ unkClass* func_801DB07C(unkClass* p1, u32 p2)
     }
     p1->unkC = NULL;
     r31 = p1->unk1C;
+    // TODO: remove p1 from doubly linked list?
     if (p2) {
         unkClass* r3 = p1->unk20;
         if (r3)
             r3->unk1C = r31;
         else
-            lbl_8063F2E8 = r31;
+            lbl_8063F2E8 = r31; // set new head
         
         if (r31)
             r31->unk20 = p1->unk20;
         
+        // TODO: free p1?
         func_801DBD00(lbl_8063F2EC, p1);
     }
     return r31;
