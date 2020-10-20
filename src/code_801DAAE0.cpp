@@ -1,8 +1,8 @@
 #include "types.h"
 #include "unkStruct.h"
-#include "code_801DAAE0.h"
 #include "Runtime/__mem.h"
 #include "SDK/mem.h"
+#include "code_801DAAE0.h"
 
 namespace
 {
