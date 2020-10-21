@@ -201,11 +201,12 @@ asm u32 func_801DB978(u8 p1)
 }
 #pragma peephole on
 #endif
-
+/*
 void func_801DB9FC(void)
 {
+    u32 i, j;
     if (lbl_8063F304 != 1) {
-        u32 i = 31, j = 0;
+        i = 31, j = 0;
         do
         {
             u8 r0 = lbl_80491370[j].unk0;
@@ -215,6 +216,36 @@ void func_801DB9FC(void)
         } while (i-- != 0);
         lbl_8063F304 = 1;
     }
+}
+*/
+void func_801DB9FC(void)
+{
+  u32 i;
+  u32 j;
+  unsigned short new_var;
+  char new_var2;
+  u32 *new_var3;
+  new_var = 0xff;
+  if (lbl_8063F304 != 1)
+  {
+    new_var2 = 9;
+    i = 31, j = 0;
+    new_var3 = &i;
+    do
+    {
+      u8 r0 = lbl_80491370[j].unk0;
+      if (((u32)r0 != new_var) && lbl_80491370[j].unk4)
+      {
+        lbl_80491370[j].unk4(0, lbl_8063F2FC + (r0 << new_var2), lbl_80491370[j].unk1);
+      }
+
+      i = *new_var3;
+      j++;
+    }
+    while (((i--)) != 0);
+    do { lbl_8063F304 = 1; } while (0);
+  }
+
 }
 
 
