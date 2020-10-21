@@ -208,12 +208,13 @@ void func_801DB9FC(void)
         u32 i = 31, j = 0;
         do
         {
-            if (lbl_80491370[j].unk0 != 0xff && lbl_80491370[j].unk4)
-                lbl_80491370[j].unk4(0, lbl_8063F2FC + lbl_80491370[j].unk0 << 9, lbl_80491370[j].unk1);
+            u8 r0 = lbl_80491370[j].unk0;
+            if (r0 != 0xff && lbl_80491370[j].unk4)
+                lbl_80491370[j].unk4(0, lbl_8063F2FC + (r0 << 9), lbl_80491370[j].unk1);
             j++;
         } while (i-- != 0);
+        lbl_8063F304 = 1;
     }
-    lbl_8063F304 = 1;
 }
 
 
