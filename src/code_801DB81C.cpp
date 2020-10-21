@@ -24,7 +24,7 @@ extern u32 lbl_8063F300;
 extern u8 lbl_8063F304;
 extern u32 lbl_8063F308;
 
-
+unkStruct gUnk8063F2F0(1, 4, 0);
 
 
 //static
@@ -32,8 +32,7 @@ void func_801DB81C(u8 p1);
 static void func_801DB92C(u8 p1, u8 p2, u32 p3);
 u32 func_801DB978(u8 p1);
 void func_801DB9FC(void);
-
-
+void func_801DBA8C(void);
 
 #ifdef NONMATCHING
 // 1. wrong instruction order: loading lbl_80491370@ha before 0
@@ -57,7 +56,6 @@ void func_801DB81C(u8 p1)
     lbl_8063F304 = 0;
 }
 #else
-#define _SDA_BASE_ 0x806452C0;
 asm void func_801DB81C(u8 p1)
 {
     nofralloc
@@ -201,61 +199,63 @@ asm u32 func_801DB978(u8 p1)
 }
 #pragma peephole on
 #endif
-/*
+
 void func_801DB9FC(void)
 {
-    u32 i, j;
+    u32 i;
+    short j;
+    unsigned short new_var;
+    char new_var2;
+    u32 *new_var3;
+    u32 new_var4;
+    u32 *new_var5;
+    new_var = 0xff;
     if (lbl_8063F304 != 1) {
+        new_var2 = 9;
         i = 31, j = 0;
-        do
-        {
-            u8 r0 = lbl_80491370[j].unk0;
-            if (r0 != 0xff && lbl_80491370[j].unk4)
-                lbl_80491370[j].unk4(0, lbl_8063F2FC + (r0 << 9), lbl_80491370[j].unk1);
+        new_var3 = &i;
+        new_var5 = &new_var4;
+        do {
+            unsigned char r0 = lbl_80491370[j].unk0;
+            new_var4 = *new_var3;
+            if ((((u32) r0) != new_var) && lbl_80491370[j].unk4) {
+                lbl_80491370[j].unk4(0, lbl_8063F2FC + (r0 << new_var2), lbl_80491370[j].unk1);
+            }
+
+            i = *new_var5;
             j++;
-        } while (i-- != 0);
+        } while ((i--) != 0);
         lbl_8063F304 = 1;
     }
 }
-*/
-void func_801DB9FC(void)
+
+void func_801DBA8C(void)
 {
-  u32 i;
-  short j;
-  unsigned short new_var;
-  char new_var2;
-  u32 *new_var3;
-  u32 new_var4;
-  u32 *new_var5;
-  new_var = 0xff;
-  if (lbl_8063F304 != 1)
-  {
-    new_var2 = 9;
-    i = 31, j = 0;
-    new_var3 = &i;
-    new_var5 = &new_var4;
-    do
-    {
-      unsigned char r0 = lbl_80491370[j].unk0;
-      new_var4 = *new_var3;
-      if ((((u32) r0) != new_var) && lbl_80491370[j].unk4)
-      {
-        lbl_80491370[j].unk4(0, lbl_8063F2FC + (r0 << new_var2), lbl_80491370[j].unk1);
-      }
+    u32 i;
+    short j;
+    unsigned short new_var;
+    char new_var2;
+    u32 *new_var3;
+    u32 new_var4;
+    u32 *new_var5;
+    new_var = 0xff;
+    if (lbl_8063F304 != 0) {
+        new_var2 = 9;
+        i = 31, j = 0;
+        new_var3 = &i;
+        new_var5 = &new_var4;
+        do {
+            unsigned char r0 = lbl_80491370[j].unk0;
+            new_var4 = *new_var3;
+            if ((((u32) r0) != new_var) && lbl_80491370[j].unk4) {
+                lbl_80491370[j].unk4(1, lbl_8063F2FC + (r0 << new_var2), lbl_80491370[j].unk1);
+            }
 
-      i = *new_var5;
-      j++;
+            i = *new_var5;
+            j++;
+        } while ((i--) != 0);
+        lbl_8063F304 = 0;
     }
-    while ((i--) != 0);
-    do
-    {
-      lbl_8063F304 = 1;
-    }
-    while (0);
-  }
-
 }
-
-
 
 }

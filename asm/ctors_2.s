@@ -2,7 +2,7 @@
 
 .section .ctors, "wa"  # 0x803E1E60 - 0x803E22A0
 
-.4byte func_801DBB1C, func_801DBE70
+.4byte func_801DBE70
 .4byte func_801DCE4C, func_801DD5A8, func_801DD8A0, func_801DDF58
 .4byte func_801DF020, func_801E07C8, func_801E07F0, func_801E0A34
 .4byte func_801E4308, func_801E472C, func_801E5F5C, func_801E6BD8
