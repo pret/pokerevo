@@ -221,32 +221,41 @@ void func_801DB9FC(void)
 void func_801DB9FC(void)
 {
   u32 i;
-  u32 j;
+  short j;
   unsigned short new_var;
   char new_var2;
   u32 *new_var3;
+  u32 new_var4;
+  u32 *new_var5;
   new_var = 0xff;
   if (lbl_8063F304 != 1)
   {
     new_var2 = 9;
     i = 31, j = 0;
     new_var3 = &i;
+    new_var5 = &new_var4;
     do
     {
-      u8 r0 = lbl_80491370[j].unk0;
-      if (((u32)r0 != new_var) && lbl_80491370[j].unk4)
+      unsigned char r0 = lbl_80491370[j].unk0;
+      new_var4 = *new_var3;
+      if ((((u32) r0) != new_var) && lbl_80491370[j].unk4)
       {
         lbl_80491370[j].unk4(0, lbl_8063F2FC + (r0 << new_var2), lbl_80491370[j].unk1);
       }
 
-      i = *new_var3;
+      i = *new_var5;
       j++;
     }
-    while (((i--)) != 0);
-    do { lbl_8063F304 = 1; } while (0);
+    while ((i--) != 0);
+    do
+    {
+      lbl_8063F304 = 1;
+    }
+    while (0);
   }
 
 }
+
 
 
 }
