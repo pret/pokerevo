@@ -1,17 +1,5 @@
 .section .sbss, "wa"  # 0x80474F00 - 0x80643050
 
-.global lbl_8063F2F6
-lbl_8063F2F6:
-	.skip 0x2
-.global lbl_8063F2F8
-lbl_8063F2F8:
-	.skip 0x4
-.global lbl_8063F2FC
-lbl_8063F2FC:
-	.skip 0x4
-.global lbl_8063F300
-lbl_8063F300:
-	.skip 0x4
 .global lbl_8063F304
 lbl_8063F304:
 	.skip 0x4

@@ -1,37 +1,43 @@
 #include "types.h"
 #include "unkStruct.h"
 #include "SDK/os.h"
+#include "code_801DB81C.h"
+
+#pragma unsafe_global_reg_vars off
+#pragma ignore_global_reg_vars on
 
 extern "C" {
     
 typedef void (*FuncPtr2)(u32, u32, u8);
 
-// TODO: rename
-struct unkClass3
+namespace
 {
-    u8 unk0;
-    u8 unk1;
-    FuncPtr2 unk4;
-};
+    struct unkClass3
+    {
+        u8 unk0;
+        u8 unk1;
+        FuncPtr2 unk4;
+    };
+    
+    unkStruct gUnk8063F2F0(1, 4, 0);
+    u32 gUnk8063F2F8;
+    u32 gUnk8063F2FC;
+}
+
+u32 gUnk8063F300 asm("r14"); // TODO: how do you reference this from inline asm
+
+
+extern u8 lbl_8063F304;
+extern u32 lbl_8063F308;
 
 // TODO: define, rename, localize
 extern unkClass3 lbl_80491370[32];
 
 
-extern u32 lbl_8063F2F8;
-extern u32 lbl_8063F2FC;
-extern u32 lbl_8063F300;
-extern u8 lbl_8063F304;
-extern u32 lbl_8063F308;
 
-unkStruct gUnk8063F2F0(1, 4, 0);
 
 static void func_801DB81C(u8 p1);
 static void func_801DB92C(u8 start, u8 width, u32 setOrClear);
-u32 func_801DB978(u8 p1);
-void func_801DB9FC(void);
-void func_801DBA8C(void);
-
 
 static void func_801DB81C(u8 p1)
 {
@@ -50,10 +56,10 @@ static void func_801DB81C(u8 p1)
 
     LCEnable();
 
-    lbl_8063F2FC = 0xE0000000;
+    gUnk8063F2FC = 0xE0000000;
     i = p1;
     new_var = 9;
-    lbl_8063F2F8 = i << new_var;
+    gUnk8063F2F8 = i << new_var;
     if (i) {
         new_var3 = new_var5;
         new_var4 = new_var3;
@@ -79,8 +85,6 @@ static void func_801DB92C(u8 start, u8 width, u32 setOrClear)
     }
 }
 
-// Note: Handwritten asm is used here because this function directly accesses
-// the link register and stack pointer as part of the function body
 asm u32 func_801DB978(u8 p1)
 {
     nofralloc
@@ -92,7 +96,7 @@ asm u32 func_801DB978(u8 p1)
     /* 801DB98C 001D75EC  93 C1 00 08 */	stw r30, 8(r1)
     /* 801DB990 001D75F0  7C 7E 1B 78 */	mr r30, r3
     /* 801DB994 001D75F4  7C 68 02 A6 */	mflr r3
-    /* 801DB998 001D75F8  90 6D A0 40 */	stw r3, 0xA040(r13)
+    /* 801DB998 001D75F8  90 6D A0 40 */	stw r3, gUnk8063F300
     /* 801DB99C 001D75FC  7F C3 F3 78 */	mr r3, r30
     /* 801DB9A0 001D7600  4B FF FE 7D */	bl func_801DB81C
     /* 801DB9A4 001D7604  2C 1E 00 00 */	cmpwi r30, 0
@@ -106,7 +110,7 @@ asm u32 func_801DB978(u8 p1)
     /* 801DB9C0 001D7620  38 23 FF F8 */	addi r1, r3, -8
     /* 801DB9C4 001D7624  38 60 FF FF */	li r3, -1
     /* 801DB9C8 001D7628  90 61 00 00 */	stw r3, 0(r1)
-    /* 801DB9CC 001D762C  80 6D A0 40 */	lwz r3, 0xA040(r13)
+    /* 801DB9CC 001D762C  80 6D A0 40 */	lwz r3, gUnk8063F300
     /* 801DB9D0 001D7630  7C 68 03 A6 */	mtlr r3
     /* 801DB9D4 001D7634  4E 80 00 20 */	blr
     /* 801DB9D8 001D7638  38 60 00 01 */	li r3, 1
@@ -140,7 +144,7 @@ void func_801DB9FC(void)
             unsigned char r0 = lbl_80491370[j].unk0;
             new_var4 = *new_var3;
             if ((((u32) r0) != new_var) && lbl_80491370[j].unk4) {
-                lbl_80491370[j].unk4(0, lbl_8063F2FC + (r0 << new_var2), lbl_80491370[j].unk1);
+                lbl_80491370[j].unk4(0, gUnk8063F2FC + (r0 << new_var2), lbl_80491370[j].unk1);
             }
 
             i = *new_var5;
@@ -169,7 +173,7 @@ void func_801DBA8C(void)
             unsigned char r0 = lbl_80491370[j].unk0;
             new_var4 = *new_var3;
             if ((((u32) r0) != new_var) && lbl_80491370[j].unk4) {
-                lbl_80491370[j].unk4(1, lbl_8063F2FC + (r0 << new_var2), lbl_80491370[j].unk1);
+                lbl_80491370[j].unk4(1, gUnk8063F2FC + (r0 << new_var2), lbl_80491370[j].unk1);
             }
 
             i = *new_var5;
