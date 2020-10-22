@@ -1,31 +1,30 @@
 #include "types.h"
-#include "unkStruct.h"
+#include "ctorStruct.h"
 #include "Runtime/__mem.h"
 #include "SDK/mem.h"
 #include "code_801DAAE0.h"
 #include "code_801DBB3C.h"
 #include "code_801DB040.h"
 
+static gUnkClass1* func_801DB040(u32 p1, u32 p2);
+
+static ctorStruct gUnk8063F2E0(1, 4, 0);
+static gUnkClass1* gUnk8063F2E8;
+static gUnkClass2* gUnk8063F2EC;
+
 extern "C" {
 
-namespace
+static gUnkClass1* func_801DB040(u32 p1, u32 p2)
 {
-    unkStruct gUnk8063F2E0(1, 4, 0);
-    unkClass* gUnk8063F2E8;
-    unkClass2* gUnk8063F2EC;
-}
-
-static unkClass* func_801DB040(u32 p1, u32 p2)
-{
-    for (unkClass* r5 = gUnk8063F2E8; r5; r5 = r5->unk1C)
+    for (gUnkClass1* r5 = gUnk8063F2E8; r5; r5 = r5->unk1C)
         if (r5->unk10 == p1 && r5->unk14 == p2)
             return r5;
     return NULL;
 }
 
-unkClass* func_801DB07C(unkClass* p1, BOOL p2)
+gUnkClass1* func_801DB07C(gUnkClass1* p1, BOOL p2)
 {
-    unkClass* r31;
+    gUnkClass1* r31;
     if (p1->unk18 && p1->unk18(p1->unkC, p1->unk10, p1->unk14) == 0)
         return p1->unk1C;
     if (p1->unk0) {
@@ -38,7 +37,7 @@ unkClass* func_801DB07C(unkClass* p1, BOOL p2)
     p1->unkC = NULL;
     r31 = p1->unk1C;
     if (p2) {
-        unkClass* r3 = p1->unk20;
+        gUnkClass1* r3 = p1->unk20;
         if (r3)
             r3->unk1C = r31;
         else
@@ -57,11 +56,11 @@ void func_801DB15C(u32 p1)
     gUnk8063F2EC = func_801DBD74(p1, 36);
 }
 
-static void* func_801DB184(MEMHeapHandle heap, u32 size, u32 p3, u32 p4, FuncPtr p5)
+static void* func_801DB184(MEMHeapHandle heap, u32 size, u32 p3, u32 p4, gFuncPtr1 p5)
 {
     if (func_801DB040(p3, p4))
         return NULL;
-    unkClass* r31 = func_801DBC58(gUnk8063F2EC);
+    gUnkClass1* r31 = func_801DBC58(gUnk8063F2EC);
     if (!r31)
         return NULL;
     if ((r31->unkC = func_801DAC94(heap, size)) == NULL) {
@@ -85,11 +84,11 @@ static void* func_801DB184(MEMHeapHandle heap, u32 size, u32 p3, u32 p4, FuncPtr
     return r31->unkC;
 }
 
-void* func_801DB270(MEMHeapHandle heap, u32 size, int align, u32 p4, u32 p5, FuncPtr p6)
+void* func_801DB270(MEMHeapHandle heap, u32 size, int align, u32 p4, u32 p5, gFuncPtr1 p6)
 {
     if (func_801DB040(p4, p5))
         return NULL;
-    unkClass* r31 = func_801DBC58(gUnk8063F2EC);
+    gUnkClass1* r31 = func_801DBC58(gUnk8063F2EC);
     if (!r31)
         return NULL;
     if ((r31->unkC = func_801DAD08(heap, size, align)) == NULL) {
@@ -112,14 +111,14 @@ void* func_801DB270(MEMHeapHandle heap, u32 size, int align, u32 p4, u32 p5, Fun
     return r31->unkC;
 }
 
-void* func_801DB360(u32 size, int align, u32 p3, u32 p4, FuncPtr p5)
+void* func_801DB360(u32 size, int align, u32 p3, u32 p4, gFuncPtr1 p5)
 {
     return func_801DB270(func_801DAC0C(), size, align, p3, p4, p5);
 }
 
-void func_801DB3BC(void* p1, u32 p2, u32 p3, FuncPtr p4)
+void func_801DB3BC(void* p1, u32 p2, u32 p3, gFuncPtr1 p4)
 {
-    unkClass* r31 = func_801DB040(p2, p3);
+    gUnkClass1* r31 = func_801DB040(p2, p3);
     if (!p1) {
         if (r31)
             func_801DB07C(r31, TRUE);
@@ -136,7 +135,7 @@ void func_801DB3BC(void* p1, u32 p2, u32 p3, FuncPtr p4)
             r31->unk18 = p4;
         }
     } else {
-        unkClass* r3 = func_801DBC58(gUnk8063F2EC);
+        gUnkClass1* r3 = func_801DBC58(gUnk8063F2EC);
         if (r3) {
             if (gUnk8063F2E8)
                 gUnk8063F2E8->unk20 = r3;
@@ -155,7 +154,7 @@ void func_801DB3BC(void* p1, u32 p2, u32 p3, FuncPtr p4)
 
 void* func_801DB4BC(u32 p1, u32 p2)
 {
-    unkClass* r3 = func_801DB040(p1, p2);
+    gUnkClass1* r3 = func_801DB040(p1, p2);
     if (!r3 || r3->unk1)
         return NULL;
     return r3->unkC;
@@ -163,7 +162,7 @@ void* func_801DB4BC(u32 p1, u32 p2)
 
 u32 func_801DB4FC(u32 p1, u32 p2)
 {
-    unkClass* r3 = func_801DB040(p1, p2);
+    gUnkClass1* r3 = func_801DB040(p1, p2);
     if (!r3 || r3->unk1)
         return 0;
     return ++r3->unk4;
@@ -171,7 +170,7 @@ u32 func_801DB4FC(u32 p1, u32 p2)
 
 u32 func_801DB548(u32 p1, u32 p2)
 {
-    unkClass* r31 = func_801DB040(p1, p2);
+    gUnkClass1* r31 = func_801DB040(p1, p2);
     if (!r31 || r31->unk1)
         return 0;
     if (r31->unk4 == 0) {
@@ -185,7 +184,7 @@ u32 func_801DB548(u32 p1, u32 p2)
 
 u32 func_801DB5E4(u32 p1, u32 p2)
 {
-    unkClass* r3 = func_801DB040(p1, p2);
+    gUnkClass1* r3 = func_801DB040(p1, p2);
     if (!r3)
         return 0;
     if (!r3->unkC)
@@ -197,21 +196,21 @@ u32 func_801DB5E4(u32 p1, u32 p2)
 
 void func_801DB644(u32 p1, u32 p2)
 {
-    unkClass* r3 = func_801DB040(p1, p2);
+    gUnkClass1* r3 = func_801DB040(p1, p2);
     if (r3)
         func_801DB07C(r3, TRUE);
 }
 
 void func_801DB674(u32 p1)
 {
-    unkClass* p = gUnk8063F2E8;
+    gUnkClass1* p = gUnk8063F2E8;
     while (p)
         p = (p->unk10 == p1) ? func_801DB07C(p, TRUE) : p->unk1C;
 }
 
-BOOL func_801DB6D0(u32 p1, u32 p2, MEMHeapHandle heap, u32 p4, u32 p5, FuncPtr p6)
+BOOL func_801DB6D0(u32 p1, u32 p2, MEMHeapHandle heap, u32 p4, u32 p5, gFuncPtr1 p6)
 {
-    unkClass* r31 = func_801DB040(p1, p2);
+    gUnkClass1* r31 = func_801DB040(p1, p2);
     if (!r31 || r31->unk1 || !r31->unkC || !r31->unk0)
         return FALSE;
     u32 blockSize = func_801DAEE0(r31->unkC);
@@ -226,14 +225,14 @@ BOOL func_801DB6D0(u32 p1, u32 p2, MEMHeapHandle heap, u32 p4, u32 p5, FuncPtr p
 
 void func_801DB79C(u32 p1, u32 p2)
 {
-    unkClass* r3 = func_801DB040(p1, p2);
+    gUnkClass1* r3 = func_801DB040(p1, p2);
     if (r3)
         r3->unk1 = 1;
 }
 
 void func_801DB7CC(u32 p1, u32 p2)
 {
-    unkClass* r3 = func_801DB040(p1, p2);
+    gUnkClass1* r3 = func_801DB040(p1, p2);
     if (r3)
         r3->unk1 = 0;
 }

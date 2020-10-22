@@ -1,8 +1,5 @@
 .section .bss, "wa"  # 0x80474F00 - 0x80643050
 
-.global lbl_80491370
-lbl_80491370:
-	.skip 0x100
 .global lbl_80491470
 lbl_80491470:
 	.skip 0x380

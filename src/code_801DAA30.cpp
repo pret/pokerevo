@@ -1,11 +1,8 @@
 #include "types.h"
-#include "unkStruct.h"
+#include "ctorStruct.h"
 #include "code_801DAAE0.h"
 
-namespace
-{
-    unkStruct gUnk8063F2C8(1, 4, 0);
-}
+static ctorStruct gUnk8063F2C8(1, 4, 0);
 
 void* operator new(size_t sz)
 {

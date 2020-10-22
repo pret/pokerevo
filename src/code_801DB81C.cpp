@@ -1,43 +1,32 @@
 #include "types.h"
-#include "unkStruct.h"
+#include "ctorStruct.h"
 #include "SDK/os.h"
 #include "code_801DB81C.h"
 
-#pragma unsafe_global_reg_vars off
-#pragma ignore_global_reg_vars on
-
-extern "C" {
-    
-typedef void (*FuncPtr2)(u32, u32, u8);
-
 namespace
 {
-    struct unkClass3
+    typedef void (*funcPtr)(u32, u32, u8);
+
+    struct unkClass
     {
         u8 unk0;
         u8 unk1;
-        FuncPtr2 unk4;
+        funcPtr unk4;
     };
-    
-    unkStruct gUnk8063F2F0(1, 4, 0);
-    u32 gUnk8063F2F8;
-    u32 gUnk8063F2FC;
 }
-
-u32 gUnk8063F300 asm("r14"); // TODO: how do you reference this from inline asm
-
-
-extern u8 lbl_8063F304;
-extern u32 lbl_8063F308;
-
-// TODO: define, rename, localize
-extern unkClass3 lbl_80491370[32];
-
-
-
 
 static void func_801DB81C(u8 p1);
 static void func_801DB92C(u8 start, u8 width, u32 setOrClear);
+
+static unkClass gUnk80491370[32];
+static ctorStruct gUnk8063F2F0(1, 4, 0);
+static u32 gUnk8063F2F8;
+static u32 gUnk8063F2FC;
+static u32 gUnk8063F300;
+static u8 gUnk8063F304;
+static u32 gUnk8063F308;
+
+extern "C" {
 
 static void func_801DB81C(u8 p1)
 {
@@ -50,8 +39,8 @@ static void func_801DB81C(u8 p1)
     new_var = 0;
     new_var5 = &i;
     for (i = new_var; i < 32; i++) {
-        lbl_8063F308 = new_var;
-        lbl_80491370[i].unk0 = 0xff;
+        gUnk8063F308 = new_var;
+        gUnk80491370[i].unk0 = 0xff;
     }
 
     LCEnable();
@@ -67,11 +56,11 @@ static void func_801DB81C(u8 p1)
         new_var4 = new_var3;
         new_var2 = *new_var4;
         func_801DB92C(0 & 0xFFu, (u8)new_var2, 1);
-        lbl_80491370[0].unk0 = 0;
-        lbl_80491370[0].unk1 = (u8)*new_var3;
+        gUnk80491370[0].unk0 = 0;
+        gUnk80491370[0].unk1 = (u8)*new_var3;
     }
 
-    lbl_8063F304 = 0;
+    gUnk8063F304 = 0;
 }
 
 static void func_801DB92C(u8 start, u8 width, u32 setOrClear)
@@ -80,7 +69,7 @@ static void func_801DB92C(u8 start, u8 width, u32 setOrClear)
     while (start--)
         bit >>= 1;
     while (width--) {
-        lbl_8063F308 = (setOrClear == 1) ? lbl_8063F308 | bit : lbl_8063F308 & ~bit;
+        gUnk8063F308 = (setOrClear == 1) ? gUnk8063F308 | bit : gUnk8063F308 & ~bit;
         bit >>= 1;
     }
 }
@@ -104,8 +93,8 @@ asm u32 func_801DB978(u8 p1)
     /* 801DB9AC 001D760C  38 60 00 01 */	li r3, 1
     /* 801DB9B0 001D7610  48 00 00 2C */	b lbl_801DB9DC
     lbl_801DB9B4:
-    /* 801DB9B4 001D7614  80 6D A0 3C */	lwz r3, 0xA03C(r13)
-    /* 801DB9B8 001D7618  80 AD A0 38 */	lwz r5, 0xA038(r13)
+    /* 801DB9B4 001D7614  80 6D A0 3C */	lwz r3, gUnk8063F2FC
+    /* 801DB9B8 001D7618  80 AD A0 38 */	lwz r5, gUnk8063F2F8
     /* 801DB9BC 001D761C  7C 63 2A 14 */	add r3, r3, r5
     /* 801DB9C0 001D7620  38 23 FF F8 */	addi r1, r3, -8
     /* 801DB9C4 001D7624  38 60 FF FF */	li r3, -1
@@ -135,22 +124,22 @@ void func_801DB9FC(void)
     u32 new_var4;
     u32 *new_var5;
     new_var = 0xff;
-    if (lbl_8063F304 != 1) {
+    if (gUnk8063F304 != 1) {
         new_var2 = 9;
         i = 31, j = 0;
         new_var3 = &i;
         new_var5 = &new_var4;
         do {
-            unsigned char r0 = lbl_80491370[j].unk0;
+            unsigned char r0 = gUnk80491370[j].unk0;
             new_var4 = *new_var3;
-            if ((((u32) r0) != new_var) && lbl_80491370[j].unk4) {
-                lbl_80491370[j].unk4(0, gUnk8063F2FC + (r0 << new_var2), lbl_80491370[j].unk1);
+            if ((((u32) r0) != new_var) && gUnk80491370[j].unk4) {
+                gUnk80491370[j].unk4(0, gUnk8063F2FC + (r0 << new_var2), gUnk80491370[j].unk1);
             }
 
             i = *new_var5;
             j++;
         } while ((i--) != 0);
-        lbl_8063F304 = 1;
+        gUnk8063F304 = 1;
     }
 }
 
@@ -164,23 +153,23 @@ void func_801DBA8C(void)
     u32 new_var4;
     u32 *new_var5;
     new_var = 0xff;
-    if (lbl_8063F304 != 0) {
+    if (gUnk8063F304 != 0) {
         new_var2 = 9;
         i = 31, j = 0;
         new_var3 = &i;
         new_var5 = &new_var4;
         do {
-            unsigned char r0 = lbl_80491370[j].unk0;
+            unsigned char r0 = gUnk80491370[j].unk0;
             new_var4 = *new_var3;
-            if ((((u32) r0) != new_var) && lbl_80491370[j].unk4) {
-                lbl_80491370[j].unk4(1, gUnk8063F2FC + (r0 << new_var2), lbl_80491370[j].unk1);
+            if ((((u32) r0) != new_var) && gUnk80491370[j].unk4) {
+                gUnk80491370[j].unk4(1, gUnk8063F2FC + (r0 << new_var2), gUnk80491370[j].unk1);
             }
 
             i = *new_var5;
             j++;
         } while ((i--) != 0);
-        lbl_8063F304 = 0;
+        gUnk8063F304 = 0;
     }
 }
 
-}
+} //extern "C"

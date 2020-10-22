@@ -7,14 +7,14 @@ extern "C" {
 
 #include "code_801DB040.h"
 
-struct unkClass2
+struct gUnkClass2
 {
     u8 pad[0x24];
 };
 
-unkClass* func_801DBC58(unkClass2* p1);
-void func_801DBD00(unkClass2* p1, unkClass* p2);
-unkClass2* func_801DBD74(u32 p1, u32 p2);
+gUnkClass1* func_801DBC58(gUnkClass2* p1);
+void func_801DBD00(gUnkClass2* p1, gUnkClass1* p2);
+gUnkClass2* func_801DBD74(u32 p1, u32 p2);
 
 #ifdef __cplusplus
 }
