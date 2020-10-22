@@ -34,27 +34,52 @@ u32 func_801DB978(u8 p1);
 void func_801DB9FC(void);
 void func_801DBA8C(void);
 
-#ifdef NONMATCHING
+#define NONMATCHING2
+#ifdef NONMATCHING2
 // 1. wrong instruction order: loading lbl_80491370@ha before 0
 // 2. r30/r31 register swap
 
 //static 
 void func_801DB81C(u8 p1)
 {
-    for (size_t i = 0; i < 31; i++)
-        lbl_80491370[i].unk0 = 0xff;
-    lbl_8063F308 = 0;
-    lbl_80491370[31].unk0 = 0xff;
-    LCEnable();
-    lbl_8063F2FC = 0xE0000000;
-    lbl_8063F2F8 = p1 << 9;
-    if (p1) {
-        func_801DB92C(0, p1, 1);
-        lbl_80491370[0].unk0 = 0;
-        lbl_80491370[0].unk1 = p1;
-    }
-    lbl_8063F304 = 0;
+  size_t i;
+  int new_var;
+  size_t new_var2;
+  size_t *new_var3;
+  size_t *new_var4;
+  size_t *new_var5;
+  new_var = 0;
+  new_var5 = &i;
+  for (i = new_var; i < 32; i++)
+  {
+    lbl_8063F308 = new_var;
+    lbl_80491370[i].unk0 = 0xff;
+  }
+
+  LCEnable();
+  if (i)
+  {
+  }
+
+  lbl_8063F2FC = 0xE0000000;
+  i = p1;
+  new_var = 9;
+  lbl_8063F2F8 = i << new_var;
+  if (i)
+  {
+    new_var3 = new_var5;
+    new_var4 = new_var3;
+    new_var3 = new_var4;
+    new_var4 = new_var3;
+    new_var2 = *new_var4;
+    func_801DB92C(0 & 0xFFu, new_var2, 1);
+    lbl_80491370[0].unk0 = 0;
+    lbl_80491370[0].unk1 = *new_var3;
+  }
+
+  lbl_8063F304 = 0;
 }
+
 #else
 asm void func_801DB81C(u8 p1)
 {
@@ -132,17 +157,16 @@ asm void func_801DB81C(u8 p1)
 #pragma peephole on
 #endif
 
-// set/clear a field of bits in lbl_8063F308 from
-// left to right.
-// setOrClear == 1
-// else clear the specfied range
-
-static void func_801DB92C(u8 left, u8 right, u32 setOrClear)
+// set/clear a field of bits in lbl_8063F308 given the 
+// specified starting bit (0 MSB ... 31 LSB) and width.
+// if setOrClear == 1, set the range,
+// else clear the range
+static void func_801DB92C(u8 start, u8 width, u32 setOrClear)
 {
     u32 r6 = 0x80000000;
-    while (left--)
+    while (start--)
         r6 >>= 1;
-    while (right--) {
+    while (width--) {
         lbl_8063F308 = (setOrClear == 1) ? lbl_8063F308 | r6 : lbl_8063F308 & ~r6;
         r6 >>= 1;
     }
