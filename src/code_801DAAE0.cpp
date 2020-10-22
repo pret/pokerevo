@@ -1,5 +1,5 @@
 #include "types.h"
-#include "unkStruct.h"
+#include "ctorStruct.h"
 #include "Runtime/__mem.h"
 #include "SDK/mem.h"
 #include "code_801DAAE0.h"
@@ -19,16 +19,21 @@ namespace
         u16 groupID;
         u32 unk8;
     };
-    
-    const size_t ARR_SIZE = 16;
-    unkClass gUnk804912B0[ARR_SIZE];
-
-    unkStruct gUnk8063F2D0(1, 4, 0);
-    u8 gUnk8063F2D6;
-    u8 gUnk8063F2D7;
-    MEMHeapHandle gUnk8063F2D8;
-    u16 gUnk8063F2DC;
 }
+
+static unkClass* func_801DAAE0(void);
+static void* lbl_801DAC9C(MEMHeapHandle heap, u32 size, int fill);
+static BOOL func_801DAD1C(MEMHeapHandle heap, void* memBlock, u32 size);
+static u32 func_801DAD60(MEMHeapHandle heap);
+static void lbl_801DAF1C(void* memBlock, MEMHeapHandle, u32 p3);
+
+static const size_t ARR_SIZE = 16;
+static unkClass gUnk804912B0[ARR_SIZE];
+static ctorStruct gUnk8063F2D0(1, 4, 0);
+static u8 gUnk8063F2D6;
+static u8 gUnk8063F2D7;
+static MEMHeapHandle gUnk8063F2D8;
+static u16 gUnk8063F2DC;
 
 extern "C" {
 
