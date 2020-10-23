@@ -51,7 +51,7 @@ void func_801DBB44(u32)
 
 //static
 #ifdef NONMATCHING
-void func_801DBB48(unkClass *p1, u32 p2, u32 p3)
+void func_801DBB48(gUnkClass2* p1, u32 p2, u32 p3)
 {
     //p2 = r30
     u32 r31 = (p3+7) & ~0x3; // element size
@@ -69,14 +69,14 @@ void func_801DBB48(unkClass *p1, u32 p2, u32 p3)
                 for (size_t i = (r4+7)/8; i != 0; i--) {
                     // 8 stores per iteration
                     
-                    ...
+                    
                 }
             }
         }
     }
 }
 #else
-asm void func_801DBB48(unkClass *p1, u32 p2, u32 p3)
+asm void func_801DBB48(gUnkClass2* p1, u32 p2, u32 p3)
 {
     /* 801DBB48 001D77A8  94 21 FF E0 */	stwu r1, -0x20(r1)
     /* 801DBB4C 001D77AC  7C 08 02 A6 */	mflr r0
@@ -174,7 +174,8 @@ passCheck:
     return &r31->unk4;
 }
 
-// return node p2 to free store p1
+// return node p2 to free store p1, making it the new head of the 
+// free node linked list
 void func_801DBD00(gUnkClass2* p1, gUnkClass1* p2)
 {
     u32 r31;
@@ -189,6 +190,22 @@ void func_801DBD00(gUnkClass2* p1, gUnkClass1* p2)
     }
 }
 
+// array
+extern gUnkClass2 lbl_80491470[32];
+
+// allocate the free store given number of elements and size of each?
+gUnkClass2* func_801DBD74(u32 p1, u32 p2)
+{    
+    size_t i;
+    for (i = 0; i < 32; i++)
+        if (lbl_80491470[i].unk8 == 0)
+            break;
+    gUnkClass2* r31 = &lbl_80491470[i];
+    if (r31->unk8)
+        return NULL;
+    func_801DBB48(r31, p1, p2);
+    return r31;
+}
 
 
 }

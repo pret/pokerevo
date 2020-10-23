@@ -10,19 +10,19 @@ extern "C" {
 // free store block?
 struct gUnkClass3
 {
-    gUnkClass3* unk0;
+    gUnkClass3* unk0; // pointer to the next free block
     gUnkClass1 unk4;
 };
 
 // linked list node free store?
 struct gUnkClass2
 {
-    u32 unk0; // counter?
-    u32 unk4;
-    u8 pad[0x4];
+    u32 unk0; // counter for blocks currently allocated?
+    u32 unk4; // maximum number of blocks allocated so far?
+    u32 unk8; // checked heavily in func_801DBD74
     size_t unkC; // block size
-    u8 pad2[0x8];
-    gUnkClass3* unk18; // next block?
+    u8 unk10[0x8];
+    gUnkClass3* unk18; // head of the linked list of free nodes
 };
 
 gUnkClass1* func_801DBC58(gUnkClass2* p1);
