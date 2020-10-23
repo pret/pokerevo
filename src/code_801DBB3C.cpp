@@ -162,11 +162,11 @@ gUnkClass1* func_801DBC58(gUnkClass2* p1)
     func_801DBB44(0);
     if (r31) {
         p1->unk18 = r31->unk0;
-        goto bcac;
+        goto passCheck;
     }
     func_801DBB44(r30);
     return NULL;
-bcac:
+passCheck:
     func_801DBB44(r30);
     memset(r31, 0, p1->unkC);
     if (++p1->unk0 > p1->unk4)
