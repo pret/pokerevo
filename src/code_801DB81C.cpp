@@ -18,7 +18,8 @@ namespace
 static void func_801DB81C(u8 p1);
 static void func_801DB92C(u8 start, u8 width, u32 setOrClear);
 
-static unkClass gUnk80491370[32];
+static const size_t ARR_SIZE = 32;
+static unkClass gUnk80491370[ARR_SIZE];
 static ctorStruct gUnk8063F2F0(1, 4, 0);
 static u32 gUnk8063F2F8;
 static u32 gUnk8063F2FC;
@@ -31,7 +32,7 @@ extern "C" {
 static void func_801DB81C(u8 p1)
 {
     gUnk8063F308 = 0;
-    for (size_t i = 0; i < 32; i++)
+    for (size_t i = 0; i < ARR_SIZE; i++)
         gUnk80491370[i].unk0 = 0xff;
     LCEnable();
     gUnk8063F2FC = (u32)LCGetBase();
@@ -100,24 +101,19 @@ void func_801DB9FC(void)
 {
     u32 i;
     short j;
-    unsigned short new_var;
-    char new_var2;
     u32 *new_var3;
     u32 new_var4;
     u32 *new_var5;
-    new_var = 0xff;
     if (gUnk8063F304 != 1) {
-        new_var2 = 9;
-        i = 31, j = 0;
+        i = ARR_SIZE-1, j = 0;
         new_var3 = &i;
         new_var5 = &new_var4;
         do {
             unsigned char r0 = gUnk80491370[j].unk0;
             new_var4 = *new_var3;
-            if ((((u32) r0) != new_var) && gUnk80491370[j].unk4) {
-                gUnk80491370[j].unk4(0, gUnk8063F2FC + (r0 << new_var2), gUnk80491370[j].unk1);
+            if ((((u32) r0) != 0xff) && gUnk80491370[j].unk4) {
+                gUnk80491370[j].unk4(0, gUnk8063F2FC + (r0 << 9), gUnk80491370[j].unk1);
             }
-
             i = *new_var5;
             j++;
         } while ((i--) != 0);
@@ -129,24 +125,19 @@ void func_801DBA8C(void)
 {
     u32 i;
     short j;
-    unsigned short new_var;
-    char new_var2;
     u32 *new_var3;
     u32 new_var4;
     u32 *new_var5;
-    new_var = 0xff;
     if (gUnk8063F304 != 0) {
-        new_var2 = 9;
-        i = 31, j = 0;
+        i = ARR_SIZE-1, j = 0;
         new_var3 = &i;
         new_var5 = &new_var4;
         do {
             unsigned char r0 = gUnk80491370[j].unk0;
             new_var4 = *new_var3;
-            if ((((u32) r0) != new_var) && gUnk80491370[j].unk4) {
-                gUnk80491370[j].unk4(1, gUnk8063F2FC + (r0 << new_var2), gUnk80491370[j].unk1);
+            if ((((u32) r0) != 0xff) && gUnk80491370[j].unk4) {
+                gUnk80491370[j].unk4(1, gUnk8063F2FC + (r0 << 9), gUnk80491370[j].unk1);
             }
-
             i = *new_var5;
             j++;
         } while ((i--) != 0);
