@@ -53,7 +53,7 @@ gUnkClass1* func_801DB07C(gUnkClass1* p1, BOOL p2)
 
 void func_801DB15C(u32 p1)
 {
-    gUnk8063F2EC = func_801DBD74(p1, 36);
+    gUnk8063F2EC = func_801DBD74(p1, sizeof(gUnkClass1));
 }
 
 static void* func_801DB184(MEMHeapHandle heap, u32 size, u32 p3, u32 p4, gFuncPtr1 p5)

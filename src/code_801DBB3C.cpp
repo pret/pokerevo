@@ -5,35 +5,9 @@
 #include "code_801DB040.h"
 #include "code_801DBB3C.h"
 
-namespace
-{
-    
-        // might be same as above
-    struct unkClass2
-    {
-        unkClass2* unk0;
-        gUnkClass1* unk4;
-        u8 unk8[4];
-        size_t unkC;
-        
-        
-    };
-    
-    // gUnkClass2?
-    struct unkClass
-    {
-        u8 pad[0x8];
-        u32 unk8;
-        u32 unkC;
-        void* unk10;
-        u32 unk14;
-        unkClass2* unk18;
-    };
-    
-
-    
-}
-
+// array of free stores
+static gUnkClass2 gUnk80491470[32];
+static ctorStruct gUnk8063F310(1, 4, 0);
 
 extern "C" {
 
@@ -50,30 +24,38 @@ void func_801DBB44(u32)
 }
 
 //static
+#define NONMATCHING
 #ifdef NONMATCHING
-void func_801DBB48(gUnkClass2* p1, u32 p2, u32 p3)
+void func_801DBB48(gUnkClass2* p1, size_t nodes, size_t size)
 {
-    //p2 = r30
-    u32 r31 = (p3+7) & ~0x3; // element size
-    p1->unk8 = p2; // number of elements
+    size_t r31, r30;
+    gUnkClass2* r29;
+    // nodes in r30
+    // element size + 4, rounded up (for gUnkClass3)
+    size += 7;
+    r31 = size & ~0x3; 
+    r30 = nodes;
+    r29 = p1;
+    p1->unk8 = nodes; // number of elements
     p1->unkC = r31;
     // void* func_801DAD98(u32 size); allocate and 0 fill
-    void* data = func_801DAD98((p2+1) * r31); //r3
-    p1->unk10 = data;
-    p1->unk18 = data;
-    p1->unk14 = (u8*)data + p2 * r31;
-    if (p2) {
-        if (p2 > 8) {
-            u32 r4 = p2 - 8;
-            if (r4 > 0) {
-                for (size_t i = (r4+7)/8; i != 0; i--) {
-                    // 8 stores per iteration
-                    
-                    
-                }
-            }
-        }
+    // allocate memory blocks for free store. Extra node at the end
+    // represents stop?
+    u8* data = (u8*)func_801DAD98((nodes+1) * r31); //r3
+    r29->unk10 = data;
+    r29->unk18 = (gUnkClass3*)data;
+    r29->unk14 = data + (r30 * r31);
+    gUnkClass3* r8 = NULL;
+    size_t i;
+    u8* curr = data;
+    u8* next = data + r31;
+    for (i = 0; i < r30; curr = next, next += r31, i++) {
+        // TODO: compiler is precomputing offsets into the array before the
+        // loop beings but I want it to compute all offsets within the loop
+        ((gUnkClass3*)curr)->unk0 = (gUnkClass3*)next;
+        r8 = (gUnkClass3*)curr;
     }
+    r8->unk0 = NULL;
 }
 #else
 asm void func_801DBB48(gUnkClass2* p1, u32 p2, u32 p3)
@@ -190,20 +172,17 @@ void func_801DBD00(gUnkClass2* p1, gUnkClass1* p2)
     }
 }
 
-// array
-extern gUnkClass2 lbl_80491470[32];
-
 // allocate the free store given number of elements and size of each?
-gUnkClass2* func_801DBD74(u32 p1, u32 p2)
-{    
+gUnkClass2* func_801DBD74(u32 nodes, u32 size)
+{
     size_t i;
     for (i = 0; i < 32; i++)
-        if (lbl_80491470[i].unk8 == 0)
+        if (gUnk80491470[i].unk8 == 0)
             break;
-    gUnkClass2* r31 = &lbl_80491470[i];
+    gUnkClass2* r31 = &gUnk80491470[i];
     if (r31->unk8)
         return NULL;
-    func_801DBB48(r31, p1, p2);
+    func_801DBB48(r31, nodes, size);
     return r31;
 }
 
