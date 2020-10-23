@@ -17,12 +17,12 @@ struct gUnkClass3
 // linked list node free store?
 struct gUnkClass2
 {
-    u32 unk0;
+    u32 unk0; // counter?
     u32 unk4;
     u8 pad[0x4];
-    size_t unkC;
+    size_t unkC; // block size
     u8 pad2[0x8];
-    gUnkClass3* unk18;
+    gUnkClass3* unk18; // next block?
 };
 
 gUnkClass1* func_801DBC58(gUnkClass2* p1);

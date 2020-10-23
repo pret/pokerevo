@@ -38,13 +38,13 @@ namespace
 extern "C" {
 
 //static
-unkClass* func_801DBB3C(void)
+u32 func_801DBB3C(void)
 {
     return 0;
 }
 
 //static
-void func_801DBB44(unkClass*)
+void func_801DBB44(u32)
 {
     
 }
@@ -158,10 +158,10 @@ asm void func_801DBB48(unkClass *p1, u32 p2, u32 p3)
 gUnkClass1* func_801DBC58(gUnkClass2* p1)
 {
     gUnkClass3* r31 = p1->unk18;
-    unkClass* r30 = func_801DBB3C();
+    u32 r30 = func_801DBB3C();
     func_801DBB44(0);
     if (r31) {
-        p1->unk18 = r31->unk0;
+        p1->unk18 = r31->unk0; // point unk18 to possible next free block?
         goto passCheck;
     }
     func_801DBB44(r30);
@@ -173,12 +173,22 @@ passCheck:
         p1->unk4 = p1->unk0;
     return &r31->unk4;
 }
-/*
-func_801DBD00
+
+// return node p2 to free store p1
+void func_801DBD00(gUnkClass2* p1, gUnkClass1* p2)
 {
-    
+    u32 r31;
+    if (p2) {
+        gUnkClass3* r30 = (gUnkClass3*)((u8*)p2 - 4);
+        r30->unk0 = p1->unk18;
+        p1->unk0--;
+        r31 = func_801DBB3C();
+        func_801DBB44(0);
+        p1->unk18 = r30;
+        func_801DBB44(r31);
+    }
 }
-*/
+
 
 
 }
