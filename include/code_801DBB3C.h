@@ -7,9 +7,22 @@ extern "C" {
 
 #include "code_801DB040.h"
 
+// free store block?
+struct gUnkClass3
+{
+    gUnkClass3* unk0;
+    gUnkClass1 unk4;
+};
+
+// linked list node free store?
 struct gUnkClass2
 {
-    u8 pad[0x24];
+    u32 unk0;
+    u32 unk4;
+    u8 pad[0x4];
+    size_t unkC;
+    u8 pad2[0x8];
+    gUnkClass3* unk18;
 };
 
 gUnkClass1* func_801DBC58(gUnkClass2* p1);
