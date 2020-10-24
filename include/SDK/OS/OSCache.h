@@ -6,6 +6,9 @@ extern "C" {
 #endif
 
 void LCEnable(void);
+#define LC_BASE (0xE000 << 16)
+#define LCGetBase() ((void*)LC_BASE)
+
 
 #ifdef __cplusplus
 }

@@ -7,9 +7,21 @@ extern "C" {
 
 #include "code_801DB040.h"
 
+struct gUnkClass3
+{
+    gUnkClass3* unk0;
+    gUnkClass1 unk4;
+};
+
 struct gUnkClass2
 {
-    u8 pad[0x24];
+    u32 unk0;
+    u32 unk4;
+    u32 unk8;
+    size_t unkC;
+    u8* unk10;
+    u8* unk14;
+    gUnkClass3* unk18;
 };
 
 gUnkClass1* func_801DBC58(gUnkClass2* p1);

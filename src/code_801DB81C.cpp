@@ -18,7 +18,8 @@ namespace
 static void func_801DB81C(u8 p1);
 static void func_801DB92C(u8 start, u8 width, u32 setOrClear);
 
-static unkClass gUnk80491370[32];
+static const size_t ARR_SIZE = 32;
+static unkClass gUnk80491370[ARR_SIZE];
 static ctorStruct gUnk8063F2F0(1, 4, 0);
 static u32 gUnk8063F2F8;
 static u32 gUnk8063F2FC;
@@ -30,36 +31,17 @@ extern "C" {
 
 static void func_801DB81C(u8 p1)
 {
-    size_t i;
-    size_t new_var;
-    size_t new_var2;
-    size_t *new_var3;
-    size_t *new_var4;
-    size_t *new_var5;
-    new_var = 0;
-    new_var5 = &i;
-    for (i = new_var; i < 32; i++) {
-        gUnk8063F308 = new_var;
+    gUnk8063F308 = 0;
+    for (size_t i = 0; i < ARR_SIZE; i++)
         gUnk80491370[i].unk0 = 0xff;
-    }
-
     LCEnable();
-
-    gUnk8063F2FC = 0xE0000000;
-    i = p1;
-    new_var = 9;
-    gUnk8063F2F8 = i << new_var;
-    if (i) {
-        new_var3 = new_var5;
-        new_var4 = new_var3;
-        new_var3 = new_var4;
-        new_var4 = new_var3;
-        new_var2 = *new_var4;
-        func_801DB92C(0 & 0xFFu, (u8)new_var2, 1);
+    gUnk8063F2FC = (u32)LCGetBase();
+    gUnk8063F2F8 = (u32)(p1 << 9);
+    if (p1) {
+        func_801DB92C(0, p1, 1);
         gUnk80491370[0].unk0 = 0;
-        gUnk80491370[0].unk1 = (u8)*new_var3;
+        gUnk80491370[0].unk1 = p1;
     }
-
     gUnk8063F304 = 0;
 }
 
@@ -113,29 +95,25 @@ asm u32 func_801DB978(u8 p1)
     /* 801DB9F4 001D7654  7C 08 03 A6 */	mtlr r0
     /* 801DB9F8 001D7658  4E 80 00 20 */	blr
 }
+#pragma peephole on
 
 void func_801DB9FC(void)
 {
     u32 i;
     short j;
-    unsigned short new_var;
-    char new_var2;
     u32 *new_var3;
     u32 new_var4;
     u32 *new_var5;
-    new_var = 0xff;
     if (gUnk8063F304 != 1) {
-        new_var2 = 9;
-        i = 31, j = 0;
+        i = ARR_SIZE-1, j = 0;
         new_var3 = &i;
         new_var5 = &new_var4;
         do {
             unsigned char r0 = gUnk80491370[j].unk0;
             new_var4 = *new_var3;
-            if ((((u32) r0) != new_var) && gUnk80491370[j].unk4) {
-                gUnk80491370[j].unk4(0, gUnk8063F2FC + (r0 << new_var2), gUnk80491370[j].unk1);
+            if ((((u32) r0) != 0xff) && gUnk80491370[j].unk4) {
+                gUnk80491370[j].unk4(0, gUnk8063F2FC + (r0 << 9), gUnk80491370[j].unk1);
             }
-
             i = *new_var5;
             j++;
         } while ((i--) != 0);
@@ -147,24 +125,19 @@ void func_801DBA8C(void)
 {
     u32 i;
     short j;
-    unsigned short new_var;
-    char new_var2;
     u32 *new_var3;
     u32 new_var4;
     u32 *new_var5;
-    new_var = 0xff;
     if (gUnk8063F304 != 0) {
-        new_var2 = 9;
-        i = 31, j = 0;
+        i = ARR_SIZE-1, j = 0;
         new_var3 = &i;
         new_var5 = &new_var4;
         do {
             unsigned char r0 = gUnk80491370[j].unk0;
             new_var4 = *new_var3;
-            if ((((u32) r0) != new_var) && gUnk80491370[j].unk4) {
-                gUnk80491370[j].unk4(1, gUnk8063F2FC + (r0 << new_var2), gUnk80491370[j].unk1);
+            if ((((u32) r0) != 0xff) && gUnk80491370[j].unk4) {
+                gUnk80491370[j].unk4(1, gUnk8063F2FC + (r0 << 9), gUnk80491370[j].unk1);
             }
-
             i = *new_var5;
             j++;
         } while ((i--) != 0);
