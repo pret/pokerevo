@@ -5,7 +5,7 @@
 #include "SDK/dvd.h"
 #include "SDK/nand.h"
 #include "code_801DAAE0.h"
-
+#include "code_801DCE6C.h"
 
 namespace
 {
@@ -68,24 +68,28 @@ void func_801DBEA0(void)
 //static
 unkClass *func_801DBED0(void)
 {
-  int new_var;
-  OSDisableInterrupts();
+
+    OSDisableInterrupts();
+
   unkClass *r31 = 0;
   size_t i;
   for (i = 0; i < lbl_8063F320; i++)
   {
     if (lbl_8063F324[i].unk0 != 1)
     {
-      new_var = 1;
-      lbl_8063F324[i].unk0 = new_var;
+      lbl_8063F324[i].unk0 = 1;
       lbl_8063F324[i].unk1 = 0;
       r31 = &lbl_8063F324[i];
       break;
     }
 
   }
-OSRestoreInterrupts();
-return r31;
+
+
+    OSRestoreInterrupts();
+    return r31;
+  
+
 }
 #else
 asm unkClass* func_801DBED0(void)
@@ -133,7 +137,6 @@ lbl_801DBF44:
 }
 #pragma peephole on
 #endif
-
 //static
 void func_801DBF60(unkClass* p1)
 {
@@ -207,6 +210,7 @@ void lbl_801DC068(u32 p1, unkClass2* p2)
     }
 }
 
+#if 0
 BOOL func_801DC0C8(size_t p1)
 {
     if (lbl_8063F31E != 1) {
@@ -214,14 +218,14 @@ BOOL func_801DC0C8(size_t p1)
         lbl_8063F338 = 0;
         NANDInit();
         if (!lbl_8063F338) {
+            // lbl_8063F338 = new ...;
             // new , 801DCE7C constructor
         }
     } else {
         return FALSE;
     }
 }
-
-
+#endif
 
 
 
