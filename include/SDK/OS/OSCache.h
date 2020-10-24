@@ -5,6 +5,7 @@
 extern "C" {
 #endif
 
+void DCInvalidateRange(void* startAddr, u32 nBytes);
 void LCEnable(void);
 #define LC_BASE (0xE000 << 16)
 #define LCGetBase() ((void*)LC_BASE)
