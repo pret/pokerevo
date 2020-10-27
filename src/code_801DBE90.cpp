@@ -14,7 +14,7 @@ namespace
     //TODO: header/source
     struct unkClass
     {
-        u8 unk0;
+        u8 unk0; // file open flag?
         u8 unk1;
         u8 unk2[0x2];
         DVDFileInfo unk4;
@@ -73,6 +73,9 @@ s32 func_801DD084(gUnkClass4* p1, unkClass* p2, void* addr, s32 length, s32 offs
 
 void* func_801DD220(gUnkClass4*, unkClass*, void*, s32, s32);
     
+u32 func_801DCFE4(gUnkClass4*, unkClass*);
+
+u32 func_801DD03C(gUnkClass4*, unkClass*, u32*);
     
     
     
@@ -370,6 +373,7 @@ BOOL func_801DC4F0(unkClass* p1, void* p2, s32 p3, s32 p4, void (*p5)(s32, void*
         return FALSE;
     if (p4 & 0x3)
         return FALSE;
+
     p1->unk4.unk44 = p2;
     p1->unk4.unk48 = p3;
     if (lbl_8063F338 && p1->unk1 && func_801DD220(lbl_8063F338, p1, p2, p3, p4))
@@ -377,13 +381,60 @@ BOOL func_801DC4F0(unkClass* p1, void* p2, s32 p3, s32 p4, void (*p5)(s32, void*
     return DVDReadAsyncPrio(&p1->unk4, p2, p3, p4, &func_801DBFEC, 2) != 0;
 }
 
+// DVDReadPrio wrapper
+s32 func_801DC5FC(unkClass* p1, void* addr, s32 length, s32 offset, s32 prio)
+{
+    if (!lbl_8063F31E)
+        return -1;
+    func_801DC264();
+    if (!p1)
+        return -1;
+    if ((u32)addr & 0x1F)
+        return -1;
+    if (length & 0x1F)
+        return -1;
+    if (offset & 0x3)
+        return -1;
+    
+    if (prio < 0 || prio > 3)
+        return -1;
+    return DVDReadPrio(&p1->unk4, addr, length, offset, prio);
+}
 
+BOOL func_801DC6C4(unkClass* p1)
+{
+    if (!lbl_8063F31E)
+        return FALSE;
+    func_801DC264();
+    if (!p1)
+        return FALSE;
+    if (lbl_8063F338 && func_801DCFE4(lbl_8063F338, p1)) {
+        func_801DBF60(p1);
+        return TRUE;
+    }
+    BOOL result = DVDClose(&p1->unk4);
+    func_801DBF60(p1);
+    return result;
+}
 
+u32 func_801DC760(unkClass* p1)
+{
+    u32 sp8; // TODO: determine type
+    if (!lbl_8063F31E)
+        return 0;
+    func_801DC264();
+    if (!p1)
+        return 0;
+    if (lbl_8063F338 && func_801DD03C(lbl_8063F338, p1, &sp8))
+        return sp8;
+    return p1->unk4.unk34;
+}
 
-
-
-
-
+//static
+s32 func_801DC7DC(void)
+{
+    return (!lbl_8063F31E) ? -1 : DVDGetDriveStatus();
+}
 
 
 

@@ -15,6 +15,7 @@ typedef struct DVDDiskID
 
 DVDDiskID* DVDGetCurrentDiskID(void);
 void DVDInit(void);
+s32 DVDGetDriveStatus(void);
 
 #ifdef __cplusplus
 }
