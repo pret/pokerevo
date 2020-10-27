@@ -1,5 +1,6 @@
 #include "types.h"
 #include "ctorStruct.h"
+#include "Runtime/__mem.h"
 #include "SDK/mem.h"
 #include "SDK/os.h"
 #include "SDK/dvd.h"
@@ -35,20 +36,46 @@ namespace
 }
 
 
-extern MEMHeapHandle lbl_8063E8EC;
+
 
 
 //TODO: internal linkage
+
+// .sdata
+extern char* lbl_8063D6D8;
+extern char* lbl_8063D6E0;
+extern char lbl_8063D6E4[8];
+extern char lbl_8063D6EC[8];
+
+
 extern u8 lbl_8063F31E;
 extern u8 lbl_8063F31F;
 extern size_t lbl_8063F320;
 extern unkClass* lbl_8063F324;
-extern u32 lbl_8063F338;
+extern u32 lbl_8063F32C;
 
+extern gUnkClass4* lbl_8063F338;
 
+extern u8 lbl_804917F0[0x40];
 
 extern "C"
 {
+    
+//extern
+extern MEMHeapHandle lbl_8063E8EC;
+s32 func_80249BC8(void);
+// code_80223C54
+u32 func_80223FD0(u32, u32, u32, void (*)(void));
+
+void func_801DC9CC(void);
+void func_8022408C(u32, const char*);
+
+
+
+    
+    
+    
+    
 // TODO: return type
 //static
 void* func_801DBE90(u32 size)
@@ -210,20 +237,52 @@ void lbl_801DC068(u32 p1, unkClass2* p2)
     }
 }
 
-#if 0
-BOOL func_801DC0C8(size_t p1)
+#if 1
+BOOL func_801DC0C8(size_t p1, u32 p2)
 {
-    if (lbl_8063F31E != 1) {
-        lbl_8063F31F = 0;
-        lbl_8063F338 = 0;
-        NANDInit();
-        if (!lbl_8063F338) {
-            // lbl_8063F338 = new ...;
-            // new , 801DCE7C constructor
-        }
-    } else {
+    if (lbl_8063F31E == 1)
         return FALSE;
+    lbl_8063F31F = 0;
+    lbl_8063F338 = NULL;
+    NANDInit();
+    if (!lbl_8063F338)
+        lbl_8063F338 = new gUnkClass4;
+    lbl_8063F320 = p1;
+    lbl_8063F324 = (unkClass*)func_801DBE90(p1 * sizeof(unkClass));
+    if (!lbl_8063F324)
+        return FALSE;
+    func_801DBEA0();
+    memset(lbl_804917F0, 0, sizeof(lbl_804917F0));
+    DVDInit();
+    if (p2) {
+        switch (func_80249BC8()) {
+            case 0:
+                lbl_8063D6D8 = lbl_8063D6E4;
+                break;
+            case 1:
+                lbl_8063D6D8 = lbl_8063D6E4;
+                break;
+            case 2:
+                lbl_8063D6D8 = lbl_8063D6EC;
+                break;
+        }
+        DVDDiskID* diskID = DVDGetCurrentDiskID();
+        diskID->gameCode[0] = lbl_8063D6D8[0];
+        diskID->gameCode[1] = lbl_8063D6D8[1];
+        diskID->gameCode[2] = lbl_8063D6D8[2];
+        diskID->gameCode[3] = lbl_8063D6D8[3];
+        diskID->makerCode[0] = lbl_8063D6E0[0];
+        diskID->makerCode[1] = lbl_8063D6E0[1];
+        diskID->unk6 = 0;
+        diskID->unk7 = 0;
     }
+    DVDSetAutoFatalMessaging(FALSE);
+    
+    lbl_8063F32C = func_80223FD0(1, 19, 0, &func_801DC9CC);
+    func_8022408C(lbl_8063F32C, "GSdvdErrorTask");
+    
+    lbl_8063F31E = 1;
+    return TRUE;
 }
 #endif
 

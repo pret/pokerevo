@@ -5,7 +5,17 @@
 extern "C" {
 #endif
 
-u32 DVDGetCurrentDiskID(void);
+typedef struct DVDDiskID
+{
+    char gameCode[4];
+    char makerCode[2];
+    u8 unk6;
+    u8 unk7;
+} DVDDiskID;
+
+
+DVDDiskID* DVDGetCurrentDiskID(void);
+void DVDInit(void);
 
 #ifdef __cplusplus
 }

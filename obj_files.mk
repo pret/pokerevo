@@ -8,6 +8,7 @@ EXTABINDEX_O_FILES :=                                             \
 #todo fix with makefile implementation
 SPLIT_O_FILES := 						                          \
     $(BUILD_DIR)/asm/ctors.o						              \
+    $(BUILD_DIR)/asm/data.o					     	              \
     $(BUILD_DIR)/asm/bss.o		    				              \
     $(BUILD_DIR)/asm/sbss.o						                  \
     $(BUILD_DIR)/asm/code_80006980.o							  \
@@ -818,6 +819,7 @@ SPLIT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/code_803D9208.o \
 	$(BUILD_DIR)/asm/text_11_2.o \
 	$(BUILD_DIR)/asm/ctors_2.o \
+	$(BUILD_DIR)/asm/data_2.o \
 	$(BUILD_DIR)/asm/bss_2.o \
 	$(BUILD_DIR)/asm/sbss_2.o \
 

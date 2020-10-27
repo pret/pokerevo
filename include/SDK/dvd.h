@@ -6,6 +6,7 @@ extern "C" {
 #endif
 
 #include "SDK/DVD/dvd.h"
+#include "SDK/DVD/dvdFatal.h"
 
 #ifdef __cplusplus
 }

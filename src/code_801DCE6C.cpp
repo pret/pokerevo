@@ -5,13 +5,13 @@
 
 extern "C" {
 
-//static
+//internal
 char* func_801DCE6C(gUnkClass4* p1)
 {
     return p1->unk7;
 }
 
-//static
+//internal
 char* func_801DCE74(gUnkClass4* p1)
 {
     return p1->unk2;
