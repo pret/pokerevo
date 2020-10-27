@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-void OSDisableInterrupts(void);
+BOOL OSDisableInterrupts(void);
 void OSRestoreInterrupts(void);
 
 #ifdef __cplusplus

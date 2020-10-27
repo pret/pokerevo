@@ -47,16 +47,19 @@ extern char* lbl_8063D6E0;
 extern char lbl_8063D6E4[8];
 extern char lbl_8063D6EC[8];
 
-
 extern u8 lbl_8063F31E;
 extern u8 lbl_8063F31F;
 extern size_t lbl_8063F320;
 extern unkClass* lbl_8063F324;
+extern u32 lbl_8063F328;
 extern u32 lbl_8063F32C;
 
 extern gUnkClass4* lbl_8063F338;
 
 extern u8 lbl_804917F0[0x40];
+
+extern void* lbl_8063F600; // initialized in func_8022410C
+
 
 extern "C"
 {
@@ -65,10 +68,12 @@ extern "C"
 extern MEMHeapHandle lbl_8063E8EC;
 s32 func_80249BC8(void);
 // code_80223C54
-u32 func_80223FD0(u32, u32, u32, void (*)(void));
+u32 func_80223FD0(u32, u32, u32, void (*)(u32, u32));
 
-void func_801DC9CC(void);
+void func_801DC9CC(u32, u32);
 void func_8022408C(u32, const char*);
+u32 func_802245C4(void*);
+void func_80224588(void*);
 
 
 
@@ -237,7 +242,6 @@ void lbl_801DC068(u32 p1, unkClass2* p2)
     }
 }
 
-#if 1
 BOOL func_801DC0C8(size_t p1, u32 p2)
 {
     if (lbl_8063F31E == 1)
@@ -265,6 +269,8 @@ BOOL func_801DC0C8(size_t p1, u32 p2)
             case 2:
                 lbl_8063D6D8 = lbl_8063D6EC;
                 break;
+            default:
+                break;
         }
         DVDDiskID* diskID = DVDGetCurrentDiskID();
         diskID->gameCode[0] = lbl_8063D6D8[0];
@@ -284,7 +290,24 @@ BOOL func_801DC0C8(size_t p1, u32 p2)
     lbl_8063F31E = 1;
     return TRUE;
 }
-#endif
+
+//static
+void func_801DC264(void)
+{
+    BOOL r31 = OSDisableInterrupts();
+    OSRestoreInterrupts();
+    if (r31) {
+        while (TRUE) {
+            func_801DC9CC(lbl_8063F32C, 0);
+            if (lbl_8063F328 == 0)
+                break;
+            if (!func_802245C4(lbl_8063F600))
+                break;
+            func_80224588(lbl_8063F600);
+        }
+    }
+}
+
 
 
 
