@@ -36,6 +36,8 @@ extern char* lbl_8063D6D8;
 extern char* lbl_8063D6E0;
 extern char lbl_8063D6E4[8];
 extern char lbl_8063D6EC[8];
+extern s32 lbl_8063D6F4;
+
 
 extern u8 lbl_8063F31E;
 extern u8 lbl_8063F31F;
@@ -43,9 +45,15 @@ extern size_t lbl_8063F320;
 extern unkClass* lbl_8063F324;
 extern u32 lbl_8063F328;
 extern u32 lbl_8063F32C;
+
+extern void (*lbl_8063F330)(void);
+extern void (*lbl_8063F334)(void);
+
 extern gUnkClass4* lbl_8063F338;
 
 extern u8 lbl_804917F0[0x40];
+extern OSSemaphore lbl_80491830;
+extern DVDCommandBlock lbl_80491840;
 
 extern void* lbl_8063F600; // initialized in func_8022410C
 
@@ -231,7 +239,7 @@ void func_801DBFEC(s32 p1, DVDFileInfo* p2)
 }
 
 //static
-void lbl_801DC068(s32 p1, DVDFileInfo* p2)
+void func_801DC068(s32 p1, DVDFileInfo* p2)
 {
     if (lbl_8063F31F == 0) {
         unkClass* r3 = func_801DBF98(p2);
@@ -436,11 +444,84 @@ s32 func_801DC7DC(void)
     return (!lbl_8063F31E) ? -1 : DVDGetDriveStatus();
 }
 
+BOOL func_801DC7F8(unkClass* p1, s32 offset, void (*p3)(s32, void*))
+{
+    if (!lbl_8063F31E)
+        return FALSE;
+    func_801DC264();
+    if (!p1)
+        return FALSE;
+    p1->unk4.unk40 = p3;
+    return DVDSeekAsyncPrio(&p1->unk4, offset, &func_801DC068, 2) != 0;
+}
 
+//static
+void func_801DC888(s32 p1)
+{
+    switch (p1)
+    {
+        case -1:
+            lbl_8063F328 = 9;
+            break;
+        case 5:
+            lbl_8063F328 = 1;
+            break;
+        case 4:
+            lbl_8063F328 = 3;
+            break;
+        case 6:
+            lbl_8063F328 = 5;
+            break;
+        case 11:
+            lbl_8063F328 = 7;
+            break;
+        default:
+            break;
+    }
+}
 
+//static
+void func_801DC8E8(void)
+{
+    if (lbl_8063F330)
+        lbl_8063F330();
+}
 
+//static
+void func_801DC900(void)
+{
+    if (lbl_8063F334)
+        lbl_8063F334();
+}
 
+//static
+void func_801DC918(s32 p1, DVDCommandBlock*)
+{
+    lbl_8063D6F4 = p1;
+    OSSignalSemaphore(&lbl_80491830);
+}
 
+//static
+BOOL func_801DC928(void)
+{
+    BOOL r31 = OSDisableInterrupts();
+    OSRestoreInterrupts();
+    if (!r31)
+        return TRUE;
+    OSInitSemaphore(&lbl_80491830, 0);
+    lbl_8063D6F4 = -1;
+    if (!DVDCheckDiskAsync(&lbl_80491840, &func_801DC918))
+        lbl_8063D6F4 = 0;
+    if (lbl_8063D6F4 < 0)
+        OSWaitSemaphore(&lbl_80491830);
+    return lbl_8063D6F4 != 0;
+}
+
+//static
+func_801DC9CC(u32 p1, u32 p2)
+{
+    
+}
 
 
 

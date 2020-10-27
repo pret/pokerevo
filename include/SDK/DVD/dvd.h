@@ -13,9 +13,18 @@ typedef struct DVDDiskID
     u8 unk7;
 } DVDDiskID;
 
+typedef struct DVDCommandBlock
+{
+    u8 unk0[0x30];
+} DVDCommandBlock;
+
+typedef void (*DVDCBCallback)(s32 result, DVDCommandBlock* block);
+
 DVDDiskID* DVDGetCurrentDiskID(void);
 void DVDInit(void);
 s32 DVDGetDriveStatus(void);
+BOOL DVDCheckDiskAsync(DVDCommandBlock* block, DVDCBCallback callback);
+
 
 #ifdef __cplusplus
 }
