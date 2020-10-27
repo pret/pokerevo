@@ -13,7 +13,6 @@ typedef struct DVDDiskID
     u8 unk7;
 } DVDDiskID;
 
-
 DVDDiskID* DVDGetCurrentDiskID(void);
 void DVDInit(void);
 

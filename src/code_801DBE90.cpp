@@ -10,16 +10,6 @@
 
 namespace
 {
-    struct unkClass;
-    typedef void (*funcPtr)(u32, unkClass*);
-    
-    struct unkClass2
-    {
-        u8 unk0[0x40];
-        funcPtr unk40;
-        void* unk44; //data cache start addr to invalidate
-        u32 unk48; // data cache region size
-    };
     
     //TODO: header/source
     struct unkClass
@@ -27,7 +17,7 @@ namespace
         u8 unk0;
         u8 unk1;
         u8 unk2[0x2];
-        unkClass2 unk4;
+        DVDFileInfo unk4;
     };
     
    
@@ -53,7 +43,6 @@ extern size_t lbl_8063F320;
 extern unkClass* lbl_8063F324;
 extern u32 lbl_8063F328;
 extern u32 lbl_8063F32C;
-
 extern gUnkClass4* lbl_8063F338;
 
 extern u8 lbl_804917F0[0x40];
@@ -75,8 +64,14 @@ void func_8022408C(u32, const char*);
 u32 func_802245C4(void*);
 void func_80224588(void*);
 
+//static
+u32 func_801DCF74(gUnkClass4*, const char*, unkClass*);
+//static
+u32 func_801DCF48(gUnkClass4*, const char*);
+//static
+s32 func_801DD084(gUnkClass4* p1, unkClass* p2, void* addr, s32 length, s32 offset);
 
-
+void* func_801DD220(gUnkClass4*, unkClass*, void*, s32, s32);
     
     
     
@@ -179,7 +174,7 @@ void func_801DBF60(unkClass* p1)
 
 #ifdef NONMATCHING2
 //static
-unkClass* func_801DBF98(unkClass2* p1)
+unkClass* func_801DBF98(DVDFileInfo* p1)
 {
     unkClass* r4 = lbl_8063F324;
     size_t i = 0;
@@ -190,7 +185,7 @@ unkClass* func_801DBF98(unkClass2* p1)
     return 0;
 }
 #else
-asm unkClass* func_801DBF98(unkClass2* p1)
+asm unkClass* func_801DBF98(DVDFileInfo* p1)
 {
 /* 801DBF98 001D7BF8  80 AD A0 64 */	lwz r5, lbl_8063F324
 /* 801DBF9C 001D7BFC  38 C0 00 00 */	li r6, 0
@@ -221,7 +216,7 @@ lbl_801DBFE4:
 #endif
 
 //static
-void lbl_801DBFEC(u32 p1, unkClass2* p2)
+void func_801DBFEC(s32 p1, DVDFileInfo* p2)
 {
     if (lbl_8063F31F == 0) {
         unkClass* r31 = func_801DBF98(p2);
@@ -233,7 +228,7 @@ void lbl_801DBFEC(u32 p1, unkClass2* p2)
 }
 
 //static
-void lbl_801DC068(u32 p1, unkClass2* p2)
+void lbl_801DC068(s32 p1, DVDFileInfo* p2)
 {
     if (lbl_8063F31F == 0) {
         unkClass* r3 = func_801DBF98(p2);
@@ -308,9 +303,79 @@ void func_801DC264(void)
     }
 }
 
+// DVDOpen wrapper?
+unkClass* func_801DC2D0(const char* fileName)
+{
+    if (!lbl_8063F31E)
+        return NULL;
+    func_801DC264();
+    unkClass* r31 = func_801DBED0();
+    if (!r31)
+        return NULL;
+    if (lbl_8063F338 && func_801DCF74(lbl_8063F338, fileName, r31))
+        return r31;
+    if (!DVDOpen(fileName, &r31->unk4)) {
+        func_801DBF60(r31);
+        return NULL;
+    }
+    return r31;
+}
 
+// indicate whether fileName exists
+BOOL func_801DC380(const char* fileName)
+{
+    if (!lbl_8063F31E)
+        return FALSE;
+    if (lbl_8063F338 && func_801DCF48(lbl_8063F338, fileName))
+        return TRUE;
+    if (DVDConvertPathToEntrynum(fileName) == -1)
+        return FALSE;
+    return TRUE;
+}
 
+// DVDReadPrio wrapper
+s32 func_801DC3FC(unkClass* p1, void* addr, s32 length, s32 offset)
+{
+    if (!lbl_8063F31E)
+        return -1;
+    func_801DC264();
+    if (!p1)
+        return -1;
+    if ((u32)addr & 0x1F)
+        return -1;
+    if (length & 0x1F)
+        return -1;
+    if (offset & 0x3)
+        return -1;
+    
+    if (lbl_8063F338 && p1->unk1) {
+        s32 r3 = func_801DD084(lbl_8063F338, p1, addr, length, offset);
+        if (r3 > 0)
+            return r3;
+    }
+    return DVDReadPrio(&p1->unk4, addr, length, offset, 2);
+}
 
+BOOL func_801DC4F0(unkClass* p1, void* p2, s32 p3, s32 p4, void (*p5)(s32, void*))
+{
+    if (!lbl_8063F31E)
+        return FALSE;
+    func_801DC264();
+    if (!p1)
+        return FALSE;
+    p1->unk4.unk40 = p5;
+    if ((u32)p2 & 0x1F)
+        return FALSE;
+    if (p3 & 0x1F)
+        return FALSE;
+    if (p4 & 0x3)
+        return FALSE;
+    p1->unk4.unk44 = p2;
+    p1->unk4.unk48 = p3;
+    if (lbl_8063F338 && p1->unk1 && func_801DD220(lbl_8063F338, p1, p2, p3, p4))
+        return TRUE;
+    return DVDReadAsyncPrio(&p1->unk4, p2, p3, p4, &func_801DBFEC, 2) != 0;
+}
 
 
 
