@@ -46,7 +46,7 @@ extern unkClass* lbl_8063F324;
 extern u32 lbl_8063F328;
 extern u32 lbl_8063F32C;
 
-extern void (*lbl_8063F330)(void);
+extern void (*lbl_8063F330)(u32);
 extern void (*lbl_8063F334)(void);
 
 extern gUnkClass4* lbl_8063F338;
@@ -458,8 +458,7 @@ BOOL func_801DC7F8(unkClass* p1, s32 offset, void (*p3)(s32, void*))
 //static
 void func_801DC888(s32 p1)
 {
-    switch (p1)
-    {
+    switch (p1) {
         case -1:
             lbl_8063F328 = 9;
             break;
@@ -481,10 +480,10 @@ void func_801DC888(s32 p1)
 }
 
 //static
-void func_801DC8E8(void)
+void func_801DC8E8(u32 p1)
 {
     if (lbl_8063F330)
-        lbl_8063F330();
+        lbl_8063F330(p1);
 }
 
 //static
@@ -518,9 +517,82 @@ BOOL func_801DC928(void)
 }
 
 //static
-func_801DC9CC(u32 p1, u32 p2)
+void func_801DC9CC(u32 p1, u32)
 {
-    
+    s32 driveStatus = func_801DC7DC();
+    switch (lbl_8063F328) {
+        case 0:
+            func_801DC888(driveStatus);
+            break;
+        case 1:
+            func_801DC8E8(1);
+            lbl_8063F328 = 2;
+            break;
+        case 2:
+            if (driveStatus == 11) {
+                func_801DC900();
+                func_801DC8E8(4);
+                lbl_8063F328 = 8;
+            } else if (driveStatus != 5 && func_801DC928()) {
+                func_801DC900();
+                lbl_8063F328 = 0;
+            }
+            break;
+        case 3:
+            func_801DC8E8(2);
+            lbl_8063F328 = 4;
+            break;
+        case 4:
+            if (driveStatus == 11) {
+                func_801DC900();
+                func_801DC8E8(4);
+                lbl_8063F328 = 8;
+            } else if (driveStatus != 4 && func_801DC928()) {
+                func_801DC900();
+                lbl_8063F328 = 0;
+            }
+            break;
+        case 5:
+            func_801DC8E8(3);
+            lbl_8063F328 = 6;
+            break;
+        case 6:
+            if (driveStatus == 11) {
+                func_801DC900();
+                func_801DC8E8(4);
+                lbl_8063F328 = 8;
+            } else if (driveStatus != 6 && func_801DC928()) {
+                func_801DC900();
+                lbl_8063F328 = 0;
+            }
+            break;
+        case 7:
+            func_801DC8E8(4);
+            lbl_8063F328 = 8;
+            break;
+        case 8:
+            if (driveStatus == 5) {
+                func_801DC900();
+                func_801DC8E8(1);
+                lbl_8063F328 = 2;
+            } else if (driveStatus == 4) {
+                func_801DC900();
+                func_801DC8E8(2);
+                lbl_8063F328 = 4;
+            } else if ((driveStatus != 11 && func_801DC928()) || (u32)(driveStatus-4) <= 1) {
+                func_801DC900();
+                lbl_8063F328 = 0;
+            }
+            break;
+        case 9:
+            func_801DC8E8(5);
+            lbl_8063F328 = 10;
+            break;
+        case 10:
+            break;
+        default:
+            break;
+    }
 }
 
 
