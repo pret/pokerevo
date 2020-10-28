@@ -290,8 +290,8 @@ lbl_801DD27C:
 /* 801DD28C 001D8EEC  38 21 00 10 */	addi r1, r1, 0x10
 /* 801DD290 001D8EF0  4E 80 00 20 */	blr
 
-.global lbl_801DD294
-lbl_801DD294:
+.global func_801DD294
+func_801DD294:
 /* 801DD294 001D8EF4  94 21 FF 40 */	stwu r1, -0xc0(r1)
 /* 801DD298 001D8EF8  7C 08 02 A6 */	mflr r0
 /* 801DD29C 001D8EFC  90 01 00 C4 */	stw r0, 0xc4(r1)

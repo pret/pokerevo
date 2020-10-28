@@ -43,7 +43,7 @@ extern u8 lbl_8063F31E;
 extern u8 lbl_8063F31F;
 extern size_t lbl_8063F320;
 extern unkClass* lbl_8063F324;
-extern u32 lbl_8063F328;
+extern s32 lbl_8063F328;
 extern u32 lbl_8063F32C;
 
 extern void (*lbl_8063F330)(u32);
@@ -84,7 +84,9 @@ void* func_801DD220(gUnkClass4*, unkClass*, void*, s32, s32);
 u32 func_801DCFE4(gUnkClass4*, unkClass*);
 
 u32 func_801DD03C(gUnkClass4*, unkClass*, u32*);
-    
+
+BOOL func_801DD294(gUnkClass4*, const char*, u32);
+
     
     
 // TODO: return type
@@ -425,9 +427,10 @@ BOOL func_801DC6C4(unkClass* p1)
     return result;
 }
 
-u32 func_801DC760(unkClass* p1)
+// get file size
+size_t func_801DC760(unkClass* p1)
 {
-    u32 sp8; // TODO: determine type
+    size_t sp8;
     if (!lbl_8063F31E)
         return 0;
     func_801DC264();
@@ -592,6 +595,86 @@ void func_801DC9CC(u32 p1, u32)
             break;
         default:
             break;
+    }
+}
+
+// Load entire file contents into buffer
+u8* func_801DCBC0(const char* fileName, u32* fileSz)
+{
+    if (!func_801DC380(fileName))
+        return NULL;
+    unkClass* fp = func_801DC2D0(fileName);
+    if (!fp)
+        return NULL;
+    size_t size = (func_801DC760(fp) + 0x1F) & ~0x1F;
+    if (!size)
+        return NULL;
+    u8* buf = (u8*)func_801DAD64(size);
+    if (!buf)
+        return NULL;
+    size_t bytesRead = func_801DC3FC(fp, buf, size, 0);
+    if (bytesRead != size) {
+        func_801DAEA4(buf);
+        return NULL;
+    }
+    func_801DC6C4(fp);
+    if (fileSz)
+        *fileSz = size;
+    return buf;
+}
+
+void* func_801DCCAC(const char* fileName, MEMHeapHandle heap, u32* fileSz)
+{
+    if (!func_801DC380(fileName))
+        return NULL;
+    unkClass* fp = func_801DC2D0(fileName);
+    if (!fp)
+        return NULL;
+    size_t size = (func_801DC760(fp) + 0x1F) & ~0x1F;
+    if (!size)
+        return NULL;
+    u8* buf = (u8*)func_801DAC94(heap, size);
+    if (!buf)
+        return NULL;
+    size_t bytesRead = func_801DC3FC(fp, buf, size, 0);
+    if (bytesRead != size) {
+        func_801DAD48(heap, buf);
+        return NULL;
+    }
+    func_801DC6C4(fp);
+    if (fileSz)
+        *fileSz = size;
+    return buf;
+}
+
+u32 func_801DCD94(const char* fileName)
+{
+    if (lbl_8063F338)
+        return func_801DD294(lbl_8063F338, fileName, 0);
+    return 0;
+}
+
+void func_801DCDB8(void (*p1)(u32), void (*p2)(void))
+{
+    lbl_8063F330 = p1;
+    lbl_8063F334 = p2;
+}
+
+u32 func_801DCDC4(void)
+{
+    switch (lbl_8063F328) {
+        case 1: case 2:
+            return 1;
+        case 3: case 4:
+            return 2;
+        case 5: case 6:
+            return 3;
+        case 7: case 8:
+            return 4;
+        case 9: case 10:
+            return 5;
+        case 0: default:
+            return 0;
     }
 }
 

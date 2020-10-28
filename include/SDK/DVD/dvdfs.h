@@ -12,7 +12,7 @@ typedef void (*DVDCallback)(s32 result, DVDFileInfo* fileInfo);
 struct DVDFileInfo
 {
     u8 unk0[0x34];
-    u32 unk34;
+    size_t unk34;
     u8 unk38[0x8];
     void (*unk40)(s32, void*); // TODO: not a DVDFileCallback bc an unkClass* is passed as 2nd param?
     void* unk44; //data cache start addr to invalidate
