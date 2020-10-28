@@ -8,7 +8,9 @@ EXTABINDEX_O_FILES :=                                             \
 #todo fix with makefile implementation
 SPLIT_O_FILES := 						                          \
     $(BUILD_DIR)/asm/ctors.o						              \
+    $(BUILD_DIR)/asm/data.o					     	              \
     $(BUILD_DIR)/asm/bss.o		    				              \
+    $(BUILD_DIR)/asm/sdata.o		     			              \
     $(BUILD_DIR)/asm/sbss.o						                  \
     $(BUILD_DIR)/asm/code_80006980.o							  \
 	$(BUILD_DIR)/asm/code_8000748C.o							  \
@@ -222,8 +224,9 @@ SPLIT_O_FILES := 						                          \
 	$(BUILD_DIR)/src/code_801DB040.o                                   \
 	$(BUILD_DIR)/src/code_801DB81C.o                                   \
 	$(BUILD_DIR)/src/code_801DBB3C.o                                   \
-	$(BUILD_DIR)/asm/code_801DBE90.o                                   \
-	$(BUILD_DIR)/asm/code_801DCE6C.o                                   \
+	$(BUILD_DIR)/src/code_801DBE90.o                                   \
+	$(BUILD_DIR)/src/code_801DCE6C.o                                   \
+	$(BUILD_DIR)/asm/code_801DCE6C_asm.o                                   \
 	$(BUILD_DIR)/asm/code_801DD5C8.o                                   \
 	$(BUILD_DIR)/asm/code_801DD8C0.o                                   \
 	$(BUILD_DIR)/asm/code_801DDF78.o                                   \
@@ -816,7 +819,9 @@ SPLIT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/code_803D9208.o \
 	$(BUILD_DIR)/asm/text_11_2.o \
 	$(BUILD_DIR)/asm/ctors_2.o \
+	$(BUILD_DIR)/asm/data_2.o \
 	$(BUILD_DIR)/asm/bss_2.o \
+	$(BUILD_DIR)/asm/sdata_2.o \
 	$(BUILD_DIR)/asm/sbss_2.o \
 
 

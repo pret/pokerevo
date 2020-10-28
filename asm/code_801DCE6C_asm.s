@@ -2,33 +2,6 @@
 
 .section .text, "ax"  # 0x80006980 - 0x803E1E60
 
-.global func_801DCE6C
-func_801DCE6C:
-/* 801DCE6C 001D8ACC  38 63 00 07 */	addi r3, r3, 7
-/* 801DCE70 001D8AD0  4E 80 00 20 */	blr
-
-.global func_801DCE74
-func_801DCE74:
-/* 801DCE74 001D8AD4  38 63 00 02 */	addi r3, r3, 2
-/* 801DCE78 001D8AD8  4E 80 00 20 */	blr
-
-.global func_801DCE7C
-func_801DCE7C:
-/* 801DCE7C 001D8ADC  94 21 FF F0 */	stwu r1, -0x10(r1)
-/* 801DCE80 001D8AE0  7C 08 02 A6 */	mflr r0
-/* 801DCE84 001D8AE4  38 80 00 00 */	li r4, 0
-/* 801DCE88 001D8AE8  38 A0 0C 80 */	li r5, 0xc80
-/* 801DCE8C 001D8AEC  90 01 00 14 */	stw r0, 0x14(r1)
-/* 801DCE90 001D8AF0  93 E1 00 0C */	stw r31, 0xc(r1)
-/* 801DCE94 001D8AF4  7C 7F 1B 78 */	mr r31, r3
-/* 801DCE98 001D8AF8  4B E2 72 6D */	bl memset
-/* 801DCE9C 001D8AFC  7F E3 FB 78 */	mr r3, r31
-/* 801DCEA0 001D8B00  83 E1 00 0C */	lwz r31, 0xc(r1)
-/* 801DCEA4 001D8B04  80 01 00 14 */	lwz r0, 0x14(r1)
-/* 801DCEA8 001D8B08  7C 08 03 A6 */	mtlr r0
-/* 801DCEAC 001D8B0C  38 21 00 10 */	addi r1, r1, 0x10
-/* 801DCEB0 001D8B10  4E 80 00 20 */	blr
-
 .global func_801DCEB4
 func_801DCEB4:
 /* 801DCEB4 001D8B14  94 21 FF E0 */	stwu r1, -0x20(r1)
@@ -317,8 +290,8 @@ lbl_801DD27C:
 /* 801DD28C 001D8EEC  38 21 00 10 */	addi r1, r1, 0x10
 /* 801DD290 001D8EF0  4E 80 00 20 */	blr
 
-.global lbl_801DD294
-lbl_801DD294:
+.global func_801DD294
+func_801DD294:
 /* 801DD294 001D8EF4  94 21 FF 40 */	stwu r1, -0xc0(r1)
 /* 801DD298 001D8EF8  7C 08 02 A6 */	mflr r0
 /* 801DD29C 001D8EFC  90 01 00 C4 */	stw r0, 0xc4(r1)

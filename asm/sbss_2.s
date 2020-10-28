@@ -1,38 +1,8 @@
 .section .sbss, "wa"  # 0x80474F00 - 0x80643050
 
-.global lbl_8063F316
-lbl_8063F316:
-	.skip 0x2
-.global lbl_8063F318
-lbl_8063F318:
-	.skip 0x6
-.global lbl_8063F31E
-lbl_8063F31E:
-	.skip 0x1
-.global lbl_8063F31F
-lbl_8063F31F:
-	.skip 0x1
-.global lbl_8063F320
-lbl_8063F320:
+.global lbl_8063F33C
+lbl_8063F33C:
 	.skip 0x4
-.global lbl_8063F324
-lbl_8063F324:
-	.skip 0x4
-.global lbl_8063F328
-lbl_8063F328:
-	.skip 0x4
-.global lbl_8063F32C
-lbl_8063F32C:
-	.skip 0x4
-.global lbl_8063F330
-lbl_8063F330:
-	.skip 0x4
-.global lbl_8063F334
-lbl_8063F334:
-	.skip 0x4
-.global lbl_8063F338
-lbl_8063F338:
-	.skip 0x8
 .global lbl_8063F340
 lbl_8063F340:
 	.skip 0x8

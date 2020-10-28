@@ -7,6 +7,8 @@ extern "C" {
 
 #include "SDK/OS/OSAlloc.h"
 #include "SDK/OS/OSCache.h"
+#include "SDK/OS/OSInterrupt.h"
+#include "SDK/OS/OSSemaphore.h"
 
 #ifdef __cplusplus
 }
