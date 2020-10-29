@@ -1,6 +1,5 @@
-#include "types.h"
 #include "ctorStruct.h"
-#include "SDK/os.h"
+#include <SDK/os.h>
 #include "code_801DB81C.h"
 
 namespace

@@ -1,6 +1,5 @@
-#include "types.h"
-#include "GameSpy/nonport.h"
-#include "GameSpy/hashtable.h"
+#include <DWC/gamespy/nonport.h>
+#include <DWC/gamespy/hashtable.h>
 
 HashTable *TableNew(u32 p1, s32 p2, HashFunction hf, CompareFunction cmp, DtorFunction dtor)
 {

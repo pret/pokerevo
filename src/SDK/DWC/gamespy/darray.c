@@ -1,12 +1,9 @@
-#include "types.h"
-#include "libstdc++/qsort.h"
-#include "GameSpy/nonport.h"
-#include "GameSpy/darray.h"
+#include <stdlib.h>
+#include <string.h>
+#include <DWC/gamespy/nonport.h>
+#include <DWC/gamespy/darray.h>
 
 #pragma auto_inline on
-
-extern void *memcpy(void *, const void *, u32);
-extern void *memmove(void *, const void *, u32);
 
 static inline void ArrayInsert(DArray *d, void *elem, s32 n)
 {

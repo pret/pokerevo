@@ -5,7 +5,8 @@
 extern "C" {
 #endif
 
-#include "SDK/NAND/NANDCore.h"
+#include <SDK/NAND/NANDCore.h>
+#include <SDK/NAND/NANDOpenClose.h>
 
 #ifdef __cplusplus
 }

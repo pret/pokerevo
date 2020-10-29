@@ -1,10 +1,9 @@
-#include "types.h"
 #include "ctorStruct.h"
-#include "Runtime/__mem.h"
-#include "SDK/mem.h"
-#include "SDK/os.h"
-#include "SDK/dvd.h"
-#include "SDK/nand.h"
+#include <string.h>
+#include <SDK/mem.h>
+#include <SDK/os.h>
+#include <SDK/dvd.h>
+#include <SDK/nand.h>
 #include "code_801DAAE0.h"
 #include "code_801DCE6C.h"
 #include "code_80223C54.h"

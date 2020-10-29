@@ -1,7 +1,6 @@
-#include "types.h"
 #include "ctorStruct.h"
-#include "Runtime/__mem.h"
-#include "SDK/mem.h"
+#include <string.h>
+#include <SDK/mem.h>
 #include "code_801DAAE0.h"
 
 namespace

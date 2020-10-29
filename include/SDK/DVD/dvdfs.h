@@ -5,6 +5,18 @@
 extern "C" {
 #endif
 
+// TODO: not a nested class, but a struct from the SDK. Referenced
+// by DVDFileInfo
+struct gUnkClass6
+{
+    u8 unk0;
+    u8 unk1;
+    char unk2[0x5];
+    char unk7[0x41];
+    NANDFileInfo unk48;
+    u8 unkD3[0xBD];
+};
+
 typedef struct DVDFileInfo DVDFileInfo;
 
 typedef void (*DVDCallback)(s32 result, DVDFileInfo* fileInfo);
@@ -13,7 +25,8 @@ struct DVDFileInfo
 {
     u8 unk0[0x34];
     size_t unk34;
-    u8 unk38[0x8];
+    u8 unk38[0x4];
+    gUnkClass6* unk3C; // TODO: determine type
     void (*unk40)(s32, void*);
     void* unk44;
     u32 unk48;
