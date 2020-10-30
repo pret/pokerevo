@@ -5,12 +5,10 @@
 extern "C" {
 #endif
 
-typedef struct NANDFileInfo
-{
-    u8 unk0[0x8B]; // TODO: determine actual size
-} NANDFileInfo;
+#include <SDK/NAND/nand.h>
 
 s32 NANDOpen(const char* path, NANDFileInfo* info, u8 accType);
+s32 NANDClose(NANDFileInfo* info);
 
 #ifdef __cplusplus
 }
