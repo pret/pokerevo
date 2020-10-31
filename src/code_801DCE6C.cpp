@@ -144,15 +144,18 @@ BOOL func_801DD220(gUnkClass4*, gUnkClass5* fp, void*, u32, s32 offset)
 #ifdef NONMATCHING
 BOOL func_801DD294(gUnkClass4 *p1, const char *fileName, s32)
 {
-    gUnkClass6 *r29;
-    size_t fileSz;
+    // intended register -> actual register
+                        // p1: r24 -> r25
+                        // fileName: r25 -> r24
+    gUnkClass6 *r29; 
+    //size_t fileSz; // r24 -> r28
     NANDFileInfo nandInfo;
-    gUnkClass5 *fp;
+    gUnkClass5 *fp; // r28 -> r27
     size_t i;
-    void *buffer;
-    BOOL flag;
+    void *buffer; // r27 -> r26
+    BOOL flag; // r26 -> r25
     s32 createResult;
-    size_t currOffset;
+    size_t currOffset; // r25 -> r24
     size_t maxLength;
     size_t length;
     s32 readResult;
@@ -180,7 +183,7 @@ BOOL func_801DD294(gUnkClass4 *p1, const char *fileName, s32)
         return FALSE;
 
 
-    fileSz = (func_801DC760(fp) + 0x1F) & (~0x1F);
+    size_t fileSz = (func_801DC760(fp) + 0x1F) & (~0x1F);
     if (0 == fileSz)
         return FALSE;
 

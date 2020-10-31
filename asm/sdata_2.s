@@ -4,7 +4,7 @@
 
 .global lbl_8063D6FE
 lbl_8063D6FE:
-	.incbin "baserom.dol", 0x471438, 0x6A
+	.incbin "baserom.dol", 0x47143E, 0x6A
 .global lbl_8063D768
 lbl_8063D768:
 	.incbin "baserom.dol", 0x4714A8, 0x38
