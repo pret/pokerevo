@@ -149,13 +149,13 @@ BOOL func_801DD294(gUnkClass4* p1, const char* fileName, s32)
     // check if already open
     if (func_801DCEB4(p1, fileName))
         return TRUE;
-    // TODO: unroll this loop
-    gUnkClass6* r29 = p1->arr - 1;
+
+    gUnkClass6* r29;
     size_t i;
     for (i = 0; i < 8; i++) {
-        r29++;
+        r29 = p1->arr + i;
         if (!p1->arr[i].unk0) {
-            r29 = &p1->arr[i];
+            r29 = p1->arr + i;
             break;
         }
     }
