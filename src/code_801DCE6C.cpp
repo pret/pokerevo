@@ -11,8 +11,6 @@
 
 static ctorStruct gUnk8063F340(1, 4, 0);
 
-extern "C" {
-
 const char* gUnkClass6::func_801DCE6C(void) const
 {
     return unk2 + sizeof("/tmp/")-1;
@@ -211,5 +209,3 @@ BOOL gUnkClass4::func_801DD294(const char *fileName, s32)
         return TRUE;
     }
 }
-
-} //extern "C"

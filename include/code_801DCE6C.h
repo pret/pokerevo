@@ -1,10 +1,6 @@
 #ifndef POKEREVO_CODE_801DCE6C_H
 #define POKEREVO_CODE_801DCE6C_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #include <SDK/nand.h>
 
 struct gUnkClass5;
@@ -38,9 +34,5 @@ public:
     BOOL func_801DD220(gUnkClass5* fp, void*, u32, s32 offset) const;
     BOOL func_801DD294(const char *fileName, s32);
 };
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif //POKEREVO_CODE_801DCE6C_H
