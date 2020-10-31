@@ -1,5 +1,5 @@
-#ifndef POKEREVO_CPLUSLIB_H
-#define POKEREVO_CPLUSLIB_H
+#ifndef POKEREVO_MWCPLUSLIB_H
+#define POKEREVO_MWCPLUSLIB_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -11,4 +11,4 @@ void __ptmf_scall(...);
 }
 #endif
 
-#endif //POKEREVO_CPLUSLIB_H
+#endif //POKEREVO_MWCPLUSLIB_H

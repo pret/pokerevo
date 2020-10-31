@@ -1,6 +1,5 @@
-#include "CPlusLib.h"
-
 #pragma internal on
+#include <Runtime/MWCPlusLib.h>
 
 asm void __ptmf_scall(...)
 {

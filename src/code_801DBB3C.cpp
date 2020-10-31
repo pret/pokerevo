@@ -1,6 +1,5 @@
-#include "types.h"
 #include "ctorStruct.h"
-#include "Runtime/__mem.h"
+#include <string.h>
 #include "code_801DAAE0.h"
 #include "code_801DB040.h"
 #include "code_801DBB3C.h"

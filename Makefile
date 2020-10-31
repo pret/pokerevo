@@ -35,9 +35,9 @@ SRC_DIRS := src src/SDK/OS src/SDK/EXI src/SDK/SI src/SDK/DB src/SDK/VI src/SDK/
 			src/SDK/SC src/SDK/WENC src/SDK/ARC src/SDK/NCD src/SDK/WD src/SDK/NTR src/SDK/MP src/SDK/MPDL \
 			src/SDK/NET src/SDK/NHTTP src/SDK/SSL src/SDK/NWC24 src/SDK/VF src/SDK/DWC/dwc_common src/SDK/DWC/dwc_ghttp \
 			src/SDK/DWC/dwc_lanmatch src/SDK/DWC/dwc_match src/SDK/DWC/dwc_nonport src/SDK/DWC/dwcsec_account \
-			src/SDK/DWC/dwcsec_auth src/SDK/DWC/dwcsec_nas src/SDK/SSL src/SDK/SO src/SDK/base src/SDK/HBM src/MSL_C/MSL_Common src/MSL_C/MSL_Common_Embedded \
+			src/SDK/DWC/dwcsec_auth src/SDK/DWC/dwcsec_nas asm/SDK/DWC/gamespy src/SDK/SSL src/SDK/SO src/SDK/base src/SDK/HBM src/MSL_C/MSL_Common src/MSL_C/MSL_Common_Embedded \
             src/MSL_C/MSL_Common_Embedded/Math src/MSL_C/PPC_EABI src/Runtime \
-            src/MetroTRK src/GameSpy src/nw4r/db src/nw4r/ut src/nw4r/snd src/nw4r/ut/detail \
+            src/MetroTRK src/nw4r/db src/nw4r/ut src/nw4r/snd src/nw4r/ut/detail \
             src/nw4r/snd/detail src/nw4r/math src/nw4r/lyt src/nw4r/lyt/detail
 ASM_DIRS := asm asm/SDK/OS asm/SDK/EXI asm/SDK/SI asm/SDK/DB asm/SDK/VI asm/SDK/MTX \
             asm/SDK/GX asm/SDK/DVD asm/SDK/AI asm/SDK/AX asm/SDK/AXFX asm/SDK/MEM asm/SDK/MIX asm/SDK/DSP \
@@ -46,9 +46,9 @@ ASM_DIRS := asm asm/SDK/OS asm/SDK/EXI asm/SDK/SI asm/SDK/DB asm/SDK/VI asm/SDK/
 			asm/SDK/SC asm/SDK/WENC asm/SDK/ARC asm/SDK/NCD asm/SDK/WD asm/SDK/NTR asm/SDK/MP asm/SDK/MPDL \
 			asm/SDK/NET asm/SDK/NHTTP asm/SDK/SSL asm/SDK/NWC24 asm/SDK/VF asm/SDK/DWC/dwc_common asm/SDK/DWC/dwc_ghttp \
 			asm/SDK/DWC/dwc_lanmatch asm/SDK/DWC/dwc_match asm/SDK/DWC/dwc_nonport asm/SDK/DWC/dwcsec_account \
-			asm/SDK/DWC/dwcsec_auth asm/SDK/DWC/dwcsec_nas asm/SDK/SSL asm/SDK/SO asm/SDK/base asm/SDK/HBM asm/MSL_C/MSL_Common asm/MSL_C/MSL_Common_Embedded \
+			asm/SDK/DWC/dwcsec_auth asm/SDK/DWC/dwcsec_nas src/SDK/DWC/gamespy asm/SDK/SSL asm/SDK/SO asm/SDK/base asm/SDK/HBM asm/MSL_C/MSL_Common asm/MSL_C/MSL_Common_Embedded \
             asm/MSL_C/MSL_Common_Embedded/Math asm/MSL_C/PPC_EABI asm/Runtime \
-            asm/MetroTRK asm/GameSpy asm/nw4r/db asm/nw4r/ut asm/nw4r/snd asm/nw4r/ut/detail \
+            asm/MetroTRK asm/nw4r/db asm/nw4r/ut asm/nw4r/snd asm/nw4r/ut/detail \
             asm/nw4r/snd/detail asm/nw4r/math asm/nw4r/lyt asm/nw4r/lyt/detail
 
 # Inputs
@@ -87,8 +87,7 @@ PYTHON      := python3
 POSTPROC := tools/postprocess/postprocess.py
 
 # Options
-INCLUDES := -i . -I- -i include -i include/SDK -i include/libstdc++
-
+INCLUDES := -i . -I- -i include -i include/SDK -i include/MSL_C -include include/types.h
 ASFLAGS := -mgekko -I include
 LDFLAGS := -map $(MAP) -fp hard -nodefaults
 CFLAGS  := -Cpp_exceptions off -proc gekko -fp hard -O4,p -nodefaults -msgstyle gcc -ipa file $(INCLUDES) -W all
@@ -153,12 +152,10 @@ $(ELF): $(O_FILES) $(LDSCRIPT)
 $(BUILD_DIR)/%.o: %.s
 	$(AS) $(ASFLAGS) -o $@ $<
 # resolve escape sequences for C++ mangled names in the .strtab section (assembler workaround).
-	$(PYTHON) $(POSTPROC) $(PROCFLAGS) $@ -fsymbol-fixup
+	$(PYTHON) $(POSTPROC) $(PROCFLAGS) $@
 
 $(BUILD_DIR)/%.o: %.cpp
 	$(CC) $(CFLAGS) -lang c++ -c -o $@ $<
 
 $(BUILD_DIR)/%.o: %.c
 	$(CC) $(CFLAGS) -lang c99 -c -o $@ $<
-
-#	$(PYTHON) $(POSTPROC) $(PROCFLAGS) $@

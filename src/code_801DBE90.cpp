@@ -1,10 +1,9 @@
-#include "types.h"
 #include "ctorStruct.h"
-#include "Runtime/__mem.h"
-#include "SDK/mem.h"
-#include "SDK/os.h"
-#include "SDK/dvd.h"
-#include "SDK/nand.h"
+#include <string.h>
+#include <SDK/mem.h>
+#include <SDK/os.h>
+#include <SDK/dvd.h>
+#include <SDK/nand.h>
 #include "code_801DAAE0.h"
 #include "code_801DCE6C.h"
 #include "code_80223C54.h"
@@ -58,7 +57,7 @@ static void func_801DBEA0(void)
         gUnk8063F324[i].unk0 = 0;
 }
 
-static gUnkClass5 *func_801DBED0(void)
+static gUnkClass5* func_801DBED0(void)
 {
     BOOL enable = OSDisableInterrupts();
     gUnkClass5* r31 = NULL;
@@ -95,9 +94,9 @@ static void func_801DBFEC(s32 p1, DVDFileInfo* p2)
 {
     if (gUnk8063F31F == 0) {
         gUnkClass5* r31 = func_801DBF98(p2);
-        if (r31 && r31->unk4.unk40) {
-            DCInvalidateRange(r31->unk4.unk44, r31->unk4.unk48);
-            r31->unk4.unk40(p1, r31);
+        if (r31 && r31->unk44) {
+            DCInvalidateRange(r31->unk48, r31->unk4C);
+            r31->unk44(p1, r31);
         }
     }
 }
@@ -106,8 +105,8 @@ static void func_801DC068(s32 p1, DVDFileInfo* p2)
 {
     if (gUnk8063F31F == 0) {
         gUnkClass5* r3 = func_801DBF98(p2);
-        if (r3 && r3->unk4.unk40)
-            r3->unk4.unk40(p1, r3);
+        if (r3 && r3->unk44)
+            r3->unk44(p1, r3);
     }
 }
 
@@ -184,7 +183,7 @@ gUnkClass5* func_801DC2D0(const char* fileName)
     gUnkClass5* fp = func_801DBED0();
     if (!fp)
         return NULL;
-    if (gUnk8063F338 && func_801DCF74(gUnk8063F338, fileName, fp))
+    if (gUnk8063F338 && gUnk8063F338->func_801DCF74(fileName, fp))
         return fp;
     if (!DVDOpen(fileName, &fp->unk4)) {
         func_801DBF60(fp);
@@ -197,7 +196,7 @@ BOOL func_801DC380(const char* fileName)
 {
     if (!gUnk8063F31E)
         return FALSE;
-    if (gUnk8063F338 && func_801DCF48(gUnk8063F338, fileName))
+    if (gUnk8063F338 && gUnk8063F338->func_801DCF48(fileName))
         return TRUE;
     if (DVDConvertPathToEntrynum(fileName) == -1)
         return FALSE;
@@ -219,7 +218,7 @@ s32 func_801DC3FC(gUnkClass5* p1, void* addr, s32 length, s32 offset)
         return -1;
     
     if (gUnk8063F338 && p1->unk1) {
-        s32 r3 = func_801DD084(gUnk8063F338, p1, addr, length, offset);
+        s32 r3 = gUnk8063F338->func_801DD084(p1, addr, length, offset);
         if (r3 > 0)
             return r3;
     }
@@ -233,7 +232,7 @@ BOOL func_801DC4F0(gUnkClass5* p1, void* addr, u32 len, s32 offset, void (*p5)(s
     func_801DC264();
     if (!p1)
         return FALSE;
-    p1->unk4.unk40 = p5;
+    p1->unk44 = p5;
     if ((u32)addr & 0x1F)
         return FALSE;
     if (len & 0x1F)
@@ -241,9 +240,9 @@ BOOL func_801DC4F0(gUnkClass5* p1, void* addr, u32 len, s32 offset, void (*p5)(s
     if (offset & 0x3)
         return FALSE;
 
-    p1->unk4.unk44 = addr;
-    p1->unk4.unk48 = len;
-    if (gUnk8063F338 && p1->unk1 && func_801DD220(gUnk8063F338, p1, addr, len, offset))
+    p1->unk48 = addr;
+    p1->unk4C = len;
+    if (gUnk8063F338 && p1->unk1 && gUnk8063F338->func_801DD220(p1, addr, len, offset))
         return TRUE;
     return DVDReadAsyncPrio(&p1->unk4, addr, (s32)len, offset, &func_801DBFEC, 2) != 0;
 }
@@ -274,7 +273,7 @@ BOOL func_801DC6C4(gUnkClass5* p1)
     func_801DC264();
     if (!p1)
         return FALSE;
-    if (gUnk8063F338 && func_801DCFE4(gUnk8063F338, p1)) {
+    if (gUnk8063F338 && gUnk8063F338->func_801DCFE4(p1)) {
         func_801DBF60(p1);
         return TRUE;
     }
@@ -291,9 +290,9 @@ size_t func_801DC760(gUnkClass5* p1)
     func_801DC264();
     if (!p1)
         return 0;
-    if (gUnk8063F338 && func_801DD03C(gUnk8063F338, p1, &fileSz))
+    if (gUnk8063F338 && gUnk8063F338->func_801DD03C(p1, &fileSz))
         return fileSz;
-    return p1->unk4.unk34;
+    return DVDGetLength(&p1->unk4);
 }
 
 static s32 func_801DC7DC(void)
@@ -308,7 +307,7 @@ BOOL func_801DC7F8(gUnkClass5* p1, s32 offset, void (*p3)(s32, void*))
     func_801DC264();
     if (!p1)
         return FALSE;
-    p1->unk4.unk40 = p3;
+    p1->unk44 = p3;
     return DVDSeekAsyncPrio(&p1->unk4, offset, &func_801DC068, 2) != 0;
 }
 
@@ -471,7 +470,7 @@ u8* func_801DCBC0(const char* fileName, u32* fileSz)
     return buf;
 }
 
-void* func_801DCCAC(const char* fileName, MEMHeapHandle heap, u32* fileSz)
+u8* func_801DCCAC(const char* fileName, MEMHeapHandle heap, u32* fileSz)
 {
     if (!func_801DC380(fileName))
         return NULL;
@@ -498,7 +497,7 @@ void* func_801DCCAC(const char* fileName, MEMHeapHandle heap, u32* fileSz)
 BOOL func_801DCD94(const char* fileName)
 {
     if (gUnk8063F338)
-        return func_801DD294(gUnk8063F338, fileName, 0);
+        return gUnk8063F338->func_801DD294(fileName, 0);
     return 0;
 }
 
@@ -531,7 +530,7 @@ void func_801DCE38(void)
     gUnk8063F31F = 1;
 }
 
-u8 func_801DCE44(void)
+BOOL func_801DCE44(void)
 {
     return gUnk8063F31F;
 }

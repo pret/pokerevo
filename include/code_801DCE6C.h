@@ -1,31 +1,38 @@
 #ifndef POKEREVO_CODE_801DCE6C_H
 #define POKEREVO_CODE_801DCE6C_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include <SDK/nand.h>
 
-#include "code_801DBE90.h"
+struct gUnkClass5;
 
-struct gUnkClass4
+struct gUnkClass6
 {
-    u8 unk0[0x2];
-    char unk2[0x5];
-    char unk7[0xC79];
+    u8 unk0;
+    u8 unk1;
+    char unk2[0x46];
+    NANDFileInfo unk48;
+    NANDCommandBlock block;
+    u8 unkD8[0xB8];
     
-    gUnkClass4(void);
+    const char* func_801DCE6C(void) const;
+    const char* func_801DCE74(void) const;
 };
 
-u32 func_801DCF74(gUnkClass4*, const char*, gUnkClass5*);
-u32 func_801DCF48(gUnkClass4*, const char*);
-s32 func_801DD084(gUnkClass4* p1, gUnkClass5* p2, void* addr, s32 length, s32 offset);
-void* func_801DD220(gUnkClass4*, gUnkClass5*, void*, u32, s32);
-u32 func_801DCFE4(gUnkClass4*, gUnkClass5*);
-u32 func_801DD03C(gUnkClass4*, gUnkClass5*, u32*);
-BOOL func_801DD294(gUnkClass4*, const char*, s32);
-
-#ifdef __cplusplus
-}
-#endif
+class gUnkClass4
+{
+    enum { ArrLength_ = 8 };
+    gUnkClass6 arr_[ArrLength_];
+    
+    gUnkClass6* func_801DCEB4(const char* p2);
+public:
+    gUnkClass4(void);
+    BOOL func_801DCF48(const char* p2);
+    BOOL func_801DCF74(const char* fileName, gUnkClass5* fp);
+    BOOL func_801DCFE4(gUnkClass5* fp) const;
+    BOOL func_801DD03C(gUnkClass5* fp, u32* fileSz) const;
+    s32 func_801DD084(gUnkClass5* fp, void* addr, s32 length, s32 offset) const;
+    BOOL func_801DD220(gUnkClass5* fp, void*, u32, s32 offset) const;
+    BOOL func_801DD294(const char *fileName, s32);
+};
 
 #endif //POKEREVO_CODE_801DCE6C_H
