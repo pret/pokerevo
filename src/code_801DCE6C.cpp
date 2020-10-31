@@ -142,16 +142,25 @@ BOOL func_801DD220(gUnkClass4*, gUnkClass5* fp, void*, u32, s32 offset)
 // creates and opens a /tmp/ file in NAND and copies the specified file to it
 #define NONMATCHING
 #ifdef NONMATCHING
-BOOL func_801DD294(gUnkClass4* p1, const char* fileName, s32)
+BOOL func_801DD294(gUnkClass4 *p1, const char *fileName, s32)
 {
-    NANDFileInfo nandInfo; // sp+8
-    
-    // check if already open
+    gUnkClass6 *r29;
+    size_t fileSz;
+    NANDFileInfo nandInfo;
+    gUnkClass5 *fp;
+    size_t i;
+    void *buffer;
+    BOOL flag;
+    s32 createResult;
+    size_t currOffset;
+    size_t maxLength;
+    size_t length;
+    s32 readResult;
+    s32 bytesWritten;
+
     if (func_801DCEB4(p1, fileName))
         return TRUE;
 
-    gUnkClass6* r29;
-    size_t i;
     for (i = 0; i < 8; i++) {
         r29 = p1->arr + i;
         if (!p1->arr[i].unk0) {
@@ -162,65 +171,62 @@ BOOL func_801DD294(gUnkClass4* p1, const char* fileName, s32)
 
     if (!r29)
         return FALSE;
-    // check if file exists
+
     if (!func_801DC380(fileName))
         return FALSE;
-    // open file on DVD
-    gUnkClass5* fp = func_801DC2D0(fileName); //r28
+
+    fp = func_801DC2D0(fileName);
     if (!fp)
         return FALSE;
-    // get file size
-    size_t fileSz = (func_801DC760(fp) + 0x1F) & ~0x1F; // r24
-    if (fileSz == 0)
+
+
+    fileSz = (func_801DC760(fp) + 0x1F) & (~0x1F);
+    if (0 == fileSz)
         return FALSE;
-    // allocate some memory. TODO: type of result.
-    // used for buffered reads?
-    void* buffer = func_801DAC94(lbl_8063E8EC, 0x200000); // r27
+
+    buffer = func_801DAC94(lbl_8063E8EC, 0x200000);
     if (!buffer)
         return FALSE;
-    
+
     r29->unk0 = 1;
     r29->unk1 = 1;
     strcpy(r29->unk2, "/tmp/");
     strncat(r29->unk2, fileName, 12);
-    BOOL flag = FALSE; // r26
-    s32 createResult = NANDCreate(r29->unk2, 0x30, 0);
-    if (createResult == 0 || createResult == -6) {
+    flag = 0;
+    createResult = NANDCreate(r29->unk2, 0x30, 0);
+    if ((createResult == 0) || (createResult == (-6))) {
         if (NANDOpen(r29->unk2, &nandInfo, 3) == 0) {
-            u32 currOffset = 0; // r25
-            while (fileSz != 0) {
-                size_t length = 0x20000; // r30
-                if (fileSz < 0x20000) {
-                    length = fileSz;
-                }
-                // DVDReadPrio wrapper
-                s32 readResult = func_801DC5FC(fp, buffer, length, currOffset, 2);
+            currOffset = 0;
+            maxLength = 0x200000;
+            do {
+                length = (fileSz < maxLength) ? (fileSz) : (maxLength);
+                readResult = func_801DC5FC(fp, buffer, length, currOffset, 2);
                 if (readResult < 0) {
                     if (readResult == -1) {
                         while (TRUE)
                             func_80224588(lbl_8063F600);
                     }
-                    // free and close
                     func_801DAD48(lbl_8063E8EC, buffer);
                     func_801DC6C4(fp);
-                    return FALSE;
+                    return 0;
                 }
-                if (NANDWrite(&nandInfo, buffer, length) != length) {
+                bytesWritten = NANDWrite(&nandInfo, buffer, length);
+                if (bytesWritten != ((s32) length)) {
                     NANDClose(&nandInfo);
                     break;
                 }
-                fileSz -= length;
                 currOffset += length;
-            }
+            } while ((fileSz -= length) != 0);
             if (NANDClose(&nandInfo) == 0) {
-                flag = TRUE;
+                flag = 1;
                 r29->unk1 = 0;
             }
         }
     }
+
     if (buffer)
         func_801DAD48(lbl_8063E8EC, buffer);
-    
+
     func_801DC6C4(fp);
     if (flag) {
         r29->unk1 = 0;
