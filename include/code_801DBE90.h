@@ -7,19 +7,7 @@ extern "C" {
 
 #include "SDK/dvd.h"
 #include "SDK/mem.h"
-
-// TODO: nested class?
-// move to code_801DCE6C header?
-struct gUnkClass6
-{
-    u8 unk0;
-    u8 unk1;
-    char unk2[0x5];
-    char unk7[0x41];
-    NANDFileInfo unk48;
-    NANDCommandBlock block;
-    u8 unkD8[0xB8];
-};
+#include "code_801DCE6C.h"
 
 struct gUnkClass5
 {

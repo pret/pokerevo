@@ -226,7 +226,6 @@ SPLIT_O_FILES := 						                          \
 	$(BUILD_DIR)/src/code_801DBB3C.o                                   \
 	$(BUILD_DIR)/src/code_801DBE90.o                                   \
 	$(BUILD_DIR)/src/code_801DCE6C.o                                   \
-	$(BUILD_DIR)/asm/code_801DCE6C_asm.o                                   \
 	$(BUILD_DIR)/asm/code_801DD5C8.o                                   \
 	$(BUILD_DIR)/asm/code_801DD8C0.o                                   \
 	$(BUILD_DIR)/asm/code_801DDF78.o                                   \

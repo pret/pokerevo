@@ -57,7 +57,7 @@ static void func_801DBEA0(void)
         gUnk8063F324[i].unk0 = 0;
 }
 
-static gUnkClass5 *func_801DBED0(void)
+static gUnkClass5* func_801DBED0(void)
 {
     BOOL enable = OSDisableInterrupts();
     gUnkClass5* r31 = NULL;
@@ -183,7 +183,7 @@ gUnkClass5* func_801DC2D0(const char* fileName)
     gUnkClass5* fp = func_801DBED0();
     if (!fp)
         return NULL;
-    if (gUnk8063F338 && func_801DCF74(gUnk8063F338, fileName, fp))
+    if (gUnk8063F338 && gUnk8063F338->func_801DCF74(fileName, fp))
         return fp;
     if (!DVDOpen(fileName, &fp->unk4)) {
         func_801DBF60(fp);
@@ -196,7 +196,7 @@ BOOL func_801DC380(const char* fileName)
 {
     if (!gUnk8063F31E)
         return FALSE;
-    if (gUnk8063F338 && func_801DCF48(gUnk8063F338, fileName))
+    if (gUnk8063F338 && gUnk8063F338->func_801DCF48(fileName))
         return TRUE;
     if (DVDConvertPathToEntrynum(fileName) == -1)
         return FALSE;
@@ -218,7 +218,7 @@ s32 func_801DC3FC(gUnkClass5* p1, void* addr, s32 length, s32 offset)
         return -1;
     
     if (gUnk8063F338 && p1->unk1) {
-        s32 r3 = func_801DD084(gUnk8063F338, p1, addr, length, offset);
+        s32 r3 = gUnk8063F338->func_801DD084(p1, addr, length, offset);
         if (r3 > 0)
             return r3;
     }
@@ -242,7 +242,7 @@ BOOL func_801DC4F0(gUnkClass5* p1, void* addr, u32 len, s32 offset, void (*p5)(s
 
     p1->unk48 = addr;
     p1->unk4C = len;
-    if (gUnk8063F338 && p1->unk1 && func_801DD220(gUnk8063F338, p1, addr, len, offset))
+    if (gUnk8063F338 && p1->unk1 && gUnk8063F338->func_801DD220(p1, addr, len, offset))
         return TRUE;
     return DVDReadAsyncPrio(&p1->unk4, addr, (s32)len, offset, &func_801DBFEC, 2) != 0;
 }
@@ -273,7 +273,7 @@ BOOL func_801DC6C4(gUnkClass5* p1)
     func_801DC264();
     if (!p1)
         return FALSE;
-    if (gUnk8063F338 && func_801DCFE4(gUnk8063F338, p1)) {
+    if (gUnk8063F338 && gUnk8063F338->func_801DCFE4(p1)) {
         func_801DBF60(p1);
         return TRUE;
     }
@@ -290,7 +290,7 @@ size_t func_801DC760(gUnkClass5* p1)
     func_801DC264();
     if (!p1)
         return 0;
-    if (gUnk8063F338 && func_801DD03C(gUnk8063F338, p1, &fileSz))
+    if (gUnk8063F338 && gUnk8063F338->func_801DD03C(p1, &fileSz))
         return fileSz;
     return DVDGetLength(&p1->unk4);
 }
@@ -497,7 +497,7 @@ u8* func_801DCCAC(const char* fileName, MEMHeapHandle heap, u32* fileSz)
 BOOL func_801DCD94(const char* fileName)
 {
     if (gUnk8063F338)
-        return func_801DD294(gUnk8063F338, fileName, 0);
+        return gUnk8063F338->func_801DD294(fileName, 0);
     return 0;
 }
 

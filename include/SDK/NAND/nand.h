@@ -5,13 +5,13 @@
 extern "C" {
 #endif
 
-// TODO: size >= 0x8B
+// NOTE: size >= 0x8B, putting 0x8C for now
 typedef struct NANDFileInfo
 {
     u8 unk0[0x8C]; 
 } NANDFileInfo;
 
-// TODO: no idea of size yet
+// TODO: placeholder size
 typedef struct NANDCommandBlock
 {
     u8 unk0[0x4];
