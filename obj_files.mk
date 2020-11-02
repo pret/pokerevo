@@ -12,6 +12,7 @@ SPLIT_O_FILES := 						                          \
     $(BUILD_DIR)/asm/bss.o		    				              \
     $(BUILD_DIR)/asm/sdata.o		     			              \
     $(BUILD_DIR)/asm/sbss.o						                  \
+    $(BUILD_DIR)/asm/sdata2.o		     			              \
     $(BUILD_DIR)/asm/code_80006980.o							  \
 	$(BUILD_DIR)/asm/code_8000748C.o							  \
 	$(BUILD_DIR)/asm/code_80007940.o							  \
@@ -226,7 +227,7 @@ SPLIT_O_FILES := 						                          \
 	$(BUILD_DIR)/src/code_801DBB3C.o                                   \
 	$(BUILD_DIR)/src/code_801DBE90.o                                   \
 	$(BUILD_DIR)/src/code_801DCE6C.o                                   \
-	$(BUILD_DIR)/asm/code_801DD5C8.o                                   \
+	$(BUILD_DIR)/src/code_801DD5C8.o                                   \
 	$(BUILD_DIR)/asm/code_801DD8C0.o                                   \
 	$(BUILD_DIR)/asm/code_801DDF78.o                                   \
 	$(BUILD_DIR)/asm/code_801DF040.o                                   \
@@ -821,7 +822,8 @@ SPLIT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/data_2.o \
 	$(BUILD_DIR)/asm/bss_2.o \
 	$(BUILD_DIR)/asm/sdata_2.o \
-	$(BUILD_DIR)/asm/sbss_2.o \
+	$(BUILD_DIR)/asm/sbss_2.o  \
+    $(BUILD_DIR)/asm/sdata2_2.o
 
 
 DTORS_O_FILES :=                                                  \
@@ -832,12 +834,6 @@ RODATA_O_FILES :=                                                 \
 
 DATA_O_FILES :=                                                   \
     $(BUILD_DIR)/asm/data.o
-
-SDATA_O_FILES :=                                                  \
-    $(BUILD_DIR)/asm/sdata.o
-
-SDATA2_O_FILES :=                                                 \
-    $(BUILD_DIR)/asm/sdata2.o
 
 SBSS2_O_FILES :=                                                 \
     $(BUILD_DIR)/asm/sbss2.o
