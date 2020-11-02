@@ -3,6 +3,9 @@
 
 static ctorStruct gUnk8063F348(1, 4, 0);
 
+// gUnkClass7.cpp
+// TODO: convert to C++ member functions?
+
 extern "C" {
 
 void func_801DD5C8(gUnkClass7* p1, float p2)
@@ -69,7 +72,7 @@ void func_801DD5C8(gUnkClass7* p1, float p2)
     p1->unk6 |= 0x2;
 }
 
-void func_801DD7FC(gUnkClass7* p1, u32 p2, u32 p3)
+void func_801DD7FC(gUnkClass7* p1, void* p2, u32 p3)
 {
     if (!p1->unk0 || !(p1->unk6 & 0x2))
         return;

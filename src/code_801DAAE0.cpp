@@ -98,6 +98,7 @@ u16 func_801DAC90(MEMHeapHandle heap, u16 groupID)
     return MEMSetGroupIDForExpHeap(heap, groupID);
 }
 
+// "new" used in combination with func_801DAD48
 void* func_801DAC94(MEMHeapHandle heap, u32 size)
 {
     return MEMAllocFromExpHeapEx(heap, size, 32);
@@ -132,6 +133,8 @@ static BOOL func_801DAD1C(MEMHeapHandle heap, void* memBlock, u32 size)
     return MEMResizeForMBlockExpHeap(heap, memBlock, size) != 0;
 }
 
+// TODO: another "delete" that seems to be called in some destructors
+// see func_8016E5C0 for a destructor that calls both this and operator delete
 void func_801DAD48(MEMHeapHandle heap, void* memBlock)
 {
     if (memBlock)

@@ -218,8 +218,8 @@ SPLIT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/MetroTRK/main.o                                       \
 	$(BUILD_DIR)/asm/MetroTRK/CircleBuffer.o                                       \
 	$(BUILD_DIR)/asm/MetroTRK/MWCriticalSection_gc.o                                       \
-	$(BUILD_DIR)/asm/SDK/NdevExi2A/DebuggerDriver.o                                       \
-	$(BUILD_DIR)/asm/SDK/NdevExi2A/exi2.o                                       \
+	$(BUILD_DIR)/asm/NdevExi2A/DebuggerDriver.o                                       \
+	$(BUILD_DIR)/asm/NdevExi2A/exi2.o                                       \
 	$(BUILD_DIR)/src/code_801DAA30.o                                   \
 	$(BUILD_DIR)/src/code_801DAAE0.o                                   \
 	$(BUILD_DIR)/src/code_801DB040.o                                   \
@@ -228,7 +228,8 @@ SPLIT_O_FILES := 						                          \
 	$(BUILD_DIR)/src/code_801DBE90.o                                   \
 	$(BUILD_DIR)/src/code_801DCE6C.o                                   \
 	$(BUILD_DIR)/src/code_801DD5C8.o                                   \
-	$(BUILD_DIR)/asm/code_801DD8C0.o                                   \
+	$(BUILD_DIR)/src/code_801DD8C0.o                                   \
+	$(BUILD_DIR)/asm/code_801DD8C0_asm.o                                   \
 	$(BUILD_DIR)/asm/code_801DDF78.o                                   \
 	$(BUILD_DIR)/asm/code_801DF040.o                                   \
 	$(BUILD_DIR)/asm/code_801E07E8.o                                   \

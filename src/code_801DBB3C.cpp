@@ -44,6 +44,7 @@ static void func_801DBB48(gUnkClass2 *p1, size_t nodes, size_t size)
     r8->unk0 = 0;
 }
 
+// Allocate linked list node from free store
 gUnkClass1* func_801DBC58(gUnkClass2* p1)
 {
     gUnkClass3* r31 = p1->unk18;
@@ -53,6 +54,8 @@ gUnkClass1* func_801DBC58(gUnkClass2* p1)
         p1->unk18 = r31->unk0;
         goto passCheck;
     }
+
+failCheck:
     func_801DBB44(r30);
     return NULL;
 passCheck:
@@ -63,6 +66,7 @@ passCheck:
     return &r31->unk4;
 }
 
+// Return linked list node to free store
 void func_801DBD00(gUnkClass2* p1, gUnkClass1* p2)
 {
     u32 r31;
