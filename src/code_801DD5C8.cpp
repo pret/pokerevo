@@ -1,36 +1,5 @@
 #include "ctorStruct.h"
-
-namespace
-{
-    struct gUnkClass9;
-    
-    typedef void (*FuncPtr)(u32, gUnkClass9*, u32, float);
-    
-    // TODO: internal?
-    struct gUnkClass9
-    {
-        u8 pad[0xC];
-        FuncPtr unkC;
-    };
-
-    // TODO: internal?
-    struct gUnkClass8
-    {
-        u8 pad[0x2];
-        u16 unk2;
-        gUnkClass9* unk4;
-        float unk8;
-    };
-}
-
-struct gUnkClass7
-{
-    gUnkClass8* unk0;
-    u16 unk4;
-    u16 unk6;
-    float unk8;
-    float unkC;
-};
+#include "code_801DD5C8.h"
 
 static ctorStruct gUnk8063F348(1, 4, 0);
 
