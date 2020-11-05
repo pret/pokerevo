@@ -134,7 +134,7 @@ static BOOL func_801DAD1C(MEMHeapHandle heap, void* memBlock, u32 size)
 }
 
 // TODO: another "delete" that seems to be called in some destructors
-// see func_8016E5C0 for a destructor that calls both this and operator delete
+// see func_8016E5C0 for a destructor that calls both this and global operator delete
 void func_801DAD48(MEMHeapHandle heap, void* memBlock)
 {
     if (memBlock)
