@@ -14,6 +14,7 @@ struct gUnkClass9
     void (*unkC)(void*, gUnkClass9*, u32, float); // TODO: identify 1st parameter
 };
 
+// TODO: linked list?
 // size >= 0xC
 struct gUnkClass8
 {
