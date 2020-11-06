@@ -14,20 +14,20 @@ struct gUnkClass9
     void (*unkC)(void*, gUnkClass9*, u32, float); // TODO: identify 1st parameter
 };
 
-// TODO: linked list?
+// linked list node
 // size >= 0xC
 struct gUnkClass8
 {
-    u16 unk0;         // TODO: this is a guess
+    u16 unk0; // id
     u16 unk2;
     gUnkClass9* unk4;
     float unk8;
-    gUnkClass8* next; // TODO: this is a guess
+    gUnkClass8* next;
 };
 
 struct gUnkClass7
 {
-    gUnkClass8* unk0;
+    gUnkClass8* unk0; // linked list head
     u16 unk4;
     u16 unk6;
     float unk8;

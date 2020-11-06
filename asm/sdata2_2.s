@@ -2,12 +2,6 @@
 
 .section .sdata2, "wa"  # 0x80640600 - 0x80643020
 
-.global lbl_80641BF0
-lbl_80641BF0:
-	.incbin "baserom.dol", 0x473C10, 0x4
-.global lbl_80641BF4
-lbl_80641BF4:
-	.incbin "baserom.dol", 0x473C14, 0x4
 .global lbl_80641BF8
 lbl_80641BF8:
 	.incbin "baserom.dol", 0x473C18, 0x4

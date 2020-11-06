@@ -12,8 +12,7 @@ void func_801DD5C8(gUnkClass7* p1, float p2)
 {
     if (!p1->unk0 || !(p1->unk6 & 0x1) || (p1->unk6 & 0x8))
         return;
-    float f3 = p1->unk8;
-    p1->unkC += p2 * f3;
+    p1->unkC += p2 * p1->unk8;
     if (p1->unkC < 0.0f) {
         p1->unk6 |= 0x4;
         switch (p1->unk4) {
@@ -32,10 +31,10 @@ void func_801DD5C8(gUnkClass7* p1, float p2)
                         p1->unkC = f2 * (1.0f - f4);
                     } else {
                         p1->unkC = f2 * f4;
-                        p1->unk8 = -f3;
+                        p1->unk8 = -p1->unk8;
                     }
                 } else {
-                    p1->unk8 = -f3;
+                    p1->unk8 = -p1->unk8;
                 }
                 break;
             default:
@@ -57,7 +56,7 @@ void func_801DD5C8(gUnkClass7* p1, float p2)
                 f4 -= r5;
                 if (((r5 & 0x1) ^ ((u32)r5 >> 31 & 0x1)) - ((u32)r5 >> 31 & 0x1) != 0) {
                     float temp = f2 * (1.0f - f4);
-                    p1->unk8 = -f3;
+                    p1->unk8 = -p1->unk8;
                     p1->unkC = temp;
                 } else {
                     p1->unkC = f2 * f4;
