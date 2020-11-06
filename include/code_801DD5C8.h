@@ -5,6 +5,8 @@
 extern "C" {
 #endif
 
+#include "GShierMemObject.h"
+
 // TODO: identify data structures
 
 // size == 0x10
@@ -25,13 +27,16 @@ struct gUnkClass8
     gUnkClass8* next;
 };
 
-struct gUnkClass7
+struct gUnkClass7 : public GShierMemObject
 {
     gUnkClass8* unk0; // linked list head
     u16 unk4;
     u16 unk6;
     float unk8;
     float unkC;
+    
+    gUnkClass7() : unk0(NULL), unk4(0), unk6(0xC), unk8(1.0f), unkC(0.0f) { }
+    
 };
 
 void func_801DD5C8(gUnkClass7* p1, float p2);

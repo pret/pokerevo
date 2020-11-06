@@ -1,6 +1,6 @@
 #include "ctorStruct.h"
 #include <SDK/mem.h>
-#include "code_801DAAE0.h"
+#include "GShierMemObject.h"
 #include "code_801DD5C8.h"
 
 // TODO: C++
@@ -9,24 +9,46 @@ static ctorStruct gUnk8063F350(1, 4, 0);
 
 extern "C" {
 
-// TODO: determine file that defines this
-extern MEMHeapHandle lbl_8063E8F8;
+// GSanimationObject
+class GSanimationObject : public GShierMemObject
+{
+protected:
+    gUnkClass8* unk0;
+    gUnkClass7* unk4;
+public:
+    GSanimationObject(gUnkClass8* list);
+};
 
+class GSblendObject : public GSanimationObject
+{
+    gUnkClass7* unk8;
+    float unkC;
+public:
+    GSblendObject(gUnkClass8* list);
+};
+
+// TODO: replace this
 struct gUnkClass10
 {
-    gUnkClass8* unk0; // TODO: check type
+    gUnkClass8* unk0;
     gUnkClass7* unk4;
-    
-    // TODO: begin derived class?
     gUnkClass7* unk8;
     float unkC;
 };
 
-
 #if 1
 
+// func_801DD8C0
+GSanimationObject::GSanimationObject(gUnkClass8* list) : unk0(list), unk4(NULL)
+{
+    if (list)
+        unk4 = new gUnkClass7;
+}
+
+#if 0
 // caller provides a linked list of gUnkClass8
 // TODO: gUnkClass10 constructor?
+// GSanimationObject?
 gUnkClass10* func_801DD8C0(gUnkClass10* p1, gUnkClass8* p2)
 {
     p1->unk0 = p2;
@@ -51,6 +73,7 @@ gUnkClass10* func_801DD8C0(gUnkClass10* p1, gUnkClass8* p2)
     }
     return p1;
 }
+#endif
 
 // TODO: gUnkClass10 destructor? Get mwcc to generate parts of this function implicitly
 gUnkClass10* func_801DD958(gUnkClass10* p1, s32 p2)
@@ -221,7 +244,17 @@ void func_801DDABC(gUnkClass10* p1, u16 p2, u16 p3, float p4, float p5)
     }
 }
 
+
 // TODO: derived class constructor?
+// GSblendObject?
+
+GSblendObject::GSblendObject(gUnkClass8* list) : GSanimationObject(list), unk8(NULL), unkC(0.0f)
+{
+    if (unk4)
+        unk8 = new gUnkClass7;
+}
+
+#if 0
 gUnkClass10* func_801DDB64(gUnkClass10* p1, gUnkClass8* p2)
 {
     func_801DD8C0(p1, p2);
@@ -245,6 +278,7 @@ gUnkClass10* func_801DDB64(gUnkClass10* p1, gUnkClass8* p2)
     }
     return p1;
 }
+#endif
 
 // TODO: derived class destructor?
 gUnkClass10* func_801DDC08(gUnkClass10* p1, s32 p2)
