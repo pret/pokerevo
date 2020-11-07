@@ -3,8 +3,7 @@
 
 static ctorStruct gUnk8063F348(1, 4, 0);
 
-// gUnkClass7.cpp
-// TODO: convert to C++ member functions?
+// gUnkClass7 implementation
 
 extern "C" {
 
