@@ -9,7 +9,6 @@ static ctorStruct gUnk8063F350(1, 4, 0);
 
 extern "C" {
 
-// GSanimationObject
 class GSanimationObject : public GShierMemObject
 {
 protected:
@@ -17,6 +16,10 @@ protected:
     gUnkClass7* unk4;
 public:
     GSanimationObject(gUnkClass8* list);
+    ~GSanimationObject();
+    void func_801DD9C8(float p2);
+    gUnkClass8* func_801DDA94(u16 id);
+    void func_801DDABC(u16 id, u16 p3, float p4, float p5);
 };
 
 class GSblendObject : public GSanimationObject
@@ -25,117 +28,69 @@ class GSblendObject : public GSanimationObject
     float unkC;
 public:
     GSblendObject(gUnkClass8* list);
+    ~GSblendObject();
+    void func_801DDC84(float p2);
+    void func_801DDE4C(u16 id, u16 p3, float p4, float p5);
+    void func_801DDEA0(u16 id, u16 p3, float p4, float p5, float p6);
 };
 
-// TODO: replace this
-struct gUnkClass10
-{
-    gUnkClass8* unk0;
-    gUnkClass7* unk4;
-    gUnkClass7* unk8;
-    float unkC;
-};
-
-#if 1
-
-// func_801DD8C0
 GSanimationObject::GSanimationObject(gUnkClass8* list) : unk0(list), unk4(NULL)
 {
     if (list)
         unk4 = new gUnkClass7;
 }
 
-#if 0
-// caller provides a linked list of gUnkClass8
-// TODO: gUnkClass10 constructor?
-// GSanimationObject?
-gUnkClass10* func_801DD8C0(gUnkClass10* p1, gUnkClass8* p2)
+#ifdef NONMATCHING
+// Can't get this to match with an operator delete 
+// because mwcc adds an extra beq instruction
+GSanimationObject::~GSanimationObject()
 {
-    p1->unk0 = p2;
-    p1->unk4 = NULL;
-    if (p2) {
-        // TODO: inlined call to an overloaded new?
-        gUnkClass7* r3;
-        if (func_801DAB28())
-            r3 = (gUnkClass7*)func_801DAC94(lbl_8063E8F8, sizeof(gUnkClass7));
-        else
-            r3 = NULL;
-        
-        // TODO: inlined gUnkClass7 constructor?
-        if (r3) {
-            r3->unk0 = NULL;
-            r3->unk4 = 0;
-            r3->unk6 = 0xC;
-            r3->unk8 = 1.0f;
-            r3->unkC = 0.0f;
-        }
-        p1->unk4 = r3;
+    if (unk4) {
+        delete unk4;
+        unk4 = NULL;
     }
-    return p1;
+}
+#else
+GSanimationObject::~GSanimationObject()
+{
+    if (unk4) {
+        func_801DAD48(lbl_8063E8F8, unk4);
+        unk4 = NULL;
+    }
 }
 #endif
-
-// TODO: gUnkClass10 destructor? Get mwcc to generate parts of this function implicitly
-gUnkClass10* func_801DD958(gUnkClass10* p1, s32 p2)
-{
-    if (p1) {
-        if (p1->unk4) {
-            func_801DAD48(lbl_8063E8F8, p1->unk4);
-            p1->unk4 = NULL;
-        }
-        if (p2 > 0)
-            func_801DAD48(lbl_8063E8F8, p1);
-    }
-    return p1;
-}
-
-#endif
-
 
 // Note: inferred static inline functions
-static inline BOOL helper_1(gUnkClass7* p1)
-{
-    return p1->unk0 && (p1->unk6 & 0x1);
-}
-
-static inline BOOL helper_2(gUnkClass7* p1)
-{
-    return !helper_1(p1) && !(p1->unk6 & 0x10);
-}
-
-
-static inline BOOL TestFunction(gUnkClass7* ptr)
+static inline BOOL inline_TestFunction(gUnkClass7* ptr)
 {
     return ptr->unk0 && ptr->unk6 & 0x1;
 }
 
-// if bit 4 is cleared, clear bit 0
-static inline void ClearFunction(gUnkClass7* ptr)
+static inline void inline_ClearFunction(gUnkClass7* ptr)
 {
     if (!(ptr->unk6 & 0x10))
         ptr->unk6 &= ~0x1;
 }
 
-// TODO: "flag"s are the results of inline functions?
 #ifdef NONMATCHING
 // r4/r6 regswap
-void func_801DD9C8(gUnkClass10* p1, float p2)
+void GSanimationObject::func_801DD9C8(float p2)
 {
-    if (p1->unk4) {
-        if (TestFunction(p1->unk4)) {
-            func_801DD5C8(p1->unk4, p2);
-            func_801DD7FC(p1->unk4, p1, 0);
-            BOOL flag2 = TRUE; //r4
-            u16* new_var = &p1->unk4->unk6;
-            if (!(p1->unk4->unk6 & 0x8)) {
+    if (unk4) {
+        if (inline_TestFunction(unk4)) {
+            func_801DD5C8(unk4, p2);
+            func_801DD7FC(unk4, this, 0);
+            BOOL flag2 = TRUE;
+            u16* new_var = &unk4->unk6;
+            if (!(unk4->unk6 & 0x8)) {
                 BOOL flag = FALSE;
-                if (p1->unk4->unk0 && (*new_var & 0x1))
+                if (unk4->unk0 && (*new_var & 0x1))
                     flag = TRUE;
                 if (flag)
                     flag2 = FALSE;
             }
             if (flag2) {
-                gUnkClass7* r3 = p1->unk4;
+                gUnkClass7* r3 = unk4;
                 if (!(r3->unk6 & 0x10)) {
                     r3->unk6 &= ~0x1;
                 }
@@ -144,7 +99,7 @@ void func_801DD9C8(gUnkClass10* p1, float p2)
     }
 }
 #else
-asm void func_801DD9C8(gUnkClass10* p1, float p2)
+asm void GSanimationObject::func_801DD9C8(float p2)
 {
     nofralloc
 /* 801DD9C8 001D9628  94 21 FF F0 */	stwu r1, -0x10(r1)
@@ -206,33 +161,28 @@ lbl_801DDA80:
 #pragma peephole on
 #endif
 
-
-#if 1
-
-// TODO: assuming gUnkClass8* member here
-// search linked list
-//static
-gUnkClass8* func_801DDA94(gUnkClass10* p1, u16 p2)
+// Search the linked list referenced by unk0 for a node with the specified id
+gUnkClass8* GSanimationObject::func_801DDA94(u16 id)
 {
-    gUnkClass8* p = p1->unk0;
+    gUnkClass8* p = unk0;
     while (p) {
-        if (p->unk0 == p2)
+        if (p->unk0 == id)
             return p;
         p = p->next;
     }
     return NULL;
 }
 
-// set unk4 member of p1
-void func_801DDABC(gUnkClass10* p1, u16 p2, u16 p3, float p4, float p5)
+// Populate unk4 member
+void GSanimationObject::func_801DDABC(u16 id, u16 p3, float p4, float p5)
 {
-    gUnkClass7* r6 = p1->unk4;
+    gUnkClass7* r6 = unk4;
     if (r6) {
         if (!(r6->unk6 & 0x10))
             r6->unk6 &= ~0x1;
-        gUnkClass8* r3 = func_801DDA94(p1, p2);
+        gUnkClass8* r3 = func_801DDA94(id);
         if (r3) {
-            gUnkClass7* r4 = p1->unk4;
+            gUnkClass7* r4 = unk4;
             if (!(r4->unk6 & 0x10)) {
                 r4->unk0 = r3;
                 r4->unkC = p4;
@@ -244,121 +194,80 @@ void func_801DDABC(gUnkClass10* p1, u16 p2, u16 p3, float p4, float p5)
     }
 }
 
-
-// TODO: derived class constructor?
-// GSblendObject?
-
 GSblendObject::GSblendObject(gUnkClass8* list) : GSanimationObject(list), unk8(NULL), unkC(0.0f)
 {
     if (unk4)
         unk8 = new gUnkClass7;
 }
 
-#if 0
-gUnkClass10* func_801DDB64(gUnkClass10* p1, gUnkClass8* p2)
+#ifdef NONMATCHING
+// Same issue as ~GSanimationObject()... extra beq instruction
+GSblendObject::~GSblendObject()
 {
-    func_801DD8C0(p1, p2);
-    p1->unk8 = NULL;
-    p1->unkC = 0.0f;
-    if (p1->unk4) {
-        gUnkClass7* r3;
-        if (func_801DAB28())
-            r3 = (gUnkClass7*)func_801DAC94(lbl_8063E8F8, sizeof(gUnkClass7));
-        else
-            r3 = NULL;
-
-        if (r3) {
-            r3->unk0 = NULL;
-            r3->unk4 = 0;
-            r3->unk6 = 0xC;
-            r3->unk8 = 1.0f;
-            r3->unkC = 0.0f;
-        }
-        p1->unk8 = r3;
+    if (unk8) {
+        delete unk8;
+        unk8 = NULL;
     }
-    return p1;
+}
+#else
+GSblendObject::~GSblendObject()
+{
+    if (unk8) {
+        func_801DAD48(lbl_8063E8F8, unk8);
+        unk8 = NULL;
+    }
 }
 #endif
 
-// TODO: derived class destructor?
-gUnkClass10* func_801DDC08(gUnkClass10* p1, s32 p2)
-{
-    if (p1) {
-        if (p1->unk8) {
-            func_801DAD48(lbl_8063E8F8, p1->unk8);
-            p1->unk8 = NULL;
-        }
-        func_801DD958(p1, 0);
-        if (p2 > 0)
-            func_801DAD48(lbl_8063E8F8, p1);
-    }
-    return p1;
-}
-
-static inline void InlineFunction(gUnkClass10* p1, gUnkClass7* p2)
-{
-    func_801DD7FC(p2, p1, 0);
-    BOOL r4 = TRUE;
-    if (!(p2->unk6 & 0x8)) {
-        BOOL r3 = helper_1(p2);
-        if (r3)
-            r4 = FALSE;
-    }
-    if (r4 && !(p2->unk6 & 0x10)) {
-        p2->unk6 &= ~0x1;
-    }
-}
-
-// derived class method calling base class method?
 #ifdef NONMATCHING
-// regswaps and instruction ordering
-void func_801DDC84(gUnkClass10* p1, float p2)
+// regswaps and instruction ordering issue near if (r4 && !(unk4->unk6 & 0x10))
+void GSblendObject::func_801DDC84(float p2)
 {
-    if (p1->unk4) {
-        BOOL r29 = helper_1(p1->unk4);
+    if (unk4) {
+        BOOL r29 = inline_TestFunction(unk4);
         
         BOOL r30 = FALSE;
-        if (p1->unk8) {
-            BOOL r3 = helper_1(p1->unk8);
+        if (unk8) {
+            BOOL r3 = inline_TestFunction(unk8);
             if (r3)
                 r30 = TRUE;
             if (r29)
-                func_801DD5C8(p1->unk4, p2);
+                func_801DD5C8(unk4, p2);
             if (r30) {
-                func_801DD5C8(p1->unk8, p2);
+                func_801DD5C8(unk8, p2);
                 r29 = TRUE;
-                p1->unk4->unk6 |= 0x2;
+                unk4->unk6 |= 0x2;
             }
-            // inlined function call?
+            // Note: inlined function call?
             if (r29) {
-                func_801DD7FC(p1->unk4, p1, 0);
+                func_801DD7FC(unk4, this, 0);
                 BOOL r4 = TRUE;
-                if (!(p1->unk4->unk6 & 0x8)) {
-                    BOOL r3 = p1->unk4->unk0 && (p1->unk4->unk6 & 0x1);
+                if (!(unk4->unk6 & 0x8)) {
+                    BOOL r3 = unk4->unk0 && (unk4->unk6 & 0x1);
                     if (r3)
                         r4 = FALSE;
                 }
-                if (r4 && !(p1->unk4->unk6 & 0x10)) {
-                    p1->unk4->unk6 &= ~0x1;
+                if (r4 && !(unk4->unk6 & 0x10)) {
+                    unk4->unk6 &= ~0x1;
                 }
             }
             if (r30) {
-                func_801DD7FC(p1->unk8, p1, 0);
+                func_801DD7FC(unk8, this, 0);
                 BOOL r4 = TRUE;
-                if (!(p1->unk8->unk6 & 0x8)) {
-                    BOOL r3 = p1->unk8->unk0 && (p1->unk8->unk6 & 0x1);
+                if (!(unk8->unk6 & 0x8)) {
+                    BOOL r3 = unk8->unk0 && (unk8->unk6 & 0x1);
                     if (r3)
                         r4 = FALSE;
                 }
-                if (r4 && !(p1->unk8->unk6 & 0x10)) {
-                    p1->unk8->unk6 &= ~0x1;
+                if (r4 && !(unk8->unk6 & 0x10)) {
+                    unk8->unk6 &= ~0x1;
                 }
             }
         }
     }
 }
 #else
-asm void func_801DDC84(gUnkClass10* p1, float p2)
+asm void GSblendObject::func_801DDC84(float p2)
 {
     nofralloc
 /* 801DDC84 001D98E4  94 21 FF E0 */	stwu r1, -0x20(r1)
@@ -490,33 +399,25 @@ lbl_801DDE2C:
 #pragma peephole on
 #endif
 
-
-// TODO: inlining
-// This matches
-void func_801DDE4C(gUnkClass10* p1, u16 p2, u16 p3, float p4, float p5)
+void GSblendObject::func_801DDE4C(u16 id, u16 p3, float p4, float p5)
 {
-    if (p1->unk8) {
-        p1->unkC = 0.0f;
-        if (TestFunction(p1->unk8)) {
-            ClearFunction(p1->unk8);
-        }
+    if (unk8) {
+        unkC = 0.0f;
+        if (inline_TestFunction(unk8))
+            inline_ClearFunction(unk8);
     }
-    func_801DDABC(p1, p2, p3, p4, p5);
+    func_801DDABC(id, p3, p4, p5);
 }
 
-// NOTE: nearly identical to func_801DDABC. Modifies unk8 instead of unk4, and initializes p1->unkC
-
+// NOTE: nearly identical to func_801DDABC. Modifies unk8 instead of unk4, and initializes unkC
 // Populate structure referenced by unk8, attaching it to a gUnkClass8 with the matching id
-// derived class method?
-// matches
-void func_801DDEA0(gUnkClass10* p1, u16 id, u16 p3, float p4, float p5, float p6)
+void GSblendObject::func_801DDEA0(u16 id, u16 p3, float p4, float p5, float p6)
 {
-    if (p1->unk8) {
-        ClearFunction(p1->unk8);
-        // TODO: 5 parameter inline function?
-        gUnkClass8* r3 = func_801DDA94(p1, id);
+    if (unk8) {
+        inline_ClearFunction(unk8);
+        gUnkClass8* r3 = func_801DDA94(id);
         if (r3) {
-            gUnkClass7* r4 = p1->unk8;
+            gUnkClass7* r4 = unk8;
             if (!(r4->unk6 & 0x10)) {
                 r4->unk0 = r3;
                 r4->unkC = p4;
@@ -525,11 +426,8 @@ void func_801DDEA0(gUnkClass10* p1, u16 id, u16 p3, float p4, float p5, float p6
                 r4->unk6 = 3;
             }
         }
-        p1->unkC = p6;
+        unkC = p6;
     }
 }
-
-
-#endif
 
 } //extern "C"

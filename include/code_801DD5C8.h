@@ -36,7 +36,7 @@ struct gUnkClass7 : public GShierMemObject
     float unkC;
     
     gUnkClass7() : unk0(NULL), unk4(0), unk6(0xC), unk8(1.0f), unkC(0.0f) { }
-    
+    ~gUnkClass7() { }
 };
 
 void func_801DD5C8(gUnkClass7* p1, float p2);

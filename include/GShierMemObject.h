@@ -7,7 +7,7 @@
 extern MEMHeapHandle lbl_8063E8F8;
 
 // Note: This is the root base class for various classes such as GScamera,
-// GSlight, GSmodel, etc. These classes are all new/deleted using an alternative set of
+// GSlight, GSmodel, etc. Instances of these classes are all new/deleted using an alternative set of
 // routines than the global new and delete, which we infer is defined inline here.
 
 // TODO: abstract class?
