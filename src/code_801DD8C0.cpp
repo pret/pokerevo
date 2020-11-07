@@ -166,6 +166,7 @@ void GSanimationObject::func_801DDABC(u16 id, u16 p3, float p4, float p5)
     }
 }
 
+// 801DDB64
 GSblendObject::GSblendObject(gUnkClass8* list) : GSanimationObject(list), unk8(NULL), unkC(0.0f)
 {
     if (unk4)

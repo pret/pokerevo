@@ -2,8 +2,8 @@
 
 .section .text, "ax"  # 0x80006980 - 0x803E1E60
 
-.global func_801F1AE8
-func_801F1AE8:
+.global __ct__6GSnullFUc
+__ct__6GSnullFUc:
 /* 801F1AE8 001ED748  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 801F1AEC 001ED74C  7C 08 02 A6 */	mflr r0
 /* 801F1AF0 001ED750  90 01 00 14 */	stw r0, 0x14(r1)

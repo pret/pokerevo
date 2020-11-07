@@ -20,7 +20,7 @@ static void func_801DBFEC(s32 p1, DVDFileInfo* p2);
 static void func_801DC068(s32 p1, DVDFileInfo* p2);
 static void func_801DC264(void);
 static s32 func_801DC7DC(void);
-static void func_801DC888(s32 p1);
+static void func_801DC888(s32 driveStatus);
 static void func_801DC8E8(u32 p1);
 static void func_801DC900(void);
 static void func_801DC918(s32 p1, DVDCommandBlock*);
@@ -311,9 +311,9 @@ BOOL func_801DC7F8(gUnkClass5* p1, s32 offset, void (*p3)(s32, void*))
     return DVDSeekAsyncPrio(&p1->unk4, offset, &func_801DC068, 2) != 0;
 }
 
-static void func_801DC888(s32 p1)
+static void func_801DC888(s32 driveStatus)
 {
-    switch (p1) {
+    switch (driveStatus) {
         case -1:
             gUnk8063F328 = 9;
             break;
