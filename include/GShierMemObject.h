@@ -10,8 +10,6 @@ extern MEMHeapHandle lbl_8063E8F8;
 // GSlight, GSmodel, etc. Instances of these classes are all new/deleted using an alternative set of
 // routines than the global new and delete, which we infer is defined inline here.
 
-// TODO: abstract class?
-
 class GShierMemObject
 {
 public:

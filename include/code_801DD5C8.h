@@ -7,13 +7,10 @@ extern "C" {
 
 #include "GShierMemObject.h"
 
-// TODO: identify these data structures
-
-// size == 0x10
 struct gUnkClass9
 {
     u8 pad[0xC];
-    void (*unkC)(void*, gUnkClass9*, u32, float); // TODO: identify 1st parameter
+    void (*unkC)(void*, gUnkClass9*, u32, float);
 };
 
 // linked list node
