@@ -2,6 +2,7 @@
 
 .section .text, "ax"  # 0x80006980 - 0x803E1E60
 
+# GScamera constructor
 .global func_801DDF78
 func_801DDF78:
 /* 801DDF78 001D9BD8  94 21 FF F0 */	stwu r1, -0x10(r1)
@@ -72,6 +73,7 @@ func_801DDF78:
 /* 801DE07C 001D9CDC  38 21 00 10 */	addi r1, r1, 0x10
 /* 801DE080 001D9CE0  4E 80 00 20 */	blr
 
+# GScamera constructor
 .global func_801DE084
 func_801DE084:
 /* 801DE084 001D9CE4  94 21 FF F0 */	stwu r1, -0x10(r1)
@@ -145,6 +147,7 @@ func_801DE084:
 /* 801DE194 001D9DF4  38 21 00 10 */	addi r1, r1, 0x10
 /* 801DE198 001D9DF8  4E 80 00 20 */	blr
 
+# GScamera virtual
 .global func_801DE19C
 func_801DE19C:
 /* 801DE19C 001D9DFC  94 21 FF F0 */	stwu r1, -0x10(r1)
@@ -450,6 +453,9 @@ lbl_801DE5E4:
 /* 801DE5EC 001DA24C  7C 08 03 A6 */	mtlr r0
 /* 801DE5F0 001DA250  38 21 00 50 */	addi r1, r1, 0x50
 /* 801DE5F4 001DA254  4E 80 00 20 */	blr
+
+# GScamera virtual
+func_801DE5F8:
 /* 801DE5F8 001DA258  94 21 FE B0 */	stwu r1, -0x150(r1)
 /* 801DE5FC 001DA25C  7C 08 02 A6 */	mflr r0
 /* 801DE600 001DA260  90 01 01 54 */	stw r0, 0x154(r1)
@@ -922,7 +928,7 @@ lbl_801DEC9C:
 /* 801DECB4 001DA914  38 21 00 B0 */	addi r1, r1, 0xb0
 /* 801DECB8 001DA918  4E 80 00 20 */	blr
 
-# virtual
+# GScamera virtual
 func_801DECBC:
 /* 801DECBC 001DA91C  94 21 FF E0 */	stwu r1, -0x20(r1)
 /* 801DECC0 001DA920  7C 08 02 A6 */	mflr r0
@@ -939,7 +945,7 @@ func_801DECBC:
 lbl_801DECEC:
 /* 801DECEC 001DA94C  FC 20 F8 90 */	fmr f1, f31
 /* 801DECF0 001DA950  7F E3 FB 78 */	mr r3, r31
-/* 801DECF4 001DA954  4B FF EF 91 */	bl func_801DDC84
+/* 801DECF4 001DA954  4B FF EF 91 */	bl func_801DDC84__13GSblendObjectFf
 /* 801DECF8 001DA958  81 9F 01 00 */	lwz r12, 0x100(r31)
 /* 801DECFC 001DA95C  7F E3 FB 78 */	mr r3, r31
 /* 801DED00 001DA960  81 8C 00 14 */	lwz r12, 0x14(r12)
@@ -957,6 +963,9 @@ lbl_801DECEC:
 /* 801DED30 001DA990  7C 08 03 A6 */	mtlr r0
 /* 801DED34 001DA994  38 21 00 20 */	addi r1, r1, 0x20
 /* 801DED38 001DA998  4E 80 00 20 */	blr
+
+# GScamera virtual
+func_801DED3C:
 /* 801DED3C 001DA99C  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 801DED40 001DA9A0  7C 08 02 A6 */	mflr r0
 /* 801DED44 001DA9A4  90 01 00 14 */	stw r0, 0x14(r1)
