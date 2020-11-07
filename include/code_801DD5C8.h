@@ -7,7 +7,7 @@ extern "C" {
 
 #include "GShierMemObject.h"
 
-// TODO: identify data structures
+// TODO: identify these data structures
 
 // size == 0x10
 struct gUnkClass9

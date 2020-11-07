@@ -1,38 +1,10 @@
 #include "ctorStruct.h"
-#include <SDK/mem.h>
-#include "GShierMemObject.h"
-#include "code_801DD5C8.h"
+#include "GSanimationObject.h"
+#include "GSblendObject.h"
 
-// TODO: C++
+// GSanimationObject and GSblendObject implementations
 
 static ctorStruct gUnk8063F350(1, 4, 0);
-
-extern "C" {
-
-class GSanimationObject : public GShierMemObject
-{
-protected:
-    gUnkClass8* unk0;
-    gUnkClass7* unk4;
-public:
-    GSanimationObject(gUnkClass8* list);
-    ~GSanimationObject();
-    void func_801DD9C8(float p2);
-    gUnkClass8* func_801DDA94(u16 id);
-    void func_801DDABC(u16 id, u16 p3, float p4, float p5);
-};
-
-class GSblendObject : public GSanimationObject
-{
-    gUnkClass7* unk8;
-    float unkC;
-public:
-    GSblendObject(gUnkClass8* list);
-    ~GSblendObject();
-    void func_801DDC84(float p2);
-    void func_801DDE4C(u16 id, u16 p3, float p4, float p5);
-    void func_801DDEA0(u16 id, u16 p3, float p4, float p5, float p6);
-};
 
 GSanimationObject::GSanimationObject(gUnkClass8* list) : unk0(list), unk4(NULL)
 {
@@ -187,7 +159,7 @@ void GSanimationObject::func_801DDABC(u16 id, u16 p3, float p4, float p5)
                 r4->unk0 = r3;
                 r4->unkC = p4;
                 r4->unk8 = p5;
-                r4->unk4 = p3 & 0xFF;
+                r4->unk4 = (u16)(p3 & 0xFF);
                 r4->unk6 = 0x3;
             }
         }
@@ -422,7 +394,7 @@ void GSblendObject::func_801DDEA0(u16 id, u16 p3, float p4, float p5, float p6)
                 r4->unk0 = r3;
                 r4->unkC = p4;
                 r4->unk8 = p5;
-                r4->unk4 = p3 & 0xFF;
+                r4->unk4 = (u16)(p3 & 0xFF);
                 r4->unk6 = 3;
             }
         }
@@ -430,4 +402,3 @@ void GSblendObject::func_801DDEA0(u16 id, u16 p3, float p4, float p5, float p6)
     }
 }
 
-} //extern "C"
