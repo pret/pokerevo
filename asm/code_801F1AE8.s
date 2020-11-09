@@ -2291,8 +2291,8 @@ lbl_801F39C0:
 /* 801F39E0 001EF640  38 21 00 20 */	addi r1, r1, 0x20
 /* 801F39E4 001EF644  4E 80 00 20 */	blr
 
-.global func_801F39E8
-func_801F39E8:
+.global func2__6GSnullFi
+func2__6GSnullFi:
 /* 801F39E8 001EF648  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 801F39EC 001EF64C  7C 08 02 A6 */	mflr r0
 /* 801F39F0 001EF650  90 01 00 14 */	stw r0, 0x14(r1)
