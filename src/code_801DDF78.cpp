@@ -245,8 +245,21 @@ asm GScamera::GScamera()
 // 801DE084
 GScamera::GScamera(void* p1, gUnkClass10* p2) : GSnull(p1, p2)
 {
-    unk16C = 1.28f;
-    unk184 = 10.0f;
+    float f2;
+    float f3;
+    float f4;
+    float f5 = 1.0f;
+    float f6;
+    float f7;
+    
+    f6 = 1.28f;
+    f2 = 10.0f;
+    f7 = 60.0f;
+    f4 = 0.1f;
+    f3 = 100000.0f;
+    
+    unk16C = f6;
+    unk184 = f2;
     // vptr100 = &lbl_80423358;
     
     unk104 = 0x109;
@@ -260,15 +273,15 @@ GScamera::GScamera(void* p1, gUnkClass10* p2) : GSnull(p1, p2)
     unk160 = 0;
     unk164 = 0;
     
-    unk168 = 60.0f;
-    unk178 = 1.0f;
-    unk17C = 0.1f;
-    unk180 = 100000.0f;
+    unk168 = f7;
+    unk178 = f5;
+    unk17C = f4;
+    unk180 = f3;
     unk188 = 0.0f;
     unk18C = 0.0f;
     unk190 = -1.0f;
     unk194 = 0.0f;
-    unk198 = 1.0f;
+    unk198 = f5;
     
     unk19C = 0.0f;
     unk1A0 = 0.0f;
@@ -278,15 +291,15 @@ GScamera::GScamera(void* p1, gUnkClass10* p2) : GSnull(p1, p2)
     unk1B0 = 0.0f;
     unk1B4 = 0.0f;
     unk1B8 = 0.0f;
-    unk1BC = 1.0f;
+    unk1BC = f5;
     unk1C0 = 0.0f;
     unk1C4 = 0.0f;
     unk1C8 = 0.0f;
     unk1CC = -1.0f;
     unk1D0 = 0;
     
-    unk16C = 1.28f;
-    unk184 = 10.0f;
+    unk16C = f6;
+    unk184 = f2;
 
     MTXIdentity(unk1D4);
     MTXIdentity(unk204);
