@@ -25,7 +25,7 @@ public:
     // 801F1BC8
     GSnull(void* p1, gUnkClass10* p2); // TODO: p1 type
     virtual ~GSnull();    // 801F1F24
-    virtual void func1(); // 801F3960
+    virtual void func1(float p1); // 801F3960
     virtual void func2(); // 801F39E8
     virtual void func3(); // 801F3790
 };
@@ -99,7 +99,7 @@ public:
     void func_801DEA3C();
     void lbl_801DEEF8();
     virtual ~GScamera();  // 801DE19C
-    virtual void func1(); // 801DECBC
+    virtual void func1(float p1); // 801DECBC
     virtual void func2(); // 801DED3C
     virtual void func3(); // 801DE5F8
 };
@@ -1107,54 +1107,18 @@ lbl_801DEC9C:
 #pragma peephole on
 #endif
 
-#ifdef NONMATCHING
-void GScamera::func1()
-{
-    
-}
-#else
-void func_801F3904();
+void func_801F3904(GSnull*, float);
 void func_801DDC84__13GSblendObjectFf();
-void func_801F3C7C();
-asm void GScamera::func1()
+BOOL func_801F3C7C(GSnull* p1); // TODO: member function
+
+void GScamera::func1(float p1)
 {
-nofralloc
-/* 801DECBC 001DA91C  94 21 FF E0 */	stwu r1, -0x20(r1)
-/* 801DECC0 001DA920  7C 08 02 A6 */	mflr r0
-/* 801DECC4 001DA924  90 01 00 24 */	stw r0, 0x24(r1)
-/* 801DECC8 001DA928  DB E1 00 10 */	stfd f31, 0x10(r1)
-/* 801DECCC 001DA92C  F3 E1 00 18 */	psq_st f31, 24(r1), 0, 0
-/* 801DECD0 001DA930  FF E0 08 90 */	fmr f31, f1
-/* 801DECD4 001DA934  93 E1 00 0C */	stw r31, 0xc(r1)
-/* 801DECD8 001DA938  7C 7F 1B 78 */	mr r31, r3
-/* 801DECDC 001DA93C  48 01 4F A1 */	bl func_801F3C7C
-/* 801DECE0 001DA940  2C 03 00 00 */	cmpwi r3, 0
-/* 801DECE4 001DA944  41 82 00 08 */	beq lbl_801DECEC
-/* 801DECE8 001DA948  C3 E2 96 10 */	lfs f31, lbl_80641C10
-lbl_801DECEC:
-/* 801DECEC 001DA94C  FC 20 F8 90 */	fmr f1, f31
-/* 801DECF0 001DA950  7F E3 FB 78 */	mr r3, r31
-/* 801DECF4 001DA954  4B FF EF 91 */	bl func_801DDC84__13GSblendObjectFf
-/* 801DECF8 001DA958  81 9F 01 00 */	lwz r12, 0x100(r31)
-/* 801DECFC 001DA95C  7F E3 FB 78 */	mr r3, r31
-/* 801DED00 001DA960  81 8C 00 14 */	lwz r12, 0x14(r12)
-/* 801DED04 001DA964  7D 89 03 A6 */	mtctr r12
-/* 801DED08 001DA968  4E 80 04 21 */	bctrl
-/* 801DED0C 001DA96C  7F E3 FB 78 */	mr r3, r31
-/* 801DED10 001DA970  4B FF F4 E9 */	bl func_801DE1F8
-/* 801DED14 001DA974  FC 20 F8 90 */	fmr f1, f31
-/* 801DED18 001DA978  7F E3 FB 78 */	mr r3, r31
-/* 801DED1C 001DA97C  48 01 4B E9 */	bl func_801F3904
-/* 801DED20 001DA980  E3 E1 00 18 */	psq_l f31, 24(r1), 0, 0
-/* 801DED24 001DA984  80 01 00 24 */	lwz r0, 0x24(r1)
-/* 801DED28 001DA988  CB E1 00 10 */	lfd f31, 0x10(r1)
-/* 801DED2C 001DA98C  83 E1 00 0C */	lwz r31, 0xc(r1)
-/* 801DED30 001DA990  7C 08 03 A6 */	mtlr r0
-/* 801DED34 001DA994  38 21 00 20 */	addi r1, r1, 0x20
-/* 801DED38 001DA998  4E 80 00 20 */	blr
+    float f31 = func_801F3C7C(this) ? 0.0f : p1;
+    func_801DDC84(f31);
+    func3();
+    func_801DE1F8();
+    func_801F3904(this, f31);
 }
-#pragma peephole on
-#endif
 
 #ifdef NONMATCHING
 void GScamera::func2()
