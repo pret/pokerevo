@@ -12368,10 +12368,10 @@ func_800C51EC:
 /* 800C5238 000C0E98  3F 60 80 48 */	lis r27, lbl_8047CE70@ha
 /* 800C523C 000C0E9C  38 7B CE 70 */	addi r3, r27, lbl_8047CE70@l
 /* 800C5240 000C0EA0  48 11 8D 39 */	bl __ct__8GScameraFv
-/* 800C5244 000C0EA4  3C 80 80 1E */	lis r4, func_801DE19C@ha
+/* 800C5244 000C0EA4  3C 80 80 1E */	lis r4, __dt__8GScameraFv@ha
 /* 800C5248 000C0EA8  3C A0 80 48 */	lis r5, lbl_8047CE64@ha
 /* 800C524C 000C0EAC  38 7B CE 70 */	addi r3, r27, -12688
-/* 800C5250 000C0EB0  38 84 E1 9C */	addi r4, r4, func_801DE19C@l
+/* 800C5250 000C0EB0  38 84 E1 9C */	addi r4, r4, __dt__8GScameraFv@l
 /* 800C5254 000C0EB4  38 A5 CE 64 */	addi r5, r5, lbl_8047CE64@l
 /* 800C5258 000C0EB8  48 10 19 F1 */	bl __register_global_object_tmp
 /* 800C525C 000C0EBC  38 00 00 01 */	li r0, 1
