@@ -5,6 +5,9 @@
 #include <SDK/mtx.h>
 #include "GSblendObject.h"
 
+extern "C" {
+
+
 struct gUnkClass10
 {
     u8 unk0[0x20];
@@ -26,6 +29,23 @@ public:
     virtual void func2(); // 801F39E8
     virtual void func3(); // 801F3790
 };
+
+
+// TODO: move to VEC header
+typedef struct
+{
+    float x;
+    float y;
+    float z;
+} Vec;
+
+void PSVECCrossProduct(const Vec* a, const Vec* b, Vec* axb);    
+void PSVECNormalize(const Vec* src, Vec* unit);    
+void PSVECSubtract(const Vec* a, const Vec* b, Vec* a_b);   
+
+#define VECSubtract PSVECSubtract
+#define VECCrossProduct PSVECCrossProduct
+#define VECNormalize PSVECNormalize
 
 class GScamera : public GSnull
 {
@@ -63,15 +83,9 @@ class GScamera : public GSnull
     float unk1A0;
     float unk1A4;
     float unk1A8;
-    float unk1AC;
-    float unk1B0;
-    float unk1B4;
-    float unk1B8;
-    float unk1BC;
-    float unk1C0;
-    float unk1C4;
-    float unk1C8;
-    float unk1CC;
+    Vec unk1AC;
+    Vec unk1B8;
+    Vec unk1C4;
     u32 unk1D0;
     Mtx unk1D4;
     Mtx unk204;
@@ -90,7 +104,6 @@ public:
     virtual void func3(); // 801DE5F8
 };
 
-extern "C" {
 
 __declspec(section ".data") extern u32 lbl_80423358; // GScamera vtable
 extern float lbl_80641BF8;
@@ -151,15 +164,15 @@ GScamera::GScamera() : GSnull(4)
     unk1A0 = 0.0f;
     unk1A4 = 0.0f;
     unk1A8 = 0.0f;
-    unk1AC = 0.0f;
-    unk1B0 = 0.0f;
-    unk1B4 = -1.0f;
-    unk1B8 = 0.0f;
-    unk1BC = f5;
-    unk1C0 = 0.0f;
-    unk1C4 = 0.0f;
-    unk1C8 = 0.0f;
-    unk1CC = 0.0f;
+    unk1AC.x = 0.0f;
+    unk1AC.y = 0.0f;
+    unk1AC.z = -1.0f;
+    unk1B8.x = 0.0f;
+    unk1B8.y = f5;
+    unk1B8.z = 0.0f;
+    unk1C4.x = 0.0f;
+    unk1C4.y = 0.0f;
+    unk1C4.z = 0.0f;
     unk1D0 = 0;
     
     unk184 = f2;
@@ -287,15 +300,15 @@ GScamera::GScamera(void* p1, gUnkClass10* p2) : GSnull(p1, p2)
     unk1A0 = 0.0f;
     unk1A4 = 0.0f;
     unk1A8 = 0.0f;
-    unk1AC = 0.0f;
-    unk1B0 = 0.0f;
-    unk1B4 = 0.0f;
-    unk1B8 = 0.0f;
-    unk1BC = f5;
-    unk1C0 = 0.0f;
-    unk1C4 = 0.0f;
-    unk1C8 = 0.0f;
-    unk1CC = -1.0f;
+    unk1AC.x = 0.0f;
+    unk1AC.y = 0.0f;
+    unk1AC.z = -1.0f;
+    unk1B8.x = 0.0f;
+    unk1B8.y = f5;
+    unk1B8.z = 0.0f;
+    unk1C4.x = 0.0f;
+    unk1C4.y = 0.0f;
+    unk1C4.z = 0.0f;
     unk1D0 = 0;
     
     unk16C = f6;
@@ -312,12 +325,6 @@ GScamera::~GScamera()
     
 }
 
-#ifdef NONMATCHING
-void GScamera::func_801DE1F8()
-{
-    
-}
-#else
 extern u32 lbl_8063F788;
 extern float lbl_80641C18;
 extern float lbl_80641C1C;
@@ -330,6 +337,14 @@ void atan2(void);
 void tan(void);
 void func_80223694(void);
 void func_80223698(void);
+
+
+#ifdef NONMATCHING
+void GScamera::func_801DE1F8()
+{
+    
+}
+#else
 asm void GScamera::func_801DE1F8()
 {
     nofralloc
@@ -556,77 +571,25 @@ lbl_801DE500:
 #pragma peephole on
 #endif
 
-#ifdef NONMATCHING
 void GScamera::func_801DE524()
 {
-    
+    Vec sp38;
+    Vec sp2C;
+    Vec sp20;
+    Vec sp14;
+    Vec sp8;
+    if (unk104 & 0x10) {
+        VECSubtract(&unk1C4, &unk1AC, &sp20);
+        sp38 = sp20;
+        VECNormalize(&sp38, &sp38);
+        VECCrossProduct(&sp38, &unk1B8, &sp14);
+        sp2C = sp14;
+        VECNormalize(&sp2C, &sp2C);
+        VECCrossProduct(&sp2C, &sp38, &sp8);
+        unk1B8 = sp8;
+        unk104 = (unk104 & ~0x10) | 0x20;
+    }
 }
-#else
-void PSVECCrossProduct();    
-void PSVECNormalize();    
-void PSVECSubtract();    
-
-asm void GScamera::func_801DE524()
-{
-    nofralloc
-/* 801DE524 001DA184  94 21 FF B0 */	stwu r1, -0x50(r1)
-/* 801DE528 001DA188  7C 08 02 A6 */	mflr r0
-/* 801DE52C 001DA18C  90 01 00 54 */	stw r0, 0x54(r1)
-/* 801DE530 001DA190  93 E1 00 4C */	stw r31, 0x4c(r1)
-/* 801DE534 001DA194  7C 7F 1B 78 */	mr r31, r3
-/* 801DE538 001DA198  80 03 01 04 */	lwz r0, 0x104(r3)
-/* 801DE53C 001DA19C  54 00 06 F7 */	rlwinm. r0, r0, 0, 0x1b, 0x1b
-/* 801DE540 001DA1A0  41 82 00 A4 */	beq lbl_801DE5E4
-/* 801DE544 001DA1A4  38 63 01 C4 */	addi r3, r3, 0x1c4
-/* 801DE548 001DA1A8  38 9F 01 AC */	addi r4, r31, 0x1ac
-/* 801DE54C 001DA1AC  38 A1 00 20 */	addi r5, r1, 0x20
-/* 801DE550 001DA1B0  48 09 E7 99 */	bl PSVECSubtract
-/* 801DE554 001DA1B4  C0 41 00 20 */	lfs f2, 0x20(r1)
-/* 801DE558 001DA1B8  38 61 00 38 */	addi r3, r1, 0x38
-/* 801DE55C 001DA1BC  C0 21 00 24 */	lfs f1, 0x24(r1)
-/* 801DE560 001DA1C0  7C 64 1B 78 */	mr r4, r3
-/* 801DE564 001DA1C4  C0 01 00 28 */	lfs f0, 0x28(r1)
-/* 801DE568 001DA1C8  D0 41 00 38 */	stfs f2, 0x38(r1)
-/* 801DE56C 001DA1CC  D0 21 00 3C */	stfs f1, 0x3c(r1)
-/* 801DE570 001DA1D0  D0 01 00 40 */	stfs f0, 0x40(r1)
-/* 801DE574 001DA1D4  48 09 E7 B5 */	bl PSVECNormalize
-/* 801DE578 001DA1D8  38 61 00 38 */	addi r3, r1, 0x38
-/* 801DE57C 001DA1DC  38 9F 01 B8 */	addi r4, r31, 0x1b8
-/* 801DE580 001DA1E0  38 A1 00 14 */	addi r5, r1, 0x14
-/* 801DE584 001DA1E4  48 09 E8 65 */	bl PSVECCrossProduct
-/* 801DE588 001DA1E8  C0 41 00 14 */	lfs f2, 0x14(r1)
-/* 801DE58C 001DA1EC  38 61 00 2C */	addi r3, r1, 0x2c
-/* 801DE590 001DA1F0  C0 21 00 18 */	lfs f1, 0x18(r1)
-/* 801DE594 001DA1F4  7C 64 1B 78 */	mr r4, r3
-/* 801DE598 001DA1F8  C0 01 00 1C */	lfs f0, 0x1c(r1)
-/* 801DE59C 001DA1FC  D0 41 00 2C */	stfs f2, 0x2c(r1)
-/* 801DE5A0 001DA200  D0 21 00 30 */	stfs f1, 0x30(r1)
-/* 801DE5A4 001DA204  D0 01 00 34 */	stfs f0, 0x34(r1)
-/* 801DE5A8 001DA208  48 09 E7 81 */	bl PSVECNormalize
-/* 801DE5AC 001DA20C  38 61 00 2C */	addi r3, r1, 0x2c
-/* 801DE5B0 001DA210  38 81 00 38 */	addi r4, r1, 0x38
-/* 801DE5B4 001DA214  38 A1 00 08 */	addi r5, r1, 8
-/* 801DE5B8 001DA218  48 09 E8 31 */	bl PSVECCrossProduct
-/* 801DE5BC 001DA21C  C0 01 00 08 */	lfs f0, 8(r1)
-/* 801DE5C0 001DA220  80 1F 01 04 */	lwz r0, 0x104(r31)
-/* 801DE5C4 001DA224  D0 1F 01 B8 */	stfs f0, 0x1b8(r31)
-/* 801DE5C8 001DA228  54 00 07 34 */	rlwinm r0, r0, 0, 0x1c, 0x1a
-/* 801DE5CC 001DA22C  C0 01 00 0C */	lfs f0, 0xc(r1)
-/* 801DE5D0 001DA230  60 00 00 20 */	ori r0, r0, 0x20
-/* 801DE5D4 001DA234  D0 1F 01 BC */	stfs f0, 0x1bc(r31)
-/* 801DE5D8 001DA238  C0 01 00 10 */	lfs f0, 0x10(r1)
-/* 801DE5DC 001DA23C  D0 1F 01 C0 */	stfs f0, 0x1c0(r31)
-/* 801DE5E0 001DA240  90 1F 01 04 */	stw r0, 0x104(r31)
-lbl_801DE5E4:
-/* 801DE5E4 001DA244  80 01 00 54 */	lwz r0, 0x54(r1)
-/* 801DE5E8 001DA248  83 E1 00 4C */	lwz r31, 0x4c(r1)
-/* 801DE5EC 001DA24C  7C 08 03 A6 */	mtlr r0
-/* 801DE5F0 001DA250  38 21 00 50 */	addi r1, r1, 0x50
-/* 801DE5F4 001DA254  4E 80 00 20 */	blr    
-}
-#pragma peephole on
-#endif
-
 
 #ifdef NONMATCHING
 void GScamera::func3()
