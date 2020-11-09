@@ -1,14 +1,15 @@
-
-
-// GScamera
-
+#include "ctorStruct.h"
 #include <SDK/mtx.h>
 #include "GSblendObject.h"
+#include "code_801DD5C8.h"
+
+// static ctorStruct gUnk8063F358;
+
 
 extern "C" {
     
 // TODO: move to VEC header
-typedef struct
+typedef struct Vec
 {
     float x;
     float y;
@@ -25,6 +26,13 @@ void PSVECSubtract(const Vec* a, const Vec* b, Vec* a_b);
 
 
 
+// TODO: same as gUnkClass9?
+// TODO: use RTTI data to find actual class name
+struct gUnkClass12
+{
+    u8 unk0; // pad
+    u8 unk1;
+};
     
 // TODO: namespace?
 struct gUnkClass11
@@ -33,7 +41,6 @@ struct gUnkClass11
     Vec unkC;
     Vec unk18;
 };
-
 
 struct gUnkClass10
 {
@@ -47,7 +54,6 @@ struct gUnkClass10
     float unk38;
     Vec unk3C;
     gUnkClass11* unk48;
-    
 };
 
 class GSnull : public GSblendObject
@@ -107,7 +113,7 @@ public:
     void func_801DE1F8();
     void func_801DE524();
     void func_801DEA3C();
-    void lbl_801DEEF8();
+    void lbl_801DEEF8(gUnkClass12* p1, u32 p2, float p3);
     virtual ~GScamera();  // 801DE19C
     virtual void func1(float p1); // 801DECBC
     virtual void func2(BOOL p1); // 801DED3C
@@ -128,9 +134,6 @@ extern void __ct__6GSnullFUc(void);
 
 
 // 801DDF78
-#define NONMATCHING_1
-#ifdef NONMATCHING_1
-// floating point register shuffle, could be related to vptr
 GScamera::GScamera() : GSnull(4)
 {
     //float f0 = -1.0f;
@@ -191,79 +194,6 @@ GScamera::GScamera() : GSnull(4)
     MTXIdentity(unk204);
     MTXIdentity(unk234);
 }
-#else
-asm GScamera::GScamera()
-{
-/* 801DDF78 001D9BD8  94 21 FF F0 */	stwu r1, -0x10(r1)
-/* 801DDF7C 001D9BDC  7C 08 02 A6 */	mflr r0
-/* 801DDF80 001D9BE0  38 80 00 04 */	li r4, 4
-/* 801DDF84 001D9BE4  90 01 00 14 */	stw r0, 0x14(r1)
-/* 801DDF88 001D9BE8  93 E1 00 0C */	stw r31, 0xc(r1)
-/* 801DDF8C 001D9BEC  7C 7F 1B 78 */	mr r31, r3
-/* 801DDF90 001D9BF0  48 01 3B 59 */	bl __ct__6GSnullFUc
-/* 801DDF94 001D9BF4  C0 42 96 0C */	lfs f2, lbl_80641C0C
-/* 801DDF98 001D9BF8  38 00 00 00 */	li r0, 0
-/* 801DDF9C 001D9BFC  C0 22 96 10 */	lfs f1, lbl_80641C10
-/* 801DDFA0 001D9C00  3C A0 80 42 */	lis r5, lbl_80423358@ha
-/* 801DDFA4 001D9C04  C0 A2 96 00 */	lfs f5, lbl_80641C00
-/* 801DDFA8 001D9C08  38 A5 33 58 */	addi r5, r5, lbl_80423358@l
-/* 801DDFAC 001D9C0C  C0 02 96 14 */	lfs f0, lbl_80641C14
-/* 801DDFB0 001D9C10  38 80 01 09 */	li r4, 0x109
-/* 801DDFB4 001D9C14  D0 5F 01 84 */	stfs f2, 0x184(r31)
-/* 801DDFB8 001D9C18  38 7F 01 D4 */	addi r3, r31, 0x1d4
-/* 801DDFBC 001D9C1C  C0 E2 95 F8 */	lfs f7, lbl_80641BF8
-/* 801DDFC0 001D9C20  C0 C2 95 FC */	lfs f6, lbl_80641BFC
-/* 801DDFC4 001D9C24  C0 82 96 04 */	lfs f4, lbl_80641C04
-/* 801DDFC8 001D9C28  C0 62 96 08 */	lfs f3, lbl_80641C08
-/* 801DDFCC 001D9C2C  90 BF 01 00 */	stw r5, 0x100(r31)
-/* 801DDFD0 001D9C30  90 9F 01 04 */	stw r4, 0x104(r31)
-/* 801DDFD4 001D9C34  90 1F 01 08 */	stw r0, 0x108(r31)
-/* 801DDFD8 001D9C38  90 1F 01 4C */	stw r0, 0x14c(r31)
-/* 801DDFDC 001D9C3C  90 1F 01 50 */	stw r0, 0x150(r31)
-/* 801DDFE0 001D9C40  90 1F 01 54 */	stw r0, 0x154(r31)
-/* 801DDFE4 001D9C44  90 1F 01 58 */	stw r0, 0x158(r31)
-/* 801DDFE8 001D9C48  90 1F 01 5C */	stw r0, 0x15c(r31)
-/* 801DDFEC 001D9C4C  90 1F 01 60 */	stw r0, 0x160(r31)
-/* 801DDFF0 001D9C50  90 1F 01 64 */	stw r0, 0x164(r31)
-/* 801DDFF4 001D9C54  D0 FF 01 68 */	stfs f7, 0x168(r31)
-/* 801DDFF8 001D9C58  D0 DF 01 6C */	stfs f6, 0x16c(r31)
-/* 801DDFFC 001D9C5C  D0 BF 01 78 */	stfs f5, 0x178(r31)
-/* 801DE000 001D9C60  D0 9F 01 7C */	stfs f4, 0x17c(r31)
-/* 801DE004 001D9C64  D0 7F 01 80 */	stfs f3, 0x180(r31)
-/* 801DE008 001D9C68  D0 3F 01 88 */	stfs f1, 0x188(r31)
-/* 801DE00C 001D9C6C  D0 3F 01 8C */	stfs f1, 0x18c(r31)
-/* 801DE010 001D9C70  D0 1F 01 90 */	stfs f0, 0x190(r31)
-/* 801DE014 001D9C74  D0 3F 01 94 */	stfs f1, 0x194(r31)
-/* 801DE018 001D9C78  D0 BF 01 98 */	stfs f5, 0x198(r31)
-/* 801DE01C 001D9C7C  D0 3F 01 9C */	stfs f1, 0x19c(r31)
-/* 801DE020 001D9C80  D0 3F 01 A0 */	stfs f1, 0x1a0(r31)
-/* 801DE024 001D9C84  D0 3F 01 A4 */	stfs f1, 0x1a4(r31)
-/* 801DE028 001D9C88  D0 3F 01 A8 */	stfs f1, 0x1a8(r31)
-/* 801DE02C 001D9C8C  D0 3F 01 AC */	stfs f1, 0x1ac(r31)
-/* 801DE030 001D9C90  D0 3F 01 B0 */	stfs f1, 0x1b0(r31)
-/* 801DE034 001D9C94  D0 1F 01 B4 */	stfs f0, 0x1b4(r31)
-/* 801DE038 001D9C98  D0 3F 01 B8 */	stfs f1, 0x1b8(r31)
-/* 801DE03C 001D9C9C  D0 BF 01 BC */	stfs f5, 0x1bc(r31)
-/* 801DE040 001D9CA0  D0 3F 01 C0 */	stfs f1, 0x1c0(r31)
-/* 801DE044 001D9CA4  D0 3F 01 C4 */	stfs f1, 0x1c4(r31)
-/* 801DE048 001D9CA8  D0 3F 01 C8 */	stfs f1, 0x1c8(r31)
-/* 801DE04C 001D9CAC  D0 3F 01 CC */	stfs f1, 0x1cc(r31)
-/* 801DE050 001D9CB0  90 1F 01 D0 */	stw r0, 0x1d0(r31)
-/* 801DE054 001D9CB4  D0 5F 01 84 */	stfs f2, 0x184(r31)
-/* 801DE058 001D9CB8  48 09 DE D5 */	bl PSMTXIdentity
-/* 801DE05C 001D9CBC  38 7F 02 04 */	addi r3, r31, 0x204
-/* 801DE060 001D9CC0  48 09 DE CD */	bl PSMTXIdentity
-/* 801DE064 001D9CC4  38 7F 02 34 */	addi r3, r31, 0x234
-/* 801DE068 001D9CC8  48 09 DE C5 */	bl PSMTXIdentity
-/* 801DE06C 001D9CCC  7F E3 FB 78 */	mr r3, r31
-/* 801DE070 001D9CD0  83 E1 00 0C */	lwz r31, 0xc(r1)
-/* 801DE074 001D9CD4  80 01 00 14 */	lwz r0, 0x14(r1)
-/* 801DE078 001D9CD8  7C 08 03 A6 */	mtlr r0
-/* 801DE07C 001D9CDC  38 21 00 10 */	addi r1, r1, 0x10
-/* 801DE080 001D9CE0  4E 80 00 20 */	blr
-}
-#pragma peephole on
-#endif
 
 // 801DE084
 GScamera::GScamera(void* p1, gUnkClass10* p2) : GSnull(p1, p2)
@@ -917,12 +847,6 @@ lbl_801DEA24:
 #pragma peephole on
 #endif
 
-#ifdef NONMATCHING
-void GScamera::func_801DEA3C()
-{
-    
-}
-#else
 extern u32 lbl_804932E0;    
 extern float lbl_80641C40;    
 void PSMTXConcat();
@@ -932,6 +856,12 @@ void acos();
 void PSMTXScale();
 void sqrt();
 
+#ifdef NONMATCHING
+void GScamera::func_801DEA3C()
+{
+    
+}
+#else
 asm void GScamera::func_801DEA3C()
 {
 nofralloc
@@ -1186,106 +1116,53 @@ void GScamera::func2(BOOL p1)
     }
 }
 
-#ifdef NONMATCHING_801DEEF8
-void GScamera::lbl_801DEEF8()
+// TODO: move to header
+void func_801E1278(gUnkClass12*, Vec*);
+void func_801E10C0(gUnkClass12*, float*);
+
+// TODO: determine if there's any relationship between this
+// function and the unkC callback in gUnkClass9, called in func_801DD7FC
+void GScamera::lbl_801DEEF8(gUnkClass12* p1, u32 p2, float p3)
 {
-    
+    if (!p2) {
+        switch (p1->unk1)
+        {
+            case 5:
+                func_801E10C0(p1, &unk168);
+                unk104 |= 0x8;
+                break;
+            case 6:
+                func_801E10C0(p1, &unk16C);
+                unk104 |= 0x8;
+                break;
+            case 7:
+                func_801E10C0(p1, &unk17C.x);
+                unk104 |= 0x8;
+                break;
+            case 8:
+                func_801E10C0(p1, &unk17C.y);
+                unk104 |= 0x8;
+                break;
+            case 9:
+                func_801E10C0(p1, &unk17C.z);
+                break;
+            case 10:
+                func_801E1278(p1, &unk188);
+                unk104 |= 0x20;
+                break;
+            case 11:
+                func_801E1278(p1, &unk1A0);
+                unk104 |= 0x20;
+                break;
+            case 12:
+                func_801E1278(p1, &unk194);
+                unk104 |= 0x20;
+                break;
+            default:
+                break;
+        }
+    }
 }
-#else
-extern u32 lbl_80423338;
-void func_801E1278();
-void func_801E10C0();
-asm void GScamera::lbl_801DEEF8()
-{
-nofralloc
-/* 801DEEF8 001DAB58  94 21 FF F0 */	stwu r1, -0x10(r1)
-/* 801DEEFC 001DAB5C  7C 08 02 A6 */	mflr r0
-/* 801DEF00 001DAB60  2C 05 00 00 */	cmpwi r5, 0
-/* 801DEF04 001DAB64  90 01 00 14 */	stw r0, 0x14(r1)
-/* 801DEF08 001DAB68  93 E1 00 0C */	stw r31, 0xc(r1)
-/* 801DEF0C 001DAB6C  7C 7F 1B 78 */	mr r31, r3
-/* 801DEF10 001DAB70  40 82 00 FC */	bne lbl_801DF00C
-/* 801DEF14 001DAB74  88 64 00 01 */	lbz r3, 1(r4)
-/* 801DEF18 001DAB78  38 03 FF FB */	addi r0, r3, -5
-/* 801DEF1C 001DAB7C  28 00 00 07 */	cmplwi r0, 7
-/* 801DEF20 001DAB80  41 81 00 EC */	bgt lbl_801DF00C
-/* 801DEF24 001DAB84  3C 60 80 42 */	lis r3, lbl_80423338@ha
-/* 801DEF28 001DAB88  54 00 10 3A */	slwi r0, r0, 2
-/* 801DEF2C 001DAB8C  38 63 33 38 */	addi r3, r3, lbl_80423338@l
-/* 801DEF30 001DAB90  7C 63 00 2E */	lwzx r3, r3, r0
-/* 801DEF34 001DAB94  7C 69 03 A6 */	mtctr r3
-/* 801DEF38 001DAB98  4E 80 04 20 */	bctr
-/* 801DEF3C 001DAB9C  7C 83 23 78 */	mr r3, r4
-/* 801DEF40 001DABA0  38 9F 01 68 */	addi r4, r31, 0x168
-/* 801DEF44 001DABA4  48 00 21 7D */	bl func_801E10C0
-/* 801DEF48 001DABA8  80 1F 01 04 */	lwz r0, 0x104(r31)
-/* 801DEF4C 001DABAC  60 00 00 08 */	ori r0, r0, 8
-/* 801DEF50 001DABB0  90 1F 01 04 */	stw r0, 0x104(r31)
-/* 801DEF54 001DABB4  48 00 00 B8 */	b lbl_801DF00C
-/* 801DEF58 001DABB8  7C 83 23 78 */	mr r3, r4
-/* 801DEF5C 001DABBC  38 9F 01 6C */	addi r4, r31, 0x16c
-/* 801DEF60 001DABC0  48 00 21 61 */	bl func_801E10C0
-/* 801DEF64 001DABC4  80 1F 01 04 */	lwz r0, 0x104(r31)
-/* 801DEF68 001DABC8  60 00 00 08 */	ori r0, r0, 8
-/* 801DEF6C 001DABCC  90 1F 01 04 */	stw r0, 0x104(r31)
-/* 801DEF70 001DABD0  48 00 00 9C */	b lbl_801DF00C
-/* 801DEF74 001DABD4  7C 83 23 78 */	mr r3, r4
-/* 801DEF78 001DABD8  38 9F 01 7C */	addi r4, r31, 0x17c
-/* 801DEF7C 001DABDC  48 00 21 45 */	bl func_801E10C0
-/* 801DEF80 001DABE0  80 1F 01 04 */	lwz r0, 0x104(r31)
-/* 801DEF84 001DABE4  60 00 00 08 */	ori r0, r0, 8
-/* 801DEF88 001DABE8  90 1F 01 04 */	stw r0, 0x104(r31)
-/* 801DEF8C 001DABEC  48 00 00 80 */	b lbl_801DF00C
-/* 801DEF90 001DABF0  7C 83 23 78 */	mr r3, r4
-/* 801DEF94 001DABF4  38 9F 01 80 */	addi r4, r31, 0x180
-/* 801DEF98 001DABF8  48 00 21 29 */	bl func_801E10C0
-/* 801DEF9C 001DABFC  80 1F 01 04 */	lwz r0, 0x104(r31)
-/* 801DEFA0 001DAC00  60 00 00 08 */	ori r0, r0, 8
-/* 801DEFA4 001DAC04  90 1F 01 04 */	stw r0, 0x104(r31)
-/* 801DEFA8 001DAC08  48 00 00 64 */	b lbl_801DF00C
-/* 801DEFAC 001DAC0C  7C 83 23 78 */	mr r3, r4
-/* 801DEFB0 001DAC10  38 9F 01 84 */	addi r4, r31, 0x184
-/* 801DEFB4 001DAC14  48 00 21 0D */	bl func_801E10C0
-/* 801DEFB8 001DAC18  48 00 00 54 */	b lbl_801DF00C
-/* 801DEFBC 001DAC1C  7C 83 23 78 */	mr r3, r4
-/* 801DEFC0 001DAC20  38 9F 01 88 */	addi r4, r31, 0x188
-/* 801DEFC4 001DAC24  48 00 22 B5 */	bl func_801E1278
-/* 801DEFC8 001DAC28  80 1F 01 04 */	lwz r0, 0x104(r31)
-/* 801DEFCC 001DAC2C  60 00 00 20 */	ori r0, r0, 0x20
-/* 801DEFD0 001DAC30  90 1F 01 04 */	stw r0, 0x104(r31)
-/* 801DEFD4 001DAC34  48 00 00 38 */	b lbl_801DF00C
-/* 801DEFD8 001DAC38  7C 83 23 78 */	mr r3, r4
-/* 801DEFDC 001DAC3C  38 9F 01 A0 */	addi r4, r31, 0x1a0
-/* 801DEFE0 001DAC40  48 00 22 99 */	bl func_801E1278
-/* 801DEFE4 001DAC44  80 1F 01 04 */	lwz r0, 0x104(r31)
-/* 801DEFE8 001DAC48  60 00 00 20 */	ori r0, r0, 0x20
-/* 801DEFEC 001DAC4C  90 1F 01 04 */	stw r0, 0x104(r31)
-/* 801DEFF0 001DAC50  48 00 00 1C */	b lbl_801DF00C
-/* 801DEFF4 001DAC54  7C 83 23 78 */	mr r3, r4
-/* 801DEFF8 001DAC58  38 9F 01 94 */	addi r4, r31, 0x194
-/* 801DEFFC 001DAC5C  48 00 22 7D */	bl func_801E1278
-/* 801DF000 001DAC60  80 1F 01 04 */	lwz r0, 0x104(r31)
-/* 801DF004 001DAC64  60 00 00 20 */	ori r0, r0, 0x20
-/* 801DF008 001DAC68  90 1F 01 04 */	stw r0, 0x104(r31)
-lbl_801DF00C:
-/* 801DF00C 001DAC6C  80 01 00 14 */	lwz r0, 0x14(r1)
-/* 801DF010 001DAC70  83 E1 00 0C */	lwz r31, 0xc(r1)
-/* 801DF014 001DAC74  7C 08 03 A6 */	mtlr r0
-/* 801DF018 001DAC78  38 21 00 10 */	addi r1, r1, 0x10
-/* 801DF01C 001DAC7C  4E 80 00 20 */	blr
-}
-#pragma peephole on
-#endif
-
-
-/*
-#ifdef NONMATCHING
-
-#else
-
-#pragma peephole on
-#endif
-*/
 
 } // extern "C"
 
