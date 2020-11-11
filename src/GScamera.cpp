@@ -9,12 +9,12 @@
 extern "C" {
     
 // TODO: move to VEC header
-typedef struct Vec
+typedef struct
 {
     float x;
     float y;
     float z;
-} Vec;
+} Vec, Point3d;
 
 void PSVECCrossProduct(const Vec* a, const Vec* b, Vec* axb);    
 void PSVECNormalize(const Vec* src, Vec* unit);    
@@ -58,7 +58,10 @@ struct gUnkClass10
 
 class GSnull : public GSblendObject
 {
-    u8 unk10[0xF0]; // padding
+protected:
+    u16 unk10;
+    u8 unk12[0xBE];
+    Mtx unkD0;
 public:
     //u32* vptr100; // TODO: replace
     
@@ -99,14 +102,13 @@ class GScamera : public GSnull
     Vec unk188;
     Vec unk194;
     Vec unk1A0;
-    Vec unk1AC;
-    Vec unk1B8;
-    Vec unk1C4;
-    u32 unk1D0;
-    Mtx unk1D4;
-    Mtx unk204;
-    Mtx unk234;
-    
+    Point3d unk1AC; // camera position
+    Vec unk1B8; // camera up vector
+    Point3d unk1C4; // target posiiton
+    GScamera* unk1D0;
+    Mtx unk1D4; // viewing matrix
+    Mtx unk204; // inverse of the viewing matrix
+    Mtx unk234; // inverse-transpose of the viewing matrix
 public:
     GScamera();
     GScamera(void* p1, gUnkClass10* p2);
@@ -186,7 +188,7 @@ GScamera::GScamera() : GSnull(4)
     unk1C4.x = 0.0f;
     unk1C4.y = 0.0f;
     unk1C4.z = 0.0f;
-    unk1D0 = 0;
+    unk1D0 = NULL;
     
     unk17C.z = f2;
     
@@ -248,7 +250,7 @@ GScamera::GScamera(void* p1, gUnkClass10* p2) : GSnull(p1, p2)
     unk1C4.x = 0.0f;
     unk1C4.y = 0.0f;
     unk1C4.z = -1.0f;
-    unk1D0 = 0;
+    unk1D0 = NULL;
     
     unk16C = f6;
     unk17C.z = f2;
@@ -533,325 +535,154 @@ void GScamera::func_801DE524()
 extern Vec lbl_80493614;
 extern float lbl_80641C38;    
 extern float lbl_80641C3C;    
-extern u32 lbl_80493620;
-void PSMTXTranspose();
+extern Vec lbl_80493620;
+
+void PSMTXTranspose(const Mtx src, Mtx xPose);
+#define MTXTranspose PSMTXTranspose
 
 void PSMTXCopy(const Mtx src, Mtx dest);
 #define MTXCopy PSMTXCopy
 
 
 
-void C_MTXLookAt();
-void PSVECAdd();
-void func_801F3790();
-void PSMTXMultVecSR();
-void PSMTXMultVec();
-void PSMTXInverse();
-void func_801DE524();
+void C_MTXLookAt(Mtx m, const Point3d* camPos, const Vec* camUp, const Point3d* target);
+#define MTXLookAt C_MTXLookAt
 
-#ifdef NONMATCHING
+void PSVECAdd(const Vec* a, const Vec* b, Vec* ab);
+#define VECAdd PSVECAdd
+
+void PSMTXMultVecSR(const Mtx m, const Vec* src, Vec* dest);
+#define MTXMultVecSR PSMTXMultVecSR
+
+void PSMTXMultVec(const Mtx m, const Vec* src, Vec* dest);
+#define MTXMultVec PSMTXMultVec
+
+u32 PSMTXInverse(const Mtx src, Mtx inv);
+#define MTXInverse PSMTXInverse
+
+void func3__6GSnullFv();
+
 void GScamera::func3()
 {
+    Mtx sp110;
+    Mtx spE0;
+    Mtx spB0;
+    Vec spA4;
+    Vec sp98;
+    Vec sp8C;
+    Vec sp80;
+    Vec sp74;
+    Vec sp68;
+    Vec sp5C;
+    Vec sp50;
+    Vec sp44;
+    Vec sp38;
+    Vec sp2C;
+    Vec sp20;
+    Vec sp14;
+    Vec sp8;
     
+    u16 r30 = unk10 & 0x1;
+    if (unk1D0) {
+        if ((unk1D0->unk10 & 0x1) == 0x1)
+            unk1D0->func3();
+        
+        sp8C.x = unk1D0->unkD0[0][3];
+        sp8C.y = unk1D0->unkD0[1][3];
+        sp8C.z = unk1D0->unkD0[2][3];
+                
+        unk1C4.x = sp8C.x;
+        unk1C4.y = sp8C.y;
+        unk1C4.z = sp8C.z;
+        
+        VECSubtract(&unk1C4, &unk1AC, &sp80);
+        spA4 = sp80;
+        VECNormalize(&spA4, &spA4);
+        VECCrossProduct(&spA4, &lbl_80493614, &sp74);
+        sp98 = sp74;
+        
+        // TODO: possibly an inline function
+        BOOL flag;
+        if (!(sp98.x < 0.00001f && sp98.x > -0.00001f &&
+              sp98.y < 0.00001f && sp98.y > -0.00001f &&
+              sp98.z < 0.00001f && sp98.z > -0.00001f))
+        {
+            flag = FALSE;
+        } else {
+            flag = TRUE;
+        }
+        
+        if (flag) {
+            VECCrossProduct(&spA4, &lbl_80493620, &sp68);
+            sp98 = sp68;
+        }
+        // TODO: possibly inlined. Same code in func_801DE524
+        VECNormalize(&sp98, &sp98);
+        VECCrossProduct(&sp98, &spA4, &sp5C);
+        unk1B8 = sp5C;
+        unk104 = (unk104 & ~0x10) | 0x20;
+    }
+    
+    if (unk104 & 0x10)
+        func_801DE524();
+    
+    if ((unk104 & 0x20) || r30) {
+        MTXInverse(unkD0, sp110);
+        MTXMultVec(sp110, &unk1AC, &sp50);
+        unk188 = sp50;
+        MTXMultVecSR(sp110, &unk1B8, &sp44);
+        unk194 = sp44;
+        MTXMultVec(sp110, &unk1C4, &sp38);
+        unk1A0 = sp38;
+        
+        if (r30)
+            GSnull::func3();
+        
+        MTXMultVec(unkD0, &unk188, &sp2C);
+        unk1AC = sp2C;
+        MTXMultVecSR(unkD0, &unk194, &sp20);
+        unk1B8 = sp20;
+        MTXMultVec(unkD0, &unk1A0, &sp14);
+        unk1C4 = sp14;
+        
+        // if unk1B8 is a zero vector, assign lbl_80493614 to it
+        // TODO: inline this?
+        BOOL flag;
+        if (!(unk1B8.x < 0.00001f && unk1B8.x > -0.00001f &&
+              unk1B8.y < 0.00001f && unk1B8.y > -0.00001f &&
+              unk1B8.z < 0.00001f && unk1B8.z > -0.00001f))
+        {
+            flag = FALSE;
+        } else {
+            flag = TRUE;
+        }
+        
+        if (flag)
+            unk1B8 = lbl_80493614;
+        
+        // checking vector equality between unk1AC and unk1C4
+        if (!((unk1AC.x - unk1C4.x) < 0.00001f && (unk1AC.x - unk1C4.x) > -0.00001f &&
+              (unk1AC.y - unk1C4.y) < 0.00001f && (unk1AC.y - unk1C4.y) > -0.00001f &&
+              (unk1AC.z - unk1C4.z) < 0.00001f && (unk1AC.z - unk1C4.z) > -0.00001f))
+        {
+            flag = FALSE;
+        } else {
+            flag = TRUE;
+        }
+        
+        if (flag) {
+            VECAdd(&unk1AC, &lbl_80493620, &sp8);
+            unk1C4 = sp8;
+        }
+        
+        MTXLookAt(unk1D4, &unk1AC, &unk1B8, &unk1C4);
+        MTXInverse(unk1D4, spE0);
+        MTXCopy(spE0, unk204);
+        MTXTranspose(unk204, spB0);
+        MTXCopy(spB0, unk234);
+        unk104 &= ~0x20;
+    }
 }
-#else
-asm void GScamera::func3()
-{
-    nofralloc
-/* 801DE5F8 001DA258  94 21 FE B0 */	stwu r1, -0x150(r1)
-/* 801DE5FC 001DA25C  7C 08 02 A6 */	mflr r0
-/* 801DE600 001DA260  90 01 01 54 */	stw r0, 0x154(r1)
-/* 801DE604 001DA264  93 E1 01 4C */	stw r31, 0x14c(r1)
-/* 801DE608 001DA268  7C 7F 1B 78 */	mr r31, r3
-/* 801DE60C 001DA26C  93 C1 01 48 */	stw r30, 0x148(r1)
-/* 801DE610 001DA270  80 83 01 D0 */	lwz r4, 0x1d0(r3)
-/* 801DE614 001DA274  A0 03 00 10 */	lhz r0, 0x10(r3)
-/* 801DE618 001DA278  2C 04 00 00 */	cmpwi r4, 0
-/* 801DE61C 001DA27C  54 1E 07 FE */	clrlwi r30, r0, 0x1f
-/* 801DE620 001DA280  41 82 01 6C */	beq lbl_801DE78C
-/* 801DE624 001DA284  A0 04 00 10 */	lhz r0, 0x10(r4)
-/* 801DE628 001DA288  54 00 07 FE */	clrlwi r0, r0, 0x1f
-/* 801DE62C 001DA28C  2C 00 00 01 */	cmpwi r0, 1
-/* 801DE630 001DA290  40 82 00 18 */	bne lbl_801DE648
-/* 801DE634 001DA294  81 84 01 00 */	lwz r12, 0x100(r4)
-/* 801DE638 001DA298  7C 83 23 78 */	mr r3, r4
-/* 801DE63C 001DA29C  81 8C 00 14 */	lwz r12, 0x14(r12)
-/* 801DE640 001DA2A0  7D 89 03 A6 */	mtctr r12
-/* 801DE644 001DA2A4  4E 80 04 21 */	bctrl
-lbl_801DE648:
-/* 801DE648 001DA2A8  80 DF 01 D0 */	lwz r6, 0x1d0(r31)
-/* 801DE64C 001DA2AC  38 7F 01 C4 */	addi r3, r31, 0x1c4
-/* 801DE650 001DA2B0  38 9F 01 AC */	addi r4, r31, 0x1ac
-/* 801DE654 001DA2B4  38 A1 00 80 */	addi r5, r1, 0x80
-/* 801DE658 001DA2B8  C0 46 00 DC */	lfs f2, 0xdc(r6)
-/* 801DE65C 001DA2BC  C0 26 00 EC */	lfs f1, 0xec(r6)
-/* 801DE660 001DA2C0  C0 06 00 FC */	lfs f0, 0xfc(r6)
-/* 801DE664 001DA2C4  D0 41 00 8C */	stfs f2, 0x8c(r1)
-/* 801DE668 001DA2C8  D0 21 00 90 */	stfs f1, 0x90(r1)
-/* 801DE66C 001DA2CC  D0 01 00 94 */	stfs f0, 0x94(r1)
-/* 801DE670 001DA2D0  D0 5F 01 C4 */	stfs f2, 0x1c4(r31)
-/* 801DE674 001DA2D4  D0 3F 01 C8 */	stfs f1, 0x1c8(r31)
-/* 801DE678 001DA2D8  D0 1F 01 CC */	stfs f0, 0x1cc(r31)
-/* 801DE67C 001DA2DC  48 09 E6 6D */	bl PSVECSubtract
-/* 801DE680 001DA2E0  C0 41 00 80 */	lfs f2, 0x80(r1)
-/* 801DE684 001DA2E4  38 61 00 A4 */	addi r3, r1, 0xa4
-/* 801DE688 001DA2E8  C0 21 00 84 */	lfs f1, 0x84(r1)
-/* 801DE68C 001DA2EC  7C 64 1B 78 */	mr r4, r3
-/* 801DE690 001DA2F0  C0 01 00 88 */	lfs f0, 0x88(r1)
-/* 801DE694 001DA2F4  D0 41 00 A4 */	stfs f2, 0xa4(r1)
-/* 801DE698 001DA2F8  D0 21 00 A8 */	stfs f1, 0xa8(r1)
-/* 801DE69C 001DA2FC  D0 01 00 AC */	stfs f0, 0xac(r1)
-/* 801DE6A0 001DA300  48 09 E6 89 */	bl PSVECNormalize
-/* 801DE6A4 001DA304  3C 80 80 49 */	lis r4, lbl_80493614@ha
-/* 801DE6A8 001DA308  38 61 00 A4 */	addi r3, r1, 0xa4
-/* 801DE6AC 001DA30C  38 84 36 14 */	addi r4, r4, lbl_80493614@l
-/* 801DE6B0 001DA310  38 A1 00 74 */	addi r5, r1, 0x74
-/* 801DE6B4 001DA314  48 09 E7 35 */	bl PSVECCrossProduct
-/* 801DE6B8 001DA318  C0 81 00 74 */	lfs f4, 0x74(r1)
-/* 801DE6BC 001DA31C  C0 22 96 38 */	lfs f1, lbl_80641C38
-/* 801DE6C0 001DA320  C0 61 00 78 */	lfs f3, 0x78(r1)
-/* 801DE6C4 001DA324  C0 41 00 7C */	lfs f2, 0x7c(r1)
-/* 801DE6C8 001DA328  FC 04 08 40 */	fcmpo cr0, f4, f1
-/* 801DE6CC 001DA32C  D0 81 00 98 */	stfs f4, 0x98(r1)
-/* 801DE6D0 001DA330  D0 61 00 9C */	stfs f3, 0x9c(r1)
-/* 801DE6D4 001DA334  D0 41 00 A0 */	stfs f2, 0xa0(r1)
-/* 801DE6D8 001DA338  40 80 00 30 */	bge lbl_801DE708
-/* 801DE6DC 001DA33C  C0 02 96 3C */	lfs f0, lbl_80641C3C
-/* 801DE6E0 001DA340  FC 04 00 40 */	fcmpo cr0, f4, f0
-/* 801DE6E4 001DA344  40 81 00 24 */	ble lbl_801DE708
-/* 801DE6E8 001DA348  FC 03 08 40 */	fcmpo cr0, f3, f1
-/* 801DE6EC 001DA34C  40 80 00 1C */	bge lbl_801DE708
-/* 801DE6F0 001DA350  FC 03 00 40 */	fcmpo cr0, f3, f0
-/* 801DE6F4 001DA354  40 81 00 14 */	ble lbl_801DE708
-/* 801DE6F8 001DA358  FC 02 08 40 */	fcmpo cr0, f2, f1
-/* 801DE6FC 001DA35C  40 80 00 0C */	bge lbl_801DE708
-/* 801DE700 001DA360  FC 02 00 40 */	fcmpo cr0, f2, f0
-/* 801DE704 001DA364  41 81 00 0C */	bgt lbl_801DE710
-lbl_801DE708:
-/* 801DE708 001DA368  38 00 00 00 */	li r0, 0
-/* 801DE70C 001DA36C  48 00 00 08 */	b lbl_801DE714
-lbl_801DE710:
-/* 801DE710 001DA370  38 00 00 01 */	li r0, 1
-lbl_801DE714:
-/* 801DE714 001DA374  2C 00 00 00 */	cmpwi r0, 0
-/* 801DE718 001DA378  41 82 00 30 */	beq lbl_801DE748
-/* 801DE71C 001DA37C  3C 80 80 49 */	lis r4, lbl_80493620@ha
-/* 801DE720 001DA380  38 61 00 A4 */	addi r3, r1, 0xa4
-/* 801DE724 001DA384  38 84 36 20 */	addi r4, r4, lbl_80493620@l
-/* 801DE728 001DA388  38 A1 00 68 */	addi r5, r1, 0x68
-/* 801DE72C 001DA38C  48 09 E6 BD */	bl PSVECCrossProduct
-/* 801DE730 001DA390  C0 41 00 68 */	lfs f2, 0x68(r1)
-/* 801DE734 001DA394  C0 21 00 6C */	lfs f1, 0x6c(r1)
-/* 801DE738 001DA398  C0 01 00 70 */	lfs f0, 0x70(r1)
-/* 801DE73C 001DA39C  D0 41 00 98 */	stfs f2, 0x98(r1)
-/* 801DE740 001DA3A0  D0 21 00 9C */	stfs f1, 0x9c(r1)
-/* 801DE744 001DA3A4  D0 01 00 A0 */	stfs f0, 0xa0(r1)
-lbl_801DE748:
-/* 801DE748 001DA3A8  38 61 00 98 */	addi r3, r1, 0x98
-/* 801DE74C 001DA3AC  7C 64 1B 78 */	mr r4, r3
-/* 801DE750 001DA3B0  48 09 E5 D9 */	bl PSVECNormalize
-/* 801DE754 001DA3B4  38 61 00 98 */	addi r3, r1, 0x98
-/* 801DE758 001DA3B8  38 81 00 A4 */	addi r4, r1, 0xa4
-/* 801DE75C 001DA3BC  38 A1 00 5C */	addi r5, r1, 0x5c
-/* 801DE760 001DA3C0  48 09 E6 89 */	bl PSVECCrossProduct
-/* 801DE764 001DA3C4  C0 01 00 5C */	lfs f0, 0x5c(r1)
-/* 801DE768 001DA3C8  80 1F 01 04 */	lwz r0, 0x104(r31)
-/* 801DE76C 001DA3CC  D0 1F 01 B8 */	stfs f0, 0x1b8(r31)
-/* 801DE770 001DA3D0  54 00 07 34 */	rlwinm r0, r0, 0, 0x1c, 0x1a
-/* 801DE774 001DA3D4  C0 01 00 60 */	lfs f0, 0x60(r1)
-/* 801DE778 001DA3D8  60 00 00 20 */	ori r0, r0, 0x20
-/* 801DE77C 001DA3DC  D0 1F 01 BC */	stfs f0, 0x1bc(r31)
-/* 801DE780 001DA3E0  C0 01 00 64 */	lfs f0, 0x64(r1)
-/* 801DE784 001DA3E4  D0 1F 01 C0 */	stfs f0, 0x1c0(r31)
-/* 801DE788 001DA3E8  90 1F 01 04 */	stw r0, 0x104(r31)
-lbl_801DE78C:
-/* 801DE78C 001DA3EC  80 1F 01 04 */	lwz r0, 0x104(r31)
-/* 801DE790 001DA3F0  54 00 06 F7 */	rlwinm. r0, r0, 0, 0x1b, 0x1b
-/* 801DE794 001DA3F4  41 82 00 0C */	beq lbl_801DE7A0
-/* 801DE798 001DA3F8  7F E3 FB 78 */	mr r3, r31
-/* 801DE79C 001DA3FC  4B FF FD 89 */	bl func_801DE524
-lbl_801DE7A0:
-/* 801DE7A0 001DA400  80 1F 01 04 */	lwz r0, 0x104(r31)
-/* 801DE7A4 001DA404  54 00 06 B5 */	rlwinm. r0, r0, 0, 0x1a, 0x1a
-/* 801DE7A8 001DA408  40 82 00 0C */	bne lbl_801DE7B4
-/* 801DE7AC 001DA40C  2C 1E 00 00 */	cmpwi r30, 0
-/* 801DE7B0 001DA410  41 82 02 74 */	beq lbl_801DEA24
-lbl_801DE7B4:
-/* 801DE7B4 001DA414  38 7F 00 D0 */	addi r3, r31, 0xd0
-/* 801DE7B8 001DA418  38 81 01 10 */	addi r4, r1, 0x110
-/* 801DE7BC 001DA41C  48 09 D8 ED */	bl PSMTXInverse
-/* 801DE7C0 001DA420  38 61 01 10 */	addi r3, r1, 0x110
-/* 801DE7C4 001DA424  38 9F 01 AC */	addi r4, r31, 0x1ac
-/* 801DE7C8 001DA428  38 A1 00 50 */	addi r5, r1, 0x50
-/* 801DE7CC 001DA42C  48 09 E2 31 */	bl PSMTXMultVec
-/* 801DE7D0 001DA430  C0 01 00 50 */	lfs f0, 0x50(r1)
-/* 801DE7D4 001DA434  38 61 01 10 */	addi r3, r1, 0x110
-/* 801DE7D8 001DA438  38 9F 01 B8 */	addi r4, r31, 0x1b8
-/* 801DE7DC 001DA43C  38 A1 00 44 */	addi r5, r1, 0x44
-/* 801DE7E0 001DA440  D0 1F 01 88 */	stfs f0, 0x188(r31)
-/* 801DE7E4 001DA444  C0 01 00 54 */	lfs f0, 0x54(r1)
-/* 801DE7E8 001DA448  D0 1F 01 8C */	stfs f0, 0x18c(r31)
-/* 801DE7EC 001DA44C  C0 01 00 58 */	lfs f0, 0x58(r1)
-/* 801DE7F0 001DA450  D0 1F 01 90 */	stfs f0, 0x190(r31)
-/* 801DE7F4 001DA454  48 09 E2 5D */	bl PSMTXMultVecSR
-/* 801DE7F8 001DA458  C0 01 00 44 */	lfs f0, 0x44(r1)
-/* 801DE7FC 001DA45C  38 61 01 10 */	addi r3, r1, 0x110
-/* 801DE800 001DA460  38 9F 01 C4 */	addi r4, r31, 0x1c4
-/* 801DE804 001DA464  38 A1 00 38 */	addi r5, r1, 0x38
-/* 801DE808 001DA468  D0 1F 01 94 */	stfs f0, 0x194(r31)
-/* 801DE80C 001DA46C  C0 01 00 48 */	lfs f0, 0x48(r1)
-/* 801DE810 001DA470  D0 1F 01 98 */	stfs f0, 0x198(r31)
-/* 801DE814 001DA474  C0 01 00 4C */	lfs f0, 0x4c(r1)
-/* 801DE818 001DA478  D0 1F 01 9C */	stfs f0, 0x19c(r31)
-/* 801DE81C 001DA47C  48 09 E1 E1 */	bl PSMTXMultVec
-/* 801DE820 001DA480  C0 01 00 38 */	lfs f0, 0x38(r1)
-/* 801DE824 001DA484  2C 1E 00 00 */	cmpwi r30, 0
-/* 801DE828 001DA488  D0 1F 01 A0 */	stfs f0, 0x1a0(r31)
-/* 801DE82C 001DA48C  C0 01 00 3C */	lfs f0, 0x3c(r1)
-/* 801DE830 001DA490  D0 1F 01 A4 */	stfs f0, 0x1a4(r31)
-/* 801DE834 001DA494  C0 01 00 40 */	lfs f0, 0x40(r1)
-/* 801DE838 001DA498  D0 1F 01 A8 */	stfs f0, 0x1a8(r31)
-/* 801DE83C 001DA49C  41 82 00 0C */	beq lbl_801DE848
-/* 801DE840 001DA4A0  7F E3 FB 78 */	mr r3, r31
-/* 801DE844 001DA4A4  48 01 4F 4D */	bl func_801F3790
-lbl_801DE848:
-/* 801DE848 001DA4A8  38 7F 00 D0 */	addi r3, r31, 0xd0
-/* 801DE84C 001DA4AC  38 9F 01 88 */	addi r4, r31, 0x188
-/* 801DE850 001DA4B0  38 A1 00 2C */	addi r5, r1, 0x2c
-/* 801DE854 001DA4B4  48 09 E1 A9 */	bl PSMTXMultVec
-/* 801DE858 001DA4B8  C0 01 00 2C */	lfs f0, 0x2c(r1)
-/* 801DE85C 001DA4BC  38 7F 00 D0 */	addi r3, r31, 0xd0
-/* 801DE860 001DA4C0  38 9F 01 94 */	addi r4, r31, 0x194
-/* 801DE864 001DA4C4  38 A1 00 20 */	addi r5, r1, 0x20
-/* 801DE868 001DA4C8  D0 1F 01 AC */	stfs f0, 0x1ac(r31)
-/* 801DE86C 001DA4CC  C0 01 00 30 */	lfs f0, 0x30(r1)
-/* 801DE870 001DA4D0  D0 1F 01 B0 */	stfs f0, 0x1b0(r31)
-/* 801DE874 001DA4D4  C0 01 00 34 */	lfs f0, 0x34(r1)
-/* 801DE878 001DA4D8  D0 1F 01 B4 */	stfs f0, 0x1b4(r31)
-/* 801DE87C 001DA4DC  48 09 E1 D5 */	bl PSMTXMultVecSR
-/* 801DE880 001DA4E0  C0 01 00 20 */	lfs f0, 0x20(r1)
-/* 801DE884 001DA4E4  38 7F 00 D0 */	addi r3, r31, 0xd0
-/* 801DE888 001DA4E8  38 9F 01 A0 */	addi r4, r31, 0x1a0
-/* 801DE88C 001DA4EC  38 A1 00 14 */	addi r5, r1, 0x14
-/* 801DE890 001DA4F0  D0 1F 01 B8 */	stfs f0, 0x1b8(r31)
-/* 801DE894 001DA4F4  C0 01 00 24 */	lfs f0, 0x24(r1)
-/* 801DE898 001DA4F8  D0 1F 01 BC */	stfs f0, 0x1bc(r31)
-/* 801DE89C 001DA4FC  C0 01 00 28 */	lfs f0, 0x28(r1)
-/* 801DE8A0 001DA500  D0 1F 01 C0 */	stfs f0, 0x1c0(r31)
-/* 801DE8A4 001DA504  48 09 E1 59 */	bl PSMTXMultVec
-/* 801DE8A8 001DA508  C0 21 00 14 */	lfs f1, 0x14(r1)
-/* 801DE8AC 001DA50C  C0 1F 01 B8 */	lfs f0, 0x1b8(r31)
-/* 801DE8B0 001DA510  D0 3F 01 C4 */	stfs f1, 0x1c4(r31)
-/* 801DE8B4 001DA514  C0 42 96 38 */	lfs f2, lbl_80641C38
-/* 801DE8B8 001DA518  C0 21 00 18 */	lfs f1, 0x18(r1)
-/* 801DE8BC 001DA51C  FC 00 10 40 */	fcmpo cr0, f0, f2
-/* 801DE8C0 001DA520  D0 3F 01 C8 */	stfs f1, 0x1c8(r31)
-/* 801DE8C4 001DA524  C0 21 00 1C */	lfs f1, 0x1c(r1)
-/* 801DE8C8 001DA528  D0 3F 01 CC */	stfs f1, 0x1cc(r31)
-/* 801DE8CC 001DA52C  40 80 00 38 */	bge lbl_801DE904
-/* 801DE8D0 001DA530  C0 22 96 3C */	lfs f1, lbl_80641C3C
-/* 801DE8D4 001DA534  FC 00 08 40 */	fcmpo cr0, f0, f1
-/* 801DE8D8 001DA538  40 81 00 2C */	ble lbl_801DE904
-/* 801DE8DC 001DA53C  C0 1F 01 BC */	lfs f0, 0x1bc(r31)
-/* 801DE8E0 001DA540  FC 00 10 40 */	fcmpo cr0, f0, f2
-/* 801DE8E4 001DA544  40 80 00 20 */	bge lbl_801DE904
-/* 801DE8E8 001DA548  FC 00 08 40 */	fcmpo cr0, f0, f1
-/* 801DE8EC 001DA54C  40 81 00 18 */	ble lbl_801DE904
-/* 801DE8F0 001DA550  C0 1F 01 C0 */	lfs f0, 0x1c0(r31)
-/* 801DE8F4 001DA554  FC 00 10 40 */	fcmpo cr0, f0, f2
-/* 801DE8F8 001DA558  40 80 00 0C */	bge lbl_801DE904
-/* 801DE8FC 001DA55C  FC 00 08 40 */	fcmpo cr0, f0, f1
-/* 801DE900 001DA560  41 81 00 0C */	bgt lbl_801DE90C
-lbl_801DE904:
-/* 801DE904 001DA564  38 00 00 00 */	li r0, 0
-/* 801DE908 001DA568  48 00 00 08 */	b lbl_801DE910
-lbl_801DE90C:
-/* 801DE90C 001DA56C  38 00 00 01 */	li r0, 1
-lbl_801DE910:
-/* 801DE910 001DA570  2C 00 00 00 */	cmpwi r0, 0
-/* 801DE914 001DA574  41 82 00 24 */	beq lbl_801DE938
-/* 801DE918 001DA578  3C 60 80 49 */	lis r3, lbl_80493614@ha
-/* 801DE91C 001DA57C  C0 03 36 14 */	lfs f0, lbl_80493614@l(r3)
-/* 801DE920 001DA580  38 63 36 14 */	addi r3, r3, 0x3614
-/* 801DE924 001DA584  D0 1F 01 B8 */	stfs f0, 0x1b8(r31)
-/* 801DE928 001DA588  C0 03 00 04 */	lfs f0, 4(r3)
-/* 801DE92C 001DA58C  D0 1F 01 BC */	stfs f0, 0x1bc(r31)
-/* 801DE930 001DA590  C0 03 00 08 */	lfs f0, 8(r3)
-/* 801DE934 001DA594  D0 1F 01 C0 */	stfs f0, 0x1c0(r31)
-lbl_801DE938:
-/* 801DE938 001DA598  C0 3F 01 AC */	lfs f1, 0x1ac(r31)
-/* 801DE93C 001DA59C  C0 1F 01 C4 */	lfs f0, 0x1c4(r31)
-/* 801DE940 001DA5A0  C0 62 96 38 */	lfs f3, lbl_80641C38
-/* 801DE944 001DA5A4  EC 01 00 28 */	fsubs f0, f1, f0
-/* 801DE948 001DA5A8  FC 00 18 40 */	fcmpo cr0, f0, f3
-/* 801DE94C 001DA5AC  40 80 00 48 */	bge lbl_801DE994
-/* 801DE950 001DA5B0  C0 42 96 3C */	lfs f2, lbl_80641C3C
-/* 801DE954 001DA5B4  FC 00 10 40 */	fcmpo cr0, f0, f2
-/* 801DE958 001DA5B8  40 81 00 3C */	ble lbl_801DE994
-/* 801DE95C 001DA5BC  C0 3F 01 B0 */	lfs f1, 0x1b0(r31)
-/* 801DE960 001DA5C0  C0 1F 01 C8 */	lfs f0, 0x1c8(r31)
-/* 801DE964 001DA5C4  EC 01 00 28 */	fsubs f0, f1, f0
-/* 801DE968 001DA5C8  FC 00 18 40 */	fcmpo cr0, f0, f3
-/* 801DE96C 001DA5CC  40 80 00 28 */	bge lbl_801DE994
-/* 801DE970 001DA5D0  FC 00 10 40 */	fcmpo cr0, f0, f2
-/* 801DE974 001DA5D4  40 81 00 20 */	ble lbl_801DE994
-/* 801DE978 001DA5D8  C0 3F 01 B4 */	lfs f1, 0x1b4(r31)
-/* 801DE97C 001DA5DC  C0 1F 01 CC */	lfs f0, 0x1cc(r31)
-/* 801DE980 001DA5E0  EC 01 00 28 */	fsubs f0, f1, f0
-/* 801DE984 001DA5E4  FC 00 18 40 */	fcmpo cr0, f0, f3
-/* 801DE988 001DA5E8  40 80 00 0C */	bge lbl_801DE994
-/* 801DE98C 001DA5EC  FC 00 10 40 */	fcmpo cr0, f0, f2
-/* 801DE990 001DA5F0  41 81 00 0C */	bgt lbl_801DE99C
-lbl_801DE994:
-/* 801DE994 001DA5F4  38 00 00 00 */	li r0, 0
-/* 801DE998 001DA5F8  48 00 00 08 */	b lbl_801DE9A0
-lbl_801DE99C:
-/* 801DE99C 001DA5FC  38 00 00 01 */	li r0, 1
-lbl_801DE9A0:
-/* 801DE9A0 001DA600  2C 00 00 00 */	cmpwi r0, 0
-/* 801DE9A4 001DA604  41 82 00 30 */	beq lbl_801DE9D4
-/* 801DE9A8 001DA608  3C 80 80 49 */	lis r4, lbl_80493620@ha
-/* 801DE9AC 001DA60C  38 7F 01 AC */	addi r3, r31, 0x1ac
-/* 801DE9B0 001DA610  38 84 36 20 */	addi r4, r4, lbl_80493620@l
-/* 801DE9B4 001DA614  38 A1 00 08 */	addi r5, r1, 8
-/* 801DE9B8 001DA618  48 09 E3 0D */	bl PSVECAdd
-/* 801DE9BC 001DA61C  C0 01 00 08 */	lfs f0, 8(r1)
-/* 801DE9C0 001DA620  D0 1F 01 C4 */	stfs f0, 0x1c4(r31)
-/* 801DE9C4 001DA624  C0 01 00 0C */	lfs f0, 0xc(r1)
-/* 801DE9C8 001DA628  D0 1F 01 C8 */	stfs f0, 0x1c8(r31)
-/* 801DE9CC 001DA62C  C0 01 00 10 */	lfs f0, 0x10(r1)
-/* 801DE9D0 001DA630  D0 1F 01 CC */	stfs f0, 0x1cc(r31)
-lbl_801DE9D4:
-/* 801DE9D4 001DA634  38 7F 01 D4 */	addi r3, r31, 0x1d4
-/* 801DE9D8 001DA638  38 9F 01 AC */	addi r4, r31, 0x1ac
-/* 801DE9DC 001DA63C  38 BF 01 B8 */	addi r5, r31, 0x1b8
-/* 801DE9E0 001DA640  38 DF 01 C4 */	addi r6, r31, 0x1c4
-/* 801DE9E4 001DA644  48 09 DC 81 */	bl C_MTXLookAt
-/* 801DE9E8 001DA648  38 7F 01 D4 */	addi r3, r31, 0x1d4
-/* 801DE9EC 001DA64C  38 81 00 E0 */	addi r4, r1, 0xe0
-/* 801DE9F0 001DA650  48 09 D6 B9 */	bl PSMTXInverse
-/* 801DE9F4 001DA654  38 61 00 E0 */	addi r3, r1, 0xe0
-/* 801DE9F8 001DA658  38 9F 02 04 */	addi r4, r31, 0x204
-/* 801DE9FC 001DA65C  48 09 D5 5D */	bl PSMTXCopy
-/* 801DEA00 001DA660  38 7F 02 04 */	addi r3, r31, 0x204
-/* 801DEA04 001DA664  38 81 00 B0 */	addi r4, r1, 0xb0
-/* 801DEA08 001DA668  48 09 D6 51 */	bl PSMTXTranspose
-/* 801DEA0C 001DA66C  38 61 00 B0 */	addi r3, r1, 0xb0
-/* 801DEA10 001DA670  38 9F 02 34 */	addi r4, r31, 0x234
-/* 801DEA14 001DA674  48 09 D5 45 */	bl PSMTXCopy
-/* 801DEA18 001DA678  80 1F 01 04 */	lwz r0, 0x104(r31)
-/* 801DEA1C 001DA67C  54 00 06 F2 */	rlwinm r0, r0, 0, 0x1b, 0x19
-/* 801DEA20 001DA680  90 1F 01 04 */	stw r0, 0x104(r31)
-lbl_801DEA24:
-/* 801DEA24 001DA684  80 01 01 54 */	lwz r0, 0x154(r1)
-/* 801DEA28 001DA688  83 E1 01 4C */	lwz r31, 0x14c(r1)
-/* 801DEA2C 001DA68C  83 C1 01 48 */	lwz r30, 0x148(r1)
-/* 801DEA30 001DA690  7C 08 03 A6 */	mtlr r0
-/* 801DEA34 001DA694  38 21 01 50 */	addi r1, r1, 0x150
-/* 801DEA38 001DA698  4E 80 00 20 */	blr
-}
-#pragma peephole on
-#endif
 
 extern Mtx lbl_804932E0;    
 extern float lbl_80641C40;  
@@ -904,6 +735,7 @@ void func_801DEA3C(Mtx p1, GScamera* p2, Mtx p3, BOOL p4)
     MTXScale(sp70, sp18[0], sp18[1], sp18[2]);
     
     // get column vector
+    // TODO: write as Vec assignment?
     float f0, f1, f2;
     f2 = p3[0][3];
     f1 = p3[1][3];
@@ -1202,7 +1034,7 @@ void GScamera::func2(BOOL p1)
             unk1A0.y = 0.0f;
             unk1A0.z = -1.0f;
         }
-        unk1D0 = 0;
+        unk1D0 = NULL;
         unk104 |= 0x28;
     }
 }

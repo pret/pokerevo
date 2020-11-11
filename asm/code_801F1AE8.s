@@ -2123,8 +2123,8 @@ lbl_801F3774:
 /* 801F3788 001EF3E8  38 21 01 10 */	addi r1, r1, 0x110
 /* 801F378C 001EF3EC  4E 80 00 20 */	blr
 
-.global func_801F3790
-func_801F3790:
+.global func3__6GSnullFv
+func3__6GSnullFv:
 /* 801F3790 001EF3F0  94 21 FF 90 */	stwu r1, -0x70(r1)
 /* 801F3794 001EF3F4  7C 08 02 A6 */	mflr r0
 /* 801F3798 001EF3F8  90 01 00 74 */	stw r0, 0x74(r1)
