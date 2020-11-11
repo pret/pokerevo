@@ -79,22 +79,21 @@ class GScamera : public GSnull
 {
     u32 unk104; // flags
     gUnkClass10* unk108;
+    Mtx44 unk10C; // orthographic projection matrix. TODO: this could be a C++ wrapper for Mtx44
     
-    u8 unk10C[0x40]; // pad
+    float unk14C;
+    float unk150;
+    float unk154;
+    float unk158;
+    float unk15C;
+    float unk160;
+    float unk164;
     
-    
-    u32 unk14C;
-    u32 unk150;
-    u32 unk154;
-    u32 unk158;
-    u32 unk15C;
-    u32 unk160;
-    u32 unk164;
-    
-    float unk168;
-    float unk16C;
-    float unk170;
-    float unk174;
+    // view volume coordinates for the orthographic projection matrix
+    float unk168; // top
+    float unk16C; // bottom
+    float unk170; // left
+    float unk174; // right
     
     float unk178;
     
@@ -266,251 +265,111 @@ GScamera::~GScamera()
     
 }
 
-extern u32 lbl_8063F788;
+// TODO: what is this? compare with gUnkClass 9, 10, 11, 12...
+struct gUnkClass13
+{
+    u8 unk0[0x7A]; //pad
+    u8 unk7A;
+};
+
+extern gUnkClass13* lbl_8063F788; // TODO: pointer to some class
 extern float lbl_80641C18;
 extern float lbl_80641C1C;
 extern float lbl_80641C20;
 extern double lbl_80641C28;
 extern float lbl_80641C30;
 extern float lbl_80641C34;
-void func_8022369C(void);
-void atan2(void);
-void tan(void);
-void func_80223694(void);
-void func_80223698(void);
+double atan2(double y, double x);
+double tan(double x);
 
+// C_MTXFrustum
+void func_80223694(Mtx44 m, float t, float b, float l, float r, float n, float f);
+// C_MTXOrtho
+void func_80223698(Mtx44 m, float t, float b, float l, float r, float n, float f);
+// C_MTXPerspective
+void func_8022369C(Mtx44 m, float fovy, float aspect, float n, float f);
 
-#ifdef NONMATCHING
 void GScamera::func_801DE1F8()
 {
+    float f31;
+    float f30;
+    if (lbl_8063F788->unk7A && (unk104 & 0x100)) {
+        if (!(unk104 & 0x4))
+            unk104 |= 0xC;
+        f30 = 1.334375f;
+    } else {
+        if (unk104 & 0x4)
+            unk104 = (unk104 | 0x8) & ~0x4;
+        f30 = 1.0f;
+    }
     
+    float f8;
+    if (unk104 & 0x8) {
+        f31 = unk178;
+        switch (unk104 & 0x3) {
+            case 2:
+                // TODO: inline function?
+                f8 = 0.5f * ((1.0f - f30) * (unk174 - unk170));
+                if (f31 > 1.0f) {
+                    f31 = (1.0f / f31);
+                    // func_80223698 is a thunk to C_MTXOrtho
+                    func_80223698(unk10C, unk168*f31, unk16C*f31, f8 + unk170*f30, f8 + unk174*f30, unk17C.x, unk17C.y);
+                } else {
+                    f31 *= f30;
+                    func_80223698(unk10C, unk168, unk16C, f8 + unk170*f31, f8 + unk174*f31, unk17C.x, unk17C.y);
+                }
+                unk14C = 1.0f;
+                unk150 = unk10C[0][0];
+                unk154 = unk10C[0][3];
+                unk158 = unk10C[1][1];
+                unk15C = unk10C[1][3];
+                unk160 = unk10C[2][2];
+                unk164 = unk10C[2][3];
+                break;
+            case 3:
+                f8 = 0.5f * ((1.0f - f30) * (unk174 - unk170));
+                if (f31 > 1.0f) {
+                    f31 = 1.0f / f31;
+                    // func_80223694 is a thunk to C_MTXFrustum
+                    func_80223694(unk10C, unk168*f31, unk16C*f31, f8 + unk170*f30, f8 + unk174*f30, unk17C.x, unk17C.y);
+                } else {
+                    f31 *= f30;
+                    func_80223694(unk10C, unk168, unk16C, f8 + unk170*f31, f8 + unk174*f31, unk17C.x, unk17C.y);
+                }
+                unk14C = 0.0f;
+                unk150 = unk10C[0][0];
+                unk154 = unk10C[0][2];
+                unk158 = unk10C[1][1];
+                unk15C = unk10C[1][2];
+                unk160 = unk10C[2][2];
+                unk164 = unk10C[2][3];
+                break;
+            case 0: case 1: default:
+                if (unk104 & 0x80 && f31 > 1.0f) {
+                    // TODO: degree->radian conversion? 0.017453292f is pi/180
+                    float f0 = static_cast<float>(tan(0.017453292f*(0.5f*unk168)));
+                    float f3 = static_cast<float>(atan2(f0/f31, 1.0));
+                    f31 *= f30;
+                    // TODO: radian->degree conversion? 57.29578f is 180/pi
+                    // func_8022369C is a thunk to C_MTXPerspective
+                    float rad2deg = 57.29578f*(2.0f*f3);
+                    func_8022369C(unk10C, rad2deg, unk16C*f31, unk17C.x, unk17C.y);
+                } else {
+                    f31 *= f30;
+                    func_8022369C(unk10C, unk168, unk16C*f31, unk17C.x, unk17C.y);
+                }
+                unk14C = 0.0f;
+                unk150 = unk10C[0][0];
+                unk154 = unk10C[0][2];
+                unk158 = unk10C[1][1];
+                unk15C = unk10C[1][2];
+                unk160 = unk10C[2][2];
+                unk164 = unk10C[2][3];
+                break;
+        }
+        unk104 &= ~0x8;
+    }
 }
-#else
-asm void GScamera::func_801DE1F8()
-{
-    nofralloc
-/* 801DE1F8 001D9E58  94 21 FF D0 */	stwu r1, -0x30(r1)
-/* 801DE1FC 001D9E5C  7C 08 02 A6 */	mflr r0
-/* 801DE200 001D9E60  90 01 00 34 */	stw r0, 0x34(r1)
-/* 801DE204 001D9E64  DB E1 00 20 */	stfd f31, 0x20(r1)
-/* 801DE208 001D9E68  F3 E1 00 28 */	psq_st f31, 40(r1), 0, 0
-/* 801DE20C 001D9E6C  DB C1 00 10 */	stfd f30, 0x10(r1)
-/* 801DE210 001D9E70  F3 C1 00 18 */	psq_st f30, 24(r1), 0, 0
-/* 801DE214 001D9E74  93 E1 00 0C */	stw r31, 0xc(r1)
-/* 801DE218 001D9E78  7C 7F 1B 78 */	mr r31, r3
-/* 801DE21C 001D9E7C  80 8D A4 C8 */	lwz r4, lbl_8063F788
-/* 801DE220 001D9E80  88 04 00 7A */	lbz r0, 0x7a(r4)
-/* 801DE224 001D9E84  2C 00 00 00 */	cmpwi r0, 0
-/* 801DE228 001D9E88  41 82 00 28 */	beq lbl_801DE250
-/* 801DE22C 001D9E8C  80 83 01 04 */	lwz r4, 0x104(r3)
-/* 801DE230 001D9E90  54 80 05 EF */	rlwinm. r0, r4, 0, 0x17, 0x17
-/* 801DE234 001D9E94  41 82 00 1C */	beq lbl_801DE250
-/* 801DE238 001D9E98  54 80 07 7B */	rlwinm. r0, r4, 0, 0x1d, 0x1d
-/* 801DE23C 001D9E9C  40 82 00 0C */	bne lbl_801DE248
-/* 801DE240 001D9EA0  60 80 00 0C */	ori r0, r4, 0xc
-/* 801DE244 001D9EA4  90 03 01 04 */	stw r0, 0x104(r3)
-lbl_801DE248:
-/* 801DE248 001D9EA8  C3 C2 96 18 */	lfs f30, lbl_80641C18
-/* 801DE24C 001D9EAC  48 00 00 20 */	b lbl_801DE26C
-lbl_801DE250:
-/* 801DE250 001D9EB0  80 83 01 04 */	lwz r4, 0x104(r3)
-/* 801DE254 001D9EB4  54 80 07 7B */	rlwinm. r0, r4, 0, 0x1d, 0x1d
-/* 801DE258 001D9EB8  41 82 00 10 */	beq lbl_801DE268
-/* 801DE25C 001D9EBC  60 80 00 08 */	ori r0, r4, 8
-/* 801DE260 001D9EC0  54 00 07 B8 */	rlwinm r0, r0, 0, 0x1e, 0x1c
-/* 801DE264 001D9EC4  90 03 01 04 */	stw r0, 0x104(r3)
-lbl_801DE268:
-/* 801DE268 001D9EC8  C3 C2 96 00 */	lfs f30, lbl_80641C00
-lbl_801DE26C:
-/* 801DE26C 001D9ECC  80 83 01 04 */	lwz r4, 0x104(r3)
-/* 801DE270 001D9ED0  54 80 07 39 */	rlwinm. r0, r4, 0, 0x1c, 0x1c
-/* 801DE274 001D9ED4  41 82 02 8C */	beq lbl_801DE500
-/* 801DE278 001D9ED8  54 80 07 BE */	clrlwi r0, r4, 0x1e
-/* 801DE27C 001D9EDC  C3 E3 01 78 */	lfs f31, 0x178(r3)
-/* 801DE280 001D9EE0  2C 00 00 02 */	cmpwi r0, 2
-/* 801DE284 001D9EE4  41 82 00 18 */	beq lbl_801DE29C
-/* 801DE288 001D9EE8  40 80 00 08 */	bge lbl_801DE290
-/* 801DE28C 001D9EEC  48 00 01 A0 */	b lbl_801DE42C
-lbl_801DE290:
-/* 801DE290 001D9EF0  2C 00 00 04 */	cmpwi r0, 4
-/* 801DE294 001D9EF4  40 80 01 98 */	bge lbl_801DE42C
-/* 801DE298 001D9EF8  48 00 00 CC */	b lbl_801DE364
-lbl_801DE29C:
-/* 801DE29C 001D9EFC  C0 A2 96 00 */	lfs f5, lbl_80641C00
-/* 801DE2A0 001D9F00  C0 83 01 74 */	lfs f4, 0x174(r3)
-/* 801DE2A4 001D9F04  C0 63 01 70 */	lfs f3, 0x170(r3)
-/* 801DE2A8 001D9F08  EC 45 F0 28 */	fsubs f2, f5, f30
-/* 801DE2AC 001D9F0C  C0 02 96 1C */	lfs f0, lbl_80641C1C
-/* 801DE2B0 001D9F10  FC 1F 28 40 */	fcmpo cr0, f31, f5
-/* 801DE2B4 001D9F14  EC 24 18 28 */	fsubs f1, f4, f3
-/* 801DE2B8 001D9F18  EC 22 00 72 */	fmuls f1, f2, f1
-/* 801DE2BC 001D9F1C  ED 00 00 72 */	fmuls f8, f0, f1
-/* 801DE2C0 001D9F20  40 81 00 3C */	ble lbl_801DE2FC
-/* 801DE2C4 001D9F24  EC E5 F8 24 */	fdivs f7, f5, f31
-/* 801DE2C8 001D9F28  C0 23 01 68 */	lfs f1, 0x168(r3)
-/* 801DE2CC 001D9F2C  C0 43 01 6C */	lfs f2, 0x16c(r3)
-/* 801DE2D0 001D9F30  C0 A3 01 7C */	lfs f5, 0x17c(r3)
-/* 801DE2D4 001D9F34  C0 C3 01 80 */	lfs f6, 0x180(r3)
-/* 801DE2D8 001D9F38  38 63 01 0C */	addi r3, r3, 0x10c
-/* 801DE2DC 001D9F3C  EC 63 07 B2 */	fmuls f3, f3, f30
-/* 801DE2E0 001D9F40  EC 04 07 B2 */	fmuls f0, f4, f30
-/* 801DE2E4 001D9F44  EC 21 01 F2 */	fmuls f1, f1, f7
-/* 801DE2E8 001D9F48  EC 42 01 F2 */	fmuls f2, f2, f7
-/* 801DE2EC 001D9F4C  EC 68 18 2A */	fadds f3, f8, f3
-/* 801DE2F0 001D9F50  EC 88 00 2A */	fadds f4, f8, f0
-/* 801DE2F4 001D9F54  48 04 53 A5 */	bl func_80223698
-/* 801DE2F8 001D9F58  48 00 00 30 */	b lbl_801DE328
-lbl_801DE2FC:
-/* 801DE2FC 001D9F5C  EF FF 07 B2 */	fmuls f31, f31, f30
-/* 801DE300 001D9F60  C0 23 01 68 */	lfs f1, 0x168(r3)
-/* 801DE304 001D9F64  C0 43 01 6C */	lfs f2, 0x16c(r3)
-/* 801DE308 001D9F68  C0 A3 01 7C */	lfs f5, 0x17c(r3)
-/* 801DE30C 001D9F6C  EC 63 07 F2 */	fmuls f3, f3, f31
-/* 801DE310 001D9F70  C0 C3 01 80 */	lfs f6, 0x180(r3)
-/* 801DE314 001D9F74  EC 04 07 F2 */	fmuls f0, f4, f31
-/* 801DE318 001D9F78  38 63 01 0C */	addi r3, r3, 0x10c
-/* 801DE31C 001D9F7C  EC 68 18 2A */	fadds f3, f8, f3
-/* 801DE320 001D9F80  EC 88 00 2A */	fadds f4, f8, f0
-/* 801DE324 001D9F84  48 04 53 75 */	bl func_80223698
-lbl_801DE328:
-/* 801DE328 001D9F88  C0 C2 96 00 */	lfs f6, lbl_80641C00
-/* 801DE32C 001D9F8C  C0 BF 01 0C */	lfs f5, 0x10c(r31)
-/* 801DE330 001D9F90  C0 9F 01 18 */	lfs f4, 0x118(r31)
-/* 801DE334 001D9F94  C0 7F 01 20 */	lfs f3, 0x120(r31)
-/* 801DE338 001D9F98  C0 5F 01 28 */	lfs f2, 0x128(r31)
-/* 801DE33C 001D9F9C  C0 3F 01 34 */	lfs f1, 0x134(r31)
-/* 801DE340 001D9FA0  C0 1F 01 38 */	lfs f0, 0x138(r31)
-/* 801DE344 001D9FA4  D0 DF 01 4C */	stfs f6, 0x14c(r31)
-/* 801DE348 001D9FA8  D0 BF 01 50 */	stfs f5, 0x150(r31)
-/* 801DE34C 001D9FAC  D0 9F 01 54 */	stfs f4, 0x154(r31)
-/* 801DE350 001D9FB0  D0 7F 01 58 */	stfs f3, 0x158(r31)
-/* 801DE354 001D9FB4  D0 5F 01 5C */	stfs f2, 0x15c(r31)
-/* 801DE358 001D9FB8  D0 3F 01 60 */	stfs f1, 0x160(r31)
-/* 801DE35C 001D9FBC  D0 1F 01 64 */	stfs f0, 0x164(r31)
-/* 801DE360 001D9FC0  48 00 01 94 */	b lbl_801DE4F4
-lbl_801DE364:
-/* 801DE364 001D9FC4  C0 A2 96 00 */	lfs f5, lbl_80641C00
-/* 801DE368 001D9FC8  C0 83 01 74 */	lfs f4, 0x174(r3)
-/* 801DE36C 001D9FCC  C0 63 01 70 */	lfs f3, 0x170(r3)
-/* 801DE370 001D9FD0  EC 45 F0 28 */	fsubs f2, f5, f30
-/* 801DE374 001D9FD4  C0 02 96 1C */	lfs f0, lbl_80641C1C
-/* 801DE378 001D9FD8  FC 1F 28 40 */	fcmpo cr0, f31, f5
-/* 801DE37C 001D9FDC  EC 24 18 28 */	fsubs f1, f4, f3
-/* 801DE380 001D9FE0  EC 22 00 72 */	fmuls f1, f2, f1
-/* 801DE384 001D9FE4  ED 00 00 72 */	fmuls f8, f0, f1
-/* 801DE388 001D9FE8  40 81 00 3C */	ble lbl_801DE3C4
-/* 801DE38C 001D9FEC  EC E5 F8 24 */	fdivs f7, f5, f31
-/* 801DE390 001D9FF0  C0 23 01 68 */	lfs f1, 0x168(r3)
-/* 801DE394 001D9FF4  C0 43 01 6C */	lfs f2, 0x16c(r3)
-/* 801DE398 001D9FF8  C0 A3 01 7C */	lfs f5, 0x17c(r3)
-/* 801DE39C 001D9FFC  C0 C3 01 80 */	lfs f6, 0x180(r3)
-/* 801DE3A0 001DA000  38 63 01 0C */	addi r3, r3, 0x10c
-/* 801DE3A4 001DA004  EC 63 07 B2 */	fmuls f3, f3, f30
-/* 801DE3A8 001DA008  EC 04 07 B2 */	fmuls f0, f4, f30
-/* 801DE3AC 001DA00C  EC 21 01 F2 */	fmuls f1, f1, f7
-/* 801DE3B0 001DA010  EC 42 01 F2 */	fmuls f2, f2, f7
-/* 801DE3B4 001DA014  EC 68 18 2A */	fadds f3, f8, f3
-/* 801DE3B8 001DA018  EC 88 00 2A */	fadds f4, f8, f0
-/* 801DE3BC 001DA01C  48 04 52 D9 */	bl func_80223694
-/* 801DE3C0 001DA020  48 00 00 30 */	b lbl_801DE3F0
-lbl_801DE3C4:
-/* 801DE3C4 001DA024  EF FF 07 B2 */	fmuls f31, f31, f30
-/* 801DE3C8 001DA028  C0 23 01 68 */	lfs f1, 0x168(r3)
-/* 801DE3CC 001DA02C  C0 43 01 6C */	lfs f2, 0x16c(r3)
-/* 801DE3D0 001DA030  C0 A3 01 7C */	lfs f5, 0x17c(r3)
-/* 801DE3D4 001DA034  EC 63 07 F2 */	fmuls f3, f3, f31
-/* 801DE3D8 001DA038  C0 C3 01 80 */	lfs f6, 0x180(r3)
-/* 801DE3DC 001DA03C  EC 04 07 F2 */	fmuls f0, f4, f31
-/* 801DE3E0 001DA040  38 63 01 0C */	addi r3, r3, 0x10c
-/* 801DE3E4 001DA044  EC 68 18 2A */	fadds f3, f8, f3
-/* 801DE3E8 001DA048  EC 88 00 2A */	fadds f4, f8, f0
-/* 801DE3EC 001DA04C  48 04 52 A9 */	bl func_80223694
-lbl_801DE3F0:
-/* 801DE3F0 001DA050  C0 C2 96 10 */	lfs f6, lbl_80641C10
-/* 801DE3F4 001DA054  C0 BF 01 0C */	lfs f5, 0x10c(r31)
-/* 801DE3F8 001DA058  C0 9F 01 14 */	lfs f4, 0x114(r31)
-/* 801DE3FC 001DA05C  C0 7F 01 20 */	lfs f3, 0x120(r31)
-/* 801DE400 001DA060  C0 5F 01 24 */	lfs f2, 0x124(r31)
-/* 801DE404 001DA064  C0 3F 01 34 */	lfs f1, 0x134(r31)
-/* 801DE408 001DA068  C0 1F 01 38 */	lfs f0, 0x138(r31)
-/* 801DE40C 001DA06C  D0 DF 01 4C */	stfs f6, 0x14c(r31)
-/* 801DE410 001DA070  D0 BF 01 50 */	stfs f5, 0x150(r31)
-/* 801DE414 001DA074  D0 9F 01 54 */	stfs f4, 0x154(r31)
-/* 801DE418 001DA078  D0 7F 01 58 */	stfs f3, 0x158(r31)
-/* 801DE41C 001DA07C  D0 5F 01 5C */	stfs f2, 0x15c(r31)
-/* 801DE420 001DA080  D0 3F 01 60 */	stfs f1, 0x160(r31)
-/* 801DE424 001DA084  D0 1F 01 64 */	stfs f0, 0x164(r31)
-/* 801DE428 001DA088  48 00 00 CC */	b lbl_801DE4F4
-lbl_801DE42C:
-/* 801DE42C 001DA08C  54 80 06 31 */	rlwinm. r0, r4, 0, 0x18, 0x18
-/* 801DE430 001DA090  41 82 00 6C */	beq lbl_801DE49C
-/* 801DE434 001DA094  C0 02 96 00 */	lfs f0, lbl_80641C00
-/* 801DE438 001DA098  FC 1F 00 40 */	fcmpo cr0, f31, f0
-/* 801DE43C 001DA09C  40 81 00 60 */	ble lbl_801DE49C
-/* 801DE440 001DA0A0  C0 42 96 1C */	lfs f2, lbl_80641C1C
-/* 801DE444 001DA0A4  C0 23 01 68 */	lfs f1, 0x168(r3)
-/* 801DE448 001DA0A8  C0 02 96 20 */	lfs f0, lbl_80641C20
-/* 801DE44C 001DA0AC  EC 22 00 72 */	fmuls f1, f2, f1
-/* 801DE450 001DA0B0  EC 20 00 72 */	fmuls f1, f0, f1
-/* 801DE454 001DA0B4  4B FF 61 09 */	bl tan
-/* 801DE458 001DA0B8  FC 00 08 18 */	frsp f0, f1
-/* 801DE45C 001DA0BC  C8 42 96 28 */	lfd f2, lbl_80641C28
-/* 801DE460 001DA0C0  EC 20 F8 24 */	fdivs f1, f0, f31
-/* 801DE464 001DA0C4  4B FF 61 79 */	bl atan2
-/* 801DE468 001DA0C8  FC 60 08 18 */	frsp f3, f1
-/* 801DE46C 001DA0CC  C0 42 96 30 */	lfs f2, lbl_80641C30
-/* 801DE470 001DA0D0  EF FF 07 B2 */	fmuls f31, f31, f30
-/* 801DE474 001DA0D4  C0 22 96 34 */	lfs f1, lbl_80641C34
-/* 801DE478 001DA0D8  C0 1F 01 6C */	lfs f0, 0x16c(r31)
-/* 801DE47C 001DA0DC  38 7F 01 0C */	addi r3, r31, 0x10c
-/* 801DE480 001DA0E0  EC A2 00 F2 */	fmuls f5, f2, f3
-/* 801DE484 001DA0E4  C0 7F 01 7C */	lfs f3, 0x17c(r31)
-/* 801DE488 001DA0E8  EC 40 07 F2 */	fmuls f2, f0, f31
-/* 801DE48C 001DA0EC  C0 9F 01 80 */	lfs f4, 0x180(r31)
-/* 801DE490 001DA0F0  EC 21 01 72 */	fmuls f1, f1, f5
-/* 801DE494 001DA0F4  48 04 52 09 */	bl func_8022369C
-/* 801DE498 001DA0F8  48 00 00 24 */	b lbl_801DE4BC
-lbl_801DE49C:
-/* 801DE49C 001DA0FC  EF FF 07 B2 */	fmuls f31, f31, f30
-/* 801DE4A0 001DA100  C0 03 01 6C */	lfs f0, 0x16c(r3)
-/* 801DE4A4 001DA104  C0 23 01 68 */	lfs f1, 0x168(r3)
-/* 801DE4A8 001DA108  C0 63 01 7C */	lfs f3, 0x17c(r3)
-/* 801DE4AC 001DA10C  EC 40 07 F2 */	fmuls f2, f0, f31
-/* 801DE4B0 001DA110  C0 83 01 80 */	lfs f4, 0x180(r3)
-/* 801DE4B4 001DA114  38 63 01 0C */	addi r3, r3, 0x10c
-/* 801DE4B8 001DA118  48 04 51 E5 */	bl func_8022369C
-lbl_801DE4BC:
-/* 801DE4BC 001DA11C  C0 C2 96 10 */	lfs f6, lbl_80641C10
-/* 801DE4C0 001DA120  C0 BF 01 0C */	lfs f5, 0x10c(r31)
-/* 801DE4C4 001DA124  C0 9F 01 14 */	lfs f4, 0x114(r31)
-/* 801DE4C8 001DA128  C0 7F 01 20 */	lfs f3, 0x120(r31)
-/* 801DE4CC 001DA12C  C0 5F 01 24 */	lfs f2, 0x124(r31)
-/* 801DE4D0 001DA130  C0 3F 01 34 */	lfs f1, 0x134(r31)
-/* 801DE4D4 001DA134  C0 1F 01 38 */	lfs f0, 0x138(r31)
-/* 801DE4D8 001DA138  D0 DF 01 4C */	stfs f6, 0x14c(r31)
-/* 801DE4DC 001DA13C  D0 BF 01 50 */	stfs f5, 0x150(r31)
-/* 801DE4E0 001DA140  D0 9F 01 54 */	stfs f4, 0x154(r31)
-/* 801DE4E4 001DA144  D0 7F 01 58 */	stfs f3, 0x158(r31)
-/* 801DE4E8 001DA148  D0 5F 01 5C */	stfs f2, 0x15c(r31)
-/* 801DE4EC 001DA14C  D0 3F 01 60 */	stfs f1, 0x160(r31)
-/* 801DE4F0 001DA150  D0 1F 01 64 */	stfs f0, 0x164(r31)
-lbl_801DE4F4:
-/* 801DE4F4 001DA154  80 1F 01 04 */	lwz r0, 0x104(r31)
-/* 801DE4F8 001DA158  54 00 07 76 */	rlwinm r0, r0, 0, 0x1d, 0x1b
-/* 801DE4FC 001DA15C  90 1F 01 04 */	stw r0, 0x104(r31)
-lbl_801DE500:
-/* 801DE500 001DA160  E3 E1 00 28 */	psq_l f31, 40(r1), 0, 0
-/* 801DE504 001DA164  CB E1 00 20 */	lfd f31, 0x20(r1)
-/* 801DE508 001DA168  E3 C1 00 18 */	psq_l f30, 24(r1), 0, 0
-/* 801DE50C 001DA16C  CB C1 00 10 */	lfd f30, 0x10(r1)
-/* 801DE510 001DA170  80 01 00 34 */	lwz r0, 0x34(r1)
-/* 801DE514 001DA174  83 E1 00 0C */	lwz r31, 0xc(r1)
-/* 801DE518 001DA178  7C 08 03 A6 */	mtlr r0
-/* 801DE51C 001DA17C  38 21 00 30 */	addi r1, r1, 0x30
-/* 801DE520 001DA180  4E 80 00 20 */	blr
-}
-#pragma peephole on
-#endif
 
 void GScamera::func_801DE524()
 {
@@ -559,8 +418,6 @@ void PSMTXMultVec(const Mtx m, const Vec* src, Vec* dest);
 
 u32 PSMTXInverse(const Mtx src, Mtx inv);
 #define MTXInverse PSMTXInverse
-
-void func3__6GSnullFv();
 
 void GScamera::func3()
 {
@@ -713,7 +570,7 @@ void PSMTXScale(Mtx m, float xS, float yS, float zS);
 double sqrt(double);
 
 
-inline float InlineFunc1(const Mtx m, u32 col)
+static inline float InlineFunc1(const Mtx m, u32 col)
 {
     float f1 = (m[0][col]*m[0][col] + m[1][col]*m[1][col] + m[2][col]*m[2][col]);
     if (f1 <= 0.0f)
@@ -1040,8 +897,8 @@ void GScamera::func2(BOOL p1)
 }
 
 // TODO: move to header
-void func_801E1278(gUnkClass12*, Vec*);
-void func_801E10C0(gUnkClass12*, float*);
+void func_801E1278(gUnkClass12*, Vec*, float);
+void func_801E10C0(gUnkClass12*, float*, float);
 
 // TODO: determine if there's any relationship between this
 // function and the unkC callback in gUnkClass9, called in func_801DD7FC
@@ -1051,34 +908,34 @@ void GScamera::lbl_801DEEF8(gUnkClass12* p1, u32 p2, float p3)
         switch (p1->unk1)
         {
             case 5:
-                func_801E10C0(p1, &unk168);
+                func_801E10C0(p1, &unk168, p3);
                 unk104 |= 0x8;
                 break;
             case 6:
-                func_801E10C0(p1, &unk16C);
+                func_801E10C0(p1, &unk16C, p3);
                 unk104 |= 0x8;
                 break;
             case 7:
-                func_801E10C0(p1, &unk17C.x);
+                func_801E10C0(p1, &unk17C.x, p3);
                 unk104 |= 0x8;
                 break;
             case 8:
-                func_801E10C0(p1, &unk17C.y);
+                func_801E10C0(p1, &unk17C.y, p3);
                 unk104 |= 0x8;
                 break;
             case 9:
-                func_801E10C0(p1, &unk17C.z);
+                func_801E10C0(p1, &unk17C.z, p3);
                 break;
             case 10:
-                func_801E1278(p1, &unk188);
+                func_801E1278(p1, &unk188, p3);
                 unk104 |= 0x20;
                 break;
             case 11:
-                func_801E1278(p1, &unk1A0);
+                func_801E1278(p1, &unk1A0, p3);
                 unk104 |= 0x20;
                 break;
             case 12:
-                func_801E1278(p1, &unk194);
+                func_801E1278(p1, &unk194, p3);
                 unk104 |= 0x20;
                 break;
             default:
