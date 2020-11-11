@@ -112,7 +112,7 @@ public:
     GScamera(void* p1, gUnkClass10* p2);
     void func_801DE1F8();
     void func_801DE524();
-    void func_801DEA3C();
+    friend void func_801DEA3C(Mtx p1, GScamera* p2, Mtx p3, BOOL p4);
     void lbl_801DEEF8(gUnkClass12* p1, u32 p2, float p3);
     virtual ~GScamera();  // 801DE19C
     virtual void func1(float p1); // 801DECBC
@@ -530,18 +530,17 @@ void GScamera::func_801DE524()
     }
 }
 
-#ifdef NONMATCHING
-void GScamera::func3()
-{
-    
-}
-#else
-extern u32 lbl_80493614;
+extern Vec lbl_80493614;
 extern float lbl_80641C38;    
 extern float lbl_80641C3C;    
 extern u32 lbl_80493620;
 void PSMTXTranspose();
-void PSMTXCopy();
+
+void PSMTXCopy(const Mtx src, Mtx dest);
+#define MTXCopy PSMTXCopy
+
+
+
 void C_MTXLookAt();
 void PSVECAdd();
 void func_801F3790();
@@ -549,6 +548,13 @@ void PSMTXMultVecSR();
 void PSMTXMultVec();
 void PSMTXInverse();
 void func_801DE524();
+
+#ifdef NONMATCHING
+void GScamera::func3()
+{
+    
+}
+#else
 asm void GScamera::func3()
 {
     nofralloc
@@ -847,22 +853,108 @@ lbl_801DEA24:
 #pragma peephole on
 #endif
 
-extern u32 lbl_804932E0;    
-extern float lbl_80641C40;    
-void PSMTXConcat();
-void PSMTXQuat();
-void C_QUATRotAxisRad();
-void acos();
-void PSMTXScale();
-void sqrt();
+extern Mtx lbl_804932E0;    
+extern float lbl_80641C40;  
 
-#ifdef NONMATCHING
-void GScamera::func_801DEA3C()
+typedef struct Quaternion
 {
+    float x;
+    float y;
+    float z;
+    float w;
+} Quaternion;
+
+
+#define MTXConcat PSMTXConcat  
+void PSMTXConcat(const Mtx a, const Mtx b, Mtx ab);
+
+
+#define MTXQuat PSMTXQuat
+void PSMTXQuat(Mtx m, const Quaternion* q);
+
+#define QUATRotAxisRad C_QUATRotAxisRad
+void C_QUATRotAxisRad(Quaternion* r, const Vec* axis, float rad);
+
+
+
+double acos(double);
+void PSMTXScale(Mtx m, float xS, float yS, float zS);
+double sqrt(double);
+
+
+inline float InlineFunc1(const Mtx m, u32 col)
+{
+    float f1 = (m[0][col]*m[0][col] + m[1][col]*m[1][col] + m[2][col]*m[2][col]);
+    if (f1 <= 0.0f)
+        return 0.0f;
+    return static_cast<float>(sqrt(f1));
+}
+
+#define NONMATCHING_801DEA3C
+#ifdef NONMATCHING_801DEA3C
+void func_801DEA3C(Mtx p1, GScamera* p2, Mtx p3, BOOL p4)
+{
+    Mtx sp70;
+    Mtx sp40;
+    Vec sp30;
+    Vec sp24;
+    float sp18[3] = {InlineFunc1(p3, 0), InlineFunc1(p3, 1), InlineFunc1(p3, 2)};
+    Quaternion sp8;
     
+    MTXScale(sp70, sp18[0], sp18[1], sp18[2]);
+    
+    // get column vector
+    float f0, f1, f2;
+    f2 = p3[0][3];
+    f1 = p3[1][3];
+    f0 = p3[2][3];
+    sp30.x = f2;
+    sp30.y = f1;
+    sp30.z = f0;
+    if (p4) {
+        VECSubtract(&p2->unk1AC, &sp30, &sp24);
+        sp24.y = 0.0f;
+        BOOL flag; // indicates sp24 is a zero vector?
+        if (!(sp24.x < 0.00001f && sp24.x > -0.00001f &&
+              sp24.y < 0.00001f && sp24.y > -0.00001f &&
+              sp24.z < 0.00001f && sp24.z > -0.00001f))
+        {
+            flag = FALSE;
+        } else {
+            flag = TRUE;
+        }
+        
+        if (flag) {
+            MTXCopy(lbl_804932E0, p1);
+            return;
+        } else {
+            VECNormalize(&sp24, &sp24);
+            float f1;
+            if (sp24.z >= 1.0f) {
+                f1 = 0.0f;
+            } else if (sp24.z <= -1.0f) {
+                f1 = 3.1415927f;
+            } else {
+                f1 = static_cast<float>(acos(sp24.z));
+            }
+            
+            if (sp24.x < 0.0f)
+                f1 = -f1;
+
+            QUATRotAxisRad(&sp8, &lbl_80493614, f1);
+            MTXQuat(sp40, &sp8);
+            MTXConcat(sp40, sp70, sp70);
+        }
+    } else {
+        MTXConcat(p2->unk204, sp70, sp70);
+    }
+    sp70[0][3] = sp30.x;
+    sp70[1][3] = sp30.y;
+    sp70[2][3] = sp30.z;
+    MTXCopy(sp70, p1);
 }
 #else
-asm void GScamera::func_801DEA3C()
+asm void func_801DEA3C(Mtx p1, GScamera* p2, Mtx p3, BOOL p4)
 {
 nofralloc
 /* 801DEA3C 001DA69C  94 21 FF 50 */	stwu r1, -0xb0(r1)
@@ -1098,7 +1190,6 @@ void GScamera::func2(BOOL p1)
             unk194 = unk108->unk48->unkC;
             unk1A0 = unk108->unk48->unk18;
         } else {
-            // TODO: initializer list?
             unk188.x = 0.0f;
             unk188.y = 0.0f;
             unk188.z = 0.0f;

@@ -5,12 +5,14 @@
 extern "C" {
 #endif
 
-typedef f32 Mtx[3][4];
-typedef f32 (*MtxPtr)[4];
+typedef float Mtx[3][4];
+typedef float (*MtxPtr)[4];
 #define MTX_PTR_OFFSET 3
 
 
 #define MTXIdentity PSMTXIdentity
+#define MTXScale PSMTXScale
+#define MTXCopy PSMTXCopy
 
 void PSMTXIdentity(Mtx m);
 
