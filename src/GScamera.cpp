@@ -130,8 +130,6 @@ public:
 // 801DDF78
 GScamera::GScamera() : GSnull(4)
 {
-    //float f0 = -1.0f;
-    //float f1 = 0.0f;
     float f2;
     float f3;
     float f4;
@@ -196,15 +194,16 @@ GScamera::GScamera(void* p1, gUnkClass10* p2) : GSnull(p1, p2)
     float f2;
     float f3;
     float f4;
-    float f5 = 1.0f;
+    float f5;
     float f6;
     float f7;
     
-    f6 = 1.28f;
-    f2 = 10.0f;
     f7 = 60.0f;
+    f6 = 1.28f;
+    f5 = 1.0f;
     f4 = 0.1f;
     f3 = 100000.0f;
+    f2 = 10.0f;
     
     unk16C = f6;
     unk17C.z = f2;
@@ -569,7 +568,7 @@ static inline float InlineFunc1(const Mtx m, u32 col)
     return static_cast<float>(sqrt(f1));
 }
 
-#ifdef NONMATCHING_801DEA3C
+#ifdef NONMATCHING
 void func_801DEA3C(Mtx p1, GScamera* p2, Mtx p3, BOOL p4)
 {
     Mtx sp70;
