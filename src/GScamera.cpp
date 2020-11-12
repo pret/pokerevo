@@ -1,27 +1,12 @@
 #include "ctorStruct.h"
 #include <SDK/mtx.h>
-#include "GSblendObject.h"
-#include "code_801DD5C8.h"
+#include <math.h>
+#include "GSnull.h"
+//#include "GScamera.h" // TODO
 
 static ctorStruct gUnk8063F358(1, 4, 0);
 
 extern "C" {
-    
-// TODO: move to VEC header
-typedef struct
-{
-    float x;
-    float y;
-    float z;
-} Vec, Point3d;
-
-void PSVECCrossProduct(const Vec* a, const Vec* b, Vec* axb);
-void PSVECNormalize(const Vec* src, Vec* unit);
-void PSVECSubtract(const Vec* a, const Vec* b, Vec* a_b);
-
-#define VECSubtract PSVECSubtract
-#define VECCrossProduct PSVECCrossProduct
-#define VECNormalize PSVECNormalize
 
 // TODO: same as gUnkClass9?
 // TODO: use RTTI data to find actual class name
@@ -29,47 +14,6 @@ struct gUnkClass12
 {
     u8 unk0; // pad
     u8 unk1;
-};
-    
-// TODO: namespace?
-struct gUnkClass11
-{
-    Vec unk0;
-    Vec unkC;
-    Vec unk18;
-};
-
-struct gUnkClass10
-{
-    u8 unk0[0x20]; // pad
-    gUnkClass8* unk20;
-    
-    u8 unk24[0xC]; // pad
-    
-    u32 unk30;
-    float unk34;
-    float unk38;
-    Vec unk3C;
-    gUnkClass11* unk48;
-};
-
-class GSnull : public GSblendObject
-{
-protected:
-    u16 unk10;
-    u8 unk12[0xBE];
-    Mtx unkD0;
-public:
-    //u32* vptr100; // TODO: replace
-    
-    // 801F1AE8
-    GSnull(u8 p1);
-    // 801F1BC8
-    GSnull(void* p1, gUnkClass10* p2); // TODO: p1 type
-    virtual ~GSnull();    // 801F1F24
-    virtual void func1(float p1); // 801F3960
-    virtual void func2(BOOL p1); // 801F39E8
-    virtual void func3(); // 801F3790
 };
 
 class GScamera : public GSnull
@@ -264,15 +208,10 @@ struct gUnkClass13
     u8 unk7A;
 };
 
+
+extern Vec lbl_80493614;
+extern Vec lbl_80493620;
 extern gUnkClass13* lbl_8063F788; // TODO: pointer to some class
-extern float lbl_80641C18;
-extern float lbl_80641C1C;
-extern float lbl_80641C20;
-extern double lbl_80641C28;
-extern float lbl_80641C30;
-extern float lbl_80641C34;
-double atan2(double y, double x);
-double tan(double x);
 
 // C_MTXFrustum
 void func_80223694(Mtx44 m, float t, float b, float l, float r, float n, float f);
@@ -383,32 +322,6 @@ void GScamera::func_801DE524()
         unk104 = (unk104 & ~0x10) | 0x20;
     }
 }
-
-extern Vec lbl_80493614;
-extern Vec lbl_80493620;
-
-void PSMTXTranspose(const Mtx src, Mtx xPose);
-#define MTXTranspose PSMTXTranspose
-
-void PSMTXCopy(const Mtx src, Mtx dest);
-#define MTXCopy PSMTXCopy
-
-
-
-void C_MTXLookAt(Mtx m, const Point3d* camPos, const Vec* camUp, const Point3d* target);
-#define MTXLookAt C_MTXLookAt
-
-void PSVECAdd(const Vec* a, const Vec* b, Vec* ab);
-#define VECAdd PSVECAdd
-
-void PSMTXMultVecSR(const Mtx m, const Vec* src, Vec* dest);
-#define MTXMultVecSR PSMTXMultVecSR
-
-void PSMTXMultVec(const Mtx m, const Vec* src, Vec* dest);
-#define MTXMultVec PSMTXMultVec
-
-u32 PSMTXInverse(const Mtx src, Mtx inv);
-#define MTXInverse PSMTXInverse
 
 void GScamera::func3()
 {
@@ -534,54 +447,29 @@ void GScamera::func3()
 
 extern Mtx lbl_804932E0;
 
-typedef struct Quaternion
-{
-    float x;
-    float y;
-    float z;
-    float w;
-} Quaternion;
-
-
-#define MTXConcat PSMTXConcat  
-void PSMTXConcat(const Mtx a, const Mtx b, Mtx ab);
-
-
-#define MTXQuat PSMTXQuat
-void PSMTXQuat(Mtx m, const Quaternion* q);
-
-#define QUATRotAxisRad C_QUATRotAxisRad
-void C_QUATRotAxisRad(Quaternion* r, const Vec* axis, float rad);
-
-
-
-double acos(double);
-void PSMTXScale(Mtx m, float xS, float yS, float zS);
-double sqrt(double);
-
-
 static inline float InlineFunc1(const Mtx m, u32 col)
 {
     float f1 = (m[0][col]*m[0][col] + m[1][col]*m[1][col] + m[2][col]*m[2][col]);
-    if (f1 <= 0.0f)
-        return 0.0f;
+    float f3 = 0.0f;
+    if (f1 <= f3)
+        return f3;
     return static_cast<float>(sqrt(f1));
 }
 
+#define NONMATCHING
 #ifdef NONMATCHING
+// NOTE: The inline asm for this function contains hard-coded offsets into .sdata2, preventing shiftability
 void func_801DEA3C(Mtx p1, GScamera* p2, Mtx p3, BOOL p4)
 {
     Mtx sp70;
     Mtx sp40;
     Vec sp30;
     Vec sp24;
-    Vec sp18 = {InlineFunc1(p3, 0), InlineFunc1(p3, 1), InlineFunc1(p3, 2)};
+    float sp18[3] = { InlineFunc1(p3, 0), InlineFunc1(p3, 1), InlineFunc1(p3, 2) };
     Quaternion sp8;
+
+    MTXScale(sp70, sp18[0], sp18[1], sp18[2]);
     
-    MTXScale(sp70, sp18.x, sp18.y, sp18.z);
-    
-    // get column vector
-    // TODO: write as Vec assignment?
     float f0, f1, f2;
     f2 = p3[0][3];
     f1 = p3[1][3];
@@ -815,10 +703,6 @@ lbl_801DEC9C:
 }
 #pragma peephole on
 #endif
-
-void func_801F3904(GSnull*, float); // TODO: member function
-void func_801DDC84__13GSblendObjectFf(); // TODO: member function
-BOOL func_801F3C7C(GSnull* p1); // TODO: member function
 
 void GScamera::func1(float p1)
 {
