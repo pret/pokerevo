@@ -70,6 +70,7 @@ void func_801DD5C8(gUnkClass7* p1, float p2)
     p1->unk6 |= 0x2;
 }
 
+// TODO: is p2 a GScamera* ?
 void func_801DD7FC(gUnkClass7* p1, void* p2, u32 p3)
 {
     if (!p1->unk0 || !(p1->unk6 & 0x2))

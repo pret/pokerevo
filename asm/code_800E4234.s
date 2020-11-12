@@ -2868,10 +2868,10 @@ lbl_800E69E8:
 /* 800E6A28 000E2688  7C 00 07 75 */	extsb. r0, r0
 /* 800E6A2C 000E268C  40 82 00 28 */	bne lbl_800E6A54
 /* 800E6A30 000E2690  38 7E 01 18 */	addi r3, r30, 0x118
-/* 800E6A34 000E2694  48 0F 75 45 */	bl func_801DDF78
-/* 800E6A38 000E2698  3C 80 80 1E */	lis r4, func_801DE19C@ha
+/* 800E6A34 000E2694  48 0F 75 45 */	bl __ct__8GScameraFv
+/* 800E6A38 000E2698  3C 80 80 1E */	lis r4, __dt__8GScameraFv@ha
 /* 800E6A3C 000E269C  38 7E 01 18 */	addi r3, r30, 0x118
-/* 800E6A40 000E26A0  38 84 E1 9C */	addi r4, r4, func_801DE19C@l
+/* 800E6A40 000E26A0  38 84 E1 9C */	addi r4, r4, __dt__8GScameraFv@l
 /* 800E6A44 000E26A4  38 BE 01 0C */	addi r5, r30, 0x10c
 /* 800E6A48 000E26A8  48 0E 02 01 */	bl __register_global_object_tmp
 /* 800E6A4C 000E26AC  38 00 00 01 */	li r0, 1

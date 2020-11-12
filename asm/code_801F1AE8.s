@@ -2,8 +2,8 @@
 
 .section .text, "ax"  # 0x80006980 - 0x803E1E60
 
-.global func_801F1AE8
-func_801F1AE8:
+.global __ct__6GSnullFUc
+__ct__6GSnullFUc:
 /* 801F1AE8 001ED748  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 801F1AEC 001ED74C  7C 08 02 A6 */	mflr r0
 /* 801F1AF0 001ED750  90 01 00 14 */	stw r0, 0x14(r1)
@@ -61,8 +61,8 @@ func_801F1AE8:
 /* 801F1BC0 001ED820  38 21 00 10 */	addi r1, r1, 0x10
 /* 801F1BC4 001ED824  4E 80 00 20 */	blr
 
-.global func_801F1BC8
-func_801F1BC8:
+.global __ct__6GSnullFPvP11gUnkClass10
+__ct__6GSnullFPvP11gUnkClass10:
 /* 801F1BC8 001ED828  94 21 FF E0 */	stwu r1, -0x20(r1)
 /* 801F1BCC 001ED82C  7C 08 02 A6 */	mflr r0
 /* 801F1BD0 001ED830  90 01 00 24 */	stw r0, 0x24(r1)
@@ -181,7 +181,7 @@ lbl_801F1D70:
 /* 801F1D74 001ED9D4  41 82 00 10 */	beq lbl_801F1D84
 /* 801F1D78 001ED9D8  7F E4 FB 78 */	mr r4, r31
 /* 801F1D7C 001ED9DC  7F 85 E3 78 */	mr r5, r28
-/* 801F1D80 001ED9E0  4B FE C3 05 */	bl func_801DE084
+/* 801F1D80 001ED9E0  4B FE C3 05 */	bl __ct__8GScameraFPvP11gUnkClass10
 lbl_801F1D84:
 /* 801F1D84 001ED9E4  7C 64 1B 78 */	mr r4, r3
 /* 801F1D88 001ED9E8  48 00 01 2C */	b lbl_801F1EB4
@@ -272,7 +272,7 @@ lbl_801F1E9C:
 /* 801F1EA0 001EDB00  41 82 00 10 */	beq lbl_801F1EB0
 /* 801F1EA4 001EDB04  7F E4 FB 78 */	mr r4, r31
 /* 801F1EA8 001EDB08  7F 85 E3 78 */	mr r5, r28
-/* 801F1EAC 001EDB0C  4B FF FD 1D */	bl func_801F1BC8
+/* 801F1EAC 001EDB0C  4B FF FD 1D */	bl __ct__6GSnullFPvP11gUnkClass10
 lbl_801F1EB0:
 /* 801F1EB0 001EDB10  7C 64 1B 78 */	mr r4, r3
 lbl_801F1EB4:
@@ -308,8 +308,8 @@ lbl_801F1F00:
 /* 801F1F1C 001EDB7C  38 21 00 20 */	addi r1, r1, 0x20
 /* 801F1F20 001EDB80  4E 80 00 20 */	blr
 
-.global func_801F1F24
-func_801F1F24:
+.global __dt__6GSnullFv
+__dt__6GSnullFv:
 /* 801F1F24 001EDB84  94 21 FF E0 */	stwu r1, -0x20(r1)
 /* 801F1F28 001EDB88  7C 08 02 A6 */	mflr r0
 /* 801F1F2C 001EDB8C  2C 03 00 00 */	cmpwi r3, 0
@@ -2123,8 +2123,8 @@ lbl_801F3774:
 /* 801F3788 001EF3E8  38 21 01 10 */	addi r1, r1, 0x110
 /* 801F378C 001EF3EC  4E 80 00 20 */	blr
 
-.global func_801F3790
-func_801F3790:
+.global func3__6GSnullFv
+func3__6GSnullFv:
 /* 801F3790 001EF3F0  94 21 FF 90 */	stwu r1, -0x70(r1)
 /* 801F3794 001EF3F4  7C 08 02 A6 */	mflr r0
 /* 801F3798 001EF3F8  90 01 00 74 */	stw r0, 0x74(r1)
@@ -2291,8 +2291,8 @@ lbl_801F39C0:
 /* 801F39E0 001EF640  38 21 00 20 */	addi r1, r1, 0x20
 /* 801F39E4 001EF644  4E 80 00 20 */	blr
 
-.global func_801F39E8
-func_801F39E8:
+.global func2__6GSnullFi
+func2__6GSnullFi:
 /* 801F39E8 001EF648  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 801F39EC 001EF64C  7C 08 02 A6 */	mflr r0
 /* 801F39F0 001EF650  90 01 00 14 */	stw r0, 0x14(r1)
