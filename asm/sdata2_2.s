@@ -2,54 +2,6 @@
 
 .section .sdata2, "wa"  # 0x80640600 - 0x80643020
 
-.global lbl_80641BF8
-lbl_80641BF8:
-	.incbin "baserom.dol", 0x473C18, 0x4
-.global lbl_80641BFC
-lbl_80641BFC:
-	.incbin "baserom.dol", 0x473C1C, 0x4
-.global lbl_80641C00
-lbl_80641C00:
-	.incbin "baserom.dol", 0x473C20, 0x4
-.global lbl_80641C04
-lbl_80641C04:
-	.incbin "baserom.dol", 0x473C24, 0x4
-.global lbl_80641C08
-lbl_80641C08:
-	.incbin "baserom.dol", 0x473C28, 0x4
-.global lbl_80641C0C
-lbl_80641C0C:
-	.incbin "baserom.dol", 0x473C2C, 0x4
-.global lbl_80641C10
-lbl_80641C10:
-	.incbin "baserom.dol", 0x473C30, 0x4
-.global lbl_80641C14
-lbl_80641C14:
-	.incbin "baserom.dol", 0x473C34, 0x4
-.global lbl_80641C18
-lbl_80641C18:
-	.incbin "baserom.dol", 0x473C38, 0x4
-.global lbl_80641C1C
-lbl_80641C1C:
-	.incbin "baserom.dol", 0x473C3C, 0x4
-.global lbl_80641C20
-lbl_80641C20:
-	.incbin "baserom.dol", 0x473C40, 0x8
-.global lbl_80641C28
-lbl_80641C28:
-	.incbin "baserom.dol", 0x473C48, 0x8
-.global lbl_80641C30
-lbl_80641C30:
-	.incbin "baserom.dol", 0x473C50, 0x4
-.global lbl_80641C34
-lbl_80641C34:
-	.incbin "baserom.dol", 0x473C54, 0x4
-.global lbl_80641C38
-lbl_80641C38:
-	.incbin "baserom.dol", 0x473C58, 0x4
-.global lbl_80641C3C
-lbl_80641C3C:
-	.incbin "baserom.dol", 0x473C5C, 0x4
 .global lbl_80641C40
 lbl_80641C40:
 	.incbin "baserom.dol", 0x473C60, 0x8

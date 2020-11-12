@@ -2,9 +2,9 @@
 
 .section .sdata, "wa"  # 0x8063D2C0 - 0x8063E8E0
 
-.global lbl_8063D6FE
-lbl_8063D6FE:
-	.incbin "baserom.dol", 0x47143E, 0x6A
+.global lbl_8063D730
+lbl_8063D730:
+	.incbin "baserom.dol", 0x471470, 0x38
 .global lbl_8063D768
 lbl_8063D768:
 	.incbin "baserom.dol", 0x4714A8, 0x38

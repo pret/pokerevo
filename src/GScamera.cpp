@@ -3,8 +3,7 @@
 #include "GSblendObject.h"
 #include "code_801DD5C8.h"
 
-// static ctorStruct gUnk8063F358;
-
+static ctorStruct gUnk8063F358(1, 4, 0);
 
 extern "C" {
     
@@ -16,15 +15,13 @@ typedef struct
     float z;
 } Vec, Point3d;
 
-void PSVECCrossProduct(const Vec* a, const Vec* b, Vec* axb);    
-void PSVECNormalize(const Vec* src, Vec* unit);    
-void PSVECSubtract(const Vec* a, const Vec* b, Vec* a_b);   
+void PSVECCrossProduct(const Vec* a, const Vec* b, Vec* axb);
+void PSVECNormalize(const Vec* src, Vec* unit);
+void PSVECSubtract(const Vec* a, const Vec* b, Vec* a_b);
 
 #define VECSubtract PSVECSubtract
 #define VECCrossProduct PSVECCrossProduct
 #define VECNormalize PSVECNormalize
-
-
 
 // TODO: same as gUnkClass9?
 // TODO: use RTTI data to find actual class name
@@ -81,13 +78,22 @@ class GScamera : public GSnull
     gUnkClass10* unk108;
     Mtx44 unk10C; // orthographic projection matrix. TODO: this could be a C++ wrapper for Mtx44
     
-    float unk14C;
-    float unk150;
-    float unk154;
-    float unk158;
-    float unk15C;
-    float unk160;
-    float unk164;
+    // TODO: Is unk14C an array of floats initialized to 0s with an initializer list?
+    // GScamera's constructors write 0 to unk14C as if it's an s32, yet other functions treat
+    // it as a float
+    typedef union hack
+    { 
+        s32 i;
+        float f;
+    } Hack;
+    
+    Hack unk14C;
+    Hack unk150;
+    Hack unk154;
+    Hack unk158;
+    Hack unk15C;
+    Hack unk160;
+    Hack unk164;
     
     // view volume coordinates for the orthographic projection matrix
     float unk168; // top
@@ -121,48 +127,36 @@ public:
     virtual void func3(); // 801DE5F8
 };
 
-
-__declspec(section ".data") extern u32 lbl_80423358; // GScamera vtable
-extern float lbl_80641BF8;
-extern float lbl_80641BFC;
-extern float lbl_80641C00;
-extern float lbl_80641C04;
-extern float lbl_80641C08;
-extern float lbl_80641C0C;
-extern float lbl_80641C10;
-extern float lbl_80641C14;
-extern void __ct__6GSnullFUc(void);
-
-
 // 801DDF78
 GScamera::GScamera() : GSnull(4)
 {
     //float f0 = -1.0f;
     //float f1 = 0.0f;
-    float f2 = 10.0f;
+    float f2;
     float f3;
     float f4;
-    float f5 = 1.0f;
+    float f5;
     float f6;
     float f7;
     
     f7 = 60.0f;
     f6 = 1.28f;
+    f5 = 1.0f;
     f4 = 0.1f;
     f3 = 100000.0f;
+    f2 = 10.0f;
     
     unk17C.z = f2;
-    //vptr100 = &lbl_80423358;
     unk104 = 0x109;
     unk108 = NULL;
     
-    unk14C = 0;
-    unk150 = 0;
-    unk154 = 0;
-    unk158 = 0;
-    unk15C = 0;
-    unk160 = 0;
-    unk164 = 0;
+    unk14C.i = 0;
+    unk150.i = 0;
+    unk154.i = 0;
+    unk158.i = 0;
+    unk15C.i = 0;
+    unk160.i = 0;
+    unk164.i = 0;
     
     unk168 = f7;
     unk16C = f6;
@@ -214,18 +208,17 @@ GScamera::GScamera(void* p1, gUnkClass10* p2) : GSnull(p1, p2)
     
     unk16C = f6;
     unk17C.z = f2;
-    // vptr100 = &lbl_80423358;
     
     unk104 = 0x109;
     unk108 = p2;
     
-    unk14C = 0;
-    unk150 = 0;
-    unk154 = 0;
-    unk158 = 0;
-    unk15C = 0;
-    unk160 = 0;
-    unk164 = 0;
+    unk14C.i = 0;
+    unk150.i = 0;
+    unk154.i = 0;
+    unk158.i = 0;
+    unk15C.i = 0;
+    unk160.i = 0;
+    unk164.i = 0;
     
     unk168 = f7;
     unk178 = f5;
@@ -318,13 +311,13 @@ void GScamera::func_801DE1F8()
                     f31 *= f30;
                     func_80223698(unk10C, unk168, unk16C, f8 + unk170*f31, f8 + unk174*f31, unk17C.x, unk17C.y);
                 }
-                unk14C = 1.0f;
-                unk150 = unk10C[0][0];
-                unk154 = unk10C[0][3];
-                unk158 = unk10C[1][1];
-                unk15C = unk10C[1][3];
-                unk160 = unk10C[2][2];
-                unk164 = unk10C[2][3];
+                unk14C.f = 1.0f;
+                unk150.f = unk10C[0][0];
+                unk154.f = unk10C[0][3];
+                unk158.f = unk10C[1][1];
+                unk15C.f = unk10C[1][3];
+                unk160.f = unk10C[2][2];
+                unk164.f = unk10C[2][3];
                 break;
             case 3:
                 f8 = 0.5f * ((1.0f - f30) * (unk174 - unk170));
@@ -336,35 +329,36 @@ void GScamera::func_801DE1F8()
                     f31 *= f30;
                     func_80223694(unk10C, unk168, unk16C, f8 + unk170*f31, f8 + unk174*f31, unk17C.x, unk17C.y);
                 }
-                unk14C = 0.0f;
-                unk150 = unk10C[0][0];
-                unk154 = unk10C[0][2];
-                unk158 = unk10C[1][1];
-                unk15C = unk10C[1][2];
-                unk160 = unk10C[2][2];
-                unk164 = unk10C[2][3];
+                unk14C.f = 0.0f;
+                unk150.f = unk10C[0][0];
+                unk154.f = unk10C[0][2];
+                unk158.f = unk10C[1][1];
+                unk15C.f = unk10C[1][2];
+                unk160.f = unk10C[2][2];
+                unk164.f = unk10C[2][3];
                 break;
             case 0: case 1: default:
                 if (unk104 & 0x80 && f31 > 1.0f) {
                     // TODO: degree->radian conversion? 0.017453292f is pi/180
                     float f0 = static_cast<float>(tan(0.017453292f*(0.5f*unk168)));
                     float f3 = static_cast<float>(atan2(f0/f31, 1.0));
+                    float f5 = f3*2.0f;
                     f31 *= f30;
                     // TODO: radian->degree conversion? 57.29578f is 180/pi
                     // func_8022369C is a thunk to C_MTXPerspective
-                    float rad2deg = 57.29578f*(2.0f*f3);
+                    float rad2deg = f5*57.29578f;
                     func_8022369C(unk10C, rad2deg, unk16C*f31, unk17C.x, unk17C.y);
                 } else {
                     f31 *= f30;
                     func_8022369C(unk10C, unk168, unk16C*f31, unk17C.x, unk17C.y);
                 }
-                unk14C = 0.0f;
-                unk150 = unk10C[0][0];
-                unk154 = unk10C[0][2];
-                unk158 = unk10C[1][1];
-                unk15C = unk10C[1][2];
-                unk160 = unk10C[2][2];
-                unk164 = unk10C[2][3];
+                unk14C.f = 0.0f;
+                unk150.f = unk10C[0][0];
+                unk154.f = unk10C[0][2];
+                unk158.f = unk10C[1][1];
+                unk15C.f = unk10C[1][2];
+                unk160.f = unk10C[2][2];
+                unk164.f = unk10C[2][3];
                 break;
         }
         unk104 &= ~0x8;
@@ -392,8 +386,6 @@ void GScamera::func_801DE524()
 }
 
 extern Vec lbl_80493614;
-extern float lbl_80641C38;    
-extern float lbl_80641C3C;    
 extern Vec lbl_80493620;
 
 void PSMTXTranspose(const Mtx src, Mtx xPose);
@@ -541,8 +533,7 @@ void GScamera::func3()
     }
 }
 
-extern Mtx lbl_804932E0;    
-extern float lbl_80641C40;  
+extern Mtx lbl_804932E0;
 
 typedef struct Quaternion
 {
@@ -578,7 +569,6 @@ static inline float InlineFunc1(const Mtx m, u32 col)
     return static_cast<float>(sqrt(f1));
 }
 
-#define NONMATCHING_801DEA3C
 #ifdef NONMATCHING_801DEA3C
 void func_801DEA3C(Mtx p1, GScamera* p2, Mtx p3, BOOL p4)
 {
@@ -586,10 +576,10 @@ void func_801DEA3C(Mtx p1, GScamera* p2, Mtx p3, BOOL p4)
     Mtx sp40;
     Vec sp30;
     Vec sp24;
-    float sp18[3] = {InlineFunc1(p3, 0), InlineFunc1(p3, 1), InlineFunc1(p3, 2)};
+    Vec sp18 = {InlineFunc1(p3, 0), InlineFunc1(p3, 1), InlineFunc1(p3, 2)};
     Quaternion sp8;
     
-    MTXScale(sp70, sp18[0], sp18[1], sp18[2]);
+    MTXScale(sp70, sp18.x, sp18.y, sp18.z);
     
     // get column vector
     // TODO: write as Vec assignment?
@@ -655,7 +645,7 @@ nofralloc
 /* 801DEA54 001DA6B4  EC 00 00 32 */	fmuls f0, f0, f0
 /* 801DEA58 001DA6B8  90 01 00 B4 */	stw r0, 0xb4(r1)
 /* 801DEA5C 001DA6BC  EC 42 00 B2 */	fmuls f2, f2, f2
-/* 801DEA60 001DA6C0  C0 62 96 10 */	lfs f3, lbl_80641C10
+/* 801DEA60 001DA6C0  C0 62 96 10 */	lfs f3, 0x9610(r2)
 /* 801DEA64 001DA6C4  93 E1 00 AC */	stw r31, 0xac(r1)
 /* 801DEA68 001DA6C8  EC 01 00 2A */	fadds f0, f1, f0
 /* 801DEA6C 001DA6CC  93 C1 00 A8 */	stw r30, 0xa8(r1)
@@ -679,7 +669,7 @@ lbl_801DEAA4:
 /* 801DEAAC 001DA70C  EC 21 00 72 */	fmuls f1, f1, f1
 /* 801DEAB0 001DA710  C0 5E 00 24 */	lfs f2, 0x24(r30)
 /* 801DEAB4 001DA714  EC 00 00 32 */	fmuls f0, f0, f0
-/* 801DEAB8 001DA718  C0 82 96 10 */	lfs f4, lbl_80641C10
+/* 801DEAB8 001DA718  C0 82 96 10 */	lfs f4, 0x9610(r2)
 /* 801DEABC 001DA71C  EC 42 00 B2 */	fmuls f2, f2, f2
 /* 801DEAC0 001DA720  D0 61 00 18 */	stfs f3, 0x18(r1)
 /* 801DEAC4 001DA724  EC 01 00 2A */	fadds f0, f1, f0
@@ -697,7 +687,7 @@ lbl_801DEAE4:
 /* 801DEAEC 001DA74C  EC 21 00 72 */	fmuls f1, f1, f1
 /* 801DEAF0 001DA750  C0 5E 00 28 */	lfs f2, 0x28(r30)
 /* 801DEAF4 001DA754  EC 00 00 32 */	fmuls f0, f0, f0
-/* 801DEAF8 001DA758  C0 A2 96 10 */	lfs f5, lbl_80641C10
+/* 801DEAF8 001DA758  C0 A2 96 10 */	lfs f5, 0x9610(r2)
 /* 801DEAFC 001DA75C  EC 42 00 B2 */	fmuls f2, f2, f2
 /* 801DEB00 001DA760  D0 81 00 1C */	stfs f4, 0x1c(r1)
 /* 801DEB04 001DA764  EC 01 00 2A */	fadds f0, f1, f0
@@ -729,12 +719,12 @@ lbl_801DEB24:
 /* 801DEB64 001DA7C4  38 A1 00 24 */	addi r5, r1, 0x24
 /* 801DEB68 001DA7C8  48 09 E1 81 */	bl PSVECSubtract
 /* 801DEB6C 001DA7CC  C0 01 00 24 */	lfs f0, 0x24(r1)
-/* 801DEB70 001DA7D0  C0 42 96 38 */	lfs f2, lbl_80641C38
-/* 801DEB74 001DA7D4  C0 62 96 10 */	lfs f3, lbl_80641C10
+/* 801DEB70 001DA7D0  C0 42 96 38 */	lfs f2, 0x9638(r2)
+/* 801DEB74 001DA7D4  C0 62 96 10 */	lfs f3, 0x9610(r2)
 /* 801DEB78 001DA7D8  FC 00 10 40 */	fcmpo cr0, f0, f2
 /* 801DEB7C 001DA7DC  D0 61 00 28 */	stfs f3, 0x28(r1)
 /* 801DEB80 001DA7E0  40 80 00 34 */	bge lbl_801DEBB4
-/* 801DEB84 001DA7E4  C0 22 96 3C */	lfs f1, lbl_80641C3C
+/* 801DEB84 001DA7E4  C0 22 96 3C */	lfs f1, 0x963C(r2)
 /* 801DEB88 001DA7E8  FC 00 08 40 */	fcmpo cr0, f0, f1
 /* 801DEB8C 001DA7EC  40 81 00 28 */	ble lbl_801DEBB4
 /* 801DEB90 001DA7F0  FC 03 10 40 */	fcmpo cr0, f3, f2
@@ -764,25 +754,25 @@ lbl_801DEBDC:
 /* 801DEBE0 001DA840  7C 64 1B 78 */	mr r4, r3
 /* 801DEBE4 001DA844  48 09 E1 45 */	bl PSVECNormalize
 /* 801DEBE8 001DA848  C0 21 00 2C */	lfs f1, 0x2c(r1)
-/* 801DEBEC 001DA84C  C0 02 96 00 */	lfs f0, lbl_80641C00
+/* 801DEBEC 001DA84C  C0 02 96 00 */	lfs f0, 0x9600(r2)
 /* 801DEBF0 001DA850  FC 01 00 40 */	fcmpo cr0, f1, f0
 /* 801DEBF4 001DA854  4C 41 13 82 */	cror 2, 1, 2
 /* 801DEBF8 001DA858  40 82 00 0C */	bne lbl_801DEC04
-/* 801DEBFC 001DA85C  C0 22 96 10 */	lfs f1, lbl_80641C10
+/* 801DEBFC 001DA85C  C0 22 96 10 */	lfs f1, 0x9610(r2)
 /* 801DEC00 001DA860  48 00 00 24 */	b lbl_801DEC24
 lbl_801DEC04:
-/* 801DEC04 001DA864  C0 02 96 14 */	lfs f0, lbl_80641C14
+/* 801DEC04 001DA864  C0 02 96 14 */	lfs f0, 0x9614(r2)
 /* 801DEC08 001DA868  FC 01 00 40 */	fcmpo cr0, f1, f0
 /* 801DEC0C 001DA86C  4C 40 13 82 */	cror 2, 0, 2
 /* 801DEC10 001DA870  40 82 00 0C */	bne lbl_801DEC1C
-/* 801DEC14 001DA874  C0 22 96 40 */	lfs f1, lbl_80641C40
+/* 801DEC14 001DA874  C0 22 96 40 */	lfs f1, 0x9640(r2)
 /* 801DEC18 001DA878  48 00 00 0C */	b lbl_801DEC24
 lbl_801DEC1C:
 /* 801DEC1C 001DA87C  4B FF 59 B9 */	bl acos
 /* 801DEC20 001DA880  FC 20 08 18 */	frsp f1, f1
 lbl_801DEC24:
 /* 801DEC24 001DA884  C0 41 00 24 */	lfs f2, 0x24(r1)
-/* 801DEC28 001DA888  C0 02 96 10 */	lfs f0, lbl_80641C10
+/* 801DEC28 001DA888  C0 02 96 10 */	lfs f0, 0x9610(r2)
 /* 801DEC2C 001DA88C  FC 02 00 40 */	fcmpo cr0, f2, f0
 /* 801DEC30 001DA890  40 80 00 08 */	bge lbl_801DEC38
 /* 801DEC34 001DA894  FC 20 08 50 */	fneg f1, f1
@@ -945,4 +935,3 @@ void GScamera::lbl_801DEEF8(gUnkClass12* p1, u32 p2, float p3)
 }
 
 } // extern "C"
-

@@ -2,12 +2,6 @@
 
 	.section .data, "wa"  # 0x80405D60 - 0x80474F00
 
-.global lbl_80423338
-lbl_80423338:
-	.incbin "baserom.dol", 0x41F438, 0x20
-.global lbl_80423358
-lbl_80423358:
-	.incbin "baserom.dol", 0x41F458, 0xB8
 .global lbl_80423410
 lbl_80423410:
 	.incbin "baserom.dol", 0x41F510, 0x48
