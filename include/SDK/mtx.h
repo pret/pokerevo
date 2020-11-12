@@ -24,60 +24,40 @@ typedef struct Quaternion
 } Quaternion;
 
 void PSMTXTranspose(const Mtx src, Mtx xPose);
-#define MTXTranspose PSMTXTranspose
-
 void PSMTXCopy(const Mtx src, Mtx dest);
-#define MTXCopy PSMTXCopy
-
 void C_MTXLookAt(Mtx m, const Point3d* camPos, const Vec* camUp, const Point3d* target);
-#define MTXLookAt C_MTXLookAt
-
-void PSVECAdd(const Vec* a, const Vec* b, Vec* ab);
-#define VECAdd PSVECAdd
-
 void PSMTXMultVecSR(const Mtx m, const Vec* src, Vec* dest);
-#define MTXMultVecSR PSMTXMultVecSR
-
 void PSMTXMultVec(const Mtx m, const Vec* src, Vec* dest);
-#define MTXMultVec PSMTXMultVec
-
 u32 PSMTXInverse(const Mtx src, Mtx inv);
-#define MTXInverse PSMTXInverse
-
+void PSMTXConcat(const Mtx a, const Mtx b, Mtx ab);
+void PSMTXQuat(Mtx m, const Quaternion* q);
+void C_QUATRotAxisRad(Quaternion* r, const Vec* axis, float rad);
+void PSMTXScale(Mtx m, float xS, float yS, float zS);
+void PSMTXIdentity(Mtx m);
+void PSVECAdd(const Vec* a, const Vec* b, Vec* ab);
 void PSVECCrossProduct(const Vec* a, const Vec* b, Vec* axb);
 void PSVECNormalize(const Vec* src, Vec* unit);
 void PSVECSubtract(const Vec* a, const Vec* b, Vec* a_b);
 
-
-
-
+#define MTXTranspose PSMTXTranspose
+#define MTXCopy PSMTXCopy
+#define MTXLookAt C_MTXLookAt
+#define VECAdd PSVECAdd
+#define MTXMultVecSR PSMTXMultVecSR
+#define MTXMultVec PSMTXMultVec
+#define MTXInverse PSMTXInverse
 #define MTXConcat PSMTXConcat  
-void PSMTXConcat(const Mtx a, const Mtx b, Mtx ab);
-
 #define MTXQuat PSMTXQuat
-void PSMTXQuat(Mtx m, const Quaternion* q);
-
 #define QUATRotAxisRad C_QUATRotAxisRad
-void C_QUATRotAxisRad(Quaternion* r, const Vec* axis, float rad);
-
-void PSMTXScale(Mtx m, float xS, float yS, float zS);
-
-
-
 #define VECSubtract PSVECSubtract
 #define VECCrossProduct PSVECCrossProduct
 #define VECNormalize PSVECNormalize
-
-
 #define MTXIdentity PSMTXIdentity
 #define MTXScale PSMTXScale
 #define MTXCopy PSMTXCopy
 
-void PSMTXIdentity(Mtx m);
-
 #ifdef __cplusplus
 }
 #endif
-
 
 #endif //POKEREVO_MTX_H

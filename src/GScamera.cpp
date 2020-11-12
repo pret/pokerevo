@@ -2,76 +2,18 @@
 #include <SDK/mtx.h>
 #include <math.h>
 #include "GSnull.h"
-//#include "GScamera.h" // TODO
+#include "gUnkClass12.h"
+#include "gUnkClass13.h"
+#include "code_80223694.h"
+#include "GScamera.h"
 
 static ctorStruct gUnk8063F358(1, 4, 0);
 
-extern "C" {
+// TODO: determine defining modules for these external references
+extern Vec lbl_80493614;
+extern Vec lbl_80493620;
+extern Mtx lbl_804932E0;
 
-// TODO: same as gUnkClass9?
-// TODO: use RTTI data to find actual class name
-struct gUnkClass12
-{
-    u8 unk0; // pad
-    u8 unk1;
-};
-
-class GScamera : public GSnull
-{
-    u32 unk104; // flags
-    gUnkClass10* unk108;
-    Mtx44 unk10C; // orthographic projection matrix. TODO: this could be a C++ wrapper for Mtx44
-    
-    // TODO: Is unk14C an array of floats initialized to 0s with an initializer list?
-    // GScamera's constructors write 0 to unk14C as if it's an s32, yet other functions treat
-    // it as a float
-    typedef union hack
-    { 
-        s32 i;
-        float f;
-    } Hack;
-    
-    Hack unk14C;
-    Hack unk150;
-    Hack unk154;
-    Hack unk158;
-    Hack unk15C;
-    Hack unk160;
-    Hack unk164;
-    
-    // view volume coordinates for the orthographic projection matrix
-    float unk168; // top
-    float unk16C; // bottom
-    float unk170; // left
-    float unk174; // right
-    
-    float unk178;
-    
-    Vec unk17C;
-    Vec unk188;
-    Vec unk194;
-    Vec unk1A0;
-    Point3d unk1AC; // camera position
-    Vec unk1B8; // camera up vector
-    Point3d unk1C4; // target posiiton
-    GScamera* unk1D0;
-    Mtx unk1D4; // viewing matrix
-    Mtx unk204; // inverse of the viewing matrix
-    Mtx unk234; // inverse-transpose of the viewing matrix
-public:
-    GScamera();
-    GScamera(void* p1, gUnkClass10* p2);
-    void func_801DE1F8();
-    void func_801DE524();
-    friend void func_801DEA3C(Mtx p1, GScamera* p2, Mtx p3, BOOL p4);
-    void lbl_801DEEF8(gUnkClass12* p1, u32 p2, float p3);
-    virtual ~GScamera();  // 801DE19C
-    virtual void func1(float p1); // 801DECBC
-    virtual void func2(BOOL p1); // 801DED3C
-    virtual void func3(); // 801DE5F8
-};
-
-// 801DDF78
 GScamera::GScamera() : GSnull(4)
 {
     float f2;
@@ -132,7 +74,6 @@ GScamera::GScamera() : GSnull(4)
     MTXIdentity(unk234);
 }
 
-// 801DE084
 GScamera::GScamera(void* p1, gUnkClass10* p2) : GSnull(p1, p2)
 {
     float f2;
@@ -195,30 +136,7 @@ GScamera::GScamera(void* p1, gUnkClass10* p2) : GSnull(p1, p2)
     MTXIdentity(unk234);
 }
 
-// 801DE19C
-GScamera::~GScamera()
-{
-    
-}
-
-// TODO: what is this? compare with gUnkClass 9, 10, 11, 12...
-struct gUnkClass13
-{
-    u8 unk0[0x7A]; //pad
-    u8 unk7A;
-};
-
-
-extern Vec lbl_80493614;
-extern Vec lbl_80493620;
-extern gUnkClass13* lbl_8063F788; // TODO: pointer to some class
-
-// C_MTXFrustum
-void func_80223694(Mtx44 m, float t, float b, float l, float r, float n, float f);
-// C_MTXOrtho
-void func_80223698(Mtx44 m, float t, float b, float l, float r, float n, float f);
-// C_MTXPerspective
-void func_8022369C(Mtx44 m, float fovy, float aspect, float n, float f);
+GScamera::~GScamera() { }
 
 void GScamera::func_801DE1F8()
 {
@@ -239,11 +157,11 @@ void GScamera::func_801DE1F8()
         f31 = unk178;
         switch (unk104 & 0x3) {
             case 2:
-                // TODO: inline function?
+                // inline function?
                 f8 = 0.5f * ((1.0f - f30) * (unk174 - unk170));
                 if (f31 > 1.0f) {
                     f31 = (1.0f / f31);
-                    // func_80223698 is a thunk to C_MTXOrtho
+                    // C_MTXOrtho
                     func_80223698(unk10C, unk168*f31, unk16C*f31, f8 + unk170*f30, f8 + unk174*f30, unk17C.x, unk17C.y);
                 } else {
                     f31 *= f30;
@@ -261,7 +179,7 @@ void GScamera::func_801DE1F8()
                 f8 = 0.5f * ((1.0f - f30) * (unk174 - unk170));
                 if (f31 > 1.0f) {
                     f31 = 1.0f / f31;
-                    // func_80223694 is a thunk to C_MTXFrustum
+                    // C_MTXFrustum
                     func_80223694(unk10C, unk168*f31, unk16C*f31, f8 + unk170*f30, f8 + unk174*f30, unk17C.x, unk17C.y);
                 } else {
                     f31 *= f30;
@@ -277,13 +195,13 @@ void GScamera::func_801DE1F8()
                 break;
             case 0: case 1: default:
                 if (unk104 & 0x80 && f31 > 1.0f) {
-                    // TODO: degree->radian conversion? 0.017453292f is pi/180
+                    // degree->radian conversion? 0.017453292f is pi/180
                     float f0 = static_cast<float>(tan(0.017453292f*(0.5f*unk168)));
                     float f3 = static_cast<float>(atan2(f0/f31, 1.0));
                     float f5 = f3*2.0f;
                     f31 *= f30;
-                    // TODO: radian->degree conversion? 57.29578f is 180/pi
-                    // func_8022369C is a thunk to C_MTXPerspective
+                    // radian->degree conversion? 57.29578f is 180/pi
+                    // C_MTXPerspective
                     float rad2deg = f5*57.29578f;
                     func_8022369C(unk10C, rad2deg, unk16C*f31, unk17C.x, unk17C.y);
                 } else {
@@ -407,7 +325,6 @@ void GScamera::func3()
         unk1C4 = sp14;
         
         // if unk1B8 is a zero vector, assign lbl_80493614 to it
-        // TODO: inline this?
         BOOL flag;
         if (!(unk1B8.x < 0.00001f && unk1B8.x > -0.00001f &&
               unk1B8.y < 0.00001f && unk1B8.y > -0.00001f &&
@@ -445,8 +362,6 @@ void GScamera::func3()
     }
 }
 
-extern Mtx lbl_804932E0;
-
 static inline float InlineFunc1(const Mtx m, u32 col)
 {
     float f1 = (m[0][col]*m[0][col] + m[1][col]*m[1][col] + m[2][col]*m[2][col]);
@@ -456,8 +371,9 @@ static inline float InlineFunc1(const Mtx m, u32 col)
     return static_cast<float>(sqrt(f1));
 }
 
-#define NONMATCHING
 #ifdef NONMATCHING
+// There is an instruction ordering issue at the very beginning of the function. We need
+// the compiler to interleave the function prologue with the function body.
 // NOTE: The inline asm for this function contains hard-coded offsets into .sdata2, preventing shiftability
 void func_801DEA3C(Mtx p1, GScamera* p2, Mtx p3, BOOL p4)
 {
@@ -465,10 +381,10 @@ void func_801DEA3C(Mtx p1, GScamera* p2, Mtx p3, BOOL p4)
     Mtx sp40;
     Vec sp30;
     Vec sp24;
-    float sp18[3] = { InlineFunc1(p3, 0), InlineFunc1(p3, 1), InlineFunc1(p3, 2) };
+    Vec sp18 = { InlineFunc1(p3, 0), InlineFunc1(p3, 1), InlineFunc1(p3, 2) };
     Quaternion sp8;
 
-    MTXScale(sp70, sp18[0], sp18[1], sp18[2]);
+    MTXScale(sp70, sp18.x, sp18.y, sp18.z);
     
     float f0, f1, f2;
     f2 = p3[0][3];
@@ -480,7 +396,7 @@ void func_801DEA3C(Mtx p1, GScamera* p2, Mtx p3, BOOL p4)
     if (p4) {
         VECSubtract(&p2->unk1AC, &sp30, &sp24);
         sp24.y = 0.0f;
-        BOOL flag; // indicates sp24 is a zero vector?
+        BOOL flag;
         if (!(sp24.x < 0.00001f && sp24.x > -0.00001f &&
               sp24.y < 0.00001f && sp24.y > -0.00001f &&
               sp24.z < 0.00001f && sp24.z > -0.00001f))
@@ -713,7 +629,6 @@ void GScamera::func1(float p1)
     func_801F3904(this, f31);
 }
 
-// 801DED3C
 void GScamera::func2(BOOL p1)
 {
     GSnull::func2(p1);
@@ -727,8 +642,8 @@ void GScamera::func2(BOOL p1)
             case 2:
                 unk168 = 0.0f;
                 unk170 = 0.0f;
-                unk174 = unk108->unk34; // float
-                unk16C = unk108->unk34 / unk108->unk38; // float
+                unk174 = unk108->unk34;
+                unk16C = unk108->unk34 / unk108->unk38;
                 break;
             case 3:
                 float f1 = (0.5f * unk108->unk34);
@@ -769,12 +684,8 @@ void GScamera::func2(BOOL p1)
     }
 }
 
-// TODO: move to header
-void func_801E1278(gUnkClass12*, Vec*, float);
-void func_801E10C0(gUnkClass12*, float*, float);
-
 // TODO: determine if there's any relationship between this
-// function and the unkC callback in gUnkClass9, called in func_801DD7FC
+// function and the unkC callback member of gUnkClass9, called in func_801DD7FC
 void GScamera::lbl_801DEEF8(gUnkClass12* p1, u32 p2, float p3)
 {
     if (!p2) {
@@ -816,5 +727,3 @@ void GScamera::lbl_801DEEF8(gUnkClass12* p1, u32 p2, float p3)
         }
     }
 }
-
-} // extern "C"

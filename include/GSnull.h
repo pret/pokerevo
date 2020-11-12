@@ -7,7 +7,6 @@ extern "C" {
 
 #include "GSblendObject.h"
 
-// TODO: namespace?
 struct gUnkClass11
 {
     Vec unk0;
@@ -36,10 +35,9 @@ protected:
     u8 unk12[0xBE];
     Mtx unkD0;
 public:    
-    // 801F1AE8
-    GSnull(u8 p1);
-    // 801F1BC8
-    GSnull(void* p1, gUnkClass10* p2); // TODO: p1 type
+    
+    GSnull(u8 p1); // 801F1AE8
+    GSnull(void* p1, gUnkClass10* p2); // 801F1BC8 // TODO: p1 type
     virtual ~GSnull();    // 801F1F24
     virtual void func1(float p1); // 801F3960
     virtual void func2(BOOL p1); // 801F39E8
