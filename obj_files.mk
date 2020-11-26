@@ -234,8 +234,7 @@ SPLIT_O_FILES := 						                          \
 	$(BUILD_DIR)/asm/GSvolume_ctors.o                                   \
 	$(BUILD_DIR)/asm/GSvolume_sbss.o                                   \
 	$(BUILD_DIR)/src/code_801E07E8.o                                   \
-	$(BUILD_DIR)/src/code_801E0810.o                                   \
-	$(BUILD_DIR)/asm/code_801E0810_asm.o                                   \
+	$(BUILD_DIR)/src/gUnkClass20.o                                   \
 	$(BUILD_DIR)/asm/code_801E0A54.o                                   \
 	$(BUILD_DIR)/asm/code_801E4360.o                                   \
 	$(BUILD_DIR)/asm/code_801E474C.o                                   \
