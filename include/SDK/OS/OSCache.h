@@ -5,6 +5,7 @@
 extern "C" {
 #endif
 
+void DCFlushRange(void* startAddr, u32 nBytes);
 void DCInvalidateRange(void* startAddr, u32 nBytes);
 void LCEnable(void);
 #define LC_BASE (0xE000 << 16)
