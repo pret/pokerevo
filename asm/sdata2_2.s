@@ -359,11 +359,11 @@ lbl_80641E54:
 .global lbl_80641E58
 lbl_80641E58:
 	.incbin "baserom.dol", 0x473E78, 0x4
-.global lbl_80641E5C
-lbl_80641E5C:
+.global coord_one
+coord_one:
 	.incbin "baserom.dol", 0x473E7C, 0x4
-.global lbl_80641E60
-lbl_80641E60:
+.global coord_zero
+coord_zero:
 	.incbin "baserom.dol", 0x473E80, 0x4
 .global lbl_80641E64
 lbl_80641E64:
@@ -371,11 +371,11 @@ lbl_80641E64:
 .global lbl_80641E68
 lbl_80641E68:
 	.incbin "baserom.dol", 0x473E88, 0x4
-.global lbl_80641E6C
-lbl_80641E6C:
+.global min_blur_base255
+min_blur_base255:
 	.incbin "baserom.dol", 0x473E8C, 0x4
-.global lbl_80641E70
-lbl_80641E70:
+.global float_to_byte_range_times_255
+float_to_byte_range_times_255:
 	.incbin "baserom.dol", 0x473E90, 0x8
 .global lbl_80641E78
 lbl_80641E78:
@@ -383,14 +383,14 @@ lbl_80641E78:
 .global lbl_80641E7C
 lbl_80641E7C:
 	.incbin "baserom.dol", 0x473E9C, 0x4
-.global lbl_80641E80
-lbl_80641E80:
+.global blur_offset_x
+blur_offset_x:
 	.incbin "baserom.dol", 0x473EA0, 0x4
-.global lbl_80641E84
-lbl_80641E84:
+.global blur_offset_y
+blur_offset_y:
 	.incbin "baserom.dol", 0x473EA4, 0x4
-.global lbl_80641E88
-lbl_80641E88:
+.global blur_intensity
+blur_intensity:
 	.incbin "baserom.dol", 0x473EA8, 0x4
 .global lbl_80641E8C
 lbl_80641E8C:
