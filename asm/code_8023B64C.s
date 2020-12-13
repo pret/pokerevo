@@ -3,7 +3,7 @@
 .section .text, "ax"  # 0x80006980 - 0x803E1E60
 
 lbl_8023B64C:
-/* 8023B64C 002372AC  80 0D A3 D8 */	lwz r0, lbl_8063F698-_SDA_BASE_(r13)
+/* 8023B64C 002372AC  80 0D A3 D8 */	lwz r0, render_context_ptr-_SDA_BASE_(r13)
 /* 8023B650 002372B0  2C 00 00 00 */	cmpwi r0, 0
 /* 8023B654 002372B4  4D 82 00 20 */	beqlr
 /* 8023B658 002372B8  3C 80 80 49 */	lis r4, lbl_804967A0@ha
