@@ -10,7 +10,7 @@ EXE := .exe
 WINE :=
 else
 EXE :=
-WINE := wine 
+WINE := wine
 endif
 
 ifeq ($(NOWINE),1)
@@ -77,8 +77,8 @@ MWCC_VERSION := 3.0
 AS          := $(DEVKITPPC)/bin/powerpc-eabi-as
 OBJCOPY     := $(DEVKITPPC)/bin/powerpc-eabi-objcopy
 CPP         := cpp -P
-CC          := $(WINE)tools/mwcc_compiler/GC/$(MWCC_VERSION)/mwcceppc.exe
-LD          := $(WINE)tools/mwcc_compiler/GC/$(MWCC_VERSION)/mwldeppc.exe
+CC          := $(WINE) tools/mwcc_compiler/GC/$(MWCC_VERSION)/mwcceppc.exe
+LD          := $(WINE) tools/mwcc_compiler/GC/$(MWCC_VERSION)/mwldeppc.exe
 ELF2DOL     := tools/elf2dol/elf2dol$(EXE)
 SHA1SUM     := sha1sum
 PYTHON      := python3

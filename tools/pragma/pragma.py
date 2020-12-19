@@ -246,8 +246,7 @@ with open(args.source, "r") as src:
                 if not (start >= start_file and end > start):
                     raise ValueError("Invalid start, end, or start_file arguments (end must be > start, and start >= start_file)")
                 regswap_tasks.append(RegswapTask(start-start_file, end-start_file, regA, regB))
-    print(*args.cc.split(' '))
-    subprocess.run([*args.cc.split(' '), *args.cflags.split(' '), "-o", args.output, args.source])
+    subprocess.run([*args.cc.strip().split(' '), *args.cflags.split(' '), "-o", args.output, args.source])
 
 instrs = []
 TEXT_INDEX = 1 # NOTE: assumes that mwcceppc always places the .text section header at index 1
