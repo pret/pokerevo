@@ -44,8 +44,9 @@ static inline void inline_ClearFunction(gUnkClass7* ptr)
         ptr->unk6 &= ~0x1;
 }
 
-#ifdef NONMATCHING
-// r4/r6 regswap
+#ifndef NONMATCHING
+#pragma regswap 801DDA28 801DDA80 r4 r6 801DD8C0
+#endif
 void GSanimationObject::func_801DD9C8(float p2)
 {
     if (unk4) {
@@ -70,68 +71,6 @@ void GSanimationObject::func_801DD9C8(float p2)
         }
     }
 }
-#else
-asm void GSanimationObject::func_801DD9C8(float p2)
-{
-    nofralloc
-/* 801DD9C8 001D9628  94 21 FF F0 */	stwu r1, -0x10(r1)
-/* 801DD9CC 001D962C  7C 08 02 A6 */	mflr r0
-/* 801DD9D0 001D9630  90 01 00 14 */	stw r0, 0x14(r1)
-/* 801DD9D4 001D9634  93 E1 00 0C */	stw r31, 0xc(r1)
-/* 801DD9D8 001D9638  7C 7F 1B 78 */	mr r31, r3
-/* 801DD9DC 001D963C  80 83 00 04 */	lwz r4, 4(r3)
-/* 801DD9E0 001D9640  2C 04 00 00 */	cmpwi r4, 0
-/* 801DD9E4 001D9644  41 82 00 9C */	beq lbl_801DDA80
-/* 801DD9E8 001D9648  80 04 00 00 */	lwz r0, 0(r4)
-/* 801DD9EC 001D964C  38 60 00 00 */	li r3, 0
-/* 801DD9F0 001D9650  2C 00 00 00 */	cmpwi r0, 0
-/* 801DD9F4 001D9654  41 82 00 14 */	beq lbl_801DDA08
-/* 801DD9F8 001D9658  A0 04 00 06 */	lhz r0, 6(r4)
-/* 801DD9FC 001D965C  54 00 07 FF */	clrlwi. r0, r0, 0x1f
-/* 801DDA00 001D9660  41 82 00 08 */	beq lbl_801DDA08
-/* 801DDA04 001D9664  38 60 00 01 */	li r3, 1
-lbl_801DDA08:
-/* 801DDA08 001D9668  2C 03 00 00 */	cmpwi r3, 0
-/* 801DDA0C 001D966C  41 82 00 74 */	beq lbl_801DDA80
-/* 801DDA10 001D9670  7C 83 23 78 */	mr r3, r4
-/* 801DDA14 001D9674  4B FF FB B5 */	bl func_801DD5C8
-/* 801DDA18 001D9678  80 7F 00 04 */	lwz r3, 4(r31)
-/* 801DDA1C 001D967C  7F E4 FB 78 */	mr r4, r31
-/* 801DDA20 001D9680  38 A0 00 00 */	li r5, 0
-/* 801DDA24 001D9684  4B FF FD D9 */	bl func_801DD7FC
-/* 801DDA28 001D9688  80 DF 00 04 */	lwz r6, 4(r31)
-/* 801DDA2C 001D968C  38 80 00 01 */	li r4, 1
-/* 801DDA30 001D9690  A0 A6 00 06 */	lhz r5, 6(r6)
-/* 801DDA34 001D9694  54 A0 07 39 */	rlwinm. r0, r5, 0, 0x1c, 0x1c
-/* 801DDA38 001D9698  40 82 00 2C */	bne lbl_801DDA64
-/* 801DDA3C 001D969C  80 06 00 00 */	lwz r0, 0(r6)
-/* 801DDA40 001D96A0  38 60 00 00 */	li r3, 0
-/* 801DDA44 001D96A4  2C 00 00 00 */	cmpwi r0, 0
-/* 801DDA48 001D96A8  41 82 00 10 */	beq lbl_801DDA58
-/* 801DDA4C 001D96AC  54 A0 07 FF */	clrlwi. r0, r5, 0x1f
-/* 801DDA50 001D96B0  41 82 00 08 */	beq lbl_801DDA58
-/* 801DDA54 001D96B4  38 60 00 01 */	li r3, 1
-lbl_801DDA58:
-/* 801DDA58 001D96B8  2C 03 00 00 */	cmpwi r3, 0
-/* 801DDA5C 001D96BC  41 82 00 08 */	beq lbl_801DDA64
-/* 801DDA60 001D96C0  38 80 00 00 */	li r4, 0
-lbl_801DDA64:
-/* 801DDA64 001D96C4  2C 04 00 00 */	cmpwi r4, 0
-/* 801DDA68 001D96C8  41 82 00 18 */	beq lbl_801DDA80
-/* 801DDA6C 001D96CC  A0 66 00 06 */	lhz r3, 6(r6)
-/* 801DDA70 001D96D0  54 60 06 F7 */	rlwinm. r0, r3, 0, 0x1b, 0x1b
-/* 801DDA74 001D96D4  40 82 00 0C */	bne lbl_801DDA80
-/* 801DDA78 001D96D8  54 60 04 3C */	rlwinm r0, r3, 0, 0x10, 0x1e
-/* 801DDA7C 001D96DC  B0 06 00 06 */	sth r0, 6(r6)
-lbl_801DDA80:
-/* 801DDA80 001D96E0  80 01 00 14 */	lwz r0, 0x14(r1)
-/* 801DDA84 001D96E4  83 E1 00 0C */	lwz r31, 0xc(r1)
-/* 801DDA88 001D96E8  7C 08 03 A6 */	mtlr r0
-/* 801DDA8C 001D96EC  38 21 00 10 */	addi r1, r1, 0x10
-/* 801DDA90 001D96F0  4E 80 00 20 */	blr
-}
-#pragma peephole on
-#endif
 
 // Search the linked list referenced by unk0 for a node with the specified id
 gUnkClass8* GSanimationObject::func_801DDA94(u16 id)

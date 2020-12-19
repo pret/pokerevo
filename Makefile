@@ -84,12 +84,13 @@ SHA1SUM     := sha1sum
 PYTHON      := python3
 
 POSTPROC := tools/postprocess/postprocess.py
+PRAGMAPROC := tools/pragma/pragma.py
 
 # Options
 INCLUDES := -i . -I- -i include -i include/SDK -i include/MSL_C -include include/types.h
 ASFLAGS := -mgekko -I include
 LDFLAGS := -map $(MAP) -fp hard -nodefaults
-CFLAGS  := -Cpp_exceptions off -proc gekko -fp hard -O4,p -nodefaults -msgstyle gcc -ipa file $(INCLUDES) -W all
+CFLAGS  := -Cpp_exceptions off -proc gekko -fp hard -O4,p -nodefaults -msgstyle gcc -ipa file $(INCLUDES) -W all -w nopragmas
 
 # for postprocess.py
 PROCFLAGS := -fsymbol-fixup
@@ -101,7 +102,7 @@ SBSS_PDHR := 10
 infoshell = $(foreach line, $(shell $1 | sed "s/ /__SPACE__/g"), $(info $(subst __SPACE__, ,$(line))))
 
 TOOLS_DIR = tools
-TOOLDIRS = $(filter-out $(TOOLS_DIR)/mwcc_compiler $(TOOLS_DIR)/postprocess,$(wildcard $(TOOLS_DIR)/*))
+TOOLDIRS = $(filter-out $(TOOLS_DIR)/mwcc_compiler $(TOOLS_DIR)/postprocess $(TOOLS_DIR)/pragma,$(wildcard $(TOOLS_DIR)/*))
 TOOLBASE = $(TOOLDIRS:$(TOOLS_DIR)/%=%)
 TOOLS = $(foreach tool,$(TOOLBASE),$(TOOLS_DIR)/$(tool)/$(tool)$(EXE))
 
@@ -154,7 +155,7 @@ $(BUILD_DIR)/%.o: %.s
 	$(PYTHON) $(POSTPROC) $(PROCFLAGS) $@
 
 $(BUILD_DIR)/%.o: %.cpp
-	$(CC) $(CFLAGS) -lang c++ -c -o $@ $<
+	$(PYTHON) $(PRAGMAPROC) "$(CC)" "$(CFLAGS) -lang c++ -c" $@ $< -fix-regswaps
 
 $(BUILD_DIR)/%.o: %.c
-	$(CC) $(CFLAGS) -lang c99 -c -o $@ $<
+	$(PYTHON) $(PRAGMAPROC) "$(CC)" "$(CFLAGS) -lang c99 -c" $@ $< -fix-regswaps
