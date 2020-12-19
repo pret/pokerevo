@@ -1,29 +1,18 @@
-"""
-
-./tools/pragma/pragma.py "$(CFLAGS)" -fix-regswaps
-
-#pragma regswap start end regA regB startFile
-
-pragma is only meaningful when you're trying to build a matching ROM.
-Modders don't care about regswaps. They care about shiftability.
-Modding projects must ignore #pragma regswap to avoid corrupting the ROM
-(add a Makefile option, "make mod" or similar)
-
-makefile executes...
-$(CC) $(CFLAGS) -lang c++ -c -o $@ $<
-
-$(PYTHON) $(PRAGMA) $(CC) "$(CFLAGS) -lang c++ -c" $@ $< -fix-regswaps
-
-"""
-
 # pragma.py 
-# github.com/mparisi20
+# By mparisi20
+# github.com/mparisi20/pragma_processor
 
-# usage: pragma.py cc cflags output source [-fix-regswaps]
+# #pragma regswap usage:
+# #pragma regswap start end regA regB startFile
 
-# TODO: add instruction swap option
-# TODO: add "#pragma startaddr 80000000" to avoid rewriting the start address in each regswap pragma?
+# start: absolute address of start of affected region (hex)
+# end: absolute address of end of affected region (hex)
+# regA: register to swap (r0-r31 or f0-f31)
+# regB: register to swap (r0-r31 or f0-f31)
+# startFile: absolute address of the first function provided by this file (hex)
 
+# TODO: add support for an instruction swap pragma
+# TODO: add "#pragma startaddr <hex-addr>" to avoid rewriting the start address in each regswap pragma?
 
 import os
 import sys
@@ -181,7 +170,6 @@ class PPCInstr:
     
     # returns a tuple containing the bit position of each register field
     # or None if the instruction does not use registers
-    # TODO: exception handling?
     def get_reg_fields(self):
         opcode = self.get_opcode()
         ext_opcode = self.get_ext_opcode()
@@ -198,9 +186,9 @@ class PPCInstr:
     
     # edit the PPC instruction to swap the registers
     def swap_registers(self, regA, regB):
-        DEBUG_v = hex(self.v)
+        # DEBUG_v = hex(self.v)
         reg_fields = self.get_reg_fields()
-        print(str(reg_fields) + ", " + DEBUG_v)
+        # print(str(reg_fields) + ", " + DEBUG_v)
         if reg_fields is None:
             return
         for left in reg_fields:
