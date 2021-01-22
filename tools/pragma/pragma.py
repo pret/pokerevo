@@ -11,8 +11,7 @@
 # regB: register to swap (r0-r31 or f0-f31)
 # startFile: absolute address of the first function provided by this file (hex)
 
-# TODO: add support for an instruction swap pragma
-# TODO: add "#pragma startaddr <hex-addr>" to avoid rewriting the start address in each regswap pragma?
+#pragma iswap addrA addrB startFile
 
 import os
 import sys
@@ -138,6 +137,11 @@ misc_opcode_map = {
                     }
                   }
 
+class FloatInfo:
+    def __init__(self, is_float, int_regs):
+        self.is_float = is_float
+        self.int_regs = int_regs
+
 class PPCInstr:
 
     INSTR_SIZE = 32
@@ -184,20 +188,33 @@ class PPCInstr:
         else:
             return self.search_opcode_maps(opcode, misc_opcode_map)
     
+    def uses_float_regs(self):
+        op = self.get_opcode()
+        ext_op = self.get_ext_opcode()
+        if op in {48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 60, 61}:
+            return FloatInfo(True, (11,))
+        elif (op == 4 and ext_op & 0x3F in {6, 7, 38, 39}) or (op == 31 and ext_op in {535, 567, 599, 631, 663, 695, 727, 759, 983}):
+            return FloatInfo(True, (11, 16))
+        elif op in {4, 59, 63}:
+            return FloatInfo(True, ())
+        return FloatInfo(False, ())
+        
     # edit the PPC instruction to swap the registers
     def swap_registers(self, regA, regB):
-        # DEBUG_v = hex(self.v)
+        info = self.uses_float_regs()
         reg_fields = self.get_reg_fields()
-        # print(str(reg_fields) + ", " + DEBUG_v)
-        if reg_fields is None:
+        if not reg_fields:
             return
         for left in reg_fields:
             right = left + self.REG_FIELD_SIZE - 1
             currReg = self.get_field(left, right)
-            if currReg == regA:
-                self.set_field(left, right, regB)
-            elif currReg == regB:
-                self.set_field(left, right, regA)
+            # since r0-r31 occupy 0-31 and f0-31 occupy 32-63, 
+            # subtract 32 from regA/regB if the next register field is for a floating point register
+            dec = 0 if not info.is_float or left in info.int_regs else -32
+            if currReg == regA + dec:
+                self.set_field(left, right, regB + dec)
+            elif currReg == regB + dec:
+                self.set_field(left, right, regA + dec)
 
 
 parser = argparse.ArgumentParser()
@@ -209,15 +226,13 @@ parser.add_argument("output",
                     help="path to the outputted object file")
 parser.add_argument("source", 
                     help="path to the C/C++ source file")
-parser.add_argument("-fix-regswaps", 
-                    help="execute #pragma regswap", action="store_true")
 args = parser.parse_args()
 
 def parse_reg(str):
     if str[0] == 'r' or str[0] == 'f':
         reg = int(str[1:])
         if reg >= 0 and reg <= 31:
-            return reg
+            return reg if str[0] == 'r' else reg + 32
     raise ValueError("Failed to parse register argument (can be r0...r31 or f0...f31)")
 
 class RegswapTask:
@@ -227,32 +242,51 @@ class RegswapTask:
         self.regA = regA
         self.regB = regB
 
+class IswapTask:
+    def __init__(self, src, dst):
+        self.src = src # .text section byte offset
+        self.dst = dst # .text section byte offset
+
 regswap_tasks = []
+iswap_tasks = []
 with open(args.source, "r") as src:
     regswap_pattern = re.compile("[ \t]*#pragma[ \t]+regswap[ \t]+")
+    iswap_pattern = re.compile("[ \t]*#pragma[ \t]+iswap[ \t]+")
     for line in src:
         if regswap_pattern.match(line):
-            if args.fix_regswaps:
-                params = line.split()[2:]
-                if len(params) != 5:
-                    raise ValueError("ERROR: " + len(params) + " arguments passed to #pragma regswap (expected 5)")
-                start = int(params[0], base=16)
-                end = int(params[1], base=16)
-                regA = parse_reg(params[2])
-                regB = parse_reg(params[3])
-                start_file = int(params[4], base=16)
-                if not (start % 4 == 0 and end % 4 == 0 and start_file % 4 == 0):
-                    raise ValueError("Invalid start, end, or start_file arguments (should have 4 byte aligment)")
-                if not (start >= start_file and end > start):
-                    raise ValueError("Invalid start, end, or start_file arguments (end must be > start, and start >= start_file)")
-                regswap_tasks.append(RegswapTask(start-start_file, end-start_file, regA, regB))
+            params = line.split()[2:]
+            if len(params) != 5:
+                raise ValueError("ERROR: " + str(len(params)) + " arguments passed to #pragma regswap (expected 5)")
+            start = int(params[0], base=16)
+            end = int(params[1], base=16)
+            regA = parse_reg(params[2])
+            regB = parse_reg(params[3])
+            start_file = int(params[4], base=16)
+            if not (start % 4 == 0 and end % 4 == 0 and start_file % 4 == 0):
+                raise ValueError("Invalid start, end, or start_file arguments (should have 4 byte aligment)")
+            if not (start >= start_file and end > start):
+                raise ValueError("Invalid start, end, or start_file arguments (end must be > start, and start >= start_file)")
+            regswap_tasks.append(RegswapTask(start-start_file, end-start_file, regA, regB))
+        elif iswap_pattern.match(line):
+            params = line.split()[2:]
+            if len(params) != 3:
+                raise ValueError("ERROR: " + str(len(params)) + " arguments passed to #pragma iswap (expected 3)")
+            src = int(params[0], base=16)
+            dst = int(params[1], base=16)
+            start_file = int(params[2], base=16)
+            if not (src % 4 == 0 and dst % 4 == 0 and start_file % 4 == 0):
+                raise ValueError("Invalid src, dst, or start_file arguments (should have 4 byte aligment)")
+            if not (src >= start_file and dst > src):
+                raise ValueError("Invalid src, dst, or start_file arguments (dst must be > src, and src >= start_file)")
+            iswap_tasks.append(IswapTask(src-start_file, dst-start_file))
+            
     subprocess.run([*args.cc.strip().split(' '), *args.cflags.split(' '), "-o", args.output, args.source])
 
 instrs = []
 TEXT_INDEX = 1 # NOTE: assumes that mwcceppc always places the .text section header at index 1
 SHDR_32_SIZE = 40 # size of an Elf32_Shdr object
 
-if args.fix_regswaps and len(regswap_tasks) != 0:
+if regswap_tasks or iswap_tasks:
     with open(args.output, "rb") as f:
         if f.read(7) != b'\x7FELF\x01\x02\x01':
             raise ValueError("compiler output is not an current version ELF file for a 32-bit big endian architecture")
@@ -279,6 +313,14 @@ if args.fix_regswaps and len(regswap_tasks) != 0:
                 raise ValueError("End address " + (task.end + start_file) + " is past the end of the ELF file's .text section")
             for i in range(task.start // 4, task.end // 4):
                 instrs[i].swap_registers(task.regA, task.regB)
+        
+        # perform iswap tasks
+        for task in iswap_tasks:
+            if task.dst > text_size:
+                raise ValueError("End address " + (task.dst + start_file) + " is past the end of the ELF file's .text section")
+            a = task.src // 4
+            b = task.dst // 4
+            instrs[a], instrs[b] = instrs[b], instrs[a]
     
     # write patched .text section back to the ELF
     with open(args.output, "rb+") as f:

@@ -155,7 +155,7 @@ $(BUILD_DIR)/%.o: %.s
 	$(PYTHON) $(POSTPROC) $(PROCFLAGS) $@
 
 $(BUILD_DIR)/%.o: %.cpp
-	$(PYTHON) $(PRAGMAPROC) "$(CC)" "$(CFLAGS) -lang c++ -c" $@ $< -fix-regswaps
+	$(PYTHON) $(PRAGMAPROC) "$(CC)" "$(CFLAGS) -lang c++ -c" $@ $<
 
 $(BUILD_DIR)/%.o: %.c
-	$(PYTHON) $(PRAGMAPROC) "$(CC)" "$(CFLAGS) -lang c99 -c" $@ $< -fix-regswaps
+	$(PYTHON) $(PRAGMAPROC) "$(CC)" "$(CFLAGS) -lang c99 -c" $@ $<
