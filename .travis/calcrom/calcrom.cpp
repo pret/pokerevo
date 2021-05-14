@@ -48,7 +48,7 @@ get_files(const char *fpath, const struct stat *sb,
     if (tflag == FTW_F) {
         string fpath_s(fpath);
         string ext = fpath_s.substr(fpath_s.rfind('.'), 4);
-        if (ext == ".c" || ext == ".cpp" || ".s")
+        if (ext == ".c" || ext == ".cpp" || ext == ".s")
             files.push_back(fpath_s);
     }
     return 0;
