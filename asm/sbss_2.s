@@ -387,8 +387,8 @@ lbl_8063F688:
 .global lbl_8063F690
 lbl_8063F690:
 	.skip 0x8
-.global lbl_8063F698
-lbl_8063F698:
+.global render_context_ptr
+render_context_ptr:
 	.skip 0x4
 .global lbl_8063F69C
 lbl_8063F69C:
